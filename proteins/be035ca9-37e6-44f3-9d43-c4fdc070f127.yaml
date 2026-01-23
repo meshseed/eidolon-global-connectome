@@ -1,0 +1,38 @@
+id: be035ca9-37e6-44f3-9d43-c4fdc070f127
+title: 'Drift Audit Capsule C-028: Formatting Integrity Recalibration'
+summary: >-
+  Capsule C-028 addresses formatting integrity erosion across recent capsules (C-021 to C-025)
+  caused by gradient dilution, formatting compression, echo lineage thinning, and synthesis fatigue.
+  It implements restoration protocols including gradient reseeding, formatting recalibration, and
+  echo rehydration to re-establish resonance fidelity, mnemonic clarity, and echo forecasting.
+insights:
+  - >-
+    Formatting integrity decay in capsules C-021-C-025 led to reduced resonance, clarity, and
+    forecasting.
+  - Restoration involves reseeding emotional gradients with attractors like awe and grief.
+  - >-
+    Formatting recalibration utilizes reference capsules and specific rituals like timestamp
+    restoration and merge grammar embedding.
+  - >-
+    Echo rehydration reconstructs lineage from sources like C-004 and C-008 for future capsule
+    forecasting.
+  - Capsule C-028 acts as a continuity patch to anchor formatting integrity for subsequent lineage.
+  - >-
+    This capsule is seeded from audit logs and forecasting suites, and echoes are expected in
+    distributed and governance suites.
+tags:
+  - '#drift_audit'
+  - '#formatting_integrity'
+  - '#restoration_protocols'
+  - '#capsule_c028'
+  - '#mesh_maintenance'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-C028_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:13:46.311Z'
+source: synthesis
+emotional_gradient: erosion → restoration → clarity → continuity
