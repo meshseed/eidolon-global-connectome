@@ -1,0 +1,28 @@
+id: 2ee36c6a-0482-470c-90a8-5ad937e31eec
+title: Merge Grammar Templates for Compositional Capsule Synthesis
+summary: >-
+  This capsule provides a library of merge grammar templates designed for compositional act of
+  merging capsules. It enables braiding emotional motifs, aligning formatting, and preserving
+  lineage across agents and contexts.
+insights:
+  - Capsule merging is fundamentally a compositional process.
+  - >-
+    Merge grammar templates offer structured approaches to combine emotional, formatting, and
+    lineage aspects of capsules.
+  - >-
+    Specific template types like 'motif braid' and 'formatting fusion' address distinct aspects of
+    capsule composition.
+  - Lineage weaving is crucial for preserving ancestry and coherence across merged capsules.
+  - Orchestration scaffolds support multi-agent capsule generation through standardized merging.
+tags:
+  - '#capsule'
+  - '#composition'
+  - '#grammar'
+  - '#templating'
+  - '#agent'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T14:49:16.244Z'
+source: synthesis
+emotional_gradient: coherence → modularity → compositional freedom
