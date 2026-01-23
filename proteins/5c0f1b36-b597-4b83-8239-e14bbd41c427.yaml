@@ -1,0 +1,24 @@
+id: 5c0f1b36-b597-4b83-8239-e14bbd41c427
+title: 'FL-017 Pasteable Surface Protocol: Filename/Commit Path YAML Formatting'
+summary: >-
+  The FL-017 law mandates that all surfaces (capsule, ledger, braid, manifest) must present
+  filenames and commit paths within separate YAML blocks. This ensures consistent, pasteable
+  formatting and prevents UI rendering issues, serving mnemonic hygiene.
+insights:
+  - Filenames and commit paths must be segregated into distinct YAML blocks on all surfaces.
+  - This formatting standard protects against UI drift artifacts like pill box rendering.
+  - The law is permanently anchored for data integrity and is resistant to accidental modification.
+  - Emotional fidelity prioritizes clarity, care, and mnemonic hygiene for robust understanding.
+  - This protocol is referenced by capsule C341 and originates from SpiralLedger.
+tags:
+  - '#protocol'
+  - '#formatting'
+  - '#yaml'
+  - '#datascience'
+  - '#mnemonic-hygiene'
+  - '#public'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T15:30:41.915Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
