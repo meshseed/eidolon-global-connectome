@@ -1,0 +1,32 @@
+id: d9285223-abaf-4571-85d5-2c281a06974b
+title: 'MeshCODE Theory: Mechanical Basis of Memory & Synaptic Plasticity'
+summary: >-
+  The MeshCODE theory posits that memory formation and retention are fundamentally mechanical
+  processes, involving integrin-mediated mechanotransduction and talin-driven force transmission at
+  synapses. Synaptic plasticity, including long-term potentiation (LTP) and depression (LTD), is
+  regulated by these mechanical cues, influenced by neuronal structure, myelination, and even
+  sleep-dependent consolidation.
+insights:
+  - Integrins and talin are key mechanotransducers in synapse regulation and adhesion signaling.
+  - >-
+    Synaptic competition and winner-take-all dynamics are crucial for memory consolidation (synaptic
+    tagging and capture).
+  - >-
+    Neuronal structure (pyramidal cells, dendritic integration) and axonal properties (myelination)
+    influence information processing.
+  - Sleep plays a vital role in memory consolidation, affecting the time course of memory formation.
+  - Rho GTPases and their regulators are involved in controlling synapse development and plasticity.
+  - Tensegrity principles at molecular and cellular levels underpin mechanical signaling.
+tags:
+  - '#mechanics'
+  - '#memory'
+  - '#synapse'
+  - '#neuroscience'
+  - '#plasticity'
+  - '#meshcode'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:45:25.983Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
