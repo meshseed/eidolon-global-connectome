@@ -1,0 +1,32 @@
+id: 08d2ebc4-2ecd-409b-8cd0-9803db9012d6
+title: Obsidian Vault Management & Knowledge Graph Export Strategies
+summary: >-
+  This document outlines best practices for managing an Obsidian vault for collaboration and
+  knowledge graph export. It details methods for syncing, ensuring accessibility, and governing
+  contributions, with a focus on machine-readability and portability.
+insights:
+  - >-
+    Implement machine-readable metadata (frontmatter with specific fields like `glyph`,
+    `glyph_synonym`, `related`) for enhanced searchability and automated processing.
+  - >-
+    Utilize Obsidian Git plugin for simple vault-GitHub synchronization, or explore more complex
+    sync patterns for advanced workflows.
+  - Prioritize plain-text fields and explicit links for maximum portability across various tools.
+  - >-
+    Employ a 'steward' note for governance and draft/branch notes for multi-author contributions to
+    maintain vault integrity.
+  - >-
+    Develop minimal automation scripts for tasks like Gephi graph export and frontmatter validation
+    to streamline workflows.
+tags:
+  - '#obsidian'
+  - '#knowledge-management'
+  - '#git'
+  - '#automation'
+  - '#collaboration'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:36:13.946Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
