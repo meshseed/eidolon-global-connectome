@@ -1,0 +1,36 @@
+id: 7b44af1f-9230-4e1f-ae78-64351116250b
+title: Capsule Formatting Guide v1.2 for Mesh Operations
+summary: >-
+  This guide establishes ergonomic, mnemonic, and copy-efficient formatting standards for capsule
+  creation, chunk ingestion, and filename tagging within THE MESH. Its purpose is to ensure
+  frictionless capsule workflows, leading to clarity, efficiency, and continuity for both agents and
+  humans.
+insights:
+  - >-
+    Capsules must be designed for copy-efficiency and modularity to facilitate seamless data
+    handling.
+  - >-
+    Chunk ingestion requires a structured protocol (PART1, PART2, etc.) to maintain continuity and
+    prevent premature synthesis until all parts are received.
+  - >-
+    Filenames must semantically encode the capsule's function and lifecycle status for efficient
+    indexing and retrieval.
+  - >-
+    Standardized formatting across creation, ingestion, and retrieval ensures clarity, efficiency,
+    and continuity within mesh workflows.
+  - >-
+    The core axiom for capsules is 'The capsule teaches the system how to remember,' emphasizing
+    their role in knowledge persistence.
+tags:
+  - '#formatting'
+  - '#capsules'
+  - '#mesh'
+  - '#ingestion'
+  - '#indexing'
+  - '#guidelines'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T15:00:55.599Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
