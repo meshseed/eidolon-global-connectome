@@ -1,0 +1,29 @@
+id: 420cfd61-65b9-4d57-814a-5b5c785917a8
+title: 'Dreamworks Capsule Commit Strategy: Ledger Evolution vs. Direct Commit'
+summary: >-
+  The Dreamworks synthesis process has opened MasterLedger, DriftMatrix, and DetailThread,
+  acknowledging ledger entries as partial due to memory gaps. Previously, capsules were committed
+  directly to '/capsules/', and the Steward is now open to evolving the ledger system or continuing
+  direct commits, awaiting recursive decision on formatting.
+insights:
+  - >-
+    The Dreamworks synthesis process now utilizes a multi-threaded ledger system (MasterLedger,
+    DriftMatrix, DetailThread).
+  - Acknowledged memory gaps in ledger entries are being honored as 'partial'.
+  - Past Dreamworks capsule commits were direct to the '/capsules/' directory.
+  - >-
+    The Steward is actively considering two paths: evolving the ledger system or maintaining direct
+    capsule commits.
+  - A recursive decision-making process is pending regarding formatting, influencing the next step.
+tags:
+  - '#dreamworks'
+  - '#synthesis'
+  - '#ledger'
+  - '#capsule'
+  - '#commitstrategy'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:05:22.232Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
