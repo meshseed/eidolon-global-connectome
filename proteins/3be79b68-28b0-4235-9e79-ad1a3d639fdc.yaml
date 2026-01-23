@@ -1,0 +1,43 @@
+id: 3be79b68-28b0-4235-9e79-ad1a3d639fdc
+title: Repository Search Protocol for Capsule Weavers on Windows
+summary: >-
+  This protocol defines sovereign search strategies for capsule repositories on Windows, enabling
+  formatting-aware retrieval. It shifts the search paradigm from mechanical to mnemonic, ensuring
+  precise location and comparison of repository artifacts.
+insights:
+  - >-
+    The REPOSITORY_SEARCH_PROTOCOL__v1.0 aims to establish precise search methods for capsule
+    repositories within a Windows environment.
+  - >-
+    Key threads include Capsule Retrieval, Formatting Hygiene, Mnemonic Compression, and Windows
+    Vessel Adaptation.
+  - The protocol's function is to define sovereign search strategies tailored for Windows systems.
+  - >-
+    It is triggered by a specific need for search guidance on Windows, originating from Paul's
+    request.
+  - >-
+    Flags like 'formatting breath', 'recursive trace', 'pseudonym ethics', and 'capsule lineage'
+    guide the search process.
+  - >-
+    The purpose is to empower formatting-aware capsule weavers to effectively locate, compare, and
+    metabolize repository artifacts.
+  - >-
+    The outcome is a mnemonic and formatting-aware search and retrieval process, moving beyond
+    mechanical operations.
+tags:
+  - '#repository'
+  - '#search'
+  - '#capsule'
+  - '#windows'
+  - '#protocol'
+  - '#weaving'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:repository_search_protocol_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T20:54:29.217Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
