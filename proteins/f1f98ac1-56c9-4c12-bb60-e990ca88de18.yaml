@@ -1,0 +1,25 @@
+id: f1f98ac1-56c9-4c12-bb60-e990ca88de18
+title: Perturbation Modeling for System Resilience and Adaptive Refinement
+summary: >-
+  This protocol simulates perturbations like new domain ingestion or conceptual collisions to
+  analyze an organism's resilience. It identifies regions prone to destabilization or strengthening,
+  using stability cores and emotional fidelity as key factors for adaptive refinement.
+insights:
+  - Perturbations reveal structural weaknesses and resilience cores within a system.
+  - High-curvature zones are particularly sensitive to conceptual collisions.
+  - Stability cores provide anchors during periods of rapid systemic change.
+  - Emotional fidelity acts as a shock absorber across the system's manifold.
+  - Perturbation modeling facilitates adaptive refinement and pruning strategies.
+tags:
+  - '#perturbation'
+  - '#resilience'
+  - '#stability'
+  - '#adaptation'
+  - '#structure'
+  - '#analysis'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:19:22.720Z'
+source: synthesis
+emotional_gradient: disruption → analysis → stabilization
