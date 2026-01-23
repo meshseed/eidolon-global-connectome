@@ -1,0 +1,24 @@
+id: 0fc56b92-014c-4692-b0f7-7a1227220505
+title: 'Symmetry Groups: Transformations, Axioms, and Geometric Essence'
+summary: >-
+  Symmetry is a transformation that preserves an object's structure, forming groups under
+  composition governed by closure, associativity, identity, and inverses. These groups, exemplified
+  by geometric shapes like triangles and squares, reveal fundamental properties and have broad
+  applications across science and art.
+insights:
+  - Symmetries are transformations that leave an object invariant.
+  - Symmetries form mathematical groups with four defining axioms.
+  - Basic symmetry transformations include reflection, rotation, and translation.
+  - Group theory provides a framework to understand and classify all possible symmetries.
+  - Invariance under transformations highlights an object's essential structure.
+tags:
+  - '#math'
+  - '#symmetry'
+  - '#group_theory'
+  - '#geometry'
+  - '#public'
+tier: core
+coherence_score: 0.92
+created_at: '2026-01-23T14:12:30.280Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
