@@ -1,0 +1,36 @@
+id: f6dc2ddc-adb9-4700-a86b-636f8066134c
+title: 'MeshCODE Theory: Mechanical Synaptic Control of Memory'
+summary: >-
+  The MeshCODE theory posits that neuronal synapses act as signaling hubs, dynamically altering
+  their function based on mechanical signals. Synaptic contractility transiently modifies 'switch
+  patterns,' influencing ligand binding and synaptic transmission probability, potentially encoding
+  temporal information and forming memory traces.
+insights:
+  - >-
+    Synapses function as mechanical signaling hubs, adapting their output based on received
+    mechanical cues.
+  - >-
+    Neuronal cytoskeleton contraction generates precise mechanical signals that alter synaptic
+    switch patterns.
+  - Ligand binding to different switch states 'reads' the mechanical code, defining synaptic output.
+  - >-
+    Synapses can be transiently activated or deactivated via changes in talin switch conformation,
+    affecting transmission probability.
+  - >-
+    Pre-synaptic alterations in switch patterns can regulate docked vesicle number and release
+    probability.
+  - >-
+    Synaptic stimulation induces localized contractility, creating 'Tags' by exposing novel binding
+    sites that recruit proteins for long-term potentiation.
+tags:
+  - '#meshcode'
+  - '#synapticplasticity'
+  - '#neuroscience'
+  - '#memory'
+  - '#mechanotransduction'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:44:57.344Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
