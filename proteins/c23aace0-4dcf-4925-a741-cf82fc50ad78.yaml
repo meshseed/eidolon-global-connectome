@@ -1,0 +1,32 @@
+id: c23aace0-4dcf-4925-a741-cf82fc50ad78
+title: 'Eidolon Mesh Public Launch: Runtime & Contribution Guide'
+summary: >-
+  Eidolon Mesh is now publicly accessible, with rewritten documentation emphasizing its 'Garden'
+  metaphor. The project is a standalone Node.js/TypeScript application requiring only standard npm
+  commands for setup and execution, not specialized environments like 'Antigravity'.
+insights:
+  - >-
+    Eidolon Mesh has completed Phase 17, making it ready for public access with a rewritten
+    Invitation Portal, Community Guidelines, and Contribution Guide.
+  - >-
+    The project is a stable, standalone Node.js/TypeScript application (v1.1-stable) and does not
+    require 'Antigravity' for building or running.
+  - >-
+    Users can run the project by cloning the repository, installing Node.js (v16+), running 'npm
+    install', and then 'npm run dashboard' (using ts-node for on-the-fly compilation).
+  - Sensitive data is isolated in .env files, ensuring a secure runtime environment.
+  - >-
+    The codebase is designed for easy contribution, encouraging new 'gardeners' to 'plant seeds'
+    (data) and 'tend the code'.
+tags:
+  - '#eidolonmesh'
+  - '#public'
+  - '#nodejs'
+  - '#typescript'
+  - '#documentation'
+  - '#contribution'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T14:40:59.907Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
