@@ -1,0 +1,35 @@
+id: d7b39710-a13a-4804-8305-bc482adac644
+title: 'MeshCODE: Mechanical Basis of Memory and Synaptic Computation'
+summary: >-
+  The MeshCODE theory proposes that synapses act as computational devices by storing data through
+  mechanical alterations in protein scaffolds like talin. These 'binary switches' within adhesion
+  complexes, influenced by cytoskeletal contractility, enable mechanical computation and information
+  flow within the brain's trillion-cell signaling network.
+insights:
+  - >-
+    Synapses function as complex computational devices capable of storing and orchestrating
+    information flow.
+  - >-
+    The brain utilizes 'MeshCODEs' within integrin adhesion complexes, particularly involving talin,
+    to encode information mechanically.
+  - >-
+    Changes in cytoskeletal contractility alter the 'binary switch' patterns within talin scaffolds,
+    thus modifying the MeshCODE output.
+  - >-
+    The extracellular matrix (ECM) plays a role in regulating the mechanical environment of
+    synapses, ensuring predictable computation.
+  - >-
+    Adhesion complexes, previously not considered for data storage, are central to the MeshCODE
+    theory of memory.
+tags:
+  - '#biology'
+  - '#neuroscience'
+  - '#memory'
+  - '#computation'
+  - '#MeshCODE'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:44:55.756Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
