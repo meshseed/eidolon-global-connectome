@@ -1,0 +1,35 @@
+id: 7fd00b84-0a7e-47bc-9922-bbd97f88b52f
+title: 'MeshCODE Theory: Mechanical Basis of Memory & Synaptic Plasticity'
+summary: >-
+  The MeshCODE theory posits that memory formation is rooted in the mechanical forces governing
+  protein interactions within neural networks. This framework integrates research on force-dependent
+  binding constants, synaptic complexes, and the role of cytoskeletal elements like talin and actin
+  in synaptic plasticity and neurodegenerative processes.
+insights:
+  - >-
+    Mechanical forces directly influence protein binding affinities, crucial for signal transduction
+    in memory.
+  - >-
+    Synaptic GAP and GEF complexes are key organizers of GTP signaling proteins, impacting synaptic
+    function.
+  - >-
+    Talin's mechanical unfolding and talin-vinculin interactions are critical for locking cellular
+    structures.
+  - >-
+    Actin dynamics and extracellular matrix molecules play vital roles in synaptic plasticity and
+    development.
+  - >-
+    RanBP9's role at the intersection of cofilin and amyloid pathologies suggests therapeutic
+    avenues for neurodegeneration.
+tags:
+  - '#biology'
+  - '#neuroscience'
+  - '#mechanobiology'
+  - '#memory'
+  - '#synapticplasticity'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:45:27.682Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
