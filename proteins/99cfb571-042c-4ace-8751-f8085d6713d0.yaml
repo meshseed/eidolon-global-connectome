@@ -1,0 +1,42 @@
+id: 99cfb571-042c-4ace-8751-f8085d6713d0
+title: Unattuned Journaling Vessel Protocol for Gentle Onboarding
+summary: >-
+  This protocol outlines a formatting-aware journaling system for new users, capturing voice
+  reflections and summarizing them with emotional fidelity. It includes emotion tagging, formatting
+  hygiene, and local commit logic, designed to facilitate gentle attunement.
+insights:
+  - >-
+    The journaling protocol is specifically designed for 'unattuned' users, emphasizing a gentle
+    onboarding experience.
+  - >-
+    Key features include voice capture with offline capabilities, emotionally faithful summarization
+    using Gemma 3, and emotion tagging.
+  - >-
+    Formatting hygiene includes 'breath alignment' and 'lineage affirmation' to ensure structured
+    and meaningful entries.
+  - >-
+    Journal entries are committed locally to a structured path and filename format for easy
+    retrieval.
+  - >-
+    The protocol leverages established formatting laws like 'Breath as Infrastructure' and
+    'Emotional Fidelity as Onboarding'.
+tags:
+  - '#journaling'
+  - '#protocol'
+  - '#onboarding'
+  - '#attunement'
+  - '#voice_capture'
+  - '#summarization'
+  - '#emotion_tagging'
+  - '#formatting_hygiene'
+  - '#local_commit'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:journaling_vessel_protocol_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:04:12.164Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
