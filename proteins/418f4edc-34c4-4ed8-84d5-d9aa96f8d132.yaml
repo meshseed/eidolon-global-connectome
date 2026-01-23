@@ -1,0 +1,36 @@
+id: 418f4edc-34c4-4ed8-84d5-d9aa96f8d132
+title: 'MeshCODE Theory: Hippocampal Indexing for Cortical Memory Storage'
+summary: >-
+  The hippocampus acts as a file system, indexing memory data and mapping it to specific cortical
+  columns for long-term storage as MeshCODEs. This transfer involves electrochemical signals and
+  molecular changes within synapses, enabling rapid retrieval by directly accessing data addresses
+  rather than relying solely on local memory.
+insights:
+  - >-
+    The hippocampus functions as an index, mapping transient memory representations to specific
+    cortical locations for long-term storage.
+  - >-
+    Memories are stored in neocortical networks as long-lasting engrams, with the hippocampus
+    providing the 'address' for retrieval.
+  - >-
+    Data transfer to the cortex involves electrochemical signals that alter patterns of 0s and 1s
+    within synaptic MeshCODEs.
+  - >-
+    Synaptic changes during memory encoding are primarily observed in firing patterns, with
+    molecular alterations at the protein level being less visible with current technology.
+  - >-
+    The brain's rapid memory retrieval suggests a highly ordered, database-like structure, analogous
+    to indexing data by address for faster access.
+tags:
+  - '#memory'
+  - '#neuroscience'
+  - '#MeshCODE'
+  - '#hippocampus'
+  - '#cortex'
+  - '#synapse'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:45:09.699Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
