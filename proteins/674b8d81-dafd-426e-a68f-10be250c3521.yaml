@@ -1,0 +1,31 @@
+id: 674b8d81-dafd-426e-a68f-10be250c3521
+title: 'Obsidian Workflow: README.obsidian.md Guide for Contributors'
+summary: >-
+  This document serves as an operational manual for contributors to an Obsidian vault, detailing
+  setup and usage guidelines. It emphasizes privacy, consistent licensing, and the distinct roles of
+  GitHub READMEs versus the Obsidian README for vault-specific instructions.
+insights:
+  - Maintain a `/private/` folder for sensitive content, excluded from GitHub.
+  - Ensure consistent licensing across public (GitHub) and internal (Obsidian) environments.
+  - Place `README.obsidian.md` at the vault/repo root for contributor guidance.
+  - >-
+    Utilize the GitHub README for public narrative and `README.obsidian.md` for vault-specific
+    operational details.
+  - >-
+    Key setup steps include creating daily capture templates, adding Dataview plugin with example
+    queries, and deciding on Git/CI publishing.
+tags:
+  - '#obsidian'
+  - '#workflow'
+  - '#documentation'
+  - '#collaboration'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:README_obsidian_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:02:41.335Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
