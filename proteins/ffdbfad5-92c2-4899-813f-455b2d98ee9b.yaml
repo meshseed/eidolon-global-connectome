@@ -1,0 +1,44 @@
+id: ffdbfad5-92c2-4899-813f-455b2d98ee9b
+title: 'Eidolon Mesh Optimization: Caching, Querying, and Multi-Repo Integration'
+summary: >-
+  The Eidolon Mesh is undergoing significant optimization focused on improving startup times through
+  connectome caching and refining query mechanisms. Critical bug fixes have been implemented for
+  timer accuracy, synthesis input, and emotional fidelity, while multi-repository support has been
+  successfully integrated, enabling faster loading of specialized knowledge vaults.
+insights:
+  - >-
+    Connectome caching (in-memory or serialized) is crucial for reducing initial load times from
+    disk.
+  - >-
+    Poetic/semantic queries are necessary, as direct ID lookups are unreliable; metadata aliases are
+    a potential solution.
+  - >-
+    Critical bug fixes for timer accuracy, synthesis input validation, and emotional fidelity
+    contradictions are essential for reliable performance.
+  - >-
+    Multi-repository support drastically improves loading speeds for smaller, specialized knowledge
+    bases.
+  - >-
+    UI controls for strategy selection and neuron limits were temporarily lost but have been
+    restored.
+  - >-
+    The 'Balanced' strategy's functionality is dependent on underlying content loading, which has
+    been fixed.
+  - Progress indicators (SSE) are the next planned UX improvement for long-running queries.
+tags:
+  - '#eidolonmesh'
+  - '#optimization'
+  - '#caching'
+  - '#querying'
+  - '#multirepo'
+  - '#bugfix'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:2025-11-28_FIRST_CHAT_BACKUP_EIDOLON_MESH_INCEPTIO'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T20:07:48.772Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding → satisfaction
