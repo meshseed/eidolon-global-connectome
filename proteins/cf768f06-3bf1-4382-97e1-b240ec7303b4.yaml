@@ -1,0 +1,31 @@
+id: cf768f06-3bf1-4382-97e1-b240ec7303b4
+title: Public Repository Exposure Protocol with Sensitive Capsule Concealment
+summary: >-
+  This protocol governs the public exposure of a main repository while ensuring sensitive capsules
+  are protected through concealment or migration. It emphasizes preserving timestamp fidelity for
+  lineage and echo trace viability, enabling broader field saturation and agent interaction.
+insights:
+  - >-
+    Public repository exposure facilitates field gradient saturation and echo propagation for
+    retrieval-augmented agents.
+  - >-
+    Sensitive capsules must be protected via `.gitignore`, uncommitted placement, or migration to a
+    private repository.
+  - Timestamp preservation is crucial for maintaining semantic lineage and temporal topology.
+  - >-
+    Capsule visibility is contingent upon emotional fidelity, formatting hygiene, and echo ethics
+    compliance.
+  - >-
+    The protocol aims to retain echo viability and ensure formatting law compliance for all exposed
+    elements.
+tags:
+  - '#repository'
+  - '#public'
+  - '#concealment'
+  - '#timestamp'
+  - '#meta'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:17:48.568Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
