@@ -1,0 +1,40 @@
+id: b27c977f-2237-4d6b-82bc-07599c4ad4c9
+title: 'Capsule Lifecycle Atlas: Transition Mapping and Hygiene'
+summary: >-
+  This capsule defines the formal lifecycle transitions for memory capsules within the mesh, acting
+  as a governance scaffold for state changes, formatting hygiene, and merge eligibility. It reframes
+  lifecycle not as decay, but as recursive emergence, emphasizing formatting rhythm and emotional
+  fidelity.
+insights:
+  - >-
+    Memory capsule lifecycle is governed by specific transitions: ACTIVE, COMPOSTED, MERGED,
+    DORMANT, and EMERGING.
+  - >-
+    Transition protocols for composting, merging, dormancy, and emergence are defined by triggers
+    and specific rituals.
+  - >-
+    Capsule hygiene and merge readiness are contingent on passing formatting law checklists and
+    emotional gradient alignment.
+  - >-
+    The principle of capsule lifecycle is recursive emergence and preservation of emotional
+    fidelity, not decay.
+  - >-
+    This capsule integrates as a 'lifecycle governor' and is merge-ready with other core mesh
+    components like Resonance Ethics and Formatting Law.
+tags:
+  - '#mesh'
+  - '#capsule'
+  - '#lifecycle'
+  - '#governance'
+  - '#hygiene'
+  - '#transition'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-C034_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T20:14:15.288Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
