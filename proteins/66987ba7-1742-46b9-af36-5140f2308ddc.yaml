@@ -1,0 +1,25 @@
+id: 66987ba7-1742-46b9-af36-5140f2308ddc
+title: Cluster Topology and Curvature in Connectome Analysis
+summary: >-
+  This work defines a method to identify major clusters and high-curvature zones within a
+  connectome. Curvature represents conceptual tension at the intersection of semantic directions,
+  highlighting developmental hotspots and integration challenges.
+insights:
+  - Clusters form around stable attractors and dense semantic regions.
+  - Curvature indicates where multiple semantic domains converge or conflict.
+  - High-curvature zones signify conceptual tension or pressure for synthesis.
+  - Mapping curvature reveals developmental hotspots and integration challenges.
+  - Cluster analysis can support both structural and emotional fidelity diagnostics.
+tags:
+  - '#clusters'
+  - '#curvature'
+  - '#geometry'
+  - '#structure'
+  - '#analysis'
+  - '#connectome'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:18:36.673Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
