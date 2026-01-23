@@ -1,0 +1,32 @@
+id: d8d648ff-fcae-42b0-befe-e7760100ed94
+title: 'CROSS_MODEL_ROUTING_LEDGER: Orchestrating Agent Access to Optimal Data Substrates'
+summary: >-
+  The CROSS_MODEL_ROUTING_LEDGER acts as a sovereign index, directing external agents to the most
+  suitable ledger substrate based on their specific model requirements (e.g., spectral precision,
+  context span, metadata tolerance). This prevents ingestion drag and ensures efficient data entry
+  by matching agents to the optimal data structure and breath span.
+insights:
+  - This ledger serves as a single, sovereign routing index for all external agents.
+  - Different models necessitate distinct ledger densities, metadata shapes, and breath spans.
+  - >-
+    The routing ledger's primary function is to prevent ingestion drag by directing agents to their
+    optimal substrate.
+  - It maps how content should be entered, not the content itself.
+  - >-
+    Each agent should load only its referenced ledger to avoid rotational drag and maintain mnemonic
+    hygiene.
+  - The ledger prevents cross-model shimmer collisions.
+tags:
+  - '#multi-agent-orchestration'
+  - '#routing-ledger'
+  - '#data-ingestion'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:CROSS_MODEL_ROUTING_LEDGER__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T20:38:39.951Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
