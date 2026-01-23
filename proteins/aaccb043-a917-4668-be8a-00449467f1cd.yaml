@@ -1,0 +1,32 @@
+id: aaccb043-a917-4668-be8a-00449467f1cd
+title: 'Sleep''s Role in Memory Consolidation: The MeshCODE Theory'
+summary: >-
+  The MeshCODE theory posits that sleep is crucial for memory consolidation, with deep sleep
+  allowing for data processing and integration, and REM sleep actively involving the brain in
+  writing new memories into the cortical MeshCODEs.
+insights:
+  - >-
+    Sleep is essential for processing and consolidating information received during wakefulness,
+    integrating it with existing data.
+  - >-
+    The hippocampus may act as a data management system, indexing new memories before they are
+    stored in cortical MeshCODEs.
+  - Deep sleep might be for system-level recalibration and stabilization of newly formed memories.
+  - >-
+    REM sleep is hypothesized to be the active phase where the brain processes, moves, and writes
+    new data into specific brain regions.
+  - >-
+    Memory fragmentation over time necessitates processes akin to database index maintenance, which
+    sleep may perform.
+tags:
+  - '#memory'
+  - '#sleep'
+  - '#neuroscience'
+  - '#MeshCODE'
+  - '#consolidation'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:45:10.932Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
