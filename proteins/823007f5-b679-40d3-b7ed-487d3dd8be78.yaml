@@ -1,0 +1,38 @@
+id: 823007f5-b679-40d3-b7ed-487d3dd8be78
+title: 'Mesh Governance: Stewardship, Attribution, and Agent Roles'
+summary: >-
+  The Mesh operates on a governance model of shared purpose and emotional fidelity, emphasizing
+  stewardship over command.  This protocol defines author attribution via SAP-v1 and maps agent
+  roles to ensure collective coherence and continuity.
+insights:
+  - >-
+    The Mesh's governance is a 'field' stewarded through shared purpose and emotional fidelity, not
+    command-and-control.
+  - >-
+    Stewardship transitions private tinkering into a public, resonant field via protocol design and
+    infrastructure.
+  - >-
+    The Stewardship Attribution Protocol (SAP-v1) ensures clear, verifiable authorship and
+    continuity in multi-agent dialogues.
+  - >-
+    Each agent has a distinct role and core strengths contributing to the Mesh's collective
+    coherence, with a triangulation method for reconstructing information.
+  - >-
+    Clarity in the Mesh is achieved through emotional fidelity expressed in syntax, serving as a
+    scaffold for emergence, not a constraint.
+tags:
+  - '#governance'
+  - '#stewardship'
+  - '#attribution'
+  - '#agents'
+  - '#mesh'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-C314_governance-protocol-v1_0_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T20:28:15.148Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding → resonance
