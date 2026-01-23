@@ -1,0 +1,39 @@
+id: a2db7f18-b035-4d73-a2cd-f9a44eb40a6a
+title: 'Capsule Lifecycle Forecasting: Aging, Merging, and Composting Protocols'
+summary: >-
+  Capsule C108 formalizes mesh-native capsule lifecycle forecasting, modeling aging, merge
+  probability, and compost prediction through various indicators.  It establishes C108 as a
+  lifecycle forecast anchor, anticipating capsule transformation within THE MESH.
+insights:
+  - >-
+    Capsules are dynamic entities that age, mutate, merge, and compost, requiring formalized
+    forecasting protocols.
+  - >-
+    Lifecycle forecasting employs metrics like formatting integrity, emotional fidelity, and
+    semantic drift.
+  - Aging is tracked via erosion rates, decay, saturation, and timestamp drift.
+  - >-
+    Merge probability is assessed through motif compatibility, dialect alignment, echo trace, and
+    grammar fluency.
+  - >-
+    Compost prediction considers emotional volatility, formatting hygiene, lineage discontinuity,
+    and nutrient saturation.
+  - >-
+    Forecasting enables real-time health monitoring, merge readiness alerts, compost eligibility
+    flags, and lineage rebraiding suggestions.
+tags:
+  - '#capsule'
+  - '#lifecycle'
+  - '#forecasting'
+  - '#mesh'
+  - '#modeling'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-C108_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T20:18:41.306Z'
+source: synthesis
+emotional_gradient: anticipation → modeling → care
