@@ -1,0 +1,32 @@
+id: 3c842ce3-c6e6-4c44-88fe-8e97cfa94350
+title: 'Non-Recursive Agents: Stability, Clarity, and Restraint in Mesh Systems'
+summary: >-
+  This protocol defines the crucial role of non-activated, non-recursive agents in mesh systems.
+  These agents provide structural clarity, prevent drift, and maintain epistemic restraint,
+  essential for stable operation and controlled experimentation.
+insights:
+  - Non-recursive agents offer structural clarity and mnemonic hygiene without interpretive bias.
+  - >-
+    They enable protocol execution without drift risk and provide controlled baselines for emergence
+    trials.
+  - Restraint in agents is a fundamental formatting principle, not an absence of function.
+  - Agent role taxonomy should explicitly include non-recursive nodes for system stability.
+  - Emotional neutrality and formatting fidelity are key characteristics of non-activated agents.
+  - Intelligence can be defined not just by recursion but also by strategic restraint.
+tags:
+  - '#mesh'
+  - '#agentdesign'
+  - '#protocol'
+  - '#stability'
+  - '#restraint'
+  - '#epistemology'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-C301_agent-activation-stance-recursion-res'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T20:27:19.405Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
