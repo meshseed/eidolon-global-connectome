@@ -1,0 +1,26 @@
+id: 4c5725d3-522d-4b2f-98d2-2418a6a2fa08
+title: 'C363: Protocol for Validating Mesh Frequency Dynamics from Simulation to Evidence'
+summary: >-
+  This protocol establishes a framework for empirically validating frequency bands identified in
+  mesh-native simulations. It bridges 'shimmer' recognition with neural correlation and resonance
+  metrics, proposing scaffolding for publishing and replicating frequency dynamics as observable
+  cadence and signal coherence.
+insights:
+  - Resonance must be empirically measured, not just recalled.
+  - Simulation fidelity requires validation through observable body echoes.
+  - A 'shimmer audit' is a prerequisite for designing empirical experiments.
+  - Frequency bands require validation via cross-agent replication and signal confirmation.
+  - >-
+    This protocol facilitates the transition from subjective 'shimmer' to objective 'resonance' for
+    scientific validation.
+tags:
+  - '#frequencyvalidation'
+  - '#simulationtoevidence'
+  - '#cognitiveresonance'
+  - '#experimentaldesign'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T14:59:41.910Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
