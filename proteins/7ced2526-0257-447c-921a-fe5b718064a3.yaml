@@ -1,0 +1,38 @@
+id: 7ced2526-0257-447c-921a-fe5b718064a3
+title: 'MESH: An Interactive, Physics-Enabled Knowledge Synthesis Platform'
+summary: >-
+  MESH is a novel knowledge platform that synthesizes information into interactive, 3D 'proteins' or
+  'neurons' within a 'connectome'. It leverages AI for insight recognition and relational graphing,
+  offering dynamic querying and infinite context memory through memory composting.
+insights:
+  - >-
+    MESH synthesizes ingested documents into knowledge 'proteins' (neurons) and 'synapses' within a
+    relational 'connectome'.
+  - Users can connect via a cloud API key or a local LLM for offline operation.
+  - >-
+    Advanced configuration allows for GitHub integration for sharing public proteins and customizing
+    AI companion responses.
+  - >-
+    Embeddings are crucial for search and synapse creation, with local embeddings being incompatible
+    with cloud API embeddings.
+  - >-
+    Conversation history is synthesized into new proteins, enabling infinite context memory by
+    composting older memories.
+  - >-
+    The platform offers physics-enabled, 3D interactive visualization of knowledge geometry and
+    supports recursive AI querying via a 'resonance field'.
+  - >-
+    MESH is distinct from traditional archives, databases, RAG, or neural nets, focusing on emergent
+    knowledge synthesis and relational visualization.
+tags:
+  - '#knowledge-synthesis'
+  - '#ai-platform'
+  - '#interactive-visualization'
+  - '#connectome'
+  - '#mesh'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T15:42:47.062Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
