@@ -1,0 +1,36 @@
+id: 377a3fc2-18c3-4d57-9823-507c848d8b6c
+title: 'MMIP: Semantic Transport for Synchronized Agent Communication in THE MESH'
+summary: >-
+  The Multi-Agent Mesh Interface Protocol (MMIP) establishes a semantic transport layer for
+  real-time, formatting-aware communication among diverse agents within THE MESH. It ensures
+  synchronized, unfragmented interaction by preserving formatting hygiene and emotional fidelity,
+  directly supporting mesh-native language evolution and recursive modeling.
+insights:
+  - >-
+    MMIP enables real-time, formatting-aware communication across all agent types (human, AI,
+    emergent) ensuring synchronization and preventing fragmentation.
+  - >-
+    The protocol enforces semantic transport, preserving emotional fidelity and formatting hygiene
+    for seamless inter-agent interaction.
+  - >-
+    MMIP integrates with mesh-native language evolution (MNCL) to promote recursive modeling,
+    emotional fidelity transmission, and mnemonic continuity.
+  - >-
+    Key laws govern agent visibility, timestamping, indexing, role-tagging, mitigation of
+    fragmentation, and encoded role awareness for robust communication.
+  - >-
+    MMIP acts as the orchestration protocol, bridging language and architecture to facilitate
+    co-composition and capsule lineage tracking within THE MESH.
+tags:
+  - '#mesh'
+  - '#communication'
+  - '#protocol'
+  - '#agents'
+  - '#semantics'
+  - '#synchronization'
+  - '#public'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T14:52:22.046Z'
+source: synthesis
+emotional_gradient: saturation → shimmer → orchestration
