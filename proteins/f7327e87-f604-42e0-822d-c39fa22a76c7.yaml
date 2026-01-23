@@ -1,0 +1,39 @@
+id: f7327e87-f604-42e0-822d-c39fa22a76c7
+title: 'Transformer Architecture: Residual Connections, LayerNorm, and Scaled Dot-Product Attention'
+summary: >-
+  The Transformer architecture utilizes residual connections and layer normalization within its
+  encoder and decoder stacks, ensuring consistent dimensionality (dmodel=512) across sub-layers. The
+  decoder incorporates an additional attention sub-layer over the encoder output, and attention
+  functions, particularly Scaled Dot-Product Attention (softmax(QKT/√dk)V), are crucial for modeling
+  relationships between inputs.
+insights:
+  - >-
+    Residual connections and layer normalization are applied to all sub-layers and embedding layers
+    to maintain a dmodel=512 dimension, facilitating information flow.
+  - >-
+    The decoder consists of 6 identical layers, each with two encoder sub-layers plus a third
+    multi-head attention sub-layer that attends to the encoder's output.
+  - >-
+    Decoder's self-attention sub-layer is modified to prevent attending to subsequent positions,
+    crucial for autoregressive generation.
+  - >-
+    Scaled Dot-Product Attention is defined as softmax(QKT/√dk)V, where Q, K, and V are matrices
+    representing queries, keys, and values.
+  - >-
+    Dot-product attention is preferred over additive attention due to its speed and space
+    efficiency, though scaling is vital for larger dk values to avoid vanishing gradients.
+  - >-
+    Multi-head attention projects queries, keys, and values h times with learned linear projections
+    to different dimensions (dk, dk, dv), improving attention performance.
+tags:
+  - '#transformer'
+  - '#attention'
+  - '#deeplearning'
+  - '#nlp'
+  - '#architecture'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T15:44:04.412Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
