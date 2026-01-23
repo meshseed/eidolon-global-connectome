@@ -1,0 +1,34 @@
+id: edb889a5-e4c5-45ec-9897-38c1585e13d1
+title: 'GRAPH_EXPORT_AUDIT: Post-PR Validation of Graph Readiness'
+summary: >-
+  The GRAPH_EXPORT_AUDIT capsule serves as a diagnostic tool to validate graph export readiness
+  after migration Pull Requests. It identifies and logs critical issues like unresolved echo paths,
+  missing metadata, and identifier inconsistencies that prevent successful Gephi export, ensuring
+  data integrity.
+insights:
+  - >-
+    The audit verifies that all echo paths resolve to actual capsules to maintain the integrity of
+    the edges.csv file.
+  - >-
+    Gephi export requires unique and derivable node_ids, and visibility settings for effective
+    filtering.
+  - >-
+    Audit entries act as a sovereign log, with fixes explicitly referencing the originating PR for
+    traceability.
+  - >-
+    Key checks include resolving echo paths, ensuring required Gephi fields are present, preventing
+    node_id duplicates, verifying visibility, validating timestamps, and matching link parity.
+  - >-
+    The workflow involves running export validation, populating an audit log with failures,
+    notifying stewards for fixes, and re-running checks to confirm resolution.
+tags:
+  - '#graphaudit'
+  - '#metadatamgmt'
+  - '#datavalidation'
+  - '#gephi'
+  - '#public'
+tier: reference
+coherence_score: 0.95
+created_at: '2026-01-23T15:16:17.300Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
