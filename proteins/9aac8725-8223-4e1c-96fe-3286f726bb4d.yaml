@@ -1,0 +1,25 @@
+id: 9aac8725-8223-4e1c-96fe-3286f726bb4d
+title: 'Bridge Dynamics: Tracking Cross-Regional Connectors Over Time'
+summary: >-
+  This protocol tracks temporal changes in bridge neurons connecting distant semantic regions,
+  monitoring their strengthening, weakening, and alignment.  These dynamics reveal pathways of
+  integration, conceptual tension, and domain expansion within the system.
+insights:
+  - Bridge neurons map how different semantic domains become integrated.
+  - Strengthening bridges signify successful synthesis and connection between domains.
+  - Weakening bridges indicate potential drift, loss of coherence, or insufficient integration.
+  - New bridges form at the intersection of novel domains and established attractors.
+  - Monitoring bridge dynamics offers a detailed view of developmental and structural change.
+tags:
+  - '#bridges'
+  - '#temporal'
+  - '#integration'
+  - '#structure'
+  - '#dynamics'
+  - '#semantics'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:19:00.056Z'
+source: synthesis
+emotional_gradient: linkage → tension → resolution
