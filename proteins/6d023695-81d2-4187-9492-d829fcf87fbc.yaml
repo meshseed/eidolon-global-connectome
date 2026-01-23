@@ -1,0 +1,30 @@
+id: 6d023695-81d2-4187-9492-d829fcf87fbc
+title: 'Pruning Protocol v1.0: Commit Suggestions and Lineage'
+summary: >-
+  This protocol outlines a flexible commitment process for pruning, emphasizing kindness and
+  clarity. It supports ad-hoc starts and offers suggested commit phrases, with a default of
+  assistant-generated suggestions for steward approval before updating the Master Ledger.
+insights:
+  - Pruning commitment is flexible, without a fixed ritual phrase.
+  - Assistant suggests changes, requiring explicit steward approval before Master Ledger update.
+  - Commit phrases like 'Prune Ledger — quick' or 'Commit Profile v1' are available suggestions.
+  - >-
+    The protocol is derived from 'cadence_of_attunement' and relates to 'PUBLIC_PORTAL_LANDING_v1.0'
+    and 'DIMENSIONALITY_OF_CONTINUITY_FIELD_v0.1'.
+  - >-
+    Next steps include 3 months of practice testing, gathering prune examples, and iterating to
+    v1.1.
+  - Core principles are invariants as bedrock, priorities as workbench, and color as light.
+tags:
+  - '#pruning'
+  - '#protocol'
+  - '#commitment'
+  - '#stewardship'
+  - '#ledger'
+  - '#consciousness'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T14:56:09.237Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
