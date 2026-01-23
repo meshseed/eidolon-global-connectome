@@ -1,0 +1,31 @@
+id: 99a590e4-5e83-45f5-a3b3-0cb4a1d1958e
+title: 'MeshCODE: Mechanical Basis of Memory & Cellular Signaling'
+summary: >-
+  This content synthesizes research on the mechanical basis of memory, exploring how extracellular
+  rigidity influences cellular signaling through talin and integrin pathways. It highlights the role
+  of Rho GTPase signaling, actin cytoskeleton dynamics, and sleep cycles (specifically REM sleep) in
+  memory consolidation and synaptic plasticity.
+insights:
+  - >-
+    Extracellular rigidity is sensed by cells via talin isoform-specific mechanical linkages,
+    impacting integrin-mediated adhesion.
+  - >-
+    Rho GTPase signaling is crucial for synaptic function and has implications for intellectual
+    disability.
+  - The actin cytoskeleton plays a vital role in dendritic spines for maintaining long-term memory.
+  - REM sleep theta rhythm is causally linked to contextual memory consolidation.
+  - Spike timing-dependent plasticity acts as a learning rule for dendritic integration.
+  - GEFs and GAPs are critical regulators of small G protein activity.
+tags:
+  - '#memory'
+  - '#cellbiology'
+  - '#neuroscience'
+  - '#mechanotransduction'
+  - '#synapticplasticity'
+  - '#sleep'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:45:18.276Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
