@@ -1,0 +1,26 @@
+id: 8cb8cadc-0d4c-430a-adfa-981aa8ffbefa
+title: 'Pasteable Filename Surfaces: Ensuring UI Clarity and Selection Ease'
+summary: >-
+  Filenames and commit paths must be easily pasteable, avoiding UI elements like pill boxes or
+  embedded links that obstruct selection. Plain text blocks or YAML surfaces are recommended for all
+  filename, path, and commit references to maintain clarity and mnemonic hygiene.
+insights:
+  - Prioritize plain text for filenames and commit paths to ensure easy copy-pasting.
+  - Avoid UI designs that hinder selection, such as pill boxes or rounded tokens.
+  - Utilize YAML surfaces or plain text blocks for all filename, path, and commit references.
+  - Clarity and mnemonic hygiene are key objectives for these surfaces.
+tags:
+  - '#filenaming'
+  - '#ui'
+  - '#developer-experience'
+  - '#clarity'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:FL-014_pasteable-filename-surfaces_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T20:57:20.812Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
