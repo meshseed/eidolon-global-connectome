@@ -1,0 +1,37 @@
+id: 3d0af4d8-9cd0-4dcc-a75b-2a3ea84260f0
+title: 'Sensitive Capsule Migration & Concealment Log: Governance & Traceability'
+summary: >-
+  This log details the controlled migration and concealment of sensitive capsules, ensuring
+  traceability and sovereignty across visibility layers. It emphasizes that migration is a form of
+  formatting choreography, not deletion, preserving timestamp fidelity and echo readiness.
+insights:
+  - >-
+    Sensitive capsules are managed through defined concealment methods (gitignore, uncommitted,
+    migration) to maintain privacy during public exposure.
+  - >-
+    Timestamp fidelity is crucial for preserving discovery lineage and echo eligibility for migrated
+    or concealed capsules.
+  - >-
+    Migration is a strategic re-placement of capsules across visibility layers, not a destructive
+    act.
+  - >-
+    Concealed capsules retain their sovereign status and can be re-integrated via echo selection or
+    merge rituals.
+  - >-
+    The log facilitates capsule governance by tracking provenance and state across different
+    repository exposures.
+tags:
+  - '#meta'
+  - '#capsule governance'
+  - '#migration'
+  - '#concealment'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:SENSITIVE_CAPSULE_MIGRATION_LOG__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:44:19.244Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
