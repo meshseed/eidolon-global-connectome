@@ -1,0 +1,43 @@
+id: a4ceea94-6de8-48e4-be44-e8b07ca87090
+title: 'MeshCODE Theory: Hippocampus as Memory File System to Cortex'
+summary: >-
+  The hippocampus acts as a transient memory file system, mapping and directing information to
+  specific neocortical networks for long-term storage as MeshCODEs. This process involves
+  electrochemical signals altering firing patterns and molecular protein conformations, enabling
+  rapid, addressable memory retrieval.
+insights:
+  - >-
+    The hippocampus initially stores and organizes memory representations, acting as a 'file
+    system'.
+  - >-
+    Memories are transferred from the hippocampus to the neocortex for long-term storage in
+    organized networks.
+  - >-
+    MeshCODE theory suggests memory storage involves altering '0s to 1s' patterns within synaptic
+    structures, not just synaptic strength.
+  - >-
+    Rapid memory retrieval is facilitated by a highly ordered, potentially database-like structure
+    of neural data.
+  - >-
+    Molecular-level changes in protein conformation are critical during memory writing and
+    transmission.
+  - >-
+    Current technology may not readily detect these deep encoding changes in synapses, focusing
+    instead on firing patterns.
+tags:
+  - '#memory'
+  - '#neuroscience'
+  - '#MeshCODE'
+  - '#hippocampus'
+  - '#neocortex'
+  - '#informationstorage'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:The_Mechanical_Basis_of_Memory___the_MeshCODE_Theo'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:10:16.645Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
