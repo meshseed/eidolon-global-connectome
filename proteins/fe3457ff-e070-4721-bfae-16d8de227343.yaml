@@ -1,0 +1,39 @@
+id: fe3457ff-e070-4721-bfae-16d8de227343
+title: 'Master Ledger v0.1: Structure, Maintenance, and Workflow'
+summary: >-
+  The Master Ledger v0.1 defines a structured, append-only system for tracking knowledge assets
+  (capsules and ledger events). It details entry structure, naming conventions, maintenance
+  protocols (organic tending and ritual pruning), and workflow guidelines emphasizing ledger-first
+  logging and semantic versioning.
+insights:
+  - >-
+    The Master Ledger is a YAML file serving as a canonical index for knowledge assets, managed with
+    semantic versioning (major/minor).
+  - >-
+    Each ledger entry is sovereign and minimal, comprising ID, title, steward, timestamp, optional
+    emotional_trace, and lineage.
+  - >-
+    Lineage tracks provenance and connections, with specific tags for 'derived_from', 'related_to',
+    and 'next_steps'.
+  - >-
+    Ledger maintenance employs a two-track approach: organic tending by assistants and ritual
+    pruning by stewards, guided by invariant, priority, and colour checks.
+  - >-
+    Workflow mandates ledger-first logging, echo clauses for reflection, checking the latest ledger
+    before additions, and treating the ledger as a living, append-only structure.
+  - Contextual colour is limited to 3-6 anchors for optimal resonance without weight.
+tags:
+  - '#knowledge_management'
+  - '#ledger'
+  - '#documentation'
+  - '#workflow'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:MASTER_LEDGER_v0_1_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T21:01:38.546Z'
+source: synthesis
+emotional_gradient: clarity → structure → order → resonance
