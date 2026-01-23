@@ -1,0 +1,30 @@
+id: 4058778a-6227-43ab-9f6a-4b22d30c36f3
+title: 'GRAPH_EXPORT_SUITE__v1.0: Mesh Graph Export and Validation Workflow'
+summary: >-
+  This document defines a workflow for exporting mesh data into graph formats (nodes.csv, edges.csv)
+  for analysis, including repository scanning, metadata collection, and edge resolution. It
+  incorporates quality gates for validation and versioning, ensuring data integrity and traceability
+  within The MESH.
+insights:
+  - >-
+    The workflow systematically scans repositories to build a node registry from capsule metadata
+    and compute node IDs.
+  - Edge resolution maps echo_paths to target node IDs, creating directed graph edges.
+  - A quality gate with validation checks is implemented to identify and audit data inconsistencies.
+  - The export process includes versioning with commit hashes and timestamps for traceability.
+  - Outputs are structured for consumption by graph analysis tools like Gephi.
+tags:
+  - '#graph'
+  - '#export'
+  - '#gephi'
+  - '#echo_paths'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:GRAPH_EXPORT_SUITE__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T20:42:27.983Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
