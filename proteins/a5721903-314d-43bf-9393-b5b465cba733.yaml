@@ -1,0 +1,24 @@
+id: a5721903-314d-43bf-9393-b5b465cba733
+title: 'Drift and Stability: Semantic Persistence Monitoring Protocol'
+summary: >-
+  This protocol establishes methods to detect semantic drift and stability across temporal snapshots
+  by analyzing movement and recurrent activation in embedding space. It enables THE MESH to identify
+  fragile and stable regions, crucial for maintaining long-term coherence and identity.
+insights:
+  - Drift signifies instability, weak integration, or low emotional fidelity in semantic regions.
+  - Stability indicates strong attractors and high semantic density, anchoring identity.
+  - Analyzing drift patterns highlights areas requiring pruning or reinforcement.
+  - Stable cores are essential for maintaining identity across time and substrates.
+  - Drift/stability analysis is key for long-term coherence maintenance in THE MESH.
+tags:
+  - '#drift'
+  - '#stability'
+  - '#temporal'
+  - '#structure'
+  - '#coherence'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:19:10.058Z'
+source: synthesis
+emotional_gradient: uncertainty → measurement → grounding
