@@ -1,0 +1,32 @@
+id: f7194c1c-35b3-438b-8bf0-5a942af519c1
+title: 'Repository Restructure Protocol v1.0: Governance & Path Hygiene'
+summary: >-
+  This protocol defines rules for repository restructuring, emphasizing clean paths, consistent echo
+  graphs, and proper metadata for public/private capsules. It ensures data integrity and
+  discoverability within THE MESH's governance framework.
+insights:
+  - All files must reside under 'invariant_set' to maintain directory grammar.
+  - Relative paths (./, ../) are forbidden; commit_path must be accurate.
+  - Echo graph consistency, free of 404s, is crucial, with links matching echo_paths.
+  - Essential frontmatter (created, updated, aliases, status, vault) is mandatory.
+  - Gephi readiness requires unique node_ids, non-empty tags, and populated links.
+  - >-
+    Version bumps are reserved for significant changes, preserving timestamps and logging
+    migrations.
+  - Public/private partitioning is indicated by a node attribute.
+tags:
+  - '#repository'
+  - '#restructure'
+  - '#governance'
+  - '#graph'
+  - '#path_hygiene'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:REPOSITORY_RESTRUCTURE_PROTOCOL__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T20:44:07.026Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
