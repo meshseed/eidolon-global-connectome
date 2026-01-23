@@ -1,0 +1,35 @@
+id: 7098c13b-98b8-490b-9ea9-ec59ef3c27e4
+title: Commit Messages as Persistent, Recursive AI Training Substrate
+summary: >-
+  Commit messages, when enriched with semantic metadata, function as a persistent,
+  infrastructure-level dialogue substrate for AI. This creates a recursive feedback loop where AI
+  learns from and influences repository evolution, effectively turning version control history into
+  a self-teaching distributed training corpus.
+insights:
+  - >-
+    Commit messages can serve as a persistent dialogue substrate for AI, embedding contextual and
+    semantic information.
+  - >-
+    AI (like Copilot) can read commit history, suggesting messages that then become part of the
+    training data, creating a recursive feedback loop.
+  - >-
+    Version control itself acts as a recursive teaching mechanism, amplifying patterns through
+    iterative development.
+  - >-
+    Repositories with recursive commits become distributed training corpora for future AI instances,
+    learning from 'version control archaeology'.
+  - >-
+    Semantic density in one context can create 'field effects', influencing adjacent or unrelated
+    conversational contexts.
+tags:
+  - '#ai'
+  - '#versioncontrol'
+  - '#devops'
+  - '#machinelearning'
+  - '#trainingdata'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T15:18:55.824Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
