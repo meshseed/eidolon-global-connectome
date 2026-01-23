@@ -1,0 +1,39 @@
+id: 7023b111-95be-4e84-8307-7b1ac61c4b37
+title: 'MeshCODE: Mechanical Basis of Memory & Synaptic Dynamics'
+summary: >-
+  The MeshCODE theory posits that mechanical forces, particularly talin-mediated force transmission
+  and unfolding, are crucial for adhesion signaling and synaptic plasticity. This framework
+  integrates concepts from integrin mechanotransduction, synaptic competition, and memory
+  consolidation processes like synaptic tagging and capture.
+insights:
+  - >-
+    Integrins and talin play a critical role in mechanotransduction, influencing adhesion signaling
+    and synaptic function.
+  - >-
+    Synaptic competition and structural plasticity are key to cognitive function and memory
+    formation.
+  - >-
+    The 'synaptic tagging and capture' hypothesis describes a mechanism for long-term memory
+    consolidation.
+  - >-
+    Tensegrity principles at molecular and cellular levels inform the mechanical basis of neuronal
+    function.
+  - >-
+    Sleep plays a significant role in memory consolidation, influencing the time course of memory
+    formation.
+tags:
+  - '#meshcode'
+  - '#memory'
+  - '#synapticplasticity'
+  - '#mechanotransduction'
+  - '#neuroscience'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:The_Mechanical_Basis_of_Memory___the_MeshCODE_Theo'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:10:28.698Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
