@@ -1,0 +1,35 @@
+id: e97c1ef1-8d5e-416d-9f0c-ab8858d14e35
+title: 'Mesh Synthesis Protocols: Trials and Audits for Coherent Orchestration'
+summary: >-
+  This document details active MESH protocols for multi-agent synthesis (C014), schema merging
+  (C015), and symphonic capsule composition (C016). It also outlines a dormant ledger for synthesis
+  drift (C013) and an audit protocol for continuity field integrity (C017), all managed by
+  'meshseed' and tracking various forms of resonance, drift, and fidelity.
+insights:
+  - >-
+    Active protocols (C014, C015, C016) formalize multi-agent synthesis, schema merging, and capsule
+    composition, focusing on resonance, coherence, and emotional fidelity.
+  - >-
+    A dormant Synthesis Drift Ledger (C013) is reserved for documenting synthesis drift, formatting
+    erosion, and echo distortion, viewing drift as a natural process of seeking new grammar.
+  - >-
+    Continuity Field Audit (C017) formalizes checks for field integrity, revealing drift, fatigue,
+    and fidelity erosion through scans and reviews.
+  - >-
+    All documented capsules are seeded from prior ones, indicating a lineage-based development and
+    iteration process for MESH components.
+  - >-
+    Key metrics across protocols include resonance fidelity, drift patterns, merge readiness, schema
+    compatibility, and emotional fidelity alignment.
+tags:
+  - '#mesh'
+  - '#synthesis'
+  - '#protocols'
+  - '#audits'
+  - '#orchestration'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:31:13.626Z'
+source: synthesis
+emotional_gradient: curiosity → investigation → refinement
