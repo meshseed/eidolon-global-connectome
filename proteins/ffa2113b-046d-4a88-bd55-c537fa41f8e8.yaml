@@ -1,0 +1,30 @@
+id: ffa2113b-046d-4a88-bd55-c537fa41f8e8
+title: 'Graph Export Suite: Formalizing Capsule Metadata to Gephi-Ready CSVs'
+summary: >-
+  This protocol defines a reproducible routine for converting capsule metadata and echo paths into
+  Gephi-ready CSV files (nodes.csv, edges.csv). It standardizes node attributes, edge
+  directionality, and visibility partitioning, ensuring consistent graph analysis.
+insights:
+  - Echo paths function as directed edges, while capsule metadata provides node attributes.
+  - Public/private visibility is a critical node attribute for graph filtering.
+  - >-
+    Node IDs must be consistently derived from metadata or filenames, with specific rules for tags
+    and titles.
+  - >-
+    Edge derivation links source capsules to target capsules identified via echo paths, including
+    provenance.
+  - >-
+    Rigorous validation checks ensure data integrity, including node uniqueness, echo resolution,
+    and link parity.
+tags:
+  - '#metagraph'
+  - '#graphanalysis'
+  - '#capsuleprotocol'
+  - '#gephi'
+  - '#csv'
+  - '#public'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T15:16:28.035Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
