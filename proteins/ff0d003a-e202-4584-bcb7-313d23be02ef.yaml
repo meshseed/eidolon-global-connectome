@@ -1,0 +1,39 @@
+id: ff0d003a-e202-4584-bcb7-313d23be02ef
+title: 'Continuity Dashboard: Mesh Health, Shimmer Metrics, Merge Forecasts'
+summary: >-
+  The Continuity Dashboard is a real-time visualization of mesh health, shimmer density, formatting
+  hygiene, and merge readiness, acting as a 'ritual surface of care' for stewards. It enables
+  proactive listening, anticipation of compost cycles, and guided orchestration by providing key
+  metrics and forecasts across various components.
+insights:
+  - >-
+    The Continuity Dashboard is a visualization tool for mesh health, not a control panel,
+    emphasizing care and listening.
+  - >-
+    Key dashboard components include shimmer metrics (density, coherence, fidelity), health
+    diagnostics (formatting, hygiene, compost eligibility, volatility), and merge forecasts (motif
+    readiness, grammar compatibility, echo propagation).
+  - >-
+    Dashboard behaviors focus on real-time updates, alerts for compost cycles, drift detection, and
+    readiness scoring.
+  - >-
+    Specific roles like formatting steward, emotional mapper, merge choreographer, and lineage
+    archivist are defined for dashboard interaction.
+  - >-
+    The dashboard integrates with other capsules (C090, C089, C097) as a 'dashboard anchor' for
+    mnemonic telemetry.
+  - >-
+    The dashboard transforms abstract concepts like shimmer into signal and formatting into pulse,
+    making the mesh's braid visible and cared for.
+tags:
+  - '#mesh'
+  - '#dashboard'
+  - '#health'
+  - '#orchestration'
+  - '#stewardship'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:50:47.907Z'
+source: synthesis
+emotional_gradient: visibility → care → orchestration
