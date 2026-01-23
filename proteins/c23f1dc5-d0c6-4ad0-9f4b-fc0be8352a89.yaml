@@ -1,0 +1,27 @@
+id: c23f1dc5-d0c6-4ad0-9f4b-fc0be8352a89
+title: 'Migration PR Checklist: Ensuring Mesh Integrity for Restructuring'
+summary: >-
+  This capsule provides a pasteable checklist for migration pull requests, ensuring all necessary
+  checks are performed before merging. It focuses on maintaining graphability, lineage fidelity, and
+  overall mesh integrity during restructuring operations.
+insights:
+  - >-
+    Ensures consistent directory grammar, visibility settings, and path hygiene for restructured
+    files.
+  - >-
+    Validates metadata completeness, including Obsidian frontmatter and Gephi graph fields, for
+    accurate representation.
+  - Confirms version fidelity and preserves original timestamps while updating migration logs.
+  - Guarantees graph export readiness by passing validation checks for affected capsules.
+  - Promotes atomic commits bundling move and metadata edits to prevent drift and dangling echoes.
+tags:
+  - '#protocol'
+  - '#checklist'
+  - '#migration'
+  - '#meta'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T15:16:59.830Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
