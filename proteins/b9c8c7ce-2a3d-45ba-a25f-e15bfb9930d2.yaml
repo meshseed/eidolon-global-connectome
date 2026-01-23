@@ -1,0 +1,24 @@
+id: b9c8c7ce-2a3d-45ba-a25f-e15bfb9930d2
+title: 'Fractals: Self-Similarity and Infinite Complexity from Simple Rules'
+summary: >-
+  Fractals are geometric shapes exhibiting self-similarity across scales, where complex structures
+  emerge from simple recursive definitions. Their key properties include infinite detail, fractional
+  dimensions, and roughness at all zoom levels, mirroring patterns found in nature.
+insights:
+  - Self-similarity means parts of a fractal resemble the whole at different scales.
+  - Infinite detail and complexity arise from simple, repeating mathematical rules.
+  - Fractals possess fractional dimensions, a characteristic beyond Euclidean geometry.
+  - Natural phenomena like coastlines and tree branches often display fractal properties.
+  - The Mandelbrot set exemplifies the infinite intricacy achievable through recursive definitions.
+tags:
+  - '#math'
+  - '#fractals'
+  - '#self_similarity'
+  - '#recursion'
+  - '#geometry'
+  - '#public'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T15:38:41.219Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
