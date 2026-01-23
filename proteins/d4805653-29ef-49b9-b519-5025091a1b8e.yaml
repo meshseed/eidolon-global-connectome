@@ -1,0 +1,32 @@
+id: d4805653-29ef-49b9-b519-5025091a1b8e
+title: 'GRAPH_EXPORT_SUITE: Gephi Graph Export Protocol for Capsule Metadata'
+summary: >-
+  This protocol formalizes the reproducible export of capsule metadata into Gephi-ready CSV files
+  (nodes.csv, edges.csv). It leverages echo paths as edges and metadata as node attributes, ensuring
+  consistent graph representation for analysis, including visibility partitioning.
+insights:
+  - Echo paths serve as directed edges, linking capsules based on their relationships.
+  - Capsule metadata is transformed into node attributes, enriching graph analysis.
+  - Public/private visibility is a critical node attribute for filtering and analysis.
+  - >-
+    The export process ensures data integrity through defined derivation rules and validation
+    checks.
+  - Links within metadata.gephi.links must precisely correspond to echo_paths-derived node IDs.
+  - Node ID derivation prioritizes explicit gephi.node_id, falling back to id or filename.
+  - Tags are derived from metadata.tags or a combination of domain and breath_type.
+tags:
+  - '#graph-export'
+  - '#gephi'
+  - '#capsule-metadata'
+  - '#protocol'
+  - '#data-visualization'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:GRAPH_EXPORT_SUITE__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:42:26.806Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
