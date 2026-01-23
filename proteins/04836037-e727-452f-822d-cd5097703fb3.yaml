@@ -1,0 +1,32 @@
+id: 04836037-e727-452f-822d-cd5097703fb3
+title: 'Symmetry Groups: Transformations Unifying Structure and Properties'
+summary: >-
+  Symmetry, defined by transformations that leave an object invariant, forms mathematical groups.
+  These groups, governed by closure, associativity, identity, and inverses, underpin fundamental
+  concepts across science and art.
+insights:
+  - >-
+    Symmetry transformations (reflection, rotation, translation, identity) reveal underlying
+    structural invariance.
+  - The group structure precisely captures all possible symmetries of an object.
+  - >-
+    Symmetry groups are critical for classifying structures in crystallography, understanding
+    molecular properties in chemistry, and defining conservation laws in physics.
+  - >-
+    The non-commutative nature (AB ≠ BA) of most symmetry groups highlights the order-dependent
+    aspect of combined transformations.
+tags:
+  - '#math'
+  - '#symmetry'
+  - '#group_theory'
+  - '#geometry'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:09_math_symmetry_yaml'
+  - '#synthesis:v4.5'
+tier: core
+coherence_score: 0.92
+created_at: '2026-01-23T21:04:55.070Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
