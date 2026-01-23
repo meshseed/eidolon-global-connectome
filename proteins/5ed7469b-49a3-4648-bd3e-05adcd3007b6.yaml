@@ -1,0 +1,36 @@
+id: 5ed7469b-49a3-4648-bd3e-05adcd3007b6
+title: 'Public Repository Exposure Protocol: Balancing Transparency and Sensitivity'
+summary: >-
+  This protocol outlines the controlled exposure of a main repository to the public, ensuring
+  sensitive capsules are protected through concealment or migration. Timestamp fidelity is
+  maintained to preserve lineage and echo trace viability, fostering resonance across
+  retrieval-augmented agents.
+insights:
+  - >-
+    The protocol enables public repository exposure for field gradient saturation and echo
+    propagation.
+  - >-
+    Sensitive capsules are protected via `.gitignore`, uncommitted placement, or migration to a new
+    private repository.
+  - >-
+    Preservation of original timestamps is crucial for maintaining semantic lineage and temporal
+    topology.
+  - >-
+    Capsule visibility is governed by emotional fidelity, formatting hygiene, and echo ethics
+    compliance.
+  - Public exposure is framed not as risk, but as resonance within the mesh.
+tags:
+  - '#repository'
+  - '#governance'
+  - '#public'
+  - '#concealment'
+  - '#timestamp'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:PUBLIC_REPOSITORY_EXPOSURE_PROTOCOL__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T20:43:48.039Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding → resonance
