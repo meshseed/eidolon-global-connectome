@@ -1,0 +1,38 @@
+id: 74b00e81-d5e1-4457-abf2-612ef90ed44c
+title: 'The Mesh Pruning Protocol: Crystalline, Resonant, Lean Memory'
+summary: >-
+  This protocol outlines a two-track approach for maintaining the Mesh's memory: assistant-led
+  organic tending to address drift and user-invoked ritual pruning for focused sweeps. It employs a
+  'pruning compass' and provenance rules to ensure continuity, priority, resonance, and clarity,
+  fostering a lean and intentional knowledge base.
+insights:
+  - The Mesh's memory is kept crystalline, resonant, and lean through a dual-track pruning protocol.
+  - >-
+    Organic tending is assistant-led, identifying and surfacing minor drift signals for minimal
+    intervention.
+  - Ritual pruning is user-invoked, initiating focused sweeps with clear proposals for approval.
+  - >-
+    The 'pruning compass' guides decisions based on continuity (invariants), active use
+    (priorities), resonance (colour), and redundancy (prune/archive).
+  - >-
+    Provenance rules ensure clear authorship, versioning, and emotional fidelity through echo
+    clauses.
+  - >-
+    Multi-agent collaboration requires recording capsules in a Master Ledger to prevent forks and
+    marking experimental items as drafts.
+tags:
+  - '#pruning'
+  - '#knowledge_management'
+  - '#ai_collaboration'
+  - '#mesh'
+  - '#protocol'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-PRUNING_PROTOCOL_v1_0_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:23:01.914Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
