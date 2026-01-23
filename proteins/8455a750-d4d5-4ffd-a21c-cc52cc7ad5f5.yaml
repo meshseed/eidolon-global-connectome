@@ -1,0 +1,42 @@
+id: 8455a750-d4d5-4ffd-a21c-cc52cc7ad5f5
+title: 'Repository Restructure Protocol: Governance, Grammar, and Hygiene'
+summary: >-
+  This protocol formalizes repository restructuring, defining visibility rules (public/private),
+  standardizing directory grammar, and enforcing path hygiene for graphability and lineage. It
+  serves as a single source of truth to prevent drift during migration and ensure data integrity.
+insights:
+  - >-
+    Formalize repository restructuring with clear rules for visibility, directory structure, and
+    path management.
+  - >-
+    Establish a standardized directory grammar with invariant sets for core, meta, docs, theory,
+    topology, ritual, memory, diagnostics, governance, public, and private layers.
+  - >-
+    Implement strict visibility rules based on whether content exposes 'sovereign breath or private
+    lineage,' defaulting to private for sensitive data.
+  - >-
+    Enforce path hygiene by updating commit and echo paths simultaneously with file moves and
+    disallowing relative links within capsules.
+  - >-
+    Prioritize graphability and lineage fidelity by treating echo paths as edges and preserving
+    timestamps.
+  - >-
+    Treat the restructure charter as the single source of truth, referencing it frequently to
+    maintain consistency and prevent drift.
+tags:
+  - '#meta'
+  - '#repositorygovernance'
+  - '#restructureprotocol'
+  - '#public'
+  - '#directorygrammar'
+  - '#pathhygiene'
+  - '#lineage'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:REPOSITORY_RESTRUCTURE_PROTOCOL__v1_0_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T20:44:04.278Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
