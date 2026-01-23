@@ -1,0 +1,25 @@
+id: 93bbe8e2-4c05-4564-97c8-fad8a262641c
+title: 'GRAPH_EXPORT_SUITE: Repository Graph Generation and Validation'
+summary: >-
+  The GRAPH_EXPORT_SUITE v1.0 orchestrates the creation of a graph representation from a
+  repository's capsules. It scans for capsules, builds a node registry with metadata, resolves
+  relationships into directed edges, and emits CSV files for nodes and edges.  A quality gate
+  ensures data integrity before a version snapshot is created.
+insights:
+  - The suite processes repository capsules to construct a graph model.
+  - Node registry includes metadata, Obsidian, and Gephi fields, with a computed node_id.
+  - Echo paths are used to define directed edges between nodes.
+  - CSV outputs (nodes.csv, edges.csv) and a manifest are generated.
+  - A quality gate validates the exported graph data, logging errors to an audit file.
+  - Version control is maintained through commit hashes and export timestamps in a manifest.
+tags:
+  - '#graph'
+  - '#export'
+  - '#gephi'
+  - '#echo_paths'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:16:30.853Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
