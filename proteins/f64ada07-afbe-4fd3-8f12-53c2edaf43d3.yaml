@@ -1,0 +1,42 @@
+id: f64ada07-afbe-4fd3-8f12-53c2edaf43d3
+title: 'Eidolon Mesh: Fractal Architecture for Isolated Repositories and Code Backup'
+summary: >-
+  The Eidolon Mesh architecture employs a fractal, self-similar model where each repository acts as
+  a complete organism. This design enables isolated experimentation with domain-specific knowledge
+  bases and a clear strategy for backing up application code to private repositories, maintaining a
+  distinction between development workspaces and public-facing components.
+insights:
+  - >-
+    The multi-repository system allows for isolated, domain-specific knowledge bases (e.g.,
+    healthcare, finance) that load quickly and provide focused responses.
+  - >-
+    Ghost nodes are a future mechanism for optimizing single large repositories by loading core
+    neurons initially and extending on-demand.
+  - >-
+    A clear distinction is maintained between the local development workspace (Antigravity's
+    'eidolon-mesh' folder) and GitHub repositories ('eidolon' for private data, 'eidolon-mesh' for
+    public proteins).
+  - >-
+    The recommended GitHub backup strategy involves creating a dedicated private repository (e.g.,
+    'eidolon-private-backup') for application code to avoid confusion with data-only repositories.
+  - >-
+    Conversation memory is currently implemented as a rolling buffer with a hardcoded limit of 5
+    exchanges, having negligible performance impact and can be safely expanded and made
+    configurable.
+  - >-
+    The fractal principle of nested self-similarity is fundamental to the architecture, guiding
+    repository structure, feature development, knowledge organization, and decision-making.
+tags:
+  - '#architecture'
+  - '#knowledge-management'
+  - '#git-backup'
+  - '#fractal-design'
+  - '#repository-strategy'
+  - '#conversation-memory'
+  - '#eidolon-mesh'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:40:54.387Z'
+source: synthesis
+emotional_gradient: clarity → organization → security → insight
