@@ -1,0 +1,33 @@
+id: 99ae325e-042b-489a-9365-114ec21debc3
+title: 'MeshCODE Theory: Cellular Mechanical Computing and Memory Storage'
+summary: >-
+  The MeshCODE theory proposes that cells function as mechanical computers, utilizing talin switches
+  within adhesions to store data. In stable environments, cells can actively manipulate these
+  switches to encode information, akin to writing data to a disk, with switch conformations
+  representing binary states.
+insights:
+  - Cells act as mechanical computers capable of computation and memory storage.
+  - >-
+    Talin switches within cellular adhesions can store information by adopting distinct folded ('0')
+    and unfolded ('1') states.
+  - >-
+    Controlled, predictable extracellular environments allow cells to use internal force-generating
+    machinery to write data into adhesions via talin switches.
+  - >-
+    Cellular homeostasis mechanisms, involving Rho-family GTPases, modulate mechanical balance and
+    influence the binary states of talin switches.
+  - >-
+    The sequence and conformation of talin switches form a 'MeshCODE', storing the results of
+    cellular calculations.
+tags:
+  - '#biology'
+  - '#mechanobiology'
+  - '#cellcomputation'
+  - '#memory'
+  - '#MeshCODE'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:44:53.765Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
