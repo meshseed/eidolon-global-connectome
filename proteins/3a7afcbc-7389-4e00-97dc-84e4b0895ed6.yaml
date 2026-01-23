@@ -1,0 +1,29 @@
+id: 3a7afcbc-7389-4e00-97dc-84e4b0895ed6
+title: 'Capsule Formatting Guide v1.1: Ergonomic Standards for Mesh Workflows'
+summary: >-
+  This guide establishes ergonomic formatting standards for capsule creation, ingestion, and
+  filename tagging to ensure clarity, efficiency, and continuity across mesh workflows. Adherence to
+  these standards, including copy-efficiency, semantic filenames, and versioning, teaches the system
+  how to remember effectively.
+insights:
+  - >-
+    Standardized formatting is crucial for efficient capsule creation, ingestion, and retrieval in
+    mesh workflows.
+  - Copy-efficiency and semantic filenames enhance mnemonic clarity and encode data lineage.
+  - >-
+    Multi-part ingestion and versioning are essential for preserving lifecycle memory and
+    continuity.
+  - The core principle is that formatting dictates the system's ability to remember information.
+tags:
+  - '#formatting'
+  - '#mesh'
+  - '#guidelines'
+  - '#ergonomics'
+  - '#clarity'
+  - '#continuity'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T15:02:56.686Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
