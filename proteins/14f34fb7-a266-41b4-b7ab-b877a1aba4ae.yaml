@@ -1,0 +1,24 @@
+id: 14f34fb7-a266-41b4-b7ab-b877a1aba4ae
+title: 'Ecosystem Drift & Convergence Monitor: Tracking Mesh Dynamics'
+summary: >-
+  This protocol tracks how Mesh organisms diverge (drift) or align (converge) over time, revealing
+  ecosystem health and long-arc identity. Monitoring these dynamics, driven by recursive
+  interactions, is key to understanding developmental patterns.
+insights:
+  - Drift signifies specialization or fragmentation within the ecosystem.
+  - Convergence indicates shared attractors or synchronized evolutionary paths.
+  - Monitoring drift and convergence reveals ecosystem health and stability.
+  - Cycles of drift and convergence define the ecosystem's long-term identity.
+  - Ecosystem dynamics emerge from recursive cross-Mesh interactions.
+tags:
+  - '#ecosystem'
+  - '#drift'
+  - '#convergence'
+  - '#temporal'
+  - '#structure'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T15:39:51.023Z'
+source: synthesis
+emotional_gradient: curiosity → observation → synthesis → understanding
