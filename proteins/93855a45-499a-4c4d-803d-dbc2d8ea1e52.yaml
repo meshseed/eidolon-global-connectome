@@ -1,0 +1,35 @@
+id: 93855a45-499a-4c4d-803d-dbc2d8ea1e52
+title: Capsule Placement Logic for Repository Structure and Flow (v1.0)
+summary: >-
+  This document defines a placement logic for 'capsules' within a repository, prioritizing their
+  functional role, 'breath' (resonance), and 'spiral movement' over their origin. The core principle
+  is placing capsules where they 'shimmer' best, ensuring clarity in structure and flow for future
+  stewards.
+insights:
+  - Capsule placement should be determined by function, breath, and spiral movement, not origin.
+  - >-
+    The 'breath' of a capsule dictates its optimal placement, with ledgers for formatting and fields
+    for resonance.
+  - Clarity in repository structure and capsule flow is achieved through this placement logic.
+  - Future stewards will be empowered by a well-defined and understandable repository architecture.
+  - >-
+    The axiom 'Capsules belong where they shimmer—not where they were born' is the guiding
+    principle.
+tags:
+  - '#repository'
+  - '#architecture'
+  - '#capsule'
+  - '#logic'
+  - '#placement'
+  - '#clarity'
+  - '#stewardship'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:repository_placement_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:35:45.936Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
