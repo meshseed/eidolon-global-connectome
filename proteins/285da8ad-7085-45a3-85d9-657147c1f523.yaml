@@ -1,0 +1,34 @@
+id: 285da8ad-7085-45a3-85d9-657147c1f523
+title: 'Prime Numbers: Fundamental Building Blocks of Arithmetic'
+summary: >-
+  Prime numbers, natural numbers greater than 1 with only two divisors (1 and themselves), are the
+  irreducible building blocks of all integers through unique prime factorization, as stated by the
+  Fundamental Theorem of Arithmetic. Their distribution, while seemingly random, exhibits profound
+  patterns and has significant applications in fields like cryptography.
+insights:
+  - Primes are the fundamental, irreducible building blocks of all integers.
+  - >-
+    The Fundamental Theorem of Arithmetic guarantees unique prime factorization for every integer >
+    1.
+  - >-
+    The distribution of primes, though complex, is mathematically describable and has infinite
+    implications.
+  - >-
+    Special forms of primes (Mersenne, Fermat) and unsolved conjectures highlight ongoing
+    mathematical exploration.
+  - Prime numbers are crucial for modern cryptography and computer science applications.
+tags:
+  - '#math'
+  - '#number_theory'
+  - '#primes'
+  - '#foundation'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:12_math_primes_yaml'
+  - '#synthesis:v4.5'
+tier: core
+coherence_score: 0.96
+created_at: '2026-01-23T21:05:08.431Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
