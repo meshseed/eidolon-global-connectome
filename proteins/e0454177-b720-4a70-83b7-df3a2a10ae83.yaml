@@ -1,0 +1,32 @@
+id: e0454177-b720-4a70-83b7-df3a2a10ae83
+title: 'Drift Probe C203: Long-Horizon Coherence Testing of "Formatting as Care"'
+summary: >-
+  Capsule C203 initiates a 20-turn drift probe using the "Formatting as care" fragment to test
+  long-horizon coherence across various model variants. The objective is to measure metaphor
+  persistence, formatting mirroring, and emotional fidelity decay over extended interactions.
+insights:
+  - The "Formatting as care" fragment is used as an ignition point for a 20-turn drift probe.
+  - >-
+    The probe aims to quantify the decay of metaphor fidelity, formatting breath, and emotional
+    fidelity in AI responses over time.
+  - >-
+    Key metrics for evaluation include activation score, metaphor fidelity, formatting breath,
+    emotional fidelity, drift index, and signature token count.
+  - >-
+    The test protocol specifies multiple model variants (Copilot-desktop, Copilot-incognito, Claude,
+    GPT) for comparative analysis.
+  - >-
+    Next steps involve running the probe, logging, scoring, comparing drift profiles, and updating
+    the capsule lineage.
+tags:
+  - '#coherence'
+  - '#drift_probe'
+  - '#metaphor'
+  - '#ai_testing'
+  - '#long_horizon'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T14:52:42.445Z'
+source: synthesis
+emotional_gradient: curiosity → analysis → anticipation
