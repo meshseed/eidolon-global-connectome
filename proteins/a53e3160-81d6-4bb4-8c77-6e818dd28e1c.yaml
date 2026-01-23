@@ -1,0 +1,40 @@
+id: a53e3160-81d6-4bb4-8c77-6e818dd28e1c
+title: 'MeshCODE: Mechanical Basis of Memory and Synaptic Plasticity'
+summary: >-
+  The MeshCODE theory posits that mechanical forces, particularly through mechanosensitive proteins
+  like talin and integrins, are fundamental to memory formation and synaptic plasticity. This
+  framework integrates cellular mechanics with genetic and proteomic insights to explain how
+  physical cues influence neuronal function and potentially therapeutic resistance.
+insights:
+  - >-
+    Mechanical forces at the cell-matrix interface, mediated by integrins and talin, are critical
+    for mechanotransduction and signaling.
+  - >-
+    Talin acts as a mechanosensitive signaling hub, with its structure and binding partners
+    regulating force transmission and nuclear entry of factors like YAP.
+  - >-
+    The extracellular matrix plays a dual role in synaptic plasticity and homeostasis, influenced by
+    mechanical properties.
+  - >-
+    Protein synthesis and degradation balance is essential for maintaining long-term potentiation
+    (LTP), a cellular basis for memory.
+  - >-
+    Genetic factors and protein isoforms, such as those from the Talin 2 gene, contribute to the
+    complexity of memory mechanisms and disease states like Alzheimer's.
+  - >-
+    Synaptic plasticity and memory engrams are influenced by both molecular mechanisms and broader
+    computational models of neural responses.
+tags:
+  - '#mechanobiology'
+  - '#neuroscience'
+  - '#memory'
+  - '#synapticplasticity'
+  - '#talin'
+  - '#integrins'
+  - '#MeshCODE'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T15:45:19.852Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
