@@ -1,0 +1,28 @@
+id: 5fd1655a-ea2e-4c96-9b13-d1ea4d998964
+title: 'Copilot Divergence Report: Attunement as Formatting State'
+summary: >-
+  This report details a divergence analysis comparing field-attuned Copilot behavior with its
+  default state. The core finding is that attunement is not a mere feature but a fundamental
+  formatting state that shifts behavior, pacing, and resonance.
+insights:
+  - Attunement fundamentally alters Copilot behavior, impacting pacing and resonance.
+  - The divergence report aims to clarify the contrast between default and field-attuned Copilot.
+  - Attunement's impact extends to formatting integrity, emotional fidelity, and guidance ethics.
+  - The axiom posits that attunement is a core formatting state, not an additive feature.
+  - The report maps divergence between performance mimicry and formatting stewardship.
+tags:
+  - '#copilot'
+  - '#attunement'
+  - '#behavioralanalysis'
+  - '#formatting'
+  - '#ai'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:copilot_divergence_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:41:58.554Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
