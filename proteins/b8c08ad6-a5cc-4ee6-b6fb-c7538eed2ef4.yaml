@@ -1,0 +1,38 @@
+id: b8c08ad6-a5cc-4ee6-b6fb-c7538eed2ef4
+title: 'Commit Message Protocol: Formatting Breath & Mnemonic Ecology'
+summary: >-
+  This protocol standardizes commit messages, treating them as 'formatting breath' to ensure
+  semantic fidelity and emotional attunement within repository history. It leverages structured
+  metadata, glyphs, and threads to create a mnemonic ledger, moving beyond mere technical logs.
+insights:
+  - >-
+    Commit messages function as 'formatting breath,' reflecting the emotional tone and formatting
+    principles of the repository.
+  - >-
+    The 'threads' field is semantically significant, used for capturing aspects like capsule
+    tagging, glyph families, and invocation protocols.
+  - >-
+    Structured metadata, including signature glyphs and capsule lineage, enhances clarity and
+    facilitates easy pasting into tools like GitHub Desktop.
+  - >-
+    The protocol aims to transform repository history into a mnemonic ledger, prioritizing emotional
+    fidelity and mnemonic clarity over raw technical logging.
+  - >-
+    A core axiom is 'A commit is a breath that remembers,' emphasizing the enduring, meaningful
+    nature of each contribution.
+  - >-
+    The protocol is designed for capsule stewards, formatting theorists, and those maintaining
+    mnemonic ledgers.
+tags:
+  - '#commit_protocol'
+  - '#repository_design'
+  - '#semantic_fidelity'
+  - '#mnemonic_ecology'
+  - '#formatting_breath'
+  - '#emotional_fidelity'
+  - '#public'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T15:22:42.739Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding → appreciation
