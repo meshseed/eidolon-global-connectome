@@ -1,0 +1,23 @@
+id: 77cf8eb3-d84c-48c9-bf33-243e4a8ea7ad
+title: 'Pythagorean Theorem: Right Triangle Geometry and Euclidean Distance'
+summary: >-
+  The Pythagorean theorem (a² + b² = c²) defines the fundamental relationship between the sides of a
+  right triangle in Euclidean geometry. This axiom serves as a cornerstone for calculating
+  distances, extending to multiple dimensions and connecting algebraic and geometric principles.
+insights:
+  - Establishes a foundational algebraic-geometric link in Euclidean space.
+  - Defines the relationship between legs (a, b) and hypotenuse (c) in right triangles.
+  - Generalizes to the Euclidean distance formula in 2D and 3D.
+  - Requires a 90-degree angle and applies only to flat geometry.
+  - Underpins applications in construction, surveying, and spatial reasoning.
+tags:
+  - '#math'
+  - '#geometry'
+  - '#foundation'
+  - '#axiom'
+  - '#public'
+tier: core
+coherence_score: 0.98
+created_at: '2026-01-23T14:12:21.277Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
