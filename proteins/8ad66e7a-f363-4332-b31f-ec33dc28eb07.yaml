@@ -1,0 +1,35 @@
+id: 8ad66e7a-f363-4332-b31f-ec33dc28eb07
+title: 'MeshCODE: Mechanical Basis of Memory and Neural Computation'
+summary: >-
+  The MeshCODE theory proposes that the brain utilizes a network of mechanically operated binary
+  switches within synapses to store and process information, acting as a mechanical computer. Talin
+  is identified as a potential memory molecule, with cytoskeletal forces updating this mechanical
+  code, integrating with chemical and ionic signaling.
+insights:
+  - The brain may function as a mechanical computer, with synapses acting as binary switches.
+  - Talin is hypothesized to be the memory molecule of animals, updated by mechanical force.
+  - >-
+    The MeshCODE framework suggests a mechanical layer integrates with chemical and ionic signaling
+    for information processing and storage.
+  - >-
+    Action potential spike trains could serve as the input mechanism for this mechanical coding
+    system.
+  - >-
+    This mechanical coding operates continuously in neurons, potentially coordinating the entire
+    organism.
+tags:
+  - '#neuroscience'
+  - '#computationalbiology'
+  - '#memory'
+  - '#mechanobiology'
+  - '#MeshCODE'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:The_Mechanical_Basis_of_Memory___the_MeshCODE_Theo'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:10:00.299Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
