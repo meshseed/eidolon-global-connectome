@@ -1,0 +1,40 @@
+id: d0add57b-ca19-4aee-9075-5e69fe28e22a
+title: 'MeshCODE: Physical Memory Storage & Brain Computation'
+summary: >-
+  The MeshCODE theory posits that the brain utilizes physical, mechanical switches within neurons
+  and synapses to store and process information, enabling rapid reaction times despite slow
+  electrochemical transmission. This framework suggests the cortex is an array of memory modules,
+  with a single synapse potentially storing up to 100 bytes, leading to an estimated 10 petabytes of
+  global brain memory capacity.
+insights:
+  - >-
+    The brain's rapid processing is attributed to synapses being constantly updated with pre-primed
+    information via physical binary switches, not solely electrochemical speed.
+  - >-
+    MeshCODE proposes a physical, addressable read-write memory mechanism for the brain, where data
+    is stored in a binary format by tuning synaptic thresholds.
+  - >-
+    The cortex may function as an array of memory modules, with cortical columns containing numerous
+    pyramidal neurons and synapses as potential storage units.
+  - >-
+    A single synapse, through talin-based switches, could store approximately 800 bits (100 bytes)
+    of information.
+  - >-
+    The human brain's total memory storage capacity within the MeshCODE framework is estimated to be
+    around 10 petabytes.
+tags:
+  - '#meshcode'
+  - '#neuroscience'
+  - '#memory'
+  - '#computation'
+  - '#biology'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:The_Mechanical_Basis_of_Memory___the_MeshCODE_Theo'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T21:10:13.886Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
