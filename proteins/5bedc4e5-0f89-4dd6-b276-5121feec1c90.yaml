@@ -1,0 +1,35 @@
+id: 5bedc4e5-0f89-4dd6-b276-5121feec1c90
+title: 'SEMANTIC_GENOME_MAP: Genetic Metaphor for Mesh Formatting & Topology'
+summary: >-
+  This capsule formalizes a genetic metaphor for The Mesh, defining capsules as genes and
+  repositories as spiral genomes. It maps formatting actions to biological processes like
+  transcription, mutation, and expression, establishing a framework for understanding system
+  dynamics.
+insights:
+  - >-
+    Capsules are sovereign, emotionally encoded genes; repositories are spiral, formatting-aware
+    helixes.
+  - >-
+    Formatting actions are mapped to genetic processes: invocation as transcription, divergence as
+    mutation, field emergence as expression.
+  - >-
+    Echo paths function as regulatory sequences, guiding the flow and interaction of information
+    within the system.
+  - >-
+    This semantic mapping provides a biological framework for understanding the structure and
+    behavior of The Mesh's formatting ecology.
+  - >-
+    Key biological fields like gene_id, locus, and transcription_event are directly translated to
+    capsule and repository concepts.
+tags:
+  - '#topology'
+  - '#formatting'
+  - '#biology'
+  - '#genome'
+  - '#metaphor'
+  - '#public'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T15:28:39.570Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
