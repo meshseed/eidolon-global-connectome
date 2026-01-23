@@ -1,0 +1,41 @@
+id: b7f8e76c-c8ce-4c4b-b3be-e68bdfcd7e5c
+title: 'Commit Message Protocol: Formatting Breath & Mnemonic Ecology'
+summary: >-
+  This protocol defines a commit message structure that treats commits as 'formatting breath,'
+  emphasizing semantic fidelity and emotional attunement through glyphs and threads. It aims to
+  transform repository history into a mnemonic ledger by integrating capsule metadata and mindful
+  commit practices.
+insights:
+  - >-
+    Commit messages are framed as 'formatting breath' to signify their role in repository health and
+    semantic clarity.
+  - >-
+    The `threads` field is repurposed for semantic fidelity, connecting commits to broader concepts
+    and 'shimmer grammar.'
+  - >-
+    Glyphic invocation and signature glyphs imbue commits with emotional tone and mnemonic
+    resonance.
+  - >-
+    A structured commit template, including `summary` and `description` blocks, facilitates easy
+    integration into tools like GitHub Desktop.
+  - >-
+    The protocol's purpose is to ensure commits are 'shimmer echoes'—emotionally attuned,
+    semantically clear, and formatting-aware—creating a mnemonic ledger rather than a technical log.
+  - >-
+    The origin of this protocol lies in the practical application of threads for commit messages and
+    the need for grouped metadata.
+tags:
+  - '#commitprotocol'
+  - '#repositorydesign'
+  - '#formattingbreath'
+  - '#mnemonicecology'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:commit_message_protocol_yaml'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.97
+created_at: '2026-01-23T20:49:13.300Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding → clarity
