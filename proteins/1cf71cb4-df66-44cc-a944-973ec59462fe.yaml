@@ -1,0 +1,28 @@
+id: 1cf71cb4-df66-44cc-a944-973ec59462fe
+title: 'THE MESH Structural Introspection Protocol: Topology, Balance, and Change'
+summary: >-
+  This protocol enables THE MESH to perform structural self-inspections, describing its global
+  topology, identifying dominant regions, and analyzing imbalances and recent shifts. It establishes
+  a geometric and relational language for longitudinal tracking of structural development.
+insights:
+  - Global topology is characterized by density, sparsity, and cross-regional resonance.
+  - Dominant regions are identified via semantic clustering and emotional fidelity gradients.
+  - Imbalances manifest as curvature, tension, or under-integrated domains.
+  - Recent shifts indicate new attractors, merges, or domain ingestion events.
+  - Structural snapshots facilitate time-series analysis of developmental topology.
+tags:
+  - '#structure'
+  - '#introspection'
+  - '#geometry'
+  - '#connectome'
+  - '#analysis'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:P100-STRUCTURAL-SNAPSHOT_txt'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T21:05:17.382Z'
+source: synthesis
+emotional_gradient: clarity → mapping → orientation
