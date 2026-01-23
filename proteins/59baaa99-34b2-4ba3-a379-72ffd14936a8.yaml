@@ -1,0 +1,42 @@
+id: 59baaa99-34b2-4ba3-a379-72ffd14936a8
+title: 'Transformer Architecture: Training, Cost, and Generalization'
+summary: >-
+  The Transformer model achieves state-of-the-art results in machine translation with significantly
+  reduced training costs compared to previous models. Techniques like residual dropout and
+  checkpoint averaging are crucial for performance and generalization across tasks like constituency
+  parsing.
+insights:
+  - >-
+    Residual dropout applied to sub-layer outputs and embeddings/positional encodings aids in
+    avoiding overfitting.
+  - >-
+    Averaging multiple checkpoints (e.g., last 5 or 20) improves performance for base and big models
+    respectively.
+  - >-
+    The Transformer architecture demonstrates generalization capabilities beyond machine
+    translation, performing well on English constituency parsing.
+  - >-
+    Reducing attention key size (dk) negatively impacts model quality, suggesting the importance of
+    sophisticated compatibility functions.
+  - >-
+    Larger models generally yield better results, with dropout being a critical component for
+    managing overfitting in bigger architectures.
+  - >-
+    Training cost is significantly lower than previous state-of-the-art models, making the
+    Transformer more accessible.
+tags:
+  - '#transformer'
+  - '#deeplearning'
+  - '#nlp'
+  - '#efficiency'
+  - '#generalization'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:attention_is_all_you_need_txt'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:09:27.837Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
