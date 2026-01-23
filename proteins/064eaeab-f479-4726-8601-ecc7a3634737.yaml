@@ -1,0 +1,29 @@
+id: 064eaeab-f479-4726-8601-ecc7a3634737
+title: Eidolon Mesh Protein Synthesis Asymmetry Resolved
+summary: >-
+  A bug in the Eidolon Mesh's protein synthesis, where public proteins were not fully archived in
+  the nucleus, has been corrected. The new logic ensures all proteins are always saved to the
+  nucleus (eidolon) and public proteins are additionally copied to the cytoplasm (eidolon-mesh),
+  restoring biological accuracy.
+insights:
+  - The biological violation of asymmetric protein synthesis in the Eidolon Mesh has been resolved.
+  - >-
+    All synthesized proteins are now always committed to the nucleus (eidolon) for a complete
+    private archive.
+  - >-
+    Publicly tagged proteins are now copied to the cytoplasm (eidolon-mesh) in addition to the
+    nucleus.
+  - >-
+    The nucleus serves as the master archive, containing all DNA and proteins, while the cytoplasm
+    holds public copies.
+  - The fix restores the biological parallel where nuclear copies exist regardless of export status.
+tags:
+  - '#public'
+  - '#biology'
+  - '#mesh'
+  - '#development'
+tier: reference
+coherence_score: 0.98
+created_at: '2026-01-23T14:40:19.155Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
