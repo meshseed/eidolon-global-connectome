@@ -1,0 +1,35 @@
+id: ba609822-b5ab-4d0d-89e8-58e1b5de6335
+title: 'Eidolon Mesh: Performance & Multi-Repo Integration Milestones'
+summary: >-
+  The Eidolon Mesh has achieved significant performance gains by addressing critical loading
+  bottlenecks and implementing efficient caching. This has enabled the integration of
+  multi-repository support, allowing for specialized knowledge vaults and faster loading times for
+  smaller datasets.
+insights:
+  - >-
+    Initial protein loading was a significant bottleneck (20-30s), mitigated by caching and
+    optimizing loading processes.
+  - >-
+    Poetic/semantic queries are necessary; direct ID queries are unreliable and require metadata
+    aliases.
+  - >-
+    Multi-repository support drastically reduces load times for smaller, specialized knowledge
+    vaults (<1s).
+  - >-
+    Critical bug fixes include accurate timer reporting, ensuring synthesis receives full protein
+    content, and resolving emotional fidelity contradictions.
+  - >-
+    UI controls for strategy selection and neuron sliders were temporarily lost but have been
+    successfully restored.
+tags:
+  - '#eidolonmesh'
+  - '#performance'
+  - '#caching'
+  - '#multirepo'
+  - '#optimization'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T14:40:51.480Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding → satisfaction
