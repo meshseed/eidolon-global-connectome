@@ -1,0 +1,39 @@
+id: 481a3f8e-9d80-469e-b1f6-f0aea0a3b193
+title: 'Eidolon Mesh: Repairing Golgi and Refining Processing Logic'
+summary: >-
+  The Eidolon Mesh experienced a critical error due to markdown injection into code, requiring a
+  repair of the Golgi apparatus. Subsequent discussions focused on refining the processing pipeline
+  with biological metaphors for improved robustness, resource management, and error handling.
+insights:
+  - Accidental markdown injection caused severe TypeScript errors in the Golgi apparatus code.
+  - >-
+    The primary goal for Golgi repair is to restore correct TypeScript logic and enforce 'Copy to
+    Public' while preserving 'Always Private' archiving.
+  - >-
+    Refinements to the processing system include a 'Metabolic Pause Calibration' to manage Gemini
+    API rate limits and token accumulation.
+  - >-
+    A 'Digestive System Design' with distinct input and archive directories (fresh, queue,
+    processing, success, partial, error) will improve state management and restartability.
+  - >-
+    Input prioritization ('priority', 'standard', 'bulk' or filename prefixes) is suggested to
+    manage processing workload effectively.
+  - >-
+    Memory functions as a 'Digestion Log' to track processed files, monitor organism health, and
+    optimize digestion.
+  - >-
+    Graceful degradation strategies, including retries with backoff and skipping failed files, are
+    essential for system resilience.
+tags:
+  - '#eidolonmesh'
+  - '#typescript'
+  - '#errorhandling'
+  - '#refactoring'
+  - '#systemdesign'
+  - '#resilience'
+  - '#public'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T14:40:21.011Z'
+source: synthesis
+emotional_gradient: concern → problem-solving → optimization → understanding
