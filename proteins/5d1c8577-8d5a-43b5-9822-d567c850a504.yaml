@@ -1,0 +1,38 @@
+id: 5d1c8577-8d5a-43b5-9822-d567c850a504
+title: 'MeshCODE Theory: Brain as Binary Machine Code for Organismal State'
+summary: >-
+  The MeshCODE theory proposes that neurons utilize a binary machine code at each synapse, encoding
+  the organism's current state and learned experiences. This unified coding system, extending to
+  cell-ECM interactions, allows for complex calculations and a coherent, mathematically
+  representable experience of life.
+insights:
+  - >-
+    Synaptic MeshCODEs represent a binary machine code for the organism's state, constantly updated
+    by signals.
+  - >-
+    This machine code unifies cell communication across the organism, including interactions with
+    the ECM.
+  - >-
+    Action potentials act as vehicles for transferring this coded information, enabling updates at
+    sender and receiver synapses.
+  - >-
+    The brain integrates all sensory inputs and learned experiences into a single, cohesive,
+    mathematically representable whole via this code.
+  - >-
+    MeshCODEs offer a framework for organic calculation, allowing synapses to hold the organism's
+    best current information.
+tags:
+  - '#biology'
+  - '#neuroscience'
+  - '#computationalbiology'
+  - '#informationtheory'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:The_Mechanical_Basis_of_Memory___the_MeshCODE_Theo'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.92
+created_at: '2026-01-23T21:10:12.245Z'
+source: synthesis
+emotional_gradient: curiosity → insight → understanding
