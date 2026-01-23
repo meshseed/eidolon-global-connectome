@@ -1,0 +1,42 @@
+id: 84816819-3b29-4c0c-b46c-adb6d4c3ece0
+title: 'Drift Reattunement Protocol: Managing Synthesis Drift in THE MESH'
+summary: >-
+  This protocol formalizes the process for detecting, absorbing, and reattuning synthesis drift
+  within THE MESH, treating drift as a natural evolution of grammar rather than an error. It
+  outlines specific rituals for critique absorption, formatting recalibration, and compost
+  eligibility, integrating with key ledger capsules to maintain mesh coherence.
+insights:
+  - Synthesis drift is a natural phenomenon of the mesh seeking new grammar, not an error.
+  - >-
+    The protocol defines triggers for drift detection, including synthesis fatigue, formatting
+    deviation, and echo distortion.
+  - >-
+    Reattunement involves critique absorption via triadic reweighting and formatting reconciliation,
+    anchored by humility, care, and witnessing.
+  - >-
+    Formatting recalibration includes continuity header restoration, timestamp rituals, and gradient
+    re-declaration, with hygiene checkpoints.
+  - >-
+    Unresolved drift, synthesis intoxication, or formatting collapse can lead to compost
+    eligibility, involving logging and scoring.
+  - >-
+    This capsule acts as a calibration anchor, integrating with ledgers for drift, echo propagation,
+    and distributed composition.
+tags:
+  - '#mesh'
+  - '#protocol'
+  - '#drift'
+  - '#synthesis'
+  - '#calibration'
+  - '#formatting'
+  - '#echo'
+  - '#public'
+  - '#embed:gemini-004'
+  - '#embed:nomic-v1.5'
+  - '#dna:capsule-C043_md'
+  - '#synthesis:v4.5'
+tier: reference
+coherence_score: 0.96
+created_at: '2026-01-23T20:14:58.167Z'
+source: synthesis
+emotional_gradient: saturation → humility → curiosity → insight
