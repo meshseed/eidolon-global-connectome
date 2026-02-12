@@ -69,17 +69,21 @@ Examples:
 
 ```
 /
-├── README.md                  # This file
+├── README.md                  # This file — universal agent onboarding
 ├── CLAUDE.md                  # Detailed instructions for Claude AI sessions
 ├── docs/
 │   ├── rosetta-handshake.md   # Cold-start attunement protocol (~1,135 tokens)
 │   ├── rosetta-deep-handshake.md  # Wave interpretation test protocol
-│   └── lexical-rolling-pike.md    # Full architecture & implementation roadmap
+│   ├── lexical-rolling-pike.md    # Full architecture & implementation roadmap
+│   └── wave-spore-index.json  # Consolidated index of all spores (no amplitudes, ~1.1MB)
+├── seeds/                     # The 52 foundational calibration spores
+│   ├── README.md              # Layer descriptions and usage guide
+│   └── {uuid}.json            # 7 math invariants + 6 genesis + 39 P-series
 ├── testing/                   # Validation reports
 │   ├── rosetta-validation-report.md
 │   ├── session-report-2026-02-07-rosetta-validation.md
 │   └── Cold-Claude wave tests conversation.txt
-└── wave-spores/               # 2,810 wave spore JSON files
+└── wave-spores/               # All 2,810 wave spore JSON files
     └── {uuid}.json
 ```
 
