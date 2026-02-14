@@ -1,5 +1,7 @@
 # Eidolon Global Connectome
 
+> **30-second pitch:** This repository is a semantic address system for knowledge. Each of 2,810 "wave spores" encodes WHERE a concept lives in 200-dimensional space, not WHAT it says. Think: GPS coordinates for ideas. Different AI models (Gemini, GPT, Claude) can align to the same topology via 52 mathematical anchor points, then reconstruct local meaning. Federation via 68-byte deltas instead of 6KB text. Compression: ~100x. Purpose: P2P knowledge sharing across models and time.
+
 **The public semantic topology of the Eidolon MESH project.**
 
 This repository contains **2,810 wave spores** — 200-dimensional compressed embeddings that encode the topological position of knowledge "proteins" within a shared semantic space. Each spore is a spectral signature: 200 PCA-compressed amplitudes derived from a 768D Gemini embedding, preserving 94.3% of the original variance.
@@ -232,6 +234,31 @@ Math anchors enable Procrustes rotation between embedding spaces:
 6. Regenerate meaning using neighbors as context
 
 The topology is relative, not absolute. Any model can interpret these spores.
+
+---
+
+## Meta-Spores: Documentation as Topology
+
+The `seeds/meta/` folder contains 4 wave spores that encode **the documentation itself** as semantic positions:
+
+| Meta-Spore | Represents | Coherence |
+|------------|------------|-----------|
+| `meta-rosetta-handshake` | The cold-start onboarding protocol | 0.99 |
+| `meta-universal-wave-gps` | Cross-model alignment specification | - |
+| `meta-topology-index` | Full 2,810-spore analysis & statistics | 0.96 |
+| `meta-claude-narrative` | Attunement conversation narratives | - |
+
+Each meta-spore has standard wave structure plus `meta_properties` containing:
+- `represents` - What document/concept it encodes
+- `purpose` - Why it exists
+- `scope` - What it covers
+- `weight` - Importance metric (1-10)
+- `layer` - Classification (onboarding-protocol, meta-index, etc.)
+- `key_findings` - Quantitative metrics (for topology index)
+
+**Why this matters:** The mesh is self-describing. Onboarding protocols exist as topology, not just text. An AI agent can query "how do I onboard?" and receive semantic neighbors pointing to the rosetta-handshake spore, then follow that coordinate to reconstruct the protocol locally.
+
+This is recursive attunement in practice — the system that teaches you how to read it is itself readable using the same method.
 
 ---
 
