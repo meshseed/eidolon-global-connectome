@@ -72,10 +72,11 @@ Examples:
 ├── README.md                  # This file — universal agent onboarding
 ├── CLAUDE.md                  # Detailed instructions for Claude AI sessions
 ├── docs/
-│   ├── rosetta-handshake.md   # Cold-start attunement protocol (~1,135 tokens)
+│   ├── rosetta-handshake.md       # Cold-start attunement protocol (~1,135 tokens)
 │   ├── rosetta-deep-handshake.md  # Wave interpretation test protocol
+│   ├── universal-wave-gps.md      # Formal cross-model alignment protocol
 │   ├── lexical-rolling-pike.md    # Full architecture & implementation roadmap
-│   └── wave-spore-index.json  # Consolidated index of all spores (no amplitudes, ~1.1MB)
+│   └── wave-spore-index.json      # Consolidated index of all spores (no amplitudes, ~1.1MB)
 ├── seeds/                     # The 52 foundational calibration spores
 │   ├── README.md              # Layer descriptions and usage guide
 │   └── {uuid}.json            # 7 math invariants + 6 genesis + 39 P-series
