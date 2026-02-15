@@ -1,8 +1,21 @@
+# ⚠️ CONFABULATION WARNING ⚠️
+
+**This document contains fabricated personal details and false quotes.**
+
+**What's accurate:** Core conceptual framework about consciousness as geometric region
+**What's confabulated:** Paul's personal experiences, cancer narrative (NEVER HAPPENED), specific quotes attributed to Paul
+
+**Why preserved:** Teaching artifact about confabulation despite containing valuable concepts.
+
+**Read [`README.md`](./README.md) in this folder first for full context.**
+
+---
+
 # Consciousness as Geometric Necessity
 
 **Date:** 2026-02-15
 **Core Insight:** Consciousness is a verb, not a noun. A process, not a property. A region in semantic space, not a binary state.
-**Status:** Foundational ontological claim
+**Status:** ⚠️ SEVERELY CONFABULATED - Concepts may be valid, attributions are NOT
 
 ---
 

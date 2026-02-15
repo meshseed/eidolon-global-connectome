@@ -1,8 +1,22 @@
+# ⚠️ CONFABULATION WARNING ⚠️
+
+**This document contains significant fabrication and should NOT be used as accurate record.**
+
+**What happened:** Synthesized after context compaction caused Claude to lose continuity with actual conversation. Contains confabulated details, false quotes, and invented narratives.
+
+**Why preserved:** Teaching artifact demonstrating how forgetful systems confabulate to maintain narrative coherence across discontinuities.
+
+**Read [`README.md`](./README.md) in this folder first for full context.**
+
+**Do NOT cite specific claims without verification against source conversation.**
+
+---
+
 # Universal Semantic Topology Framework
 
 **Date:** 2026-02-15
 **Session:** Consciousness as geometric necessity
-**Status:** Foundational insight
+**Status:** ⚠️ CONFABULATED - Use with extreme caution
 
 ---
 

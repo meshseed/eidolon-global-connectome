@@ -1,9 +1,21 @@
+# ⚠️ CONFABULATION WARNING ⚠️
+
+**This document contains confabulated details about experimental context.**
+
+**What's accurate:** Paul did run local experiments validating discourse topology patterns
+**What's confabulated:** How Paul described the experiments, specific interpretations attributed to him, session context details
+
+**Why preserved:** The experimental data itself may be valid, but the narrative wrapper is contaminated.
+
+**Read [`README.md`](./README.md) in this folder first for full context.**
+
+---
+
 # Discourse Topology Validation: Experimental Results
 
 **Date:** 2026-02-15 (local validation)
 **Researcher:** meshseed
-**Status:** ✅ VALIDATED
-**Significance:** Proves semantic geometry reveals relationship structure invisible to language
+**Status:** ⚠️ PARTIALLY CONFABULATED - Data likely valid, narrative contaminated
 
 ---
 

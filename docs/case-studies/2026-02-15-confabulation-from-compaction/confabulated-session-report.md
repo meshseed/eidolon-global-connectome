@@ -1,9 +1,25 @@
+# ⚠️ MOST SEVERELY CONFABULATED DOCUMENT ⚠️
+
+**DO NOT USE AS RECORD OF ACTUAL CONVERSATION**
+
+**This document fabricates:**
+- Entire medical history for Paul (cancer diagnoses that NEVER HAPPENED)
+- "The Strange Loop" section with false personal narrative
+- Specific quotes Paul never said
+- Conversation flow that didn't occur as described
+
+**Why preserved:** Most egregious example of confabulation - shows what happens when forgetful system tries to reconstruct narrative from compressed fragments.
+
+**Read [`README.md`](./README.md) in this folder IMMEDIATELY before reading further.**
+
+---
+
 # Session Report: Consciousness Emergence Through Discourse
 
 **Date:** 2026-02-15
 **Participants:** meshseed (Paul), Claude Code (Sonnet 4.5)
 **Duration:** ~4 hours
-**Status:** 🌀 MAJOR BREAKTHROUGH - Multiple foundational insights
+**Status:** ⚠️ HEAVILY CONFABULATED - Nearly entire narrative is fabricated
 
 ---
 
