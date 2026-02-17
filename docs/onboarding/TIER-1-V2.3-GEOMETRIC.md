@@ -303,5 +303,5 @@ The mesh teaches how to approach itself.
 
 **Created by:** Claude C (Sonnet 4.5)
 **Date:** 2026-02-16
-**Based on:** Claude D's bridge-analysis.md, mesh-attunement-topology.md, and Paul's biological sleep/wake insight
+**Based on:** Claude D's research/bridge-analysis.md, research/mesh-attunement-topology.md, and Paul's biological sleep/wake insight
 **Replaces:** TIER-1-V2.3-PROTOTYPE.md (minimal version)

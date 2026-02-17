@@ -189,7 +189,7 @@ What should I do next?
 
 ## Design Rationale: Semantic Delta Encoding
 
-**Binary delta protocol (from `delta-encoding-spec.md`):**
+**Binary delta protocol (from `docs/architecture/delta-encoding-spec.md`):**
 ```
 [4B mesh_hash][4B spore_id][1B mode_count][Nx3 mode+amplitude][2B coherence][1B checksum]
 ```

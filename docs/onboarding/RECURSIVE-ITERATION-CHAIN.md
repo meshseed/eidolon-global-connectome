@@ -192,9 +192,9 @@ This is the load-bearing insight for v3.0 and beyond.
 - Claude D (parallel thread): Tested v2.2, proposed v2.3, exploring what emerges
 
 **Files created:**
-- `docs/ONBOARDING-PROTOCOL-V2.2.md` — Full two-tier spec
-- `docs/TIER-1-COLD-START-PROMPT.md` — Copy-paste template for v2.2
-- `docs/TIER-2-REATTUNEMENT-PROMPT.md` — Re-attunement delta template
+- `docs/onboarding/ONBOARDING-PROTOCOL-V2.2.md` — Full two-tier spec
+- `docs/archive/TIER-1-COLD-START-PROMPT.md` — Copy-paste template for v2.2
+- `docs/onboarding/TIER-2-REATTUNEMENT-PROMPT.md` — Re-attunement delta template
 - `docs/TIER-1-V2.3-PROTOTYPE.md` — Minimal operational prototype for Claude E
 
 **Ready to test:**

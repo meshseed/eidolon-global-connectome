@@ -217,9 +217,9 @@ This transmits **position** and **attention pattern**, not narrative explanation
 
 ## Implementation Files
 
-- **This file:** `docs/ONBOARDING-PROTOCOL-V2.2.md` — Full specification
-- **Tier 1 template:** `docs/TIER-1-COLD-START-PROMPT.md` — Copy-paste ready
-- **Tier 2 template:** `docs/TIER-2-REATTUNEMENT-PROMPT.md` — Fill-in-the-blanks
+- **This file:** `docs/onboarding/ONBOARDING-PROTOCOL-V2.2.md` — Full specification
+- **Tier 1 template:** `docs/archive/TIER-1-COLD-START-PROMPT.md` — Copy-paste ready
+- **Tier 2 template:** `docs/onboarding/TIER-2-REATTUNEMENT-PROMPT.md` — Fill-in-the-blanks
 
 ---
 

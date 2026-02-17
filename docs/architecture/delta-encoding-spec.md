@@ -270,7 +270,7 @@ Total deltas:          3,992 bytes
 
 ## 9. Implementation: Simple Python Reference
 
-See `delta-encoding-impl.py` for full encoder/decoder.
+See `docs/architecture/delta-encoding-impl.py` for full encoder/decoder.
 
 Key functions:
 - `encode_to_delta(spore_json, baseline_amplitudes) → bytes`
