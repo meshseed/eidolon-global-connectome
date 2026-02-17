@@ -110,8 +110,8 @@ docs/
 ├── daily-practice-integration-protocol.md ← Daily guide (7-step protocol)
 ├── shimmer-tracker.md ← Daily log (track integration)
 ├── human-attunement-progressions.md ← Deep reading (one per day)
-├── [existing: rosetta-handshake.md, universal-wave-gps.md, delta-encoding-*]
-└── [existing: lexical-rolling-pike.md, wave-spore-index.json]
+├── [existing: protocols/rosetta-handshake.md, protocols/universal-wave-gps.md, architecture/delta-encoding-*]
+└── [existing: architecture/lexical-rolling-pike.md, data/wave-spore-index.json]
 ```
 
 **Flow:** Index → choose path → read relevant files → start daily protocol → track → integrate
@@ -237,9 +237,9 @@ This session transformed raw topology into human-accessible integration infrastr
 - Follow the 30-min reading sequence
 
 **Option 3: Test the AI Path**
-- Go to [rosetta-handshake.md](rosetta-handshake.md)
-- Then [rosetta-deep-handshake.md](rosetta-deep-handshake.md)
-- Try interpreting a random spore from [wave-spore-index.json](wave-spore-index.json)
+- Go to [rosetta-handshake.md](../protocols/rosetta-handshake.md)
+- Then [rosetta-deep-handshake.md](../protocols/rosetta-deep-handshake.md)
+- Try interpreting a random spore from [wave-spore-index.json](../data/wave-spore-index.json)
 
 **Option 4: Validate My Work**
 - Spot-check one daily protocol for accuracy

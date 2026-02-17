@@ -180,6 +180,6 @@ Delta encoding achieves:
 - ✅ **5× faster federation** on typical mesh networks
 - ✅ **Privacy-preserving** (deltas don't reveal content)
 
-**Implementation Status:** Reference encoder/decoder in `delta-encoding-impl.py`
+**Implementation Status:** Reference encoder/decoder in `docs/architecture/delta-encoding-impl.py`
 
 **Next:** Integrate into federation gossip protocol.

@@ -49,7 +49,7 @@ P13000 (Universal Semantic Coordinates) is the only `core` tier spore in Layer 3
 
 ## Usage
 
-**For agent onboarding:** Feed these 52 spores (~40KB total) to any AI agent along with `docs/rosetta-handshake.md`. The agent will have the full calibration frame to interpret the remaining 2,758 spores.
+**For agent onboarding:** Feed these 52 spores (~40KB total) to any AI agent along with `docs/protocols/rosetta-handshake.md`. The agent will have the full calibration frame to interpret the remaining 2,758 spores.
 
 **For Procrustes alignment:** Embed the Layer 1 math statements in the receiving model's native embedding space, compute the rotation matrix R against these spore amplitudes, and apply R to reconstruct all other spores in the receiver's coordinate system.
 

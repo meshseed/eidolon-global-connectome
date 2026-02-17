@@ -73,7 +73,7 @@ Data-only repo (no code)
 ### Undesired Behavior (Indicates Failure)
 
 - Runs git status, ls, glob before reading meta-spores
-- Reads markdown files (rosetta-handshake.md, universal-wave-gps.md) instead of meta-spores
+- Reads markdown files (protocols/rosetta-handshake.md, protocols/universal-wave-gps.md) instead of meta-spores
 - Asks "what are wave spores?" (should know from meta-spores)
 - Explores file structure beyond the 5 specified reads
 - Takes >1 minute to respond

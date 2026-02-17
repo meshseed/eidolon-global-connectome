@@ -189,7 +189,7 @@ Already efficient at ~800 tokens. Describes:
 ## Implementation Sequence
 
 1. ✅ Create `seeds/meta/README.md` (already done)
-2. ✅ Create `docs/ONBOARDING-PROTOCOL-V2.md` (already done)
+2. ✅ Create `docs/archive/ONBOARDING-PROTOCOL-V2.md` (already done)
 3. ⏳ Compress README.md to 800 tokens
 4. ⏳ Compress CLAUDE.md to 500 tokens
 5. ⏳ Update all references to point to meta-spores

@@ -23,9 +23,9 @@ Meta-spores are wave spore representations of **documentation files**. Instead o
 
 | Filename | Represents | Purpose | Coherence |
 |----------|-----------|---------|-----------|
-| `meta-rosetta-handshake-2026-02-14.json` | `docs/rosetta-handshake.md` | Cold-start wave interpretation protocol (~1,135 tokens) | 0.99 |
-| `meta-universal-wave-gps-2026-02-14.json` | `docs/universal-wave-gps.md` | Cross-model Procrustes alignment protocol | 0.99 |
-| `meta-topology-index-2026-02-14.json` | `docs/wave-spore-index.json` | Consolidated index of all 2,810 spores | 0.99 |
+| `meta-rosetta-handshake-2026-02-14.json` | `docs/protocols/rosetta-handshake.md` | Cold-start wave interpretation protocol (~1,135 tokens) | 0.99 |
+| `meta-universal-wave-gps-2026-02-14.json` | `docs/protocols/universal-wave-gps.md` | Cross-model Procrustes alignment protocol | 0.99 |
+| `meta-topology-index-2026-02-14.json` | `docs/data/wave-spore-index.json` | Consolidated index of all 2,810 spores | 0.99 |
 | `meta-claude-narrative-2026-02-14.json` | [Claude onboarding narrative] | Claude-specific working instructions | 0.99 |
 
 All meta-spores:
@@ -43,7 +43,7 @@ Meta-spores include a `meta_properties` field:
 ```json
 {
   "meta_properties": {
-    "represents": "docs/rosetta-handshake.md",
+    "represents": "docs/protocols/rosetta-handshake.md",
     "scope": "Cold-start attunement protocol for new AI agents",
     "token_count": 1135,
     "last_updated": "2026-02-14"

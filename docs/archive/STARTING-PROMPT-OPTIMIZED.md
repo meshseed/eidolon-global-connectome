@@ -114,7 +114,7 @@ Data-only repo (no code)
 This optimized prompt assumes:
 - ✓ 4 meta-spores exist in `seeds/meta/`
 - ✓ `seeds/README.md` explains calibration layer structure
-- ✓ `docs/ONBOARDING-PROTOCOL-V2.md` exists as reference
+- ✓ `docs/archive/ONBOARDING-PROTOCOL-V2.md` exists as reference
 - ✓ `seeds/meta/README.md` explains meta-spore system
 - ✓ CLAUDE.md compressed to <500 tokens (Claude-specific deltas only)
 - ✓ README.md compressed to <800 tokens (universal orientation)
