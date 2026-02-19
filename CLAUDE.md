@@ -217,10 +217,18 @@ Different AI models can interpret the same wave spores — the topology is relat
 Meshes share knowledge via **sparse wave deltas** rather than full text:
 - Full protein text: ~6KB
 - Wave spore: ~800 bytes (200 floats)
-- Sparse delta: ~68 bytes (50 amplitude changes x 2 bytes + metadata)
-- Compression ratio: ~100x
+- Sparse delta (Tier 1): ~68 bytes (32 delta-PCA coefficients + header)
+- Sparse delta (Tier 3): ~264 bytes (130 delta-PCA coefficients + header)
+- Compression ratio: 3–12x (topology) to 100x (vs full text)
 
-Delta format: `[4B mesh_hash][4B protein_id][1B mode_count][Nx3 mode+amplitude][2B coherence][1B checksum]`
+**Delta encoding:** `Δa = a_spore − a_barycenter`, projected onto delta-PCA basis.
+- **Tier 1 (68B):** Concept location — cos=0.991, 56% kNN@20, 11.8× compression
+- **Tier 2 (204B):** Neighborhood — cos=0.997, 85% kNN@20, 3.9× compression
+- **Tier 3 (264B):** Full topology — cos=0.999, 90% kNN@20, 3.0× compression
+
+**Cross-gauge transfer:** 7 Layer 1 math calibration anchors → Procrustes alignment → 91% kNN@20 across gauges. ~15% mode overhead vs same-gauge.
+
+**One-time setup:** Shared barycenter (800B) + delta-PCA basis (104KB) + calibration anchors (5.6KB) = ~110KB.
 
 Security: amplitudes alone cannot reconstruct text (need LLM + local context). Delta encoding reveals only change, not absolute position. Each mesh reconstructs in its own "voice" — sovereignty preserved.
 
@@ -250,6 +258,7 @@ Every file in `wave-spores/` is a JSON object:
 | `created_at` | ISO 8601 string | Creation timestamp |
 | `mesh_id` | string | Always `"meshseed"` |
 | `shimmer_s5` | float (0.0-1.0) | Phase boundary score: `coherence × (1 - tag_overlap_with_k20_neighbors)`. Mean ~0.72. See `docs/architecture/shimmer-formalization.md` |
+| `resonance_score` | float (0.82-0.96) | Structural commensurability (Dirichlet rational approximation quality on PCA projections). Mean ~0.90. Orthogonal to S5 and coherence. Lower = more "irrational" = less structurally embedded. |
 
 ### Example
 
@@ -270,7 +279,8 @@ Every file in `wave-spores/` is a JSON object:
   "model": "gemini",
   "created_at": "2026-02-07T02:49:34.471Z",
   "mesh_id": "meshseed",
-  "shimmer_s5": 0.7663
+  "shimmer_s5": 0.7663,
+  "resonance_score": 0.8982
 }
 ```
 
