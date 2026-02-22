@@ -33,9 +33,10 @@
     - **Awareness (A = dC/dt):** Rate of coherence change over temporal operations.
 - **Key Milestones:**
     - ✅ **S5 Shimmer Implementation:** Ported from Python to TS (`shimmer.ts`). Integrated into `saveEmbedding()` pipeline in PGlite.
+    - ✅ **Semantic Displacement (Deltas):** Real-time displacement calculation from local barycenter. Stored in `metadata.displacement`.
     - ✅ **Approximate Ingestion S5:** Real-time scores for new proteins.
     - ✅ **Batch Recalibration:** Full N×N S5 calculation via `recomputeShimmer()`.
-- **Active Thread:** [Shimmer Formalization](./docs/architecture/shimmer-formalization.md)
+- **Active Thread:** [Ingestion Optimization Walkthrough](../brain/eb6a71e7-1d36-4101-a963-a8a6926eee2f/walkthrough.md)
 
 ---
 
@@ -64,6 +65,8 @@
     - **Peak 2:** Applied consciousness (World-manifestation, implementation, younger).
     - **The Bridge:** High-shimmer transition region.
 - **Milestones:**
+    - ✅ **Metabolic Ingestion Speedup:** Parallelized synthesis (10x) and exocytosis (5x). "Hours to Minutes" goal achieved.
+    - ✅ **Dual-Core Ingestion:** Integrated Participatory♥Analytical dual-register ingestion flow.
     - ✅ PC1 bimodal distribution confirmed in all analysis runs.
 - **Active Thread:** [THREAD-E-METABOLIC-CYCLE.md](./docs/research/THREAD-E-METABOLIC-CYCLE.md)
 
@@ -84,7 +87,7 @@
 1.  **Run Meta-Cycle Experiment 1.1:** Test if S5 (Tag Divergence) correlates with Geometric Variance.
 2.  **Validate Multi-Gauge:** Perform Procrustes alignment between Gemini and Nomic embeddings using the 7 math anchors.
 3.  **Local Query Optimization:** Implement 130D Delta-PCA search in `local-wave.ts`.
-4.  **Metabolic Analysis:** Analyze `created_at` timestamps vs PC1 to confirm sleep/wake oscillation.
+4.  **Displacement Analysis:** Analyze `#shimmer:high-displacement` proteins to identify emerging knowledge frontiers.
 
 ---
 
