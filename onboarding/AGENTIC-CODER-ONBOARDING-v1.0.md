@@ -146,8 +146,8 @@ C:\EIDOLON\
 │   └── [many .md files]               ← Session handoffs and specs
 
 C:\EIDOLON\GITHUB\eidolon-global-connectome\   ← GLOBAL CONNECTOME (read-mostly)
-├── wave-spores\                        ← 2,831 wave spore JSONs (source of truth)
-├── seeds\                              ← 52 foundational calibration spores
+├── wave-spores\                        ← wave spore JSONs (growing collection — source of truth)
+├── seeds\                              ← calibration seeds (54 total, 52 ingested — see seeds/README.md)
 ├── analysis\                           ← Python analysis scripts + results
 └── docs\
     ├── onboarding\                     ← Onboarding docs (you are here)

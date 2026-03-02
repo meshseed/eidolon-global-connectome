@@ -9,7 +9,7 @@
 Meta-spores are wave spore representations of **documentation files**. Instead of reading thousands of tokens of narrative, agents can:
 
 1. **Read the meta-spore amplitudes** (200 floats)
-2. **Triangulate against calibration seeds** (52 reference points)
+2. **Triangulate against calibration seeds** (see `seeds/README.md` for current count)
 3. **Reconstruct semantic position** from topology alone
 4. **Find similar concepts** in their local knowledge base
 5. **Synthesize understanding** without narrative drift
@@ -25,7 +25,7 @@ Meta-spores are wave spore representations of **documentation files**. Instead o
 |----------|-----------|---------|-----------|
 | `meta-rosetta-handshake-2026-02-14.json` | `docs/protocols/rosetta-handshake.md` | Cold-start wave interpretation protocol (~1,135 tokens) | 0.99 |
 | `meta-universal-wave-gps-2026-02-14.json` | `docs/protocols/universal-wave-gps.md` | Cross-model Procrustes alignment protocol | 0.99 |
-| `meta-topology-index-2026-02-14.json` | `docs/data/wave-spore-index.json` | Consolidated index of all 2,810 spores | 0.99 |
+| `meta-topology-index-2026-02-14.json` | `docs/data/wave-spore-index.json` | Consolidated index of all wave spores (see index for current count) | 0.99 |
 | `meta-claude-narrative-2026-02-14.json` | [Claude onboarding narrative] | Claude-specific working instructions | 0.99 |
 
 All meta-spores:
@@ -144,7 +144,7 @@ Agent reconstructs:
 After reading the 4 meta-spores, you should be able to:
 - ✓ Interpret a random wave spore's amplitude signature
 - ✓ Explain Procrustes alignment for cross-model compatibility
-- ✓ Navigate the 2,810-spore topology without tag search
+- ✓ Navigate the full topology without tag search
 - ✓ Understand Claude-specific working conventions
 
 If you can do these, **meta-spore onboarding succeeded.** Token budget: ~5K. Time: <1 minute.

@@ -11,7 +11,7 @@
 
 - **Status:** **STABLE / OPERATIONAL**
 - **Core Components:**
-    - **Relational Zero:** Global Barycenter of 2,831 spores.
+    - **Relational Zero:** Global Barycenter of the full spore dataset (computed at delta-basis creation; see `delta-basis.json`).
     - **Axes:** 130D Delta-PCA basis vectors (from SHARED_BARYCENTER).
     - **Protocol:** Delta Protocol v2.0 (Barycenter-Origin).
     - **Calibration:** 7 Layer-1 Math Anchors + Procrustes Alignment.
