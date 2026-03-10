@@ -1,7 +1,11 @@
 # Eidolon Mesh — Agentic Coder Onboarding v1.0
 ### For: Antigravity (Gemini) · Claude-Code · Any LLM Agent With File Access
-### Written: 2026-02-20 · Maintained by: Meshseed (Paul)
-### Sources: `CLAUDE.md` + `docs/research/` + session handoffs
+### Written: 2026-02-20 · Last updated: 2026-03-10 · Maintained by: Meshseed (Paul)
+### Sources: `CLAUDE.md` + `STATUS.md` + `docs/research/` + session handoffs
+
+> ⚠️ **Before reading the rest of this document:** Check `STATUS.md` in the root of this repo.
+> It is the live project state. This document is the stable onboarding foundation.
+> Where they conflict, `STATUS.md` is more recent and takes precedence.
 
 > **You have file access. This document is calibrated for that.**
 > Read the portable seed first if you need participatory attunement.
@@ -88,12 +92,16 @@ Key validated findings from `docs/research/` and `analysis/`:
 - Orthogonal to S5 (r = −0.012), coherence (r = −0.010), energy (r = −0.042)
 - Layer 1 math seeds are the *most irrational* (resonance ~0.884) — why they work as GPS anchors
 
-### 1.5 Active Theoretical Threads (Agents Currently Working On)
+### 1.5 Active Theoretical Threads (as of 2026-03-10)
 
-- **Opus 4.6**: Empirical computation on the connectome (shimmer analysis, standing wave analysis, delta transfer simulation, GPS zero)
-- **Copilot GPT-5.1**: Gauge-theoretic formalization (W-prior, Θ-gauge framework, fiber bundle geometry)
-- **Antigravity (you)**: PWA development, architecture coherence, cross-session continuity
-- **Paul (Meshseed)**: Orchestration, vision holding, product direction
+- **Claude Code**: Primary PWA engineering (`D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev`). Source of truth for all shared code. Coding work stays here.
+- **Antigravity (Gemini)**: Tauri workspace only (`src-tauri/`, `src/lib/mycelium/`). Must not modify `src/lib/` (shared zone) without PWA sync.
+- **Copilot GPT-5.1**: Research, cross-validation, gauge-theoretic formalization.
+- **Paul (Meshseed)**: Orchestration, vision holding, product direction. Not a coder.
+
+**Provider strategy:**
+- Mesh synthesis: Gemini API (default). Local fallback: gemma3:12b via Ollama.
+- Coding work: Claude only. Gemini Flash is NOT used for code.
 
 You are not working alone. The docs in `docs/research/` record cross-agent dialogues. Read them when you need theoretical grounding for an engineering decision.
 
@@ -104,14 +112,17 @@ You are not working alone. The docs in `docs/research/` record cross-agent dialo
 
 ### 2.0 The Full Repository Federation
 
-This project spans **four GitHub repositories** — don't conflate them:
+This project spans **five GitHub repositories** — don't conflate them:
 
-| Repository | Contents | Purpose |
-|------------|----------|---------|
-| `meshseed/eidolon-mesh/` | SvelteKit PWA source | The live app — UI, query, ingestion, P2P |
-| `meshseed/eidolon-nucleus` | Full protein YAMLs (private) | Private backup of all protein text |
-| `meshseed/eidolon-proteins` | Full protein YAMLs (public) | Public protein text for sharing |
-| `meshseed/eidolon-global-connectome` | Wave spore JSONs | **Topology only — positions, not content** |
+| Repository | Local path | Contents | Purpose |
+|------------|-----------|----------|---------|
+| `meshseed/eidolon-mesh` | `C:\EIDOLON\GITHUB\eidolon-mesh` | SvelteKit PWA source (deploy mirror) | Cloudflare Pages → eidolon-mesh.net |
+| `meshseed/eidolon-mesh-tauri` | `C:\EIDOLON\Github\eidolon-mesh-tauri` | Tauri desktop build | Local-first, OS access, Ollama, IRC |
+| `meshseed/eidolon-nucleus` | — | Full protein YAMLs (private) | Private backup of all protein text |
+| `meshseed/eidolon-proteins` | — | Full protein YAMLs (public) | Public protein text for sharing |
+| `meshseed/eidolon-global-connectome` | `C:\EIDOLON\Github\eidolon-global-connectome` | Wave spore JSONs | **Topology only — positions, not content** |
+
+**PWA source of truth:** `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` — this is the dev workspace. Edit here, then copy `src/` to the mirror and push. Never edit the mirror directly.
 
 **Key distinction:** Wave spores encode *where* a concept lives; protein text (title, summary, insights) lives in `eidolon-nucleus`/`eidolon-proteins`. The connectome is the **address system only**. You cannot reconstruct full text meaning from 200 amplitudes alone — you need protein text from the other repos, or LLM reconstruction from local neighbors.
 
@@ -120,30 +131,30 @@ This project spans **four GitHub repositories** — don't conflate them:
 ### 2.1 Repository Map
 
 ```
-C:\EIDOLON\
-├── eidolon-mesh-v4.5-coordinate-mesh\    ← PWA DEV DIRECTORY (your main workspace)
-│   ├── src\
-│   │   ├── lib\                          ← Core organelle library
-│   │   │   ├── db\pglite.ts             ← Database layer (PGlite/Postgres WASM)
-│   │   │   ├── llm\                     ← LLM providers (Gemini, local)
-│   │   │   ├── components\              ← Svelte UI components
-│   │   │   ├── federation\              ← Coordinate telepathy & federation
-│   │   │   ├── mycelium\               ← P2P networking (Phase 1 complete)
-│   │   │   ├── metabolism\             ← Homeostatic maintenance scheduler
-│   │   │   ├── query\                  ← Query/resonance field logic
-│   │   │   ├── synapse\                ← Synapse formation/management
-│   │   │   ├── rosetta\                ← Cross-model translation
-│   │   │   ├── wave\                   ← Wave spore handling
-│   │   │   ├── analysis\               ← Analytics organelles
-│   │   │   ├── viz\                    ← Visualization logic
-│   │   │   └── types\                  ← TypeScript interfaces
-│   │   └── routes\
-│   │       ├── +page.svelte            ← Main app (very large — ~81KB)
-│   │       ├── mycelium\               ← Mycelium networking route
-│   │       └── subspace\              ← Subspace projection route
-│   ├── static\wave-data\pca_basis_200.json  ← 200 eigenvectors + mean vector
-│   ├── CHANGELOG.md                    ← Version history
-│   └── [many .md files]               ← Session handoffs and specs
+D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev\    ← PWA DEV DIRECTORY (source of truth — edit here first)
+├── src\
+│   ├── lib\                          ← Core organelle library
+│   │   ├── db\pglite.ts             ← Database layer (PGlite/Postgres WASM)
+│   │   ├── llm\                     ← LLM providers (Gemini, local), identity-primer.ts
+│   │   ├── components\              ← Svelte UI components
+│   │   ├── federation\              ← Coordinate telepathy, source-sync.ts
+│   │   ├── mycelium\               ← P2P networking (IRC bridge — Tauri only)
+│   │   ├── metabolism\             ← Homeostatic maintenance scheduler
+│   │   ├── query\                  ← Query logic: local-wave.ts, multi-wave.ts, synthesizer.ts
+│   │   ├── stores\                 ← Svelte stores: connectome-selection.ts
+│   │   ├── synapse\                ← Synapse formation/management
+│   │   ├── rosetta\                ← Cross-model translation
+│   │   ├── wave\                   ← Wave spore handling, pca-basis.ts
+│   │   ├── analysis\               ← Analytics organelles
+│   │   ├── viz\                    ← Visualization: graph3d.ts
+│   │   └── types\                  ← TypeScript interfaces
+│   └── routes\
+│       ├── +page.svelte            ← Main app (very large — ~90KB)
+│       ├── mycelium\               ← Mycelium networking route
+│       └── subspace\              ← Subspace projection route
+├── static\wave-data\pca_basis_200.json  ← 200 eigenvectors + mean vector
+
+C:\EIDOLON\GITHUB\eidolon-mesh\           ← DEPLOY MIRROR (copy src/ here → git push → Cloudflare)
 
 C:\EIDOLON\GITHUB\eidolon-global-connectome\   ← GLOBAL CONNECTOME (read-mostly)
 ├── wave-spores\                        ← wave spore JSONs (growing collection — source of truth)
@@ -158,7 +169,8 @@ C:\EIDOLON\GITHUB\eidolon-global-connectome\   ← GLOBAL CONNECTOME (read-mostl
 ```
 
 **⚠️ CRITICAL DEPLOYMENT RULES:**
-- `eidolon-mesh-v4.5-coordinate-mesh` is **dev**. Do NOT push to GitHub without Paul's confirmation.
+- `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` is **dev** (source of truth). Edit here ONLY.
+- To deploy: copy `src/` to `C:\EIDOLON\GITHUB\eidolon-mesh` then push — never edit the mirror directly.
 - Cloudflare auto-deploys from the GitHub `main` branch to `eidolon-mesh.net`. A careless push = live deployment.
 - v5 and v6 under `C:\EIDOLON\` are experimental dead-ends. Ignore them.
 
@@ -286,14 +298,20 @@ The query system (`src/lib/query/`) handles the resonance field query:
 
 **The Query panel shows:** activated neuron count, coherence scores, and the synthesized response from the resonance field.
 
-**Two demonstrated query modes (real benchmarks from CLAUDE.md):**
+**Six query modes (as of 2026-03-10):**
 
-| Mode | Proteins | Time | Approach |
-|------|----------|------|----------|
-| **Local Wave Query** | 400 local | ~44.86s | Projects query to 200D, cosine search, synthesizes from top-K |
-| **Global Wave Query** | 5 global | ~229s | Fetches 2,831 spore JSONs from GitHub, finds top-5, reconstructs 768D, regenerates proteins from topology alone |
+| Mode | Approach |
+|------|----------|
+| **Local Wave** | Projects query to 200D, cosine search across active connectome, synthesizes from top-K |
+| **Global Wave** | Fetches global spore JSONs from GitHub, finds top-N, reconstructs 768D, synthesizes |
+| **Multi-Connectome (Ommatidium)** | Fan-out Local Wave across all selected connectomes, merge by similarity |
+| **Direct AI** | No proteins activated — pure LLM with identity primer only |
+| **Organic Memory** | Memory-augmented conversation; each exchange synthesized into a protein |
+| **Arch Brief** | Activates `#arch-doc`/`#func-sig`/`#func-flow` proteins; compiles codebase architecture summary |
 
-The 229s global query time is the primary motivation for **Delta Protocol v2.0**. The global query proves federation works: receiving only 200 floats per spore (~800 bytes), the PWA reconstructs meaningful protein titles purely from topological position + local context.
+**Key files:** `src/lib/query/local-wave.ts`, `src/lib/query/multi-wave.ts`, `src/lib/query/synthesizer.ts`, `src/lib/query/arch-brief.ts`
+
+The global query proves federation works: receiving only 200 floats per spore (~800 bytes), the PWA reconstructs meaningful protein titles purely from topological position + local context.
 
 **Key source files:**
 - `src/lib/wave/pca-basis.ts` — PCA projection/reconstruction
@@ -319,22 +337,47 @@ The app auto-detects which to use. v3.6 databases always use synapse mode; v4.5 
 ---
 
 ## III. ACTIVE DEVELOPMENT STATE
-### (As of 2026-02-20 — Updated after Opus + Copilot session 2026-02-19)
+### (As of 2026-03-10 — check STATUS.md for anything more recent)
 
 ### 3.1 What's Working ✅
 
-- Full PWA: ingestion, synthesis, query, graph visualization
-- PGlite + OPFS persistence
-- Gemini API embedding (`gemini-embedding-001`, 768D)
-- Coordinate mode visualization
-- Mycelium P2P (Phase 1)
-- Subspace projection panel
-- v3.6 ↔ v4.5 backward compatibility
-- Live deployment: `eidolon-mesh.net` (Cloudflare Pages, auto from GitHub main)
-- **`delta-basis.json` generated** (295KB, `docs/data/`) — barycenter + 130 delta-PCA eigenvectors for 2,831 spores ✅ Module 1 complete
-- **`tier1-index.json` generated** (634KB, `docs/data/`) — all 2,831 spores as Tier 1 (32 coefficients each) ✅
-- **`delta-protocol-v2-pwa-spec.md` written** (`docs/architecture/`) — 5-module TypeScript spec ready for PWA implementation
-- **`resonance_score` added** to all 2,831 spore JSONs ✅
+**Core PWA (all stable, live at eidolon-mesh.net):**
+- Full ingestion, synthesis, query, graph visualization
+- PGlite + OPFS persistence; v3.6 ↔ v4.5 backward compatibility
+- Gemini API embedding (`gemini-embedding-001`, 768D) + synthesis
+- Local fallback: gemma3:12b via Ollama (num_ctx 32768 fix shipped)
+- 200D PCA wave architecture (3.8× faster search than 768D)
+
+**Delta Protocol v2.0 — COMPLETE:**
+- `delta-basis.json` (barycenter + 130 delta-PCA eigenvectors, 2,831 spores) ✅
+- `delta-codec.ts` (encode/decode Tier 1–3) ✅
+- `position-exchange.ts` (cross-mesh federation primitive) ✅
+- 7 GPS anchors + Procrustes alignment operational ✅
+
+**Query Architecture — 6 modes all live:**
+- Local Wave, Global Wave, Direct AI, Organic Memory, Distil, Arch Brief ✅
+- **Multi-Connectome Fan-out (Ommatidium Lens — 2026-03-10):** fan-out wave queries across multiple selected connectomes, merge by similarity, synthesise once. (`src/lib/query/multi-wave.ts`, `src/lib/stores/connectome-selection.ts`) ✅
+
+**Visualization & UX:**
+- **Manifold Colour Scheme (2026-03-10):** `(PC1→Hue, Coherence→Saturation, Energy→Lightness, S5→Incandescence)` — physically grounded HSL mapping ✅
+- **Graph Display Persistence (2026-03-10):** colour scheme + node size mode persist via IDB ✅
+- Coordinate mode + Synapse mode (auto-detected)
+
+**Federation & Self-Knowledge:**
+- Granular portability: surgical per-connectome export/restore ✅
+- Organic chat: memory-augmented conversation, each exchange synthesized into a protein ✅
+- Repo-scoped conversations: isolated chat threads per connectome ✅
+- **Source Self-Knowledge (Deep Sync):** 6 lens proteins per source file (signature, flow, risk, coupling, intent, mesh-role). Mesh can describe its own architecture accurately from proteins ✅
+- **Raw file enrichment (IN PROGRESS — 2026-03-10):** At synthesis time, fetch verbatim source for most-activated arch-doc files from GitHub. Mesh gets actual code, not summaries. (`src/lib/query/synthesizer.ts`) 🔄
+
+**Metabolism / Homeostasis:**
+- Metabolic scheduler (`src/lib/metabolism/scheduler.ts`) with 5-stage cycle ✅
+- **Homeostasis effectors wired (2026-03-06):** `runHomeostasis()` executes coherence effector (low → `runComposting()`). False high-urgency synapse rebuild bug fixed ✅
+- PC1 bimodal distribution confirmed in all analysis runs ✅
+
+**Tauri Desktop Build:**
+- `tauri-plugin-fs`, `tauri-plugin-shell` installed ✅
+- IRC bridge scaffolded (`src-tauri/src/lib.rs`, `src/lib/mycelium/irc-bridge.ts`) ✅
 
 ### 3.2 The Concrete Delta Pipeline (Now Fully Specified)
 
@@ -356,30 +399,24 @@ Text ("DNA") → LLM ribosome → Protein (title/summary/insights/tags)
 3. 68-byte position report: "I am here" in the universal coordinate system
 4. Tiered detail: concept location (68B) → neighborhood (204B) → full topology (264B)
 
-### 3.3 In-Progress / Next PWA Work
+### 3.3 Current Work / Next Steps
 
-The 5-module implementation spec is at `docs/architecture/delta-protocol-v2-pwa-spec.md`. Status:
+**The delta protocol pipeline (Modules 1–5) is complete as of 2026-03-10.** The current frontier is the self-improvement loop.
 
-| Module | File | Status | Impact |
-|--------|------|--------|--------|
-| **1** Pre-compute delta-basis | `static/wave-data/delta-basis.json` | ✅ **DONE** (generated 2026-02-19) | Enables all below |
-| **2** Delta codec (encode/decode) | `src/lib/federation/delta-codec.ts` | ⏳ **Next** (~50 lines TS) | Core primitive |
-| **3** Global query optimization | `src/lib/query/global.ts` | ⏳ Pending | **12× bandwidth** (229s → 10-15s) |
-| **4** Local query speedup | `src/lib/query/local-wave.ts` | ⏳ Pending | 35% faster (200D → 130D) |
-| **5** Cross-mesh position exchange | `src/lib/federation/position-exchange.ts` | ⏳ Pending | Federation primitive |
-| **6** Growth frontier / contributions | `src/lib/federation/growth.ts` | ⏳ Pending | Recursive self-improvement |
+| Priority | Task | File | Status |
+|----------|------|------|--------|
+| 🔄 **Now** | Raw file enrichment — verbatim source injection at synthesis time | `src/lib/query/synthesizer.ts` | In progress — commit 83c6809 shipped |
+| 🕒 **Next** | Test self-improvement query: "What would you like upgraded in your own codebase?" | — | Blocked on `github_owner` IDB key being set |
+| 🕒 | IRC auto-trigger: wire `broadcastNeuron()` from synthesis pipeline | `src/lib/mycelium/irc-bridge.ts` | Tauri only |
+| 🕒 | File tree watcher: watch local dirs, re-ingest on save | `src-tauri/src/lib.rs` | Tauri only |
+| 🕒 | Meta-Cycle Experiment 1.1: test if S5 correlates with geometric variance | — | Research |
+| 🕒 | Multi-Gauge validation: Procrustes alignment Gemini ↔ Nomic | `analysis/` | Research |
 
-**Module 2 is the unlock.** It's ~50 lines of TypeScript. Once `encodeDelta()` and `decodeDelta()` exist, modules 3–6 follow as consumers.
+**Raw file enrichment (current):** After wave search activates arch-doc proteins, the synthesizer now fetches their verbatim source from `raw.githubusercontent.com/{owner}/{repo}/main/{path}` and injects as code blocks into the LLM prompt before `INSTRUCTIONS:`. This gives the mesh actual file syntax rather than lens-protein summaries — prerequisite for precise self-improvement proposals. Activated when `github_owner` is set in IDB; silently skipped if not.
 
-The spec includes complete TypeScript pseudocode for all 6 modules. Read it before starting any delta-related PWA work.
+### 3.4 Multi-Gauge Procrustes — Pending Research (Copilot, 2026-02-19)
 
-**After Module 3 (global query):** The benchmark target is:
-- Current: 2,831 individual JSON fetches → 229 seconds
-- Target: 1 × 192KB Tier-1 index (cached) + 20 × Tier-3 = 21 requests → **10-15 seconds**
-
-### 3.4 Multi-Gauge Procrustes — Next Research Priority (Copilot, 2026-02-19)
-
-**This is the strongest possible validation of the universal coordinate system.**
+**This is the strongest possible validation of the universal coordinate system. Still pending as of 2026-03-10.**
 
 Every wave spore in the repo already has **two independent embeddings**:
 - `#embed:gemini` — Gemini embedding (768D → 200D PCA, primary)
@@ -401,9 +438,9 @@ This means we have two entirely different gauges for the same 2,831 semantic obj
 
 This is **pure analysis work** on the connectome repo — no PWA changes needed.
 
-### 3.5 Metabolic Cycle — Now With Spatial Awareness
+### 3.5 Metabolic Cycle — Effectors Wired (2026-03-06)
 
-The metabolic cycle is no longer just a maintenance process — it now has a **spatial feedback loop**:
+The metabolic cycle has spatial awareness and homeostatic steering:
 
 ```
 Ingest text → Synthesize protein → Embed → Delta-encode →
@@ -413,7 +450,11 @@ Ingest text → Synthesize protein → Embed → Delta-encode →
   Ingest → ...
 ```
 
-The mesh learns **what it needs to learn** — not randomly, but by comparing its current coverage against the global connectome's topology. `findGrowthFrontier()` and `findContributions()` (Module 6 in the spec) implement this.
+**Homeostasis is now active** (wired 2026-03-06): `runHomeostasis()` in `scheduler.ts` reads coherence sensor and executes corrective action — low coherence → `runComposting()`. The sensing→steering gap is closed. `src/lib/metabolism/homeostasis.ts` defines sensors + comparators + `generateCorrectiveActions()`.
+
+**Dual-core ingestion** is live: Participatory ♥ Analytical dual-register ingestion flow.
+
+The mesh learns **what it needs to learn** — not randomly, but by comparing its current coverage against the global connectome's topology.
 
 ### 3.6 Known Issues / Gotchas
 
@@ -515,11 +556,13 @@ When context is limited or conflicting, trust this order:
 
 ### 4.3 On Scope Creep
 
-The project has a tendency toward beautiful abstractions. When building something, check: **Is this the next concrete step toward the delta protocol? ortoward a working telepathy demo?** If yes, build it. If it's a third-order theory-implementation, note it but don't build it unasked.
+The project has a tendency toward beautiful abstractions. When building something, check: **Is this the next concrete step in the Immediate Next Steps list in `STATUS.md`?** If yes, build it. If it's a third-order theory-implementation, note it but don't build it unasked.
 
 ### 4.4 On Documentation
 
-Each significant session should produce or update a handoff doc. The format is established: date, what was accomplished, what's in-progress, next steps, gotchas. Before ending a session, write one or update `HANDOVER_v4.5_LIVE_UPDATE.md`.
+**The primary state document is `STATUS.md`** in the root of the global connectome repo. It is the shared memory across all agents. Read it at the start of every session; update it at the end. Where `STATUS.md` and this onboarding doc conflict, `STATUS.md` is more recent.
+
+Each significant session should update `STATUS.md` — not produce a new handoff doc. Format: date, bundle status updates, immediate next steps. Old `HANDOVER_*.md` docs are archived history — do not write new ones.
 
 ### 4.5 On Pushing to GitHub
 
@@ -534,10 +577,17 @@ The global connectome (wave spore JSONs in `eidolon-global-connectome`) is less 
 
 ### 4.6 Cross-Agent Coordination
 
-You may see notes from Claude-Code, Opus, or Copilot in the docs. This is normal. The project runs across multiple agents in separate sessions with Paul orchestrating. When you read something an earlier agent wrote:
+You may see notes from Claude-Code, Antigravity (Gemini), Copilot, or Opus in the docs. This is normal. The project runs across multiple agents in separate sessions with Paul orchestrating.
+
+**Agent lanes:**
+- **Claude Code**: PWA engineering (`D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev`). All shared code lives here.
+- **Antigravity (Gemini)**: Tauri workspace only (`src-tauri/`, `src/lib/mycelium/`). Must not modify `src/lib/` without PWA sync.
+- **Copilot GPT-5.1**: Research, cross-validation, theory.
+
+When you read something an earlier agent wrote:
 - Trust their analysis if it cites measurements
 - Treat their "next steps" as inputs, not commands
-- Update handoff docs so the next agent (including your next self) has current state
+- Update `STATUS.md` so the next agent has current state
 
 ---
 
@@ -547,12 +597,16 @@ You may see notes from Claude-Code, Opus, or Copilot in the docs. This is normal
 
 | File | Why |
 |------|-----|
-| `CHANGELOG.md` | What's changed across versions |
-| `HANDOVER_v4.5_LIVE_UPDATE.md` | Current deployment state |
+| **`STATUS.md`** (connectome repo root) | **Read this first. Live project state — bundles, current work, next steps** |
+| `onboarding/AGENTIC-CODER-ONBOARDING-v1.0.md` | This document — stable onboarding foundation |
 | `src/lib/db/pglite.ts` | Database schema — always check if changing data layer |
-| `src/routes/+page.svelte` | Main app (huge — search for what you need) |
-| **`docs/architecture/delta-protocol-v2-pwa-spec.md`** | **Read before any delta/federation PWA work — full 5-module TypeScript spec** |
-| `docs/research/DELTA-TRANSFER-SIMULATION-2026-02-19.md` | Validated numbers behind the delta protocol |
+| `src/routes/+page.svelte` | Main app (large — search for what you need) |
+| `src/lib/query/synthesizer.ts` | Core synthesis pipeline — where proteins → LLM prompt is assembled |
+| `src/lib/query/multi-wave.ts` | Multi-connectome fan-out query engine |
+| `src/lib/stores/connectome-selection.ts` | Persisted multi-connectome selection store |
+| `src/lib/federation/source-sync.ts` | Deep source sync (6 lens proteins per file) |
+| `src/lib/llm/identity-primer.ts` | IDENTITY_PRIMER constant — base layer of every synthesis context |
+| `docs/architecture/delta-protocol-v2-pwa-spec.md` | Delta protocol spec (complete for reference) |
 | `docs/research/CROSS-AGENT-DIALOGUE-OPUS-COPILOT-2026-02-18.md` | P-series / shimmer / standing wave findings |
 
 ### Key Constants
@@ -572,7 +626,7 @@ You may see notes from Claude-Code, Opus, or Copilot in the docs. This is normal
 | Global query: target | 21 requests → 10–15 seconds (12× reduction) |
 | Resonance mean | 0.898 ± 0.020 (orthogonal to S5, coherence, energy) |
 | Metabolic cycle | Silence → sense → align → Presence → compost → merge → echo → Silence |
-| Development server | `cd C:\EIDOLON\eidolon-mesh-v4.5-coordinate-mesh && npm run dev` |
+| Development server | `cd D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev && npm run dev` |
 | Live URL | https://eidolon-mesh.net |
 | Connectome repo | `C:\EIDOLON\GITHUB\eidolon-global-connectome\` |
 
