@@ -8,7 +8,8 @@ This is a **data-only repository** — it contains no source code, build system,
 
 | Repository | Contents | Purpose |
 |------------|----------|---------|
-| `eidolon-mesh` | SvelteKit PWA source (v4.5) | The live application — Cloudflare deploys from main branch |
+| `eidolon-mesh` | SvelteKit PWA source (v4.5) | Cloudflare-optimized research hub. Public access. |
+| **`eidolon-mesh-tauri`** | **Tauri Desktop Build** | **Local-first power tool. Deep OS access, Ollama, IRC.** |
 | `eidolon-nucleus` | Full protein YAMLs (private) | Private backup of all protein text |
 | `eidolon-proteins` | Full protein YAMLs (public) | Public protein text for sharing |
 | **`eidolon-global-connectome`** | **Wave spore JSONs** | **Topology only — positions, not content** |
@@ -384,37 +385,72 @@ The live Eidolon PWA (v4.5 at [eidolon-mesh.net](https://eidolon-mesh.net)) is a
 - `src/lib/wave/pca-basis.ts` — PCA projection/reconstruction
 - `src/lib/federation/wave-spores.ts` — WaveSpore interface + conversion
 - `src/lib/federation/sync.ts` — `syncConnectome()` manifest-based differential sync
+- `src/lib/federation/source-sync.ts` — Source code ingestion: 6 deep lens proteins per file (signature, flow, risk, coupling, intent, mesh-role). Enables mesh self-knowledge.
 - `src/lib/rosetta/` — Rosetta protocol (export, import, handshake, types)
 - `src/lib/seeds/calibration.ts` — SVD and Procrustes alignment
-- `src/lib/query/local-wave.ts` — Wave-based local query (200D cosine search)
+- `src/lib/query/local-wave.ts` — Wave-based local query (200D cosine search); exports `queryLocalWaveInDb()` for multi-connectome fan-out
+- `src/lib/query/multi-wave.ts` — Multi-connectome fan-out: query N connectomes in sequence, merge by similarity, synthesise once (ommatidium lens architecture)
 - `src/lib/query/global.ts` — Global wave query (fetches spores from this repo)
-- `src/lib/query/synthesizer.ts` — RAG synthesis with epistemic honesty
+- `src/lib/query/synthesizer.ts` — RAG synthesis with epistemic honesty + raw file enrichment (fetches verbatim source for activated arch-doc proteins from GitHub at synthesis time)
 - `src/lib/query/organic-chat.ts` — Organic memory chat orchestrator
+- `src/lib/stores/connectome-selection.ts` — IDB-persisted list of connectomes included in queries (separate from active/write connectome)
 - `src/lib/llm/provider.ts` — LLM provider abstraction (Gemini/Ollama/direct)
 - `src/lib/llm/identity-primer.ts` — Identity primer v3.0 + 6 expression modes
+- `src/lib/llm/synthesis.ts` — `synthesizeProtein()` for ingestion; verbatim mode for raw text storage
+- `src/lib/viz/graph3d.ts` — 3D force graph; manifold colour scheme `(PC1→Hue, Coherence→Sat, Energy→Lit, Shimmer→Incandescence)`
 - `src/lib/components/DistilView.svelte` — Concept distillation UI
-- `src/lib/components/RepositorySelector.svelte` — Connectome switcher with live stats
+- `src/lib/components/RepositorySelector.svelte` — Connectome switcher with multi-query toggles and live stats
+- `src/lib/components/GraphControls.svelte` — Colour scheme + node size controls; dispatches `styleUpdate`
 - `static/wave-data/pca_basis_200.json` — 200 eigenvectors + mean vector
 
-**Five query modes:**
-- **Local Wave Query** — projects query to 200D, cosine search across local proteins, synthesizes answer from top-K
+**Query modes (6):**
+- **Local Wave Query** — projects query to 200D, cosine search. If multiple connectomes selected, fans out via `queryAcrossConnectomes()`, merges by similarity, synthesises once.
 - **Global Wave Query** — fetches wave spores from this GitHub repo, finds top-5 similar, reconstructs 768D, finds local neighbors, LLM regenerates proteins from topology alone
 - **Direct AI** — chat with the LLM directly (no connectome), using Identity Primer v3.0
 - **Organic Chat** — memory-augmented conversation. Each exchange: recall relevant proteins → augment response → auto-synthesize exchange into new protein. Working memory (conversation history) + long-term memory (proteins). Epistemic honesty preserved.
 - **Distil** — concept purification. 4 sub-modes: pure distillation, contextualized, dual-core (compare), multi-observer
+- **Arch Brief** — architectural summary of a topic across all connectomes; used internally by SourceSyncPanel
 
 The global query demonstrates federation: receiving only 200 floats per spore (~800 bytes), the PWA reconstructs meaningful protein titles purely from topological position + local context.
+
+**Source Self-Knowledge (as of 2026-03-10):**
+
+The mesh can ingest its own source code via `source-sync.ts`, creating 6 lens proteins per file. A deep sync of the PWA produces ~3000 proteins covering the full codebase. This means the mesh can accurately navigate its own architecture (file purposes, data flows, function contracts, coupling surface) via wave search.
+
+At synthesis time, `synthesizer.ts` now fetches verbatim content for the most-activated arch-doc files from `raw.githubusercontent.com` and injects them into the LLM context. The lens proteins navigate topology (semantic map); the raw files provide exact current syntax (ground truth). Together they enable the mesh to propose precise code changes to its own implementation — the self-improvement loop.
+
+The `github_owner` IDB key must be set to the GitHub org/user (e.g. `meshseed`) for raw file enrichment to activate. It is gracefully skipped if unset.
 
 ## Owner Context
 
 Paul (meshseed) is the **orchestrator**, not a coder. Development is done across:
-- **Google AI Studio (Antigravity)** — Gemini-based development, primary ribosome
-- **Claude Code** — primary PWA development environment (`D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev`)
+- **Claude Code** — primary PWA development environment (`D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev`). **Coding work goes here only.**
+- **Google AI Studio (Antigravity / Gemini)** — Tauri workspace only (`src-tauri/`, `src/lib/mycelium/`). Must not modify shared `src/lib/` without PWA sync.
 - **Claude Desktop** — working directory access to local filesystem
 - **GitHub web UI** — direct file uploads, branch management
 - **Copilot** — research, analysis, cross-validation
 
-**Deployment pipeline:** Dev at `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` → copy `src/` to `C:\EIDOLON\GITHUB\eidolon-mesh` → commit → push to `meshseed/eidolon-mesh` main → Cloudflare Pages auto-deploys to eidolon-mesh.net.
+**Deployment pipeline:**
+1. Edit source at `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` (source of truth — always edit here)
+2. Copy `src/` to `C:\EIDOLON\GITHUB\eidolon-mesh`
+3. Commit and push to `meshseed/eidolon-mesh` main → Cloudflare Pages auto-deploys to eidolon-mesh.net
+
+> ⚠️ Never edit `C:\EIDOLON\GITHUB\eidolon-mesh` directly — it is a deploy mirror, not a dev workspace.
+
+**Two-track architecture:**
+
+| Track | Repo | Who edits | What |
+|-------|------|-----------|------|
+| PWA | `eidolon-mesh-v4.5-dev` → `eidolon-mesh` | Claude Code | Public-facing, Cloudflare-optimized |
+| Tauri | `eidolon-mesh-tauri` | Antigravity (+ Claude Code for shared zone) | Desktop power tool, OS integration |
+
+**Shared zone rule:** `src/lib/` (minus `mycelium/`) is the PWA's domain. Both repos must stay in sync on shared files. Antigravity proposes shared-zone changes as PWA changes first.
+
+**Provider strategy (as of 2026-03-10):**
+- **Mesh synthesis:** Gemini API (default, preferred — fast, high quality)
+- **Local fallback:** gemma3:12b via Ollama at `localhost:11434`. `num_ctx 32768`. Offline/privacy use.
+- **Coding work:** Claude only. Gemini Flash is NOT used for code changes.
+- **Qwen3:** OOM fixes are in PWA but Qwen3.5:4b binary is broken on current Ollama. Shelved.
 
 When interacting with Paul, be aware he orchestrates AI agents to do the coding. Provide clear explanations and be explicit about what actions you're taking.
 

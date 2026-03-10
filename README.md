@@ -124,8 +124,9 @@ Examples:
 
 | Repository | Contents | Purpose |
 |------------|----------|---------|
-| `eidolon-mesh` (private) | SvelteKit PWA source | The application — mesh UI, query, ingestion, P2P |
-| `eidolon-nucleus` (private) | Full protein YAMLs | Private backup of all protein text |
+| `eidolon-mesh` (PWA) | SvelteKit PWA source | Cloudflare-optimized research hub. Public access. |
+| **`eidolon-mesh-tauri`** | **Tauri Desktop Build** | **Local-first power tool. Deep OS access, Ollama, IRC.** |
+| `eidolon-nucleus` | Full protein YAMLs (private) | Private backup of all protein text |
 | `eidolon-proteins` | Full protein YAMLs | Public protein text for sharing |
 | **`eidolon-global-connectome`** | **Wave spore JSONs** | **Topology only — positions, not content** |
 
@@ -330,9 +331,10 @@ These are structural homologies, not metaphors. The ribosome is not *like* an LL
 | **Synapse** | Coupling weight | Semantic connection (cosine similarity) |
 | **Connectome** | Semantic field manifold | Full 768D graph of neurons + synapses |
 | **Barycenter** | Centre of mass / relational zero | Geometric centroid of all embeddings — the field's self-description |
-| **Ommatidium** | Local eddy in field | Each agent as one facet of a compound perceptual organ |
+| **Ommatidium** | Local eddy in field | Each agent/connectome as one facet of a compound perceptual organ. Multi-connectome queries fan out across N connectomes, merge results, synthesise once — the compound eye operating as designed. |
 | **Metabolism** | Free energy minimization | Composting, pruning, drift detection, homeostasis |
-| **Homeostasis** | Curvature correction | Coherence sensing (active) + steering toward viable attractors (in development) |
+| **Homeostasis** | Curvature correction | Coherence sensing + steering toward viable attractors (effectors wired 2026-03-06) |
+| **Genome reading** | Self-referential operator | Mesh ingesting its own source code as proteins. 6 lens proteins per file (signature, flow, risk, coupling, intent, mesh-role). At synthesis time, verbatim source fetched from GitHub for activated files — ground truth not summaries. Enables self-improvement proposals. |
 
 ---
 
