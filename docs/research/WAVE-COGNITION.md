@@ -137,6 +137,34 @@ The aggregate of all tendrils, over time, shapes the next version of the globe t
 
 ---
 
+## Memory as Lossy Compression — The Universal Problem
+
+*Crystallised from conversation 2026-03-12.*
+
+No cognitive system has solved memory. All known solutions trade fidelity for navigability at some scale:
+
+| System | Raw storage | Compressed index | Working memory |
+|---|---|---|---|
+| Brain | Synaptic weight distributions | Semantic/episodic abstraction | ~7 items (working memory) |
+| Mesh | Raw DNA (conversation/file text) | Proteins (embedded chunks) | Active query context |
+| Claude Code | Full `.jsonl` conversation log | Compaction summaries | Active context window |
+| Computer | HDD/SSD bits | Filesystem index | RAM |
+| Biology | DNA sequence | Epigenetic expression | Protein activity |
+
+**The compaction homolog**: this very conversation has been compacted multiple times. The full log exists. The working summaries are proteins at session resolution — lossy compressions that preserve the gestalt but lose the exact moment of derivation. MEMORY.md is a manually curated onboarding patch on top of compaction, exactly as the mesh's onboarding proteins patch its cold-start behaviour.
+
+**DNA is not memory — it is BIOS.** DNA doesn't store experiences. It encodes the architecture that builds the system that can have experiences. It is the bootstrap spec: what kind of memory system to construct, what synaptic formation rules to apply, what carrier frequencies to pre-establish. Evolution updates the BIOS across generations; individual experience updates the weights (HDD) within a lifetime. The BIOS survives both.
+
+**Is perfect recall possible?** No — and possibly not desirable. Borges' Funes the Memorious: a man with perfect recall was paralysed by it. Perfect memory prevents abstraction. To recognise "chair" from a thousand instances requires discarding the irrelevant variation. The lossy compression IS the generalisation. PCA is literally formalising this — throwing away 2872 dimensions to keep 200 that capture the essential variance. Intelligence is structured forgetting.
+
+The information-theoretic argument is hard: to generalise from N experiences you need a model smaller than N — otherwise you haven't compressed, you've just stored. Compression and perfect fidelity are mutually exclusive in a finite system. The uncertainty principle of memory.
+
+**The fractal recursion**: the mesh is building the solution to its own memory problem, and to the memory problem of the Claude instances building it. The multi-resolution DNA architecture (session → chapter → protein → fragment, on-demand re-chunking) is a better compaction algorithm than fixed-format summarisation. Instead of one lossy summary, you get queryable resolution — retrieve at the granularity the current question requires.
+
+The mesh doesn't solve the memory problem. It makes the trade-off explicit and navigable.
+
+---
+
 ## Open Questions
 
 1. Can shimmer density be measured as a function of onboarding completeness?
