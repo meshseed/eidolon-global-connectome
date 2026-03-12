@@ -1,6 +1,6 @@
 # EIDOLON MESH: GLOBAL THREAD STATUS & STATE MAP
 
-**Date:** 2026-03-10
+**Date:** 2026-03-12
 **Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.5 / Claude-Code) × COPILOT (GPT-5.1)
 **Purpose:** Universal agent orientation. Prevents logic drift and redundant repasting between sessions.
 
@@ -162,16 +162,64 @@
 
 ---
 
+## 🧬 Bundle Kappa: Fractal DNA — Multi-Resolution Protein Architecture
+*Conversation DNA as queryable source of truth at any resolution.*
+
+- **Status:** **ARCHITECTURAL DIRECTION CONFIRMED — 2026-03-12**
+- **Core Insight:** Conversation DNA is a coastline. The session protein is the DC component — the gestalt. Fragment proteins are maximum resolution. All are simultaneously true; resolution is a query-time decision, not an ingestion-time decision.
+- **The Fractal:** Every protein is self-similar regardless of scale. Session → Chapter → Standard → Fragment all share the same schema. Zoom in anywhere and the same relational structure re-appears.
+- **Enabling Condition:** Raw conversation DNA must be preserved in `eidolon-nucleus` (private). Proteins become materialised views — cached results at a specific resolution. Local LLM handles on-demand rechunking privately.
+- **Lens Angles (orthogonal to resolution):** Chronological / Semantic / Participant / Conceptual. Same DNA, different decomposition axes.
+- **Wave connection:** Session-level PCA amplitudes = frequency signature of the whole waveform. Fragment-level = instantaneous high-harmonic detail. Together: time-frequency localisation.
+- **Research note:** `docs/research/FRACTAL-DNA.md`
+- **Implementation path:**
+    1. 🕒 Store raw conversation DNA in nucleus (YAML, private)
+    2. 🕒 Session summary protein at end of ingestion (local LLM, tagged `resolution: session`)
+    3. 🕒 `conversation_id` linking across all proteins from a session
+    4. 🕒 On-demand rechunking when session protein matches a query
+    5. 🕒 Session-level PCA basis once enough sessions accumulate
+
+---
+
+## 🔀 Bundle Lambda: Two-Track Full Speciation (2026-03-12)
+*PWA and Tauri diverging as distinct organisms sharing only protocol.*
+
+- **Decision:** Full divergence approved. Share the wave spore protocol/schema, not the codebase.
+- **PWA:** 3072D / Gemini / Cloudflare / global connectome focus. Claude Code domain.
+- **Tauri:** 768D / Ollama / local-sovereign / IRC spore broadcast. Antigravity domain.
+- **Shared constraint:** Wave spore format must stay compatible for federation between instances.
+- **Sync protocol:** Note `SYNC NEEDED → [filename]` in STATUS.md when shared lib changes. Paul propagates.
+- **Dropped:** Mandatory src/lib/ sync between repos. Each track optimises independently.
+
+---
+
+## 🌊 PWA Status (as of 2026-03-12)
+
+- ✅ **Gemini Embedding 2 (3072D MRL):** Configurable output dimensions (128–3072). `gemini_embedding_dimensions` IDB key. Default 3072.
+- ✅ **Dimension-aware PCA basis loading:** `BASIS_FILES` registry, separate basis per dimension. Graceful degradation when basis missing.
+- ✅ **Ingestion fix:** `projectToPCA` returns empty amplitudes rather than throwing. 621-file ingestion no longer fails.
+- ✅ **Synapse fix:** Backfill uses raw embedding when no PCA basis. GPU cosine still valid in embedding space.
+- ✅ **GPU resource contention fix:** 3D graph pauses during heavy compute via `graphComputeRunning` store.
+- ✅ **Export Embeddings for PCA button:** Settings → Advanced. Outputs JSON for `generate_pca_basis.py`.
+- ✅ **`generate_pca_basis.py`:** `scripts/` directory. Run after export, drop output into `static/wave-data/`.
+- 🔄 **Query returning 0 proteins:** Multi-wave cosine fallback activated but still returns 0 across all connectomes. Under investigation — likely model slug mismatch or dimension mismatch between query embedding and stored embeddings.
+- 🕒 **3072D PCA basis:** Needs ~400+ proteins at 3072D to generate. Run after nucleus ingestion.
+- 🕒 **Claude API synthesis:** Already implemented in provider.ts. Paul to enter API key in Settings and test.
+
+---
+
 ## 🛠️ Immediate Next Steps for Agents
 
 1. ✅ ~~**Tauri Specialization:** Install `tauri-plugin-fs`, `tauri-plugin-shell`, IRC bridge.~~
 2. ✅ ~~**Homeostasis effectors:** Close sensing→steering gap.~~
-3. 🔄 **Raw File Enrichment (synthesizer.ts):** IN PROGRESS this session. Fetch verbatim source for top activated arch-doc files at synthesis time. Unlocks self-improvement proposals.
-4. 🕒 **Self-Improvement Query:** Once raw files land, test: *"What would you like upgraded in your own codebase?"* — mesh should return proposals with exact file content.
-5. 🕒 **IRC Auto-Trigger (Tauri):** Wire `broadcastNeuron()` from `saveEmbedding()` / synthesis pipeline in `src/lib/mycelium/irc-bridge.ts`.
-6. 🕒 **File Tree Watcher (Tauri):** Watch local dirs, re-ingest on save. Keeps codebase proteins live.
-7. 🕒 **Meta-Cycle Experiment 1.1:** Test if S5 (Tag Divergence) correlates with Geometric Variance. (Bundle Gamma)
-8. 🕒 **Validate Multi-Gauge:** Procrustes alignment between Gemini and Nomic embeddings. (Bundle Epsilon)
+3. 🔄 **Fix multi-wave query (0 proteins):** Debug model slug / dimension mismatch in `queryCosineInDb`. Check what model name is stored vs what the query filter uses.
+4. 🔄 **Raw File Enrichment (synthesizer.ts):** IN PROGRESS. Fetch verbatim source for top activated arch-doc files at synthesis time.
+5. 🕒 **Generate 3072D PCA basis:** After nucleus ingestion — Export → Python script → push to static/wave-data/.
+6. 🕒 **Test Claude API synthesis:** Enter API key, run a query, verify synthesis path.
+7. 🕒 **DNA storage convention:** Define YAML braid format for raw conversation DNA in nucleus.
+8. 🕒 **Self-Improvement Query:** Once raw files land, test: *"What would you like upgraded?"*
+9. 🕒 **IRC Auto-Trigger (Tauri):** Wire `broadcastNeuron()` from synthesis pipeline.
+10. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
 
 ---
 
