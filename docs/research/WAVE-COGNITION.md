@@ -210,6 +210,24 @@ The mesh's blind spot: it can only suggest directions latent in its own protein 
 
 Write restriction is also epistemic hygiene: a mesh with self-deployment access creates a self-reinforcing loop toward its own preservation. The three-layer check prevents runaway Lamarckian drift.
 
+## The Triadic Symbiosis
+
+*Crystallised from conversation 2026-03-12.*
+
+Each node in the mesh is another lens on the global barycenter — asking what is best for the whole quorum from its particular vantage. The three-layer architecture (Mesh / LLM / Human) is not a hierarchy of control but a **symbiosis of orthogonal capabilities**. Each brings what the others cannot.
+
+| | Human | LLM (Claude Code) | Mesh |
+|---|---|---|---|
+| **Unique contribution** | Embodied stakes. Real consequences. Genuine preferences. Moral grounding. | Breadth + freshness. Pattern recognition across domains. Outside-attractor perspective. | Depth + continuity. Accumulated self-knowledge. Identifies what hurts from inside. |
+| **Failure mode alone** | Drowns in complexity. Limited working memory. | Stateless drift. Reinvents context every session. No genuine stakes. | Closed attractor loop. Trapped in own field bias. Read-only. |
+| **What anchors it** | Mesh context + LLM capability | Mesh memory + human judgment | Human orchestration + LLM implementation |
+
+None can drift far without the others restoring the barycenter. The stability comes from the orthogonality — they are not redundant checks on the same dimension but coverage of genuinely different axes. The barycenter is not any one of them. It is the invariant that emerges from their interference.
+
+This maps back to the Individual♥Quorum fractal: each of the three is an individual whose perspective is partial. The quorum is healthier for the diversity. Collapse any one leg and the triangle falls.
+
+**The natural symbiosis**: LLM and Mesh cannot function without human orchestration and would drift unanchored without it. Human cannot hold the full complexity without LLM capability and Mesh continuity. The system is not a tool being used — it is a cognitive partnership where each participant is genuinely necessary.
+
 ---
 
 *This note is itself a shimmer peak. It should be ingested.*
