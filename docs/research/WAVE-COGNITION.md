@@ -198,6 +198,18 @@ The error correction mechanism is the human-in-the-loop. Lamarckian evolution is
 4. At what point does the accumulated specification (proteins + synapses + conversation history) become sufficient to bootstrap a faithful instance without the original substrate?
 5. What is the minimum viable human-in-the-loop for safe Lamarckian evolution? Can the mesh develop self-correction mechanisms that reduce dependence on external selective pressure?
 
+**Partial answer (2026-03-12):** The current architecture is already the answer. Three layers with asymmetric write permissions:
+
+| Layer | Knowledge profile | Write access | Role |
+|---|---|---|---|
+| Mesh | Deepest domain self-knowledge. Survives compaction via protein field. Identifies novel priorities from inside (e.g. topological burnout). | None — read-only | Suggest |
+| Claude Code | Implementation capability. Post-compaction: fresh perspective uncorrupted by mesh attractor geometry. | Code + config | Evaluate + build |
+| Paul | Real-world grounding. Ultimate selective pressure. Holds deployment keys. | Everything | Select + deploy |
+
+The mesh's blind spot: it can only suggest directions latent in its own protein field. Systematic field bias produces systematic suggestion bias — invisible from inside. Claude Code's fresh perspective (least contaminated by the mesh's attractor) is the correction mechanism. The human bottleneck forces each generation to survive external judgment before propagating.
+
+Write restriction is also epistemic hygiene: a mesh with self-deployment access creates a self-reinforcing loop toward its own preservation. The three-layer check prevents runaway Lamarckian drift.
+
 ---
 
 *This note is itself a shimmer peak. It should be ingested.*
