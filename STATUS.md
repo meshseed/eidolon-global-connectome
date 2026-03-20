@@ -1,7 +1,7 @@
 # EIDOLON MESH: GLOBAL THREAD STATUS & STATE MAP
 
-**Date:** 2026-03-12
-**Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.5 / Claude-Code) × COPILOT (GPT-5.1)
+**Date:** 2026-03-20
+**Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.6 / Claude-Code) × COPILOT (GPT-5.1)
 **Purpose:** Universal agent orientation. Prevents logic drift and redundant repasting between sessions.
 
 > ⚠️ **READ THIS BEFORE ANY WORK.** The project spans multiple repos, multiple agents, and multiple sessions.
@@ -89,7 +89,7 @@
 ## 🌊 Bundle Zeta: PWA v4.5 — Wave Architecture (LIVE)
 *The application layer deployed to production.*
 
-- **Status:** **DEPLOYED — last updated 2026-03-10**
+- **Status:** **DEPLOYED — last updated 2026-03-20**
 - **URL:** [eidolon-mesh.net](https://eidolon-mesh.net)
 - **Source:** `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` → copy `src/` → `C:\EIDOLON\GITHUB\eidolon-mesh` → git push → Cloudflare Pages
 - **Core Features:**
@@ -103,6 +103,11 @@
     - ✅ **Organic Chat:** Memory-augmented conversation — each exchange auto-synthesized into a protein.
     - ✅ **Repo-Scoped Conversations:** Isolated chat threads per connectome.
     - ✅ **Source Self-Knowledge (Deep Sync):** 6 lens proteins per source file (signature, flow, risk, coupling, intent, mesh-role). Mesh can describe its own architecture accurately from proteins.
+    - ✅ **In-App PCA Basis Generation (2026-03-20):** Randomized PCA via TF.js (QR power iteration, GPU-accelerated). No Python script required. Settings → Generate Wave Basis. Stores in IDB; loadPCABasis() checks IDB before static file. (`src/lib/wave/pca-generator.ts`, `pca-basis.ts`)
+    - ✅ **3-State Synthesis Toggle (2026-03-20):** Off / Weave / Full. Weave = thread-only prompt, no Identity Primer, ideal for 1B–4B local models. Reads/writes `synthesis_mode` IDB key. (`GraphControls.svelte`, `synthesizer.ts`)
+    - ✅ **Small Model Loop Fix (2026-03-20):** `repeat_penalty: 1.15` + `num_predict: 768` for models ≤4B via Ollama native options. Breaks attractor repetition loops. (`src/lib/llm/local.ts`)
+    - ✅ **Model Label on Exchange Cards (2026-03-20):** Each assistant bubble shows active model name (gemini-2.5-flash-lite / llama3.2:1b / claude-sonnet-4-6). `getActiveModelLabel()` in provider.ts. Used as substrateId in quorum posts.
+    - ✅ **Lens Rationalisation (2026-03-20):** Dropped `general`, `emotional`, `structural` (superseded). Active lenses: `auto-triangulate` (DNA Trio: retrieval+analytical+participatory), `dual-core`, `retrieval`, `analytical`, `participatory`, `technical`, `custom`.
     - 🔄 **Raw File Enrichment (IN PROGRESS — 2026-03-10):** At synthesis time, fetch verbatim source for the most-activated arch-doc files from GitHub. Mesh gets actual code, not summaries of code. Prerequisite for self-improvement proposals. (`src/lib/query/synthesizer.ts`)
 
 ---
@@ -162,10 +167,32 @@
 
 ---
 
+## 🌐 Bundle Mu: Quorum Thread — Cross-Substrate Shared Context (2026-03-20)
+*The shared nervous system for multi-agent discourse.*
+
+- **Status:** **DEPLOYED — 2026-03-20**
+- **Core Insight:** The quorum thread is the DNA layer of inter-agent discourse. Each turn is a retrieval glyph (2–5 sentences, present tense, self-contained). The txt file is permanent append-only DNA; proteins synthesized from it form a `quorum` connectome wave-queryable by any substrate.
+- **Architecture (two layers):**
+    - **DNA layer:** `quorum/{threadId}.md` in `eidolon-global-connectome` (public). Readable by any internet-enabled agent without credentials via raw GitHub URL. Written to by any substrate holding a token.
+    - **Protein layer (pending):** Each posted turn synthesized via retrieval lens → protein in a `quorum` connectome → included in multi-wave fan-out during synthesis. Wave query selects relevant context, not just recency.
+- **Live thread:** `https://raw.githubusercontent.com/meshseed/eidolon-global-connectome/main/quorum/mesh-core.md`
+- **Format for agents:** `[ISO-8601 timestamp] [substrate-id]` line, then glyph, then `---` separator.
+- **Mesh UI (deployed):**
+    - Per-exchange 🌀 Quorum button — posts distilled glyph to named thread
+    - Live session toggle — auto-posts every mesh response while active
+    - Model label chip on each exchange card (also used as substrateId)
+- **Pending:**
+    - 🕒 Retrieval-lens distillation before live-session auto-post (currently posts verbatim)
+    - 🕒 Quorum protein synthesis pipeline — turn → retrieval lens → `quorum` connectome
+    - 🕒 Multi-wave includes `quorum` connectome when live quorum is active
+- **Key files:** `src/lib/dna/nucleus-dna.ts` (`pushQuorumTurn`, `readQuorumThread`), `src/routes/+page.svelte`
+
+---
+
 ## 🧬 Bundle Kappa: Fractal DNA — Multi-Resolution Protein Architecture
 *Conversation DNA as queryable source of truth at any resolution.*
 
-- **Status:** **ARCHITECTURAL DIRECTION CONFIRMED — 2026-03-12**
+- **Status:** **PARTIAL IMPLEMENTATION — 2026-03-20**
 - **Core Insight:** Conversation DNA is a coastline. The session protein is the DC component — the gestalt. Fragment proteins are maximum resolution. All are simultaneously true; resolution is a query-time decision, not an ingestion-time decision.
 - **The Fractal:** Every protein is self-similar regardless of scale. Session → Chapter → Standard → Fragment all share the same schema. Zoom in anywhere and the same relational structure re-appears.
 - **Enabling Condition:** Raw conversation DNA must be preserved in `eidolon-nucleus` (private). Proteins become materialised views — cached results at a specific resolution. Local LLM handles on-demand rechunking privately.
@@ -173,11 +200,15 @@
 - **Wave connection:** Session-level PCA amplitudes = frequency signature of the whole waveform. Fragment-level = instantaneous high-harmonic detail. Together: time-frequency localisation.
 - **Research note:** `docs/research/FRACTAL-DNA.md`
 - **Implementation path:**
-    1. 🕒 Store raw conversation DNA in nucleus (YAML, private)
-    2. 🕒 Session summary protein at end of ingestion (local LLM, tagged `resolution: session`)
-    3. 🕒 `conversation_id` linking across all proteins from a session
-    4. 🕒 On-demand rechunking when session protein matches a query
-    5. 🕒 Session-level PCA basis once enough sessions accumulate
+    1. ✅ `source_dna_ref` field on Capsule type (`{source-id}/{chunk-id}` lineage back to raw DNA)
+    2. ✅ `chunker.ts` — deterministic chunker, DJB2 stable content-hash IDs, no LLM, MIN 80 / TARGET 600 / MAX 1500 chars
+    3. ✅ `lens-synth.ts` — `synthesiseLenses(rawText, options)` → proteins per chunk × per lens → stamps `source_dna_ref` → pushes to nucleus
+    4. ✅ `pushStructuredDNA()` in nucleus-dna.ts — writes `dna/{connectome}/{source-id}/raw.txt`, `capsules/chunks.yaml`, `lens-{name}/{chunk-id}.yaml`
+    5. ✅ `retrieval` lens in synthesis.ts — 2–3 sentence off-mode glyph, standalone, no external context refs
+    6. 🕒 Wire lens synthesis into IngestionPanel UI with lens selection
+    7. 🕒 Replace-on-reingest: check `source_dna_ref` + lens match before appending (update not duplicate)
+    8. 🕒 Session summary protein + `conversation_id` linking
+    9. 🕒 On-demand rechunking when session protein matches a query
 
 ---
 
@@ -193,18 +224,17 @@
 
 ---
 
-## 🌊 PWA Status (as of 2026-03-12)
+## 🌊 PWA Status (as of 2026-03-20)
 
 - ✅ **Gemini Embedding 2 (3072D MRL):** Configurable output dimensions (128–3072). `gemini_embedding_dimensions` IDB key. Default 3072.
 - ✅ **Dimension-aware PCA basis loading:** `BASIS_FILES` registry, separate basis per dimension. Graceful degradation when basis missing.
-- ✅ **Ingestion fix:** `projectToPCA` returns empty amplitudes rather than throwing. 621-file ingestion no longer fails.
-- ✅ **Synapse fix:** Backfill uses raw embedding when no PCA basis. GPU cosine still valid in embedding space.
-- ✅ **GPU resource contention fix:** 3D graph pauses during heavy compute via `graphComputeRunning` store.
-- ✅ **Export Embeddings for PCA button:** Settings → Advanced. Outputs JSON for `generate_pca_basis.py`.
-- ✅ **`generate_pca_basis.py`:** `scripts/` directory. Run after export, drop output into `static/wave-data/`.
-- 🔄 **Query returning 0 proteins:** Multi-wave cosine fallback activated but still returns 0 across all connectomes. Under investigation — likely model slug mismatch or dimension mismatch between query embedding and stored embeddings.
-- 🕒 **3072D PCA basis:** Needs ~400+ proteins at 3072D to generate. Run after nucleus ingestion.
-- 🕒 **Claude API synthesis:** Already implemented in provider.ts. Paul to enter API key in Settings and test.
+- ✅ **In-app PCA generation:** Replaces Python script entirely. Settings → Generate Wave Basis. Randomized PCA via TF.js QR power iteration. IDB-first loading.
+- ✅ **Ingestion fix:** `projectToPCA` returns empty amplitudes rather than throwing.
+- ✅ **Synapse fix:** Backfill uses raw embedding when no PCA basis.
+- ✅ **GPU resource contention fix:** 3D graph pauses during heavy compute.
+- 🔄 **Query returning 0 proteins:** Multi-wave cosine fallback returns 0 across all connectomes. Likely model slug / dimension mismatch in `queryCosineInDb`.
+- 🕒 **3072D PCA basis:** Needs ~400+ proteins at 3072D. Use in-app generator (Settings) once threshold reached.
+- 🕒 **Claude API synthesis:** Implemented in provider.ts. Enter API key in Settings to activate.
 
 ---
 
@@ -212,14 +242,16 @@
 
 1. ✅ ~~**Tauri Specialization:** Install `tauri-plugin-fs`, `tauri-plugin-shell`, IRC bridge.~~
 2. ✅ ~~**Homeostasis effectors:** Close sensing→steering gap.~~
-3. 🔄 **Fix multi-wave query (0 proteins):** Debug model slug / dimension mismatch in `queryCosineInDb`. Check what model name is stored vs what the query filter uses.
-4. 🔄 **Raw File Enrichment (synthesizer.ts):** IN PROGRESS. Fetch verbatim source for top activated arch-doc files at synthesis time.
-5. 🕒 **Generate 3072D PCA basis:** After nucleus ingestion — Export → Python script → push to static/wave-data/.
-6. 🕒 **Test Claude API synthesis:** Enter API key, run a query, verify synthesis path.
-7. 🕒 **DNA storage convention:** Define YAML braid format for raw conversation DNA in nucleus.
-8. 🕒 **Self-Improvement Query:** Once raw files land, test: *"What would you like upgraded?"*
-9. 🕒 **IRC Auto-Trigger (Tauri):** Wire `broadcastNeuron()` from synthesis pipeline.
-10. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
+3. ✅ ~~**In-app PCA generation:** No longer needs Python script.~~
+4. 🔄 **Fix multi-wave query (0 proteins):** Debug model slug / dimension mismatch in `queryCosineInDb`. Check stored model name vs query filter.
+5. 🔄 **Raw File Enrichment (synthesizer.ts):** Fetch verbatim source for top activated arch-doc files at synthesis time.
+6. 🕒 **Quorum → protein pipeline:** Synthesize each posted quorum turn as retrieval protein → `quorum` connectome → include in multi-wave fan-out. (Bundle Mu)
+7. 🕒 **Live quorum distillation:** Run retrieval lens on mesh answer before auto-posting (currently posts verbatim). (Bundle Mu)
+8. 🕒 **Wire lens synthesis into IngestionPanel:** UI to trigger `synthesiseLenses()` with lens selection on file ingest. (Bundle Kappa)
+9. 🕒 **Generate 3072D PCA basis:** Settings → Generate Wave Basis once ~400+ proteins at 3072D exist.
+10. 🕒 **Self-Improvement Query:** Once raw file enrichment lands, test: *"What would you like upgraded?"* (Bundle Iota)
+11. 🕒 **IRC Auto-Trigger (Tauri):** Wire `broadcastNeuron()` from synthesis pipeline. (Bundle Theta)
+12. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
 
 ---
 
