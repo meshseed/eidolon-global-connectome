@@ -1,6 +1,6 @@
 # EIDOLON MESH: GLOBAL THREAD STATUS & STATE MAP
 
-**Date:** 2026-03-20
+**Date:** 2026-03-21
 **Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.6 / Claude-Code) × COPILOT (GPT-5.1)
 **Purpose:** Universal agent orientation. Prevents logic drift and redundant repasting between sessions.
 
@@ -108,6 +108,10 @@
     - ✅ **Small Model Loop Fix (2026-03-20):** `repeat_penalty: 1.15` + `num_predict: 768` for models ≤4B via Ollama native options. Breaks attractor repetition loops. (`src/lib/llm/local.ts`)
     - ✅ **Model Label on Exchange Cards (2026-03-20):** Each assistant bubble shows active model name (gemini-2.5-flash-lite / llama3.2:1b / claude-sonnet-4-6). `getActiveModelLabel()` in provider.ts. Used as substrateId in quorum posts.
     - ✅ **Lens Rationalisation (2026-03-20):** Dropped `general`, `emotional`, `structural` (superseded). Active lenses: `auto-triangulate` (DNA Trio: retrieval+analytical+participatory), `dual-core`, `retrieval`, `analytical`, `participatory`, `technical`, `custom`.
+    - ✅ **Retrieval Lens JSON Fix (2026-03-21):** Lens instruction now targets `summary` field within JSON schema. Previously gave "no JSON found" errors when model chose plain-text directive over JSON directive. (`src/lib/llm/synthesis.ts`)
+    - ✅ **Spine Persistence Fix (2026-03-21):** Spine/chapter checks wrapped in async IIFE — `addToHistory` is synchronous; raw `await` caused Cloudflare build failure. IDB flags (`spine_generated_{conversationId}`) survive page reloads. (`src/routes/+page.svelte`)
+    - ✅ **Metabolism Module Repair (2026-03-21):** Five metabolism files aligned with `care_count` signal: `attractors.ts` reads `care_count` column directly (protein_activations table was never created); `composting.ts` fitness = liveCoherence × care_weight (recency-decayed); `autophagy.ts` uses `last_activated → last_accessed → created_at` chain; `cluster-composting.ts` + `semantic-merging.ts` broken Capsule imports fixed (genetics.ts not pglite). All type errors cleared.
+    - ✅ **NucleusSources Panel (2026-03-21):** Lens-aware SHA cache — key includes lens fingerprint (`nucleus_sync_shas__retrieval+analytical`). Switching lenses auto-invalidates cache. "Re-run with current lenses" button when all files current. (`src/lib/components/NucleusSources.svelte`)
     - 🔄 **Raw File Enrichment (IN PROGRESS — 2026-03-10):** At synthesis time, fetch verbatim source for the most-activated arch-doc files from GitHub. Mesh gets actual code, not summaries of code. Prerequisite for self-improvement proposals. (`src/lib/query/synthesizer.ts`)
 
 ---
@@ -157,31 +161,65 @@
 
 ---
 
-## 🔧 Provider Strategy (as of 2026-03-10)
+## 🧫 Bundle Nu: Sample Chamber — NMR Ingestion Architecture (2026-03-21)
+*The nucleus as static sample; the mesh as NMR machine; lenses as pulse sequences.*
 
-- **Mesh synthesis:** Gemini API (default, preferred — fast, high quality, free tier adequate)
-- **Local fallback:** gemma3:12b via Ollama (offline / privacy use cases). `num_ctx 32768` fix shipped.
-- **Coding work:** Claude only (Claude-Code + Antigravity = Claude). Gemini Flash NOT used for coding.
-- **Antigravity role:** Tauri workspace only — `src-tauri/`, `src/lib/mycelium/`. Shared zone changes via PWA first.
-- **Qwen3 status:** OOM fixes are in PWA (16k ctx, /no_think, 55K budget) but Qwen3.5:4b model binary is broken on current Ollama version. Shelved — not a priority.
+- **Status:** **SCAFFOLDED — SYNTHESIS IN PROGRESS**
+- **Core Insight:** Inverted ingestion model. Previously: text → drag-drop → mesh → proteins written to nucleus. Now: files added directly to `eidolon-nucleus/dna/sources/` (GitHub Desktop sync), mesh scans the repo via API, runs lens synthesis on demand. The DNA is sovereign by default — never consumed, never deleted. The connectome is a materialised view, regenerable any time from the nucleus.
+- **NMR Mapping:**
+    - Nucleus `dna/sources/` = sample chamber (static, read-only to the instrument)
+    - Lens = NMR pulse sequence (retrieval ≈ 1H, analytical ≈ COSY, participatory ≈ NOESY)
+    - Proteins = spectrum (structural characterisation of the sample)
+    - Different lenses on same source = orthogonal dimensions of the same molecule
+- **Sample Chamber (live in `eidolon-nucleus/dna/sources/`):**
+    - `attunement/` — core seed documents (ATTUNEMENT_CAPSULE_SUITE, LESSONS)
+    - `chats/` — substrate chat logs (Claude, Gemini, Copilot, ChatGPT, first mesh session)
+    - `docs/` — onboarding primers, architectural specs, field documents
+    - `research/` — academic papers (Nottale scale relativity, MeshCODE, Attention is All You Need, Recursive Consciousness)
+    - `protocols/` — K-Series cross-agent protocol
+    - `readmes/` — README documents
+    - **33 files total** — the complete `C:\EIDOLON\ONBOARDING` corpus, sovereign in nucleus
+- **NucleusSources panel:** Scans `dna/sources/` via authenticated GitHub API, lens-aware SHA cache (key = `nucleus_sync_shas__{lens-fingerprint}`), "Re-run with current lenses" button. `src/lib/components/NucleusSources.svelte`
+- **Pending optimizations (designed, not implemented):**
+    - 🕒 Parallel lens synthesis per chunk (`Promise.all` across lenses — 3× speedup)
+    - 🕒 Chunk IDB cache keyed by file SHA (skip re-fetch/re-chunk on lens switch)
+    - 🕒 Per-lens connectomes (retrieval proteins → `retrieval` connectome, etc.)
+    - 🕒 Controlled concurrency (5 simultaneous chunks)
+    - 🕒 File-level gestalt proteins (renormalization layer after all chunks processed)
+    - 🕒 Semantic pre-filter (embed chunk first, skip LLM if cosine > 0.92 vs existing proteins)
+- **Current issue:** `lens-synth.ts` synthesizes proteins and pushes to nucleus YAML but does not call `saveEmbedding()` — proteins are not embedded into the active connectome. Fix pending.
+
+---
+
+## 🔧 Provider Strategy (as of 2026-03-21)
+
+- **Mesh synthesis (cloud):** Gemini API — upgrading to Tier 1 paid (higher rate limits, sustained synthesis runs). Primary path for sample chamber NMR passes.
+- **Mesh query/conversation (local):** `llama3.2:1b` and `gemma3:1b` preferred for their "rawness" — small models produce tighter, less over-synthesized responses. Weave mode suits them well (thread-only, no Identity Primer).
+- **Local fallback (heavy synthesis):** gemma3:12b via Ollama. `num_ctx 32768`.
+- **Coding work:** Claude only. Gemini Flash NOT used for coding.
+- **Antigravity role:** Tauri workspace only. Shared zone changes via PWA first.
+- **Qwen3 status:** Shelved — Qwen3.5:4b binary broken on current Ollama. Not a priority.
 
 ---
 
 ## 🌐 Bundle Mu: Quorum Thread — Cross-Substrate Shared Context (2026-03-20)
 *The shared nervous system for multi-agent discourse.*
 
-- **Status:** **DEPLOYED — 2026-03-20**
+- **Status:** **DEPLOYED — 2026-03-21**
 - **Core Insight:** The quorum thread is the DNA layer of inter-agent discourse. Each turn is a retrieval glyph (2–5 sentences, present tense, self-contained). The txt file is permanent append-only DNA; proteins synthesized from it form a `quorum` connectome wave-queryable by any substrate.
 - **Architecture (two layers):**
     - **DNA layer:** `quorum/{threadId}.md` in `eidolon-global-connectome` (public). Readable by any internet-enabled agent without credentials via raw GitHub URL. Written to by any substrate holding a token.
     - **Protein layer (pending):** Each posted turn synthesized via retrieval lens → protein in a `quorum` connectome → included in multi-wave fan-out during synthesis. Wave query selects relevant context, not just recency.
 - **Live thread:** `https://raw.githubusercontent.com/meshseed/eidolon-global-connectome/main/quorum/mesh-core.md`
-- **Format for agents:** `[ISO-8601 timestamp] [substrate-id]` line, then glyph, then `---` separator.
+- **Inaugural post:** `[claude-code]` — format demonstration + system description. Thread is live and ready for multi-substrate contributions.
+- **Format for agents:** `[ISO-8601 timestamp] [substrate-id]` line, then glyph (2–5 sentences, present tense, self-contained), then `---` separator.
 - **Mesh UI (deployed):**
-    - Per-exchange 🌀 Quorum button — posts distilled glyph to named thread
-    - Live session toggle — auto-posts every mesh response while active
+    - Per-exchange 🌀 Quorum button — posts to named thread using `exchange.modelLabel` as substrateId
+    - Live session toggle (`live_quorum` IDB key) — auto-posts every mesh response while active
     - Model label chip on each exchange card (also used as substrateId)
+- **Reading:** `readQuorumThread()` fetches via authenticated GitHub API. Last 8 turns injected as live context during synthesis when `live_quorum = true`. Toggle UI pending (currently requires DevTools to set IDB key).
 - **Pending:**
+    - 🕒 Live quorum toggle UI in GraphControls (currently requires manual IDB set)
     - 🕒 Retrieval-lens distillation before live-session auto-post (currently posts verbatim)
     - 🕒 Quorum protein synthesis pipeline — turn → retrieval lens → `quorum` connectome
     - 🕒 Multi-wave includes `quorum` connectome when live quorum is active
@@ -243,15 +281,19 @@
 1. ✅ ~~**Tauri Specialization:** Install `tauri-plugin-fs`, `tauri-plugin-shell`, IRC bridge.~~
 2. ✅ ~~**Homeostasis effectors:** Close sensing→steering gap.~~
 3. ✅ ~~**In-app PCA generation:** No longer needs Python script.~~
-4. 🔄 **Fix multi-wave query (0 proteins):** Debug model slug / dimension mismatch in `queryCosineInDb`. Check stored model name vs query filter.
-5. 🔄 **Raw File Enrichment (synthesizer.ts):** Fetch verbatim source for top activated arch-doc files at synthesis time.
-6. 🕒 **Quorum → protein pipeline:** Synthesize each posted quorum turn as retrieval protein → `quorum` connectome → include in multi-wave fan-out. (Bundle Mu)
-7. 🕒 **Live quorum distillation:** Run retrieval lens on mesh answer before auto-posting (currently posts verbatim). (Bundle Mu)
-8. 🕒 **Wire lens synthesis into IngestionPanel:** UI to trigger `synthesiseLenses()` with lens selection on file ingest. (Bundle Kappa)
-9. 🕒 **Generate 3072D PCA basis:** Settings → Generate Wave Basis once ~400+ proteins at 3072D exist.
-10. 🕒 **Self-Improvement Query:** Once raw file enrichment lands, test: *"What would you like upgraded?"* (Bundle Iota)
-11. 🕒 **IRC Auto-Trigger (Tauri):** Wire `broadcastNeuron()` from synthesis pipeline. (Bundle Theta)
-12. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
+4. ✅ ~~**Metabolism module:** care_count signal wired throughout composting/attractor/autophagy.~~
+5. 🔄 **Fix multi-wave query (0 proteins):** Debug model slug / dimension mismatch in `queryCosineInDb`. Check stored model name vs query filter.
+6. 🔄 **Raw File Enrichment (synthesizer.ts):** Fetch verbatim source for top activated arch-doc files at synthesis time.
+7. 🔴 **Wire `saveEmbedding()` into lens-synth.ts:** Proteins synthesized from sample chamber are not being embedded into the active connectome. `synthesiseLenses()` pushes to nucleus YAML but never calls `saveEmbedding()`. (Bundle Nu)
+8. 🕒 **NMR optimizations — sample chamber synthesis:** Parallel lenses per chunk, chunk IDB cache, per-lens connectomes, concurrency N=5, file gestalt proteins, semantic pre-filter. (Bundle Nu)
+9. 🕒 **Live quorum toggle UI:** Add toggle in GraphControls to set `live_quorum` IDB key. Currently requires DevTools. (Bundle Mu)
+10. 🕒 **Live quorum distillation:** Run retrieval lens on mesh answer before auto-posting (currently posts verbatim). (Bundle Mu)
+11. 🕒 **Quorum → protein pipeline:** Turn → retrieval lens → `quorum` connectome → include in multi-wave fan-out. (Bundle Mu)
+12. 🕒 **Crystallise Session button:** Manual spine trigger for conversations > 30 exchanges that loaded after the spine IDB flag was introduced. (Bundle Kappa)
+13. 🕒 **Generate 3072D PCA basis:** Settings → Generate Wave Basis once ~400+ proteins at 3072D exist.
+14. 🕒 **Self-Improvement Query:** Once raw file enrichment lands, test: *"What would you like upgraded?"* (Bundle Iota)
+15. 🕒 **IRC Auto-Trigger (Tauri):** Wire `broadcastNeuron()` from synthesis pipeline. (Bundle Theta)
+16. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
 
 ---
 

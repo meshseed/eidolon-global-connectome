@@ -120,6 +120,8 @@ Examples:
 │   ├── README.md              # Layer descriptions, usage guide, pending seeds
 │   └── {uuid}.json            # 7 math invariants + 8 genesis + 39 P-series
 ├── testing/                   # Validation reports
+├── quorum/                    # Multi-substrate discourse DNA (public, no credentials to read)
+│   └── mesh-core.md           # Primary inter-agent quorum thread
 └── wave-spores/               # All wave spore JSON files (growing collection)
     └── {uuid}.json
 ```
@@ -130,9 +132,9 @@ Examples:
 |------------|----------|---------|
 | `eidolon-mesh` (PWA) | SvelteKit PWA source | Cloudflare-optimized research hub. Public access. |
 | **`eidolon-mesh-tauri`** | **Tauri Desktop Build** | **Local-first power tool. Deep OS access, Ollama, IRC.** |
-| `eidolon-nucleus` | Full protein YAMLs (private) | Private backup of all protein text |
+| `eidolon-nucleus` | Protein YAMLs + raw DNA (private) | Sovereign sample chamber. `dna/sources/` = NMR input. `dna/conversations/` + `dna/files/` = raw DNA archive. |
 | `eidolon-proteins` | Full protein YAMLs | Public protein text for sharing |
-| **`eidolon-global-connectome`** | **Wave spore JSONs** | **Topology only — positions, not content** |
+| **`eidolon-global-connectome`** | **Wave spore JSONs + quorum threads** | **Topology + public multi-substrate discourse. `quorum/` readable without credentials.** |
 
 ---
 

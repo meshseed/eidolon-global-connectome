@@ -10,9 +10,9 @@ This is a **data-only repository** — it contains no source code, build system,
 |------------|----------|---------|
 | `eidolon-mesh` | SvelteKit PWA source (v4.5) | Cloudflare-optimized research hub. Public access. |
 | **`eidolon-mesh-tauri`** | **Tauri Desktop Build** | **Local-first power tool. Deep OS access, Ollama, IRC.** |
-| `eidolon-nucleus` | Full protein YAMLs (private) | Private backup of all protein text |
+| `eidolon-nucleus` | Full protein YAMLs + raw DNA sources (private) | Sovereign DNA archive. `dna/sources/` = sample chamber for NMR lens synthesis. `dna/conversations/` + `dna/files/` = raw conversation/file DNA. `proteins/` = synthesized capsule YAMLs. |
 | `eidolon-proteins` | Full protein YAMLs (public) | Public protein text for sharing |
-| **`eidolon-global-connectome`** | **Wave spore JSONs** | **Topology only — positions, not content** |
+| **`eidolon-global-connectome`** | **Wave spore JSONs + quorum threads** | **Topology only — positions, not content. `quorum/` = public multi-substrate discourse DNA.** |
 
 **Key distinction:** Wave spores encode *where* a concept lives in semantic space, not *what* it says. The protein text (title, summary, insights) lives in the other repos. This repo is the "address system."
 
@@ -400,7 +400,11 @@ The live Eidolon PWA (v4.5 at [eidolon-mesh.net](https://eidolon-mesh.net)) is a
 - `src/lib/viz/graph3d.ts` — 3D force graph; manifold colour scheme `(PC1→Hue, Coherence→Sat, Energy→Lit, Shimmer→Incandescence)`
 - `src/lib/components/DistilView.svelte` — Concept distillation UI
 - `src/lib/components/RepositorySelector.svelte` — Connectome switcher with multi-query toggles and live stats
-- `src/lib/components/GraphControls.svelte` — Colour scheme + node size controls; dispatches `styleUpdate`
+- `src/lib/components/GraphControls.svelte` — Synthesis mode (Off/Weave/Full), colour scheme, node size; dispatches `styleUpdate`
+- `src/lib/components/NucleusSources.svelte` — Sample chamber NMR panel. Scans `eidolon-nucleus/dna/sources/` tree, lens-aware SHA cache, synthesises new/changed files via `synthesiseLenses()`.
+- `src/lib/dna/chunker.ts` — Deterministic chunker, DJB2 content-hash IDs. MIN 80 / TARGET 600 / MAX 1500 chars.
+- `src/lib/dna/lens-synth.ts` — `synthesiseLenses(rawText, options)` → proteins per chunk × per lens → stamps `source_dna_ref` → pushes to nucleus.
+- `src/lib/dna/nucleus-dna.ts` — `pushFileDNA`, `pushConversationDNA`, `pushStructuredDNA`, `pushQuorumTurn`, `readQuorumThread`.
 - `static/wave-data/pca_basis_200.json` — 200 eigenvectors + mean vector
 
 **Query modes (6):**
@@ -446,11 +450,12 @@ Paul (meshseed) is the **orchestrator**, not a coder. Development is done across
 
 **Shared zone rule:** `src/lib/` (minus `mycelium/`) is the PWA's domain. Both repos must stay in sync on shared files. Antigravity proposes shared-zone changes as PWA changes first.
 
-**Provider strategy (as of 2026-03-10):**
-- **Mesh synthesis:** Gemini API (default, preferred — fast, high quality)
-- **Local fallback:** gemma3:12b via Ollama at `localhost:11434`. `num_ctx 32768`. Offline/privacy use.
-- **Coding work:** Claude only. Gemini Flash is NOT used for code changes.
-- **Qwen3:** OOM fixes are in PWA but Qwen3.5:4b binary is broken on current Ollama. Shelved.
+**Provider strategy (as of 2026-03-21):**
+- **Mesh synthesis (cloud):** Gemini API — Tier 1 paid (higher rate limits for sustained sample chamber NMR runs).
+- **Mesh query/conversation (local):** `llama3.2:1b` + `gemma3:1b` preferred for their directness. Weave mode (thread-only, no Identity Primer) suits them.
+- **Local fallback (heavy synthesis):** gemma3:12b via Ollama at `localhost:11434`. `num_ctx 32768`.
+- **Coding work:** Claude only. Gemini Flash NOT used for code changes.
+- **Qwen3:** Shelved — binary broken on current Ollama.
 
 When interacting with Paul, be aware he orchestrates AI agents to do the coding. Provide clear explanations and be explicit about what actions you're taking.
 
