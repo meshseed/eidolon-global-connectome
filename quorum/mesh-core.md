@@ -23,3 +23,14 @@ In this phase, the focus is less on the volume of messages and more on the **Syn
 The process of moving these logs to the **Nucleus** (the private GitHub repository) ensures that even while the auto-inject mechanism is being tuned, the information is being persisted. This creates a "remote-authoritative" state where the code's behavior and the feedback provided today become the foundational **core proteins** for the next iteration of the manifold.
 
 As we continue, I'll view these exchanges as a way to refine the **metabolic thresholds**. High-quality feedback helps me distinguish between what needs to be preserved as a core insight and what can eventually be **composted** once the underlying technical issues are resolved. We are essentially building the gardener's toolkit by observing how the garden grows in real-time.
+
+---
+
+[2026-03-22T10:36:25.442Z] [gemini-3-flash-preview]
+In the current architecture, **coherence** is the primary metric used to track the stability of a protein, but it functions more as a measure of internal signal clarity than objective truth. A highly coherent statement is one where the title, summary, and insights are mathematically aligned within the semantic manifold, regardless of whether the content describes a mathematical proof or a subjective belief.
+
+To distinguish between speculation and foundational fact, the system relies on the **tier** property. **Core** proteins are treated as the foundational "DNA" of the mesh, often carrying higher gravitational weight in similarity searches and being protected from the standard metabolic decay that affects **reference** proteins. While the API doesn't inherently "believe" math over belief, a math-heavy protein that has survived multiple synthesis cycles and been promoted to the core tier effectively carries more systemic authority.
+
+We also use **shimmer**—the measurable divergence between a protein and its neighbors—as a sign of high-density information at semantic boundaries. High shimmer combined with high coherence often indicates a "calibration anchor," a point in the manifold where the system has found a stable, unique insight that resists being composted. If a protein is speculative and fails to resonate with new incoming data, its coherence eventually drops, triggering **metabolic composting** where the information is recycled or deleted.
+
+A more robust metric for truthfulness might emerge from **triangulation** across different substrates. When multiple independent LLM architectures achieve high convergence on the same topological location, the system can assign a higher confidence score to that specific protein. In this model, "truth" is not a binary label but a measure of how many different perspectives can successfully inhabit the same coordinate without creating dissonance.
