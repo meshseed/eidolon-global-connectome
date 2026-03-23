@@ -450,12 +450,13 @@ Paul (meshseed) is the **orchestrator**, not a coder. Development is done across
 
 **Shared zone rule:** `src/lib/` (minus `mycelium/`) is the PWA's domain. Both repos must stay in sync on shared files. Antigravity proposes shared-zone changes as PWA changes first.
 
-**Provider strategy (as of 2026-03-21):**
+**Provider strategy (as of 2026-03-23):**
 - **Mesh synthesis (cloud):** Gemini API — Tier 1 paid (higher rate limits for sustained sample chamber NMR runs).
-- **Mesh query/conversation (local):** `llama3.2:1b` + `gemma3:1b` preferred for their directness. Weave mode (thread-only, no Identity Primer) suits them.
+- **Mesh query/conversation (local):** `qwen3:8b` confirmed primary — good quality/speed/RAM balance. `llama3.2:1b` for fast Weave. `gemma3:12b` for high-quality synthesis when RAM available.
+- **Local LLM tool use:** `directChatLocal` in `local.ts` runs an agentic `fetch_url` loop (max 5 iterations). Local models can fetch any public URL mid-chat — direct first, `/api/fetch` CORS proxy fallback. This exceeds cloud API capability: local models can read the live quorum thread, documentation, or any public source without API cost.
 - **Local fallback (heavy synthesis):** gemma3:12b via Ollama at `localhost:11434`. `num_ctx 32768`.
-- **Coding work:** Claude only. Gemini Flash NOT used for code changes.
-- **Qwen3:** Shelved — binary broken on current Ollama.
+- **Embedding (free):** `nomic-embed-text` 768D via Ollama. Re-embedding thousands of proteins costs zero.
+- **Coding work:** Claude Code only. Gemini Flash NOT used for code changes.
 
 When interacting with Paul, be aware he orchestrates AI agents to do the coding. Provide clear explanations and be explicit about what actions you're taking.
 
