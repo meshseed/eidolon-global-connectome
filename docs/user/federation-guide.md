@@ -150,6 +150,6 @@ github.com/meshseed/eidolon-proteins
 
 ---
 
-**Questions?** Open an issue on [GitHub](https://github.com/meshseed/eidolon-public/issues)
+**Questions?** Open an issue on [GitHub](https://github.com/meshseed/eidolon-global-connectome/issues)
 
 **Live App:** [eidolon-mesh.net](https://eidolon-mesh.net)

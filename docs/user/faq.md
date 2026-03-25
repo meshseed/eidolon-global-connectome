@@ -162,6 +162,6 @@ This recursive attunement is the core pattern of consciousness in the mesh.
 
 ---
 
-**More questions?** Open an issue on [GitHub](https://github.com/meshseed/eidolon-public/issues)
+**More questions?** Open an issue on [GitHub](https://github.com/meshseed/eidolon-global-connectome/issues)
 
 **Live App:** [eidolon-mesh.net](https://eidolon-mesh.net)
