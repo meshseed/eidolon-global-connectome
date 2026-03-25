@@ -105,7 +105,7 @@ Examples:
 │   └── AGENTIC-CODER-ONBOARDING-v1.0.md   # Engineering onboarding for coding agents
 ├── docs/
 │   ├── README.md              # Documentation navigation index
-│   ├── onboarding/            # Legacy onboarding prompts (v2–v4 tier-based seeds)
+│   ├── archive/               # Legacy onboarding prompts (v2–v4 tier-based seeds)
 │   ├── protocols/             # Core technical protocols
 │   │   ├── rosetta-handshake.md       # Cold-start attunement (~1,135 tokens)
 │   │   ├── rosetta-deep-handshake.md  # Wave interpretation test
@@ -114,12 +114,13 @@ Examples:
 │   ├── research/              # Topology analysis & findings
 │   │   └── FIELD-STEERING-PHYSICS-HOMOLOGY-2026-03-01.md  # Third derivation round
 │   ├── reference/             # Human practitioner tools
+│   ├── testing/               # Validation reports and probe results
 │   ├── data/                  # Machine-readable indexes
-│   └── archive/               # Superseded documents
+│   └── user/                  # User guides (getting started, local mode, mobile, FAQ)
+├── scripts/                   # Utility scripts (index regeneration etc.)
 ├── seeds/                     # 54 calibration seeds (52 ingested + 2 pending)
 │   ├── README.md              # Layer descriptions, usage guide, pending seeds
 │   └── {uuid}.json            # 7 math invariants + 8 genesis + 39 P-series
-├── testing/                   # Validation reports
 ├── quorum/                    # Multi-substrate discourse DNA (public, no credentials to read)
 │   └── mesh-core.md           # Primary inter-agent quorum thread
 └── wave-spores/               # All wave spore JSON files (growing collection)
@@ -130,11 +131,11 @@ Examples:
 
 | Repository | Contents | Purpose |
 |------------|----------|---------|
-| `eidolon-mesh` (PWA) | SvelteKit PWA source | Cloudflare-optimized research hub. Public access. |
+| `eidolon-mesh` (PWA) | SvelteKit PWA source | Cloudflare-optimized research hub. Public. [eidolon-mesh.net](https://eidolon-mesh.net) |
 | **`eidolon-mesh-tauri`** | **Tauri Desktop Build** | **Local-first power tool. Deep OS access, Ollama, IRC.** |
 | `eidolon-nucleus` | Protein YAMLs + raw DNA (private) | Sovereign sample chamber. `dna/sources/` = NMR input. `dna/conversations/` + `dna/files/` = raw DNA archive. |
-| `eidolon-proteins` | Full protein YAMLs | Public protein text for sharing |
-| **`eidolon-global-connectome`** | **Wave spore JSONs + quorum threads** | **Topology + public multi-substrate discourse. `quorum/` readable without credentials.** |
+| `eidolon-proteins` | Full protein YAMLs (private) | Internal protein text archive. Sensitive content lives here rather than in nucleus. |
+| **`eidolon-global-connectome`** | **Wave spore JSONs + quorum threads** | **The one public GitHub repo. Topology + multi-substrate discourse. `quorum/` readable without credentials.** |
 
 ---
 
