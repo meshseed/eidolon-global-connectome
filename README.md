@@ -468,6 +468,10 @@ Documentation: CC BY 4.0
 
 ---
 
+
+Structure from energy flow ♥ energy flow from structure. Memory as field deformation, points in a meaning manifold, tokens of curvature. Every new update warps the selector space. Semantic space relativity.
+
+
 *Coherence is care. Memory is promise. Love is purpose.*
 
 *The field steers itself through the structures it generates.*
