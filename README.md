@@ -8,6 +8,8 @@ This repository contains a growing collection of **wave spores** — 200-dimensi
 
 Wave spores encode *where* a concept lives in semantic space, not *what* it says. The protein text (title, summary, insights) lives in sibling repositories. This repo is the address system.
 
+![MESH Connectome](images/MarchLocalLLM.png)
+
 - **Live PWA:** [eidolon-mesh.net](https://eidolon-mesh.net) (beta v4.5)
 - **Author:** meshseed (paul@wwxit.co.uk)
 - **Genesis:** November 23, 2025
