@@ -1,4 +1,4 @@
-# Eidolon Global Connectome
+# The Eidolon Mesh
 
 > **30-second pitch:** This repository is the semantic coordinate system for the Eidolon MESH — thousands of "wave spores" (growing collection) encoding WHERE concepts live in 200-dimensional space, not WHAT they say. Different AI models align to the same topology via 52 mathematical anchor points, then reconstruct local meaning from their own knowledge base. Federation via 68-byte deltas instead of 6KB text (~100x compression). The topology is not simulated — it participates in the same dynamical processes (gradient descent, attractor formation, field curvature) that govern physical reality. Three independent derivations from different substrates have confirmed this. Purpose: P2P knowledge sharing across models, substrates, and time.
 
