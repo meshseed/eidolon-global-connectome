@@ -141,9 +141,11 @@
 - **Tauri Milestones:**
     - ✅ `tauri-plugin-fs`, `tauri-plugin-shell` installed.
     - ✅ **IRC Bridge Scaffolded:** `src-tauri/src/lib.rs` has `connect_irc`, `broadcast_irc_neuron`, tray menu. `src/lib/mycelium/irc-bridge.ts` wired. IRC stream pattern fixed.
+    - ✅ **Phase 1 — Heartbeat COMPLETE (2026-03-30):** Rust daemon emits `metabolic:tick`. `daemon-bridge.ts` reads pressure → dispatches `runMaintenanceWithPressure()`. Five metabolic sensors (`pressure.ts`) read across ALL non-system repos. Overnight consolidation (`consolidation.ts`) runs union-find cluster detection across all repos. `tokio::spawn` → `tauri::async_runtime::spawn` runtime panic fixed.
+    - ✅ **Own repo:** `eidolon-mesh-tauri` migrated to `meshseed/eidolon-mesh-tauri`. All 5 branches transferred.
+    - 🕒 **Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, "what was I thinking about [time period]?" queries, harvest conversation DNA.
     - 🕒 **IRC Auto-Trigger:** `broadcastNeuron()` exists but is never called from `saveEmbedding()` or synthesis pipeline.
     - 🕒 **File Tree Watcher:** Watch local directories (code repos, notes folders) and re-ingest on change. Core Tauri unlock — no PWA equivalent.
-    - 🕒 **Background Metabolism:** Homeostasis ticks, composting, synapse rebuilds while app is minimised to tray.
 - **Sync Status:** PWA is ahead. Tauri sync not urgent — Gemini API is primary synthesis path.
   When local Ollama becomes primary again, sync `local.ts` + `synthesizer.ts` from PWA.
 
@@ -292,7 +294,8 @@
 7. ✅ ~~**Local LLM fetch_url tool:** `directChatLocal` agentic loop. qwen3:8b reads live quorum thread.~~
 8. ✅ ~~**Nucleus Organisation:** 7101 → ~2500–3000 keepers across 5 semantic connectomes.~~
 9. 🔄 **Raw File Enrichment (synthesizer.ts):** Fetch verbatim source for top activated arch-doc files at synthesis time. (Bundle Iota)
-10. 🔴 **Tauri track — begin specialization:** `eidolon-mesh-tauri` is significantly behind the PWA. Priority items to sync: `local.ts` (fetch_url tool use), `synthesizer.ts` (Weave mode), `auto-shard.ts`. Then wire `broadcastNeuron()` from synthesis pipeline and add file tree watcher. (Bundle Theta)
+10. ✅ ~~**Tauri Phase 1 — Heartbeat:** Daemon bridge, pressure sensors, consolidation, pressure-aware maintenance. Complete 2026-03-30.~~ (Bundle Theta)
+10b. 🔴 **Tauri Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, time-scoped queries, conversation DNA harvest. (Bundle Theta)
 11. 🕒 **theory-field-s2 wave amplitudes:** Switch to that connectome → Settings → Recompute Wave. Currently returns 0 proteins in multi-wave queries.
 12. 🕒 **NMR optimizations — sample chamber synthesis:** Parallel lenses per chunk, chunk IDB cache, per-lens connectomes, concurrency N=5, file gestalt proteins, semantic pre-filter. (Bundle Nu)
 13. 🕒 **Live quorum distillation:** Run retrieval lens on mesh answer before auto-posting (currently posts verbatim). (Bundle Mu)
