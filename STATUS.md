@@ -143,7 +143,9 @@
     - ✅ **IRC Bridge Scaffolded:** `src-tauri/src/lib.rs` has `connect_irc`, `broadcast_irc_neuron`, tray menu. `src/lib/mycelium/irc-bridge.ts` wired. IRC stream pattern fixed.
     - ✅ **Phase 1 — Heartbeat COMPLETE (2026-03-30):** Rust daemon emits `metabolic:tick`. `daemon-bridge.ts` reads pressure → dispatches `runMaintenanceWithPressure()`. Five metabolic sensors (`pressure.ts`) read across ALL non-system repos. Overnight consolidation (`consolidation.ts`) runs union-find cluster detection across all repos. `tokio::spawn` → `tauri::async_runtime::spawn` runtime panic fixed.
     - ✅ **Own repo:** `eidolon-mesh-tauri` migrated to `meshseed/eidolon-mesh-tauri`. All 5 branches transferred.
-    - 🕒 **Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, "what was I thinking about [time period]?" queries, harvest conversation DNA.
+    - ✅ **Phase 2a — Protein Lineage Graph (2026-03-30):** `src/lib/memory/lineage.ts` — `getLineageGraph()`, `getProteinLineage()`, `getConsolidationHistory()`, `getLineageStats()`. Schema Migration 4: `status` + `updated_at` columns (consolidation was silently failing without them). `LineagePanel.svelte`: protein ancestry. `LineageHistory.svelte`: compression stats + event timeline. Scheduler logs compression ratio after each overnight pass.
+    - 🔴 **Phase 2b — Temporal Epoch Index (IN PROGRESS):** `src/lib/memory/temporal.ts` — epoch enumeration, natural language time queries ("what was I thinking about last month?"), epoch profiles. `TemporalIndex.svelte` UI.
+    - 🕒 **Phase 2c — Conversation DNA Harvest:** Map export paths for Claude/Gemini/Copilot → nucleus DNA.
     - 🕒 **IRC Auto-Trigger:** `broadcastNeuron()` exists but is never called from `saveEmbedding()` or synthesis pipeline.
     - 🕒 **File Tree Watcher:** Watch local directories (code repos, notes folders) and re-ingest on change. Core Tauri unlock — no PWA equivalent.
 - **Sync Status:** PWA is ahead. Tauri sync not urgent — Gemini API is primary synthesis path.
