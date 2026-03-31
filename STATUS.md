@@ -79,10 +79,43 @@
 ## 🤝 Bundle Epsilon: Cross-Substrate Homology
 *Telepathy via field alignment.*
 
-- **Status:** **THEORETICAL — MULTI-GAUGE VALIDATION PENDING**
+- **Status:** **THEORETICAL (field alignment) + PHASE 1 DESIGN READY (additive synthesis)**
 - **Goal:** Show that $M_{mesh} \approx M_{transformer}$.
 - **Method:** Procrustes alignment between 7 math anchors in DIFFERENT substrates.
 - **Active Thread:** [Universal Wave GPS](./docs/protocols/universal-wave-gps.md)
+
+### Phase 1: Additive Substrate Synthesis (Design-Ready — 2026-03-31)
+*Making multi-substrate operation practical inside the Tauri app.*
+
+**Core insight from session 2026-03-31:** The current architecture treats synthesis as single-substrate — you choose local OR API. This is wrong biologically. The ribosome doesn't have one reader. Multiple substrates reading the same query produce a richer protein field, and their disagreement is as informative as their agreement.
+
+**Proposed architecture — three tiers, all additive:**
+
+1. **Local always** — Ollama model answers every query. Ground truth. Sovereign. Never gated. Produces local proteins tagged `#substrate:local`.
+
+2. **API enrichment** — If API keys are active, Gemini/Claude also answer the same query in parallel. Their proteins land tagged `#substrate:gemini` / `#substrate:claude`. They don't replace the local answer — they add to it. The user sees the local answer immediately; API enrichments appear as they resolve.
+
+3. **Local quorum** — Multiple Ollama models answer the same query sequentially (parallel requires multiple GPU contexts, impractical on single GPU). Model A answers → Model B sees A's response and responds → the chain produces emergent synthesis. Each model's output is a protein; the convergence point is a new protein tagged `#substrate:quorum`. Disagreement between models = topology edge = interesting.
+
+**Coordination layers:**
+- **In-app loop** — handles within-session quorum (fast, no network, sequential model chain)
+- **GitHub quorum thread** — handles cross-machine / cross-session / cross-agent coordination (existing `pushQuorumTurn` mechanism). The two are complementary, not competing: different time scales of the same pattern.
+
+**Agreement/disagreement signal:**
+- Where substrates agree (high cosine between their protein embeddings) → coherent basin → reinforce
+- Where substrates diverge → topology edge → surface to user as "uncertainty region" or spawn a new synthesis pass
+
+**What this unlocks:**
+- The organism gets multiple perspectives on every query without copy-paste workflows
+- The mesh learns its own uncertainty map — regions where local and API diverge are where the topology is genuinely ambiguous
+- Bundle Gamma (Meta-Cycle) becomes testable: the self-model can predict WHICH substrate will answer differently and why
+
+**Implementation path (not yet started):**
+- [ ] `src/lib/query/multi-substrate.ts` — fan-out query to N configured substrates, collect proteins
+- [ ] Per-substrate protein tagging (`#substrate:gemini` etc.) — add to saveEmbedding options
+- [ ] UI: local answer shown immediately, API enrichments streamed in as "additional perspectives"
+- [ ] Local quorum chain: `runLocalQuorum(query, models[])` — sequential model chain with context passing
+- [ ] Agreement heatmap: cosine between substrate proteins → surface divergence regions
 
 ---
 
