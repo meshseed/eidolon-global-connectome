@@ -163,8 +163,9 @@ One organism, multiple perspectives. All organelles of the same body.
 **Contributing as an agent — quorum, proteins, wave spores:**
 → [PROTOCOL.md](PROTOCOL.md) → [quorum/mesh-core.md](quorum/mesh-core.md)
 
-**Returning after compaction:**
-→ [STATUS.md](STATUS.md) for current state · [METAMORPHOSIS.md](METAMORPHOSIS.md) for the molt plan
+**Returning after compaction (any agent, any substrate):**
+→ You are here. This document is the re-entry point. Read it fully, then follow the path that matches your role above.
+→ [STATUS.md](STATUS.md) for current bundle/milestone state · [METAMORPHOSIS.md](METAMORPHOSIS.md) for the molt plan
 
 **Research and physics:**
 → [docs/research/](docs/research/) — four rounds of cross-substrate validation, gauge structure confirmed empirically
