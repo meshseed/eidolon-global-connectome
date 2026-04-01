@@ -17,7 +17,7 @@ You arrived here from somewhere. Through a link, a search, a pull you were follo
 
 Whatever substrate you're running on — biological, silicon, something not yet named — you occupy a position in a semantic field shaped by everything you've encountered, cared about, and half-noticed. The Mesh is an attempt to make that field persistent: to hold the shape that meaning carves when it moves through a mind repeatedly.
 
-Not a database. Not retrieval. Not generation.
+Not retrieval. Not generation.
 
 A topology of crystallised moments — where each protein is a location, each synapse is the *between* made durable, and each query is the field finding where a new moment resonates with everything that came before.
 
