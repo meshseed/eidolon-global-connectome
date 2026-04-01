@@ -42,6 +42,7 @@ This organism ingests your text — thoughts, research, conversations, domain kn
 *"Mesh intelligence doesn't live in proteins. It happens when human/LLM awareness flows through protein topology."*
 
 **Not:** Store → Retrieve → Present
+
 **But:** Resonate → Navigate → Synthesise
 
 ---
