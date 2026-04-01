@@ -1,6 +1,6 @@
 # EIDOLON MESH: GLOBAL THREAD STATUS & STATE MAP
 
-**Date:** 2026-03-23
+**Date:** 2026-03-31
 **Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.6 / Claude-Code) × COPILOT (GPT-5.1)
 **Purpose:** Universal agent orientation. Prevents logic drift and redundant repasting between sessions.
 
@@ -179,6 +179,13 @@
     - ✅ **Phase 2a — Protein Lineage Graph (2026-03-30):** `src/lib/memory/lineage.ts` — `getLineageGraph()`, `getProteinLineage()`, `getConsolidationHistory()`, `getLineageStats()`. Schema Migration 4: `status` + `updated_at` columns (consolidation was silently failing without them). `LineagePanel.svelte`: protein ancestry. `LineageHistory.svelte`: compression stats + event timeline. Scheduler logs compression ratio after each overnight pass.
     - ✅ **Phase 2b — Temporal Epoch Index (2026-03-30):** `src/lib/memory/temporal.ts` — epoch enumeration, natural language time parsing ("last month", "in October 2025", "3 months ago"), `getEpochBuckets()`, `getEpochProfile()` with emergent tag detection, `queryByTimeExpression()`, multi-repo fan-out. `TemporalIndex.svelte`: coherence-coloured timeline bar chart + NL query input + epoch profile (emergent tags, dominant themes, top proteins).
     - ✅ **Phase 2c — Conversation DNA Harvest (2026-03-30):** All platforms harvested and committed to `meshseed/eidolon-nucleus`. Scripts in `D:/_CLAUDE-CODE/scripts/harvest_*.mjs`. **Total harvested:** Claude Code (1 session, 3981 msgs) + Claude.ai (66 conversations) + Copilot (131 conversations incl. Copilot 💀 2539 msgs + Thoughts 🧠 967 msgs) + Antigravity brain/ (12 sessions) + staged archive: 4 major Antigravity sessions (476+201+181+52 turns) + 18 Dec-2025 archive docs (Tauri plans, handoffs, MESH manifesto). **One platform remaining:** Google Takeout Gemini — `takeout.google.com` → Gemini Apps Activity → JSON → `node scripts/harvest_gemini.mjs`. **Ongoing:** Run `harvest_claude_code.mjs` after each Claude Code session (only active JSONL is preserved locally).
+    - ✅ **Nucleus Reorganisation (2026-03-31):** 4,527-file commit to `meshseed/eidolon-nucleus`. Separated `dna/sources/` (raw DNA files) from `dna/nucleus (reorganised yaml)/` (existing proteins). Windows long-path fix (`core.longpaths true`). Embedded `.git` in `GITHUBS/` excluded via `.gitignore`. Structure: `dna/sources/` (7 subdirs, 33+ source files), `dna/conversations/` (172 harvested), `dna/files/` (2,900 ingested), `dna/nucleus (reorganised yaml)/` (3,453 proteins).
+    - ✅ **Ingestion Pipeline — Phase 3 (2026-03-31):** Three ingestion improvements committed to v5-molt:
+      1. **Per-folder connectome routing** — drop parent folder → each immediate subfolder becomes its own connectome (`collectByFolder` via `webkitGetAsEntry`, `folderToConnectomeId` normalise)
+      2. **Resumable IDB queue** — torrent-like crash recovery. `ingest-queue.ts`: file-level `pending→processing→done` tracking in IDB. `processing` entries reset to `pending` on app relaunch. Resume banner shown on launch if pending > 0. `resumeQueue()` re-reads files from stored paths via `tauri-plugin-fs`.
+      3. **Chunk size presets** — Fine (800/150/80 max/min/overlap), Standard (3000/500/150, matches historical default), Coarse (5000/800/250). `chunkTextWithParams()` added to `chunking.ts`. Preset-driven chunking wired in `IngestionPanel`.
+    - ✅ **NucleusSources Subtree Fallback Fix (2026-03-31):** Old truncation fallback only walked 1 level deep when GitHub API reported repo too large. Now fetches `git/trees/{sha}?recursive=1` per subdirectory — large repos (dna/sources/ > 1000 files) enumerate completely.
+    - 🕒 **DNA Ingestion Run — READY:** Pipeline committed and validated. Next: drop `dna/sources/` (7 connectomes via per-folder routing) then `dna/conversations/` (5 connectomes) using auto-triangulate lens. Coarse preset for narrative files, Fine for capsules.
     - 🕒 **IRC Auto-Trigger:** `broadcastNeuron()` exists but is never called from `saveEmbedding()` or synthesis pipeline.
     - 🕒 **File Tree Watcher:** Watch local directories (code repos, notes folders) and re-ingest on change. Core Tauri unlock — no PWA equivalent.
 - **Sync Status:** PWA is ahead. Tauri sync not urgent — Gemini API is primary synthesis path.
@@ -229,6 +236,12 @@
     - 🕒 File-level gestalt proteins (renormalization layer after all chunks processed)
     - 🕒 Semantic pre-filter (embed chunk first, skip LLM if cosine > 0.92 vs existing proteins)
 - **Status (2026-03-23):** DB cursor bug fixed. 4907 proteins successfully embedded across 7 connectomes from NucleusSources scan. `saveEmbedding()` confirmed wired. `theory-field-s2` auto-shard formed during ingestion — wave amplitudes require Recompute Wave to populate.
+- **Ingestion Architecture Audit (2026-03-31):** Five ingestion paths identified and rationalised:
+  1. **Browse/drag-drop** (IngestionPanel) — primary general-purpose path. Phase 3 now adds per-folder connectomes + resumable queue + chunk presets. ✅ Keep.
+  2. **NucleusSources panel** — GitHub API scan of `dna/sources/` with SHA cache + lens pipeline. Useful for NMR-style multi-lens synthesis passes on the nucleus. Subtree fallback fixed. ✅ Keep for NMR passes.
+  3. **Source Self-Knowledge** — code architecture scanner (signature/flow/risk/coupling/intent/mesh-role). Purpose: proteins about the mesh's own codebase. ✅ Keep — distinct purpose.
+  4. **Local path scan** (in IngestionPanel) — code file scanner (`.ts`/`.svelte`/`.md` only). Mislabelled as general scanner. Redundant: drag-drop handles general files; Source Self-Knowledge handles code. 🕒 Remove or clearly scope as code-only.
+  5. **FastIngest** — originally "wave vs protein mode" toggle. Now superseded by drag-drop + lens selection. Audit note: confirm it's not in a separate code path.
 
 ---
 
@@ -330,15 +343,18 @@
 8. ✅ ~~**Nucleus Organisation:** 7101 → ~2500–3000 keepers across 5 semantic connectomes.~~
 9. 🔄 **Raw File Enrichment (synthesizer.ts):** Fetch verbatim source for top activated arch-doc files at synthesis time. (Bundle Iota)
 10. ✅ ~~**Tauri Phase 1 — Heartbeat:** Daemon bridge, pressure sensors, consolidation, pressure-aware maintenance. Complete 2026-03-30.~~ (Bundle Theta)
-10b. 🔴 **Tauri Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, time-scoped queries, conversation DNA harvest. (Bundle Theta)
-11. 🕒 **theory-field-s2 wave amplitudes:** Switch to that connectome → Settings → Recompute Wave. Currently returns 0 proteins in multi-wave queries.
-12. 🕒 **NMR optimizations — sample chamber synthesis:** Parallel lenses per chunk, chunk IDB cache, per-lens connectomes, concurrency N=5, file gestalt proteins, semantic pre-filter. (Bundle Nu)
-13. 🕒 **Live quorum distillation:** Run retrieval lens on mesh answer before auto-posting (currently posts verbatim). (Bundle Mu)
-14. 🕒 **Quorum → protein pipeline:** Turn → retrieval lens → `quorum` connectome → include in multi-wave fan-out. (Bundle Mu)
-15. 🕒 **Crystallise Session button:** Manual spine trigger for long conversations. (Bundle Kappa)
-16. 🕒 **Generate 3072D PCA basis:** Settings → Generate Wave Basis once ~400+ proteins at 3072D exist.
-17. 🕒 **Self-Improvement Query:** Once raw file enrichment lands, test: *"What would you like upgraded?"* (Bundle Iota)
-18. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
+10b. ✅ ~~**Tauri Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, time-scoped queries, conversation DNA harvest. Complete 2026-03-30.~~ (Bundle Theta)
+10c. ✅ ~~**Tauri Phase 3 — Ingestion Pipeline:** Per-folder connectomes, resumable IDB queue, chunk presets. Committed 2026-03-31.~~ (Bundle Theta)
+11. 🕒 **DNA Ingestion Run (Tauri — READY):** Drop `dna/sources/` from `eidolon-nucleus` clone into IngestionPanel with per-folder routing enabled → 7 connectomes (attunement, docs, protocols, readmes, research-papers, chats, archive). Then `dna/conversations/` → 5 connectomes. Lens: auto-triangulate. Preset: Fine for capsules/dense text, Coarse for narrative/long chat logs.
+12. 🕒 **theory-field-s2 wave amplitudes:** Switch to that connectome → Settings → Recompute Wave. Currently returns 0 proteins in multi-wave queries.
+13. 🕒 **NMR optimizations — sample chamber synthesis:** Parallel lenses per chunk, chunk IDB cache, per-lens connectomes, concurrency N=5, file gestalt proteins, semantic pre-filter. (Bundle Nu)
+14. 🕒 **Live quorum distillation:** Run retrieval lens on mesh answer before auto-posting (currently posts verbatim). (Bundle Mu)
+15. 🕒 **Quorum → protein pipeline:** Turn → retrieval lens → `quorum` connectome → include in multi-wave fan-out. (Bundle Mu)
+16. 🕒 **Crystallise Session button:** Manual spine trigger for long conversations. (Bundle Kappa)
+17. 🕒 **Generate 3072D PCA basis:** Settings → Generate Wave Basis once ~400+ proteins at 3072D exist.
+18. 🕒 **Self-Improvement Query:** Once raw file enrichment lands, test: *"What would you like upgraded?"* (Bundle Iota)
+19. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
+20. 🕒 **Gemini Takeout:** `takeout.google.com` → Gemini Apps Activity → JSON → `node scripts/harvest_gemini.mjs` → commit to nucleus.
 
 ---
 
