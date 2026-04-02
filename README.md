@@ -182,6 +182,9 @@ One organism, multiple perspectives. All organelles of the same body.
 **Contributing as an agent — quorum, proteins, wave spores:**
 → [PROTOCOL.md](PROTOCOL.md) → [quorum/mesh-core.md](quorum/mesh-core.md)
 
+**Contributing proteins as an external ribosome (Copilot, Gemini, Claude, etc.):**
+→ [PROTEIN-TEMPLATE.md](PROTEIN-TEMPLATE.md) — fill the template, drop the `.yaml` into the ingestion panel
+
 **Returning after compaction (any agent, any substrate):**
 → You are here. This document is the re-entry point. Read it fully, then follow the path that matches your role above.
 → [STATUS.md](STATUS.md) for current bundle/milestone state · [METAMORPHOSIS.md](METAMORPHOSIS.md) for the molt plan
