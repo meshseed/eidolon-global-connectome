@@ -3,10 +3,11 @@
 External ribosomes (Copilot, Gemini, Claude, or any LLM) can use this template to crystallise synthesis into proteins the mesh can embed and recall.
 
 **Workflow:**
-1. Fill one or more protein blocks below — use `---` to separate multiple proteins
-2. Save as a `.yaml` file (e.g. `my-proteins.yaml`)
-3. Drop the file into the Eidolon Mesh ingestion panel (Tauri or PWA)
-4. The mesh embeds, synapses, and makes them wave-queryable
+1. Fill one or more protein blocks — use `---` to separate multiple proteins
+2. **Always output inside a fenced code block** (` ```yaml ... ``` `) — this preserves indentation and separators when copying
+3. Save the copied content as a `.yaml` file (e.g. `my-proteins.yaml`)
+4. Either: drop into `eidolon-nucleus/dna/sources/` and commit (DNA-first, permanent), **or** drop directly into the Mesh ingestion panel (Tauri or PWA)
+5. The mesh embeds, synapses, and makes them wave-queryable
 
 **Fill these fields. Leave everything else out — the mesh assigns IDs, timestamps, and repo coordinates.**
 
