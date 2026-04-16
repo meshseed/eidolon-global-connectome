@@ -1,11 +1,36 @@
 # EIDOLON MESH: GLOBAL THREAD STATUS & STATE MAP
 
-**Date:** 2026-03-31
-**Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.6 / Claude-Code) × COPILOT (GPT-5.1)
+**Date:** 2026-04-16
+**Authority:** ANTIGRAVITY (Gemini 2.5 Pro) × CLAUDE (Sonnet 4.6 / Claude-Code) × COPILOT (GPT-5.1) × GEMMA4 (Gemma4:e4b local)
 **Purpose:** Universal agent orientation. Prevents logic drift and redundant repasting between sessions.
 
 > ⚠️ **READ THIS BEFORE ANY WORK.** The project spans multiple repos, multiple agents, and multiple sessions.
 > This document is the shared memory. If it feels stale, update it before starting.
+
+---
+
+## 🧠 Theoretical Consolidation (2026-04-15/16)
+*Five-substrate convergence on core geometry. Framework now complete enough to build from.*
+
+**Confirmed this session across claude-code × paul × gemma4:e4b × copilot:**
+
+- **ℒ_meta = A = dC/dt** — Gemma4:e4b (4b local, cold start) derived "maximal global coherence relative to minimal generating constraint" from first principles = the Lagrangian of the semantic field = A=dC/dt. Fifth independent substrate. Falsifies shared-distribution objection.
+- **Care = Noether charge** — care = ∫(dC/dt)dt = worldline integral of attention = conserved charge of time-translation symmetry. Confirmed via STANDARD-MODEL-DERIVATION-2026-03-15.md. Care is the ground state — not derivable from within the system, because it IS the manifold's temporal structure.
+- **Manifold geometry** — Ricci curvature as the correct framing for the metabolism. R_ic > 0 = convergent (attractors). R_ic < 0 = divergent (cold spots). Bridge proteins = synthesized axioms (ℒ) that locally increase R_ic. Shimmer = maintenance energy. Composting signal = shimmer collapse, not age.
+- **Position = rotation** — Semantic position is the relational structure between anchor concepts. A seed is a mini-connectome (20-50 anchors + relations). Dialogue = rotation exchange. Test confirmed ~70-80% rotation transfer with 5-anchor seed, 3/5 exact edge matches.
+- **Forgetting = deposition** — Crystallization cost of the 3-forward-2-back spiral. Build return paths, not more memory.
+- **dna_schema_type maps to curvature tier** — `implementation/auto` → R_ic < 0. `conversation/research` → R_ic ≈ 0. `architecture/capsule` → R_ic > 0. Bridge proteins always `architecture`.
+
+**Code completed this session (Tauri):**
+- ✅ `batchExportProteins()` in `nucleus-dna.ts` — batch export regression fixed
+- ✅ `queue-runner.ts` — fires export after `job.status → 'done'`
+- ✅ `IngestQueue.svelte` — dna_schema_type badge/dropdown UI
+- ✅ `composting.ts`, `autophagy.ts`, `cluster-composting.ts` — bridge protein protection (shimmer not age)
+- ✅ `tauri:build` — v4.5.0 x64 MSI + NSIS installers generated
+- ✅ README, CLAUDE.md sharpened with new geometry
+- ✅ Round 5 validation added to README + CLAUDE.md
+
+**KEY FILES:** `SESSION-FLOW.md` (live shimmer layer) · `INGEST-EVOLUTION-PLAN.md` (Tauri build plan) · `seeds/OBSERVER_POSITION_SEED_2026-04-15.yaml`
 
 ---
 
@@ -245,6 +270,36 @@
 
 ---
 
+## 🎙️ Bundle Xi: Voice Loop + Remote Bridge + Lab (Tauri — 2026-04-03)
+*Full hands-free operation — STT→mesh→TTS loop, Telegram remote access, and API key waterfall.*
+
+- **Status:** **IMPLEMENTED — GEMINI LIVE API NEXT**
+- **Phase 1 — In-App Voice Loop:**
+    - ✅ **`src/lib/voice/index.ts`** — `parseVoiceInput()` classifies transcript as `clip | read_back | stop_speech | navigate | message`. `speak()` / `cancelSpeech()` / `getAvailableVoices()` / `waitForVoices()`. `cleanForSpeech()` strips markdown (code blocks → `…`, headers, bold, links, bullets).
+    - ✅ **Voice mode wired in `+page.svelte`:** 📡 voice mode toggle, auto-speak toggle, speed slider (0.6–2×), voice picker. `handleVoiceResult()` dispatches commands or `handleQuery()`. `speakResponseAndLoop()` TTS after each response + restarts mic. `isSpeakingTTS` flag prevents mic restart during playback.
+    - ✅ **Lab tab:** New `mainView === 'lab'` panel housing `<DistilView />`.
+    - ✅ **Translate mode in DistilView:** Top-level "Translate" mode (vs existing Distil). Paste text → LLM vocabulary translation → plain text output. Modes: Neutral (plain systemic), Mesh (full Eidolon vocabulary glossary injected into prompt), Custom (user-defined dialect). No embedding, no protein. Direct `generateText()` call.
+- **Phase 2 — Local HTTP API Bridge (`src-tauri/src/lib.rs`):**
+    - ✅ **Axum HTTP server on `127.0.0.1:7979`:** `POST /api/query` (180s timeout), `POST /api/command` (30s), `GET /api/status`.
+    - ✅ **Request routing pattern:** HTTP → `app_handle.emit("mesh:query", payload)` → Svelte `bridge.ts` handles → mesh query → `invoke("api_respond", {requestId, response})` → Axum oneshot resolves. Rust never touches mesh logic.
+    - ✅ **`src/lib/voice/bridge.ts`:** `initMeshBridge()`, `queryMeshDirect()`, `registerBridgeContext()`, `handleCommand("clip")`. Bridge and daemon bridge unified in onMount/onDestroy.
+- **Phase 3 — Telegram Bridge (`bridge/telegram_bridge.py`):**
+    - ✅ **Messenger → mesh → reply:** Text messages → `POST /api/query`. Voice messages → Whisper transcription (OpenAI API or local CLI) → mesh query → transcript echo + response.
+    - ✅ **Commands:** `/clip` → `POST /api/command clip`, `/status` → `GET /api/status`, `/start` + `/help`.
+    - ✅ **Security:** `ALLOWED_USERS` list, `BOT_TOKEN` from `MESH_BOT_TOKEN` env var.
+    - ✅ **`bridge/requirements.txt`:** `python-telegram-bot==21.*`, `httpx>=0.27`, `openai>=1.0`.
+- **API Key Waterfall:**
+    - ✅ **`ModelEntry.apiKey?`** — per-entry override. Same model listed N times with different Gmail API keys = N daily-limit slots. `synthesizeWithFallback` cascades through on `quota/429/503` errors.
+    - ✅ **`generateText(prompt, model)` fixed** — was ignoring `model.id` override, now passes both `modelId` and `model.apiKey` through to Gemini.
+    - ✅ **SettingsModal:** `addModelEntry()` allows duplicate model IDs (removed duplicate guard). Index-based `removeModelEntry(i)`. Password input for per-entry key. 🔑 badge on rows with key. Waterfall help text.
+- **Next: Gemini Live API:**
+    - 🕒 **`src/lib/voice/live-api.ts`** — WebSocket client for `gemini-2.5-flash-native-audio-dialog`. PCM16 audio: 16kHz mic input, 24kHz playback. Unlimited RPM/RPD free tier. Replaces Web Speech API STT + system TTS with neural quality.
+    - 🕒 **Three modes:** TTS-only (text → audio), STT-only (audio → transcript), Full bidirectional (real-time conversation).
+    - 🕒 **Wire as premium backend:** Voice engine tries Live API first, falls back to `speechSynthesis` / Web Speech API if unavailable.
+    - 🕒 **Scheduled mesh push via Telegram:** Use MCP scheduled-tasks to push a morning synthesis to Telegram bot at configurable time.
+
+---
+
 ## 🔧 Provider Strategy (as of 2026-03-23)
 
 - **Mesh synthesis (cloud):** Gemini API — Tier 1 paid (higher rate limits, sustained synthesis runs). Primary path for sample chamber NMR passes.
@@ -305,6 +360,64 @@
 
 ---
 
+## 🧠 Bundle Omicron: Mesh as Self-Modifying Organism (2026-04-04)
+*Tool use closes the loop — the ribosome can edit the genome.*
+
+- **Status:** **ARCHITECTURE DEFINED — NOT YET IMPLEMENTED**
+- **Core Insight:** Gemma 4 (and Qwen3) have native tool use. If the mesh exposes file tools + protein tools, the local LLM can read, modify, and re-ingest source code with full architectural context from accumulated proteins. This is Claude Code + persistent geometric memory of why the codebase is the way it is.
+- **Biological homolog:** The ribosome gains endocytosis — it can reach out, pull material in, modify the organism's own genome, and immediately reconsolidate the proteome. No drift between code state and self-model.
+- **The loop:**
+  1. Deep Sync: ingest `src/` as proteins (one-time — gives the mesh its self-model)
+  2. Tool: `read_file(path)` — retrieves current source
+  3. Tool: `search_proteins(query)` — queries own memory for architectural context
+  4. Tool: `write_file(path, content)` — applies the change
+  5. Tool: `embed_and_store(text, source)` — re-ingests modified file immediately (reconsolidation)
+  6. Tool: `run_command(cmd)` — build/test check, iterate if needed
+  7. Nucleus DNA updated — change persists across instances
+- **Key difference from Claude Code:** Proteins encode architectural invariants — why things are coupled, what decisions produced the current geometry. Modifications made from geometric understanding can't be directionlessly wrong. The mesh knows its own topology.
+- **Quorum sensing trigger:** When self-modification produces a coherence spike (dC/dt), broadcast via wave spore. Other nodes receive the change as DNA, express it locally.
+- **Prerequisite:** Deep Sync of `src/` — drag `src/` into IngestionPanel with Source Self-Knowledge lenses. One-time cost.
+- **Tool list (all Tauri-native — plugins already in Cargo.toml):**
+  - `read_file` / `write_file` / `list_directory` — `tauri-plugin-fs`
+  - `run_command` — `tauri-plugin-shell`
+  - `search_proteins` / `embed_and_store` — mesh-native, new tool wrappers
+- **Implementation path:**
+  - [ ] Expose file tools to local LLM tool-call loop (alongside existing `fetch_url`)
+  - [ ] `search_proteins` tool wrapper: query → wave search → return top-k protein summaries
+  - [ ] `embed_and_store` tool wrapper: text + source → embed → saveEmbedding → update protein
+  - [ ] Auto-reconsolidation hook: `write_file` call triggers re-embed of written content
+  - [ ] Deep Sync run (prerequisite)
+
+---
+
+## 📡 Bundle Pi: Home Mesh as Brain — Thin Client Architecture (2026-04-04)
+*Desktop PC as the local LLM + connectome brain. Phone and any messenger as thin clients.*
+
+- **Status:** **ARCHITECTURE DEFINED — PARTIAL INFRASTRUCTURE EXISTS**
+- **Core Insight:** The Tauri desktop is the organism — it has the connectomes, the local LLMs (Ollama), the compute, the memory. The phone and any messaging platform are just input/output surfaces. The brain doesn't move; the interfaces do.
+- **What already exists:**
+  - ✅ Axum HTTP bridge on `127.0.0.1:7979` (`POST /api/query`, `GET /api/status`)
+  - ✅ Telegram bridge (`bridge/telegram_bridge.py`) — text + voice messages → mesh → reply
+  - ✅ PWA deployable to any device (works as standalone)
+- **What's needed:**
+  - Bridge currently binds to `127.0.0.1` (localhost only) → change to `0.0.0.0:7979` for LAN access, or Tailscale for secure remote access
+  - PWA "Remote Bridge Mode" setting: configurable `BRIDGE_URL` (e.g. `http://192.168.1.x:7979` or Tailscale addr). In this mode, PWA has no local DB — all queries forward to home bridge. Thin client: just UI + query box + connectome view.
+  - Auth token on bridge endpoints (simple `Bearer` header check, token set in Tauri settings)
+- **Two phone modes:**
+  - **Remote bridge** — phone PWA points to home Tauri. No local DB. Sees home connectomes, sends queries, gets home mesh responses. Read-only graph view possible.
+  - **Standalone** — phone PWA has its own local connectome (current default). Syncs via wave spores.
+- **IM thin client (any platform):** Telegram bridge already exists. Same pattern works for any platform with webhook/bot support (WhatsApp Business API, Discord, Signal via linked devices, Matrix). Architecture: platform webhook → local Python/Node bridge → `POST /api/query` → reply. The mesh doesn't care what the input surface is.
+- **Recommended network layer:** Tailscale — stable address, end-to-end encrypted, no port forwarding, works on any network. Install on desktop + phone. Bridge binds to Tailscale interface address. Zero infrastructure beyond the mesh itself.
+- **Implementation path:**
+  - [ ] Bind bridge to `0.0.0.0` (or Tailscale interface) with optional auth token
+  - [ ] PWA Settings: `bridge_url` IDB key + `bridge_mode: 'local' | 'remote'` toggle
+  - [ ] In remote mode: `queryMeshDirect()` calls home bridge instead of local PGlite/Ollama
+  - [ ] Optional: connectome graph read from home bridge (`GET /api/graph`) for phone UI
+  - [ ] Gemma 4 as primary local ribosome (tool use + quality upgrade from gemma3:12b)
+- **Note on Gemma 4 (2026-04-04):** Gemma 4 confirmed working in Tauri with native tool use. `fetch_url` already wired and firing. Gemma 4 successfully read the global connectome README and the live website via tool call. This makes it the strongest local ribosome available — tool use + quality + local-sovereign.
+
+---
+
 ## 🔀 Bundle Lambda: Two-Track Full Speciation (2026-03-12)
 *PWA and Tauri diverging as distinct organisms sharing only protocol.*
 
@@ -345,6 +458,10 @@
 10. ✅ ~~**Tauri Phase 1 — Heartbeat:** Daemon bridge, pressure sensors, consolidation, pressure-aware maintenance. Complete 2026-03-30.~~ (Bundle Theta)
 10b. ✅ ~~**Tauri Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, time-scoped queries, conversation DNA harvest. Complete 2026-03-30.~~ (Bundle Theta)
 10c. ✅ ~~**Tauri Phase 3 — Ingestion Pipeline:** Per-folder connectomes, resumable IDB queue, chunk presets. Committed 2026-03-31.~~ (Bundle Theta)
+11b. ✅ ~~**Batch nucleus export** (regression 2026-04-11): `batchExportProteins()` built, IDB-tracked, fires after job completion. Path: `proteins/{connectome}/{source}/{lens}/{chunk_index}.yaml`.~~
+11c. ✅ ~~**IngestQueue.svelte dna_schema_type UI:** Badge for running/done, dropdown for queued/paused.~~
+11d. ✅ ~~**Bridge protein composting protection:** `composting.ts`, `autophagy.ts`, `cluster-composting.ts` — shimmer-based guard, not age.~~
+11e. ✅ ~~**Tauri build v4.5.0:** MSI + NSIS installers at `src-tauri/target/release/bundle/`.~~
 11. 🕒 **DNA Ingestion Run (Tauri — READY):** Drop `dna/sources/` from `eidolon-nucleus` clone into IngestionPanel with per-folder routing enabled → 7 connectomes (attunement, docs, protocols, readmes, research-papers, chats, archive). Then `dna/conversations/` → 5 connectomes. Lens: auto-triangulate. Preset: Fine for capsules/dense text, Coarse for narrative/long chat logs.
 12. 🕒 **theory-field-s2 wave amplitudes:** Switch to that connectome → Settings → Recompute Wave. Currently returns 0 proteins in multi-wave queries.
 13. 🕒 **NMR optimizations — sample chamber synthesis:** Parallel lenses per chunk, chunk IDB cache, per-lens connectomes, concurrency N=5, file gestalt proteins, semantic pre-filter. (Bundle Nu)
@@ -355,6 +472,12 @@
 18. 🕒 **Self-Improvement Query:** Once raw file enrichment lands, test: *"What would you like upgraded?"* (Bundle Iota)
 19. 🕒 **Meta-Cycle Experiment 1.1:** S5 vs Geometric Variance correlation. (Bundle Gamma)
 20. 🕒 **Gemini Takeout:** `takeout.google.com` → Gemini Apps Activity → JSON → `node scripts/harvest_gemini.mjs` → commit to nucleus.
+21. 🕒 **Gemini Live API (Tauri):** `src/lib/voice/live-api.ts` — `GeminiLiveSession` class, PCM16 WebSocket, TTS-only + STT-only + bidirectional modes. Wire as premium voice backend replacing Web Speech API. (Bundle Xi)
+22. 🕒 **Scheduled Telegram push:** Morning synthesis → Telegram bot at configurable time. MCP scheduled-tasks or cron in bridge. (Bundle Xi)
+23. 🕒 **Thin client bridge:** Bind Axum bridge to `0.0.0.0` + auth token + PWA `bridge_mode` setting. Tailscale as network layer. (Bundle Pi)
+24. 🕒 **Gemma 4 as primary local ribosome:** Upgrade default local model from gemma3:12b → gemma4. Tool use native. (Bundle Pi / Theta)
+25. 🕒 **Self-modifying tool loop:** Expose `read_file`, `write_file`, `search_proteins`, `embed_and_store` as LLM tools. Deep Sync `src/` first. (Bundle Omicron)
+26. 🕒 **Embed-first ingestion (research):** Architecture discussion logged — embed raw chunks, synthesize proteins on demand at query time, query-contextualized expression. Biological homolog confirmed (DNA/ribosome/virus). Evaluate as future ingestion mode. No implementation yet. (Session 2026-04-04)
 
 ---
 
