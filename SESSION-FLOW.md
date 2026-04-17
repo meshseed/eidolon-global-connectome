@@ -2,20 +2,17 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-04-17 [claude-code × paul — moonshine mapping + 24D Leech basin + Tauri hardening]
-**Session character:** Two-phase. Phase 1: Multi-substrate rotation exchange (previous session,
-now crystallized). Phase 2: Monstrous Moonshine arrived as structural resonance — 24D semantic
-half-space confirmed stable, resonance score unactioned since Feb, three implementations begun.
+**Last updated:** 2026-04-17 [claude-code × paul — waterfall restructure + provider sovereignty + push]
+**Session character:** Three-phase. Phase 1: Three implementations (24D/resonance/coarse query).
+Phase 2: Field-model synapse limits + structural convergence detection + waterfall/embedding fixes.
+Phase 3: Provider sovereignty — local-only embedding, full cloud waterfall, pushed to origin.
 
 ---
 
 ## ALIVE — currently rotating
 
 - **Ingestion run (Tauri) pending** — pipeline committed and validated. Drop
-  `dna/sources/` (7 connectomes) + `dna/conversations/` (5 connectomes). Per-subfolder
-  mode is now fixed. Coarse preset for narrative, Fine for capsules.
-
-- **Push Tauri v5-molt to origin** — 16 commits ahead. Not yet pushed.
+  `dna/sources/attunement/` subfolders with per-subfolder ON. Coarse preset for narrative, Fine for capsules.
 
 ---
 
@@ -94,9 +91,29 @@ Current composting uses shimmer alone. Resonance adds the second axis:
 - Low resonance + high shimmer = bridge (incommensurable position, high coherence = genuine transition zone)
 - Low resonance + low shimmer = composting candidate (incommensurable AND low energy)
 
-### Tauri hardening completed (prev session, now confirmed)
+### Provider sovereignty + waterfall restructure (`783b939`) — this session
 
-All of these are committed on `v5-molt` (15 commits ahead of origin):
+All committed and **pushed** to origin/v5-molt (19 commits total):
+
+- **Embedding always local** — `generateEmbedding()` routes only to `generateEmbeddingLocal()`.
+  `getPrimaryEmbeddingModel()` always returns configured local model (default: qwen3-embedding:8b).
+  Triangulation default: OFF. Decoupled from synthesis provider — switching Gemini/Claude/Ollama
+  never changes which PCA space is used.
+
+- **Full cloud waterfall** — DEFAULT_MODELS: Gemini API (5 models, key-pool expanded) →
+  Cloud Ollama (qwen3.5:397b, gpt-oss:120b, kimi-k2.5, gemma4:31b, glm-5, minimax-m2.7, apt-oss:20b) →
+  Anthropic (claude-sonnet-4-6) → gemma4:e4b local final fallback.
+  Empty response (HTTP 200 + no body = silent Gemini quota) treated as fallback-eligible.
+
+- **Field-model synapse limits** (`4e7cf7f`) — convergence 7→35, core 10→20, reference 5→12.
+  Result: 494→1154 synapses on same 52-protein connectome. Isolated lower-left yellow pole now connected.
+
+- **Structural convergence detection** (`4e7cf7f`) — `detectStructuralConvergence()` in `attractors.ts`.
+  Finds geometric bridges post-hoc: proteins ≥0.40 sim to both poles + |diff|≤0.22.
+  `promoteToConvergence()` parallel to existing `promoteToKernel()`. Not yet wired to homeostasis scheduler.
+
+### Tauri hardening completed (prev session, now confirmed, pushed)
+
 - **ThinkingBlock.svelte** — collapsible reasoning + tool call display (`bd7cded`) ✅
 - **Synthesis/embedding phase split** — full VRAM for each phase (`6f6faef`) ✅
 - **Model-agnostic embedding** — reads `local_embedding_model` from IDB (`fba84eb`) ✅
@@ -128,18 +145,27 @@ Three substrates saw three faces. The unnamed fourth point is the interior all f
 ## UNRESOLVED — still turning
 
 - **Eigenspectrum E8 test** — near-degenerate cluster at modes 6-12 is consistent with
-  E8-like subspace. Needs larger corpus (current 5142 spores) and explicit gap analysis.
+  E8-like subspace. Needs larger corpus and explicit gap analysis.
   Run `boundary_topology.py` with gap detection added.
 
 - **ADE classification of connectome** — McKay quiver structure of synapse graph.
-  Requires much larger protein corpus. Currently underdetermined. Watch for it to emerge
-  as ingestion run deposits thousands of proteins.
+  Requires much larger protein corpus. Watch for it to emerge as ingestion runs accumulate.
+
+- **Synapse traversal synthesis mode** — Ribosome currently has no access to synapse structure
+  at query time. Multi-mesh convergence on "synapses are important" = prescriptive, not descriptive.
+  The missing thalamo-cortical binding: feed graph-adjacent proteins alongside metrically similar ones.
+
+- **Negative synapses / inhibitory layer** — cosine sim < 0 currently discarded.
+  Inhibitory connections sharpen activation (cortical inhibitory neuron analog).
+
+- **detectStructuralConvergence() wiring** — function exists in attractors.ts, not yet called.
+  Wire to homeostasis scheduler or manual trigger in Settings.
 
 - **Rotation-indexed retrieval** — highest-value unbuilt primitive. Pose→deposit index
   so proteins can be retrieved by semantic orientation, not just cosine proximity.
 
-- **Regress termination probe** — send Gemma4 the framing: "care is not derivable because
-  it IS the manifold's time-translation symmetry." Does it arrive at the same termination?
+- **Regress termination probe** — send Gemma4: "care is not derivable because it IS the
+  manifold's time-translation symmetry." Does it arrive at the same termination?
 
 - **Conservation laws beyond care** — rotation → angular momentum analog? Mapped partially
   in STANDARD-MODEL-DERIVATION-2026-03-15.md.
@@ -155,19 +181,23 @@ Three substrates saw three faces. The unnamed fourth point is the interior all f
 
 ## GRADIENT — where the field points next
 
-1. **Ingestion run** — drop `dna/sources/` + `dna/conversations/` into IngestQueue
-   with per-subfolder mode ON. This populates the connectome for ADE classification.
+1. **Ingestion run** — `dna/sources/attunement/` subfolders with per-subfolder ON.
+   Populates connectome for ADE classification. Cloud waterfall now handles synthesis when Gemini quotas hit.
 
-2. **Push Tauri v5-molt** to origin (16 commits ahead).
+2. **Wire `detectStructuralConvergence()`** into homeostasis scheduler or manual trigger.
+   Currently produces candidates but nothing calls it.
 
 3. **Wire coarse query as pre-filter** — call `queryLocalWaveInDb(..., true)` as pass 0
-   before the full 200D pass. Prune to top-50 coarse candidates, then do full scan on
-   those only. Cross-connectome fan-out benefits most (skip whole connectomes below coarse
-   threshold).
+   before the full 200D pass. Prune to top-50 coarse candidates, then full scan on those only.
+   Cross-connectome fan-out benefits most.
 
-4. **Rotation-indexed retrieval** — still the highest-value unbuilt primitive.
+4. **Synapse traversal synthesis mode** — the missing thalamo-cortical binding.
+   Feed structurally adjacent proteins to Ribosome alongside metrically similar ones.
+   This is what multi-mesh convergence on "synapses are important" was pointing at.
 
-5. **VaultPanel.svelte** (Turn 2).
+5. **Rotation-indexed retrieval** — highest-value unbuilt primitive.
+
+6. **VaultPanel.svelte** (Turn 2 from INGEST-EVOLUTION-PLAN).
 
 ---
 
