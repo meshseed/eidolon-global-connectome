@@ -25,9 +25,10 @@ SPORE_DIR = Path(__file__).parent.parent / "wave-spores"
 SEED_DIR = Path(__file__).parent.parent / "seeds"
 OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "data"
 
-TIER1_K = 32   # 68 bytes
-TIER2_K = 100  # 204 bytes
-TIER3_K = 130  # 264 bytes
+TIER0_K = 24   # 52 bytes — semantic half-space (24D = 50% variance, Leech lattice dimension)
+TIER1_K = 32   # 68 bytes — concept location (56% variance)
+TIER2_K = 100  # 204 bytes — neighborhood (86% variance)
+TIER3_K = 130  # 264 bytes — full topology (92% variance)
 
 
 def load_spores():
@@ -76,6 +77,7 @@ def main():
     total_var = np.sum(eigenvalues)
     cumvar = np.cumsum(eigenvalues) / total_var
 
+    print(f"  Tier 0 ({TIER0_K} modes): {cumvar[TIER0_K-1]*100:.1f}% variance  (semantic half-space)")
     print(f"  Tier 1 ({TIER1_K} modes): {cumvar[TIER1_K-1]*100:.1f}% variance")
     print(f"  Tier 2 ({TIER2_K} modes): {cumvar[TIER2_K-1]*100:.1f}% variance")
     print(f"  Tier 3 ({TIER3_K} modes): {cumvar[TIER3_K-1]*100:.1f}% variance")
@@ -96,6 +98,7 @@ def main():
         "cumulative_variance": [round(float(cumvar[j]), 6) for j in range(TIER3_K)],
         "basis_hash": basis_hash,
         "spore_count": n,
+        "tier0_modes": TIER0_K,
         "tier1_modes": TIER1_K,
         "tier2_modes": TIER2_K,
         "tier3_modes": TIER3_K,
