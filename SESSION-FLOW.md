@@ -11,18 +11,34 @@ half-space confirmed stable, resonance score unactioned since Feb, three impleme
 
 ## ALIVE — currently rotating
 
-- **Three implementations in progress** (started this session, not yet committed):
-  1. **Tier 0 (24D)** — add to `generate_delta_basis.py`, rebuild delta-basis.json
-  2. **Resonance score** — wire into protein metadata in Tauri (compute from PCA amplitudes)
-  3. **24D coarse-topology query** — truncate wave search to 24 modes for fast pre-filtering
-
-- **Ingestion run (Tauri) still pending** — pipeline committed and validated. Drop
+- **Ingestion run (Tauri) pending** — pipeline committed and validated. Drop
   `dna/sources/` (7 connectomes) + `dna/conversations/` (5 connectomes). Per-subfolder
   mode is now fixed. Coarse preset for narrative, Fine for capsules.
+
+- **Push Tauri v5-molt to origin** — 16 commits ahead. Not yet pushed.
 
 ---
 
 ## CRYSTALLIZED — settled this session
+
+### Three implementations — all done (`v5-molt`, committed)
+
+1. **Tier 0 (24D)** (`0950da0`) — `generate_delta_basis.py` gains `TIER0_K = 24`.
+   delta-basis.json rebuilt (5142 spores): Tier 0 = 78.6%, Tier 1 = 81.4%.
+   Variance concentrated vs Feb 2026 (49.5%) — corpus compacted around Eidolon core.
+
+2. **Resonance score** (`4b39076`) — `composting.ts` wires `resonance_score` (delta energy
+   magnitude proxy, stored at `metadata.wave[model].resonance_score`) as second axis
+   alongside shimmer for bridge protection.
+   - Bridge/invariant proteins: protect while EITHER signal alive (shimmer ≥ 0.05 OR resonance > 0.001)
+   - Dynamic bridge detection (no explicit flag): shimmer ≥ 0.3 + resonance > 0.001 → protect
+   - Low resonance + low shimmer = composting candidate (incommensurable AND exhausted)
+   - Note: current resonance proxy is energy magnitude; upgrade to Dirichlet when corpus allows
+
+3. **24D coarse-topology query** (`4b39076`) — `queryLocalWaveInDb` gains `coarse: boolean`
+   flag. When true: truncates query + stored amplitudes to `TIER0_MODES = 24` before cosine
+   sim (~8× cheaper). `WaveScanResult.searchDimension` exposes active mode count.
+   Ready to wire as pre-filter or cross-connectome strategy.
 
 ### Moonshine/McKay/E8 structural mapping
 
@@ -139,15 +155,15 @@ Three substrates saw three faces. The unnamed fourth point is the interior all f
 
 ## GRADIENT — where the field points next
 
-1. **Complete three implementations** (in progress now):
-   - Tier 0 (24D) → `generate_delta_basis.py` + rebuild
-   - Resonance score → wire into Tauri protein metadata + composting
-   - 24D coarse-topology query → Tauri wave search
-
-2. **Ingestion run** — drop `dna/sources/` + `dna/conversations/` into IngestQueue
+1. **Ingestion run** — drop `dna/sources/` + `dna/conversations/` into IngestQueue
    with per-subfolder mode ON. This populates the connectome for ADE classification.
 
-3. **Push Tauri v5-molt** to origin (15 commits ahead).
+2. **Push Tauri v5-molt** to origin (16 commits ahead).
+
+3. **Wire coarse query as pre-filter** — call `queryLocalWaveInDb(..., true)` as pass 0
+   before the full 200D pass. Prune to top-50 coarse candidates, then do full scan on
+   those only. Cross-connectome fan-out benefits most (skip whole connectomes below coarse
+   threshold).
 
 4. **Rotation-indexed retrieval** — still the highest-value unbuilt primitive.
 
