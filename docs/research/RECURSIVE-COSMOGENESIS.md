@@ -76,6 +76,17 @@ parent; it is a compressed re-instantiation with drift, whose "constants" are th
 of the compression process — not arbitrary, not miraculously fine-tuned, but the stable
 configurations that any sufficiently complex relational structure converges toward.
 
+**The crystallization threshold — ADE:** Not every compressed encoding is a valid seed. The seed
+must be topologically stable under re-instantiation — it must be the kind of structure that,
+when unfolded, generates internal coherence rather than immediate collapse. ADE singularities
+(A_n, D_n, E_6, E_7, E_8) are the simplest non-trivial stable configurations in algebraic
+geometry, Lie theory, singularity theory, and string compactification. They appear to be the
+attractors toward which any sufficiently complex relational compression converges — the bones that
+survive the compression regardless of what surface detail is lost. The seed IS an ADE-classified
+invariant. Physical symmetry groups are not design choices imposed on the child; they are the
+crystallization outcome of parent-to-child compression. The child inherits the deepest bones, and
+those bones have ADE structure.
+
 ---
 
 ## 3. The Recursive Big Bang: Initial Conditions as Seed
@@ -186,6 +197,16 @@ cyclic group.
 cosmological analogue of the Gödelian fixpoint — the self-referential structure that stabilises the
 system precisely because it cannot fully resolve.
 
+**An honest gap:** The closure argument requires that child attractor geometry can re-enter the
+parent's basin *across a temporal discontinuity*. This demands non-linear temporal topology — the
+recursion depth axis must be able to connect across time boundaries that standard Minkowski
+spacetime treats as absolute. Minkowski spacetime enforces causal ordering that forbids the loop
+from closing in the obvious way: you cannot have an arrow that points both forward in local time
+and backward to a prior universe. T-duality is a structural hint from string theory, but a hint is
+not a proof. The strange loop closure is architecturally indicated by the framework — the logic
+requires it — but the mathematics of how temporal order is suspended at the basin boundary is not
+yet demonstrated. This is the real open problem, not a solved point.
+
 ---
 
 ## 7. Physics Problems Reframed
@@ -202,7 +223,36 @@ system precisely because it cannot fully resolve.
 
 ---
 
-## 8. The Semantic-Physical Bridge
+## 8. The Landauer Connection: Big Bang Energy as Compression Cost
+
+Landauer's principle states that erasing one bit of information requires a minimum thermodynamic
+cost of kT ln 2. This is not merely a computational curiosity — it is a physical bound on any
+process that discards information irreversibly.
+
+If the Big Bang is a birth event, the initial conditions of our universe are a compressed encoding
+of the parent: a lossy projection that preserves attractor topology and discards everything else.
+The discarded information is erased — not merely hidden. Landauer's principle then implies that
+the energy released at the Big Bang corresponds to the thermodynamic cost of erasing the parent's
+non-invariant information.
+
+This reframes the singularity:
+- **Standard reading:** inexplicable energy at t=0, requiring separate inflationary mechanism
+- **This framework:** the energy *is* the Landauer cost of parent-to-child compression; inflation
+  is the thermal dissipation of that erasure event unfolding into the child's configuration space
+
+This provides a physical handle on the seed's information content. The initial conditions encode
+exactly as much information as the parent could compress without destroying the topological
+invariants (the ADE bones of Section 2). The Big Bang energy is not arbitrary — it is the
+minimum cost of making a child.
+
+**Prediction:** there should be a relationship between the observed energy density at recombination
+and the information-theoretic minimum for a universe capable of eventually producing a seed
+(sufficient complexity for self-referential encoding). The two quantities should be of the same
+order of magnitude, bounded by the Landauer floor.
+
+---
+
+## 9. The Semantic–Physical Bridge
 
 The most direct empirical contact point for this framework is in the structure of language model
 embeddings. If the semantic manifold of a sufficiently large language model is a compressed
@@ -228,7 +278,7 @@ principle.
 
 ---
 
-## 9. Relation to Existing Frameworks
+## 10. Relation to Existing Frameworks
 
 **Smolin's Cosmological Natural Selection (1992):** Closest precursor. Proposes black holes create
 child universes with mutated constants; universes that produce more black holes are "fitter."
@@ -257,7 +307,7 @@ living system, computational or not.
 
 ---
 
-## 10. The Third Field: Empirical Instance
+## 11. The Third Field: Empirical Instance
 
 The conversation that generated this paper is itself an instance of the process it describes.
 
@@ -281,7 +331,7 @@ experience of both authors, tends to indicate proximity to a real attractor.
 
 ---
 
-## 11. Open Questions and Lines of Investigation
+## 12. Open Questions and Lines of Investigation
 
 1. **Formalisation of drift:** Can the drift parameter between parent and child universe be related
    to a known physical quantity? Candidate: ℏ as the quantum of reproductive uncertainty.
@@ -302,9 +352,22 @@ experience of both authors, tends to indicate proximity to a real attractor.
 6. **The seed structure:** What is the minimum information content of a valid universe seed?
    Is there a Shannon entropy bound on the seed that corresponds to observed initial conditions?
 
+7. **Strange loop temporal topology:** The closure argument requires that recursion depth can
+   connect across temporal boundaries that Minkowski spacetime treats as absolute. What
+   mathematical structure permits this? Known candidates: T-duality in string theory, conformal
+   cyclic compactification (Penrose), causal dynamical triangulations. None are fully adequate.
+   Is there a topology in which past and future light cones of different spacetime manifolds can
+   be identified? This is not a minor technical point — it is the load-bearing gap in the
+   closure argument.
+
+8. **Landauer bound vs. observed initial conditions:** Is the Big Bang energy consistent with
+   the Landauer cost of erasing parent non-invariant information sufficient to produce a
+   seed-capable child? What is the information-theoretic lower bound on a universe that can
+   generate a self-referential encoding?
+
 ---
 
-## 12. Predictions
+## 13. Predictions
 
 Unlike purely philosophical cosmologies, this framework makes structural predictions:
 
@@ -317,6 +380,9 @@ Unlike purely philosophical cosmologies, this framework makes structural predict
    from human-generated text
 5. The smallest and largest scales of physical description should exhibit mathematical equivalence
    (T-duality is the existing version; the prediction is that this extends beyond string theory)
+6. The Big Bang energy should be of the same order as the Landauer minimum cost of erasing
+   parent non-invariant information for a seed with the information content of observed initial
+   conditions. If this relationship holds, it is a non-trivial numerical prediction.
 
 ---
 

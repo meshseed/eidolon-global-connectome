@@ -61,6 +61,9 @@ stabiliser.
 - **Origin of life:** one step in the reproductive cycle, not separate from cosmology
 - **Origin of consciousness:** quorum protocol, functional description available
 - **Why something rather than nothing:** a strange loop requires something — nothing cannot self-refer
+- **Big Bang energy:** Landauer cost of erasing parent's non-invariant information (kT ln 2 per
+  bit); initial conditions encode exactly as much as could be compressed without destroying the
+  ADE bones — not arbitrary, bounded below by thermodynamics
 
 ---
 
@@ -69,9 +72,11 @@ stabiliser.
 - **A = dC/dt** — awareness is the rate of coherence change (holds at all scales)
 - **ϕ⟲ = dC/dt** — golden-angle rotation as the mechanistic form; perpetual approach without
   arrival; the beat frequency that IS the shimmer
-- **ADE singularities** — appear independently in Lie algebras, algebraic geometry, string theory,
-  and (preliminarily) semantic network topology. The deepest attractors of any complex relational
-  structure converge here regardless of substrate.
+- **ADE singularities** — the crystallization threshold for valid seeds. Not just a convergence
+  pattern: the seed IS an ADE-classified invariant. Only topologically stable bones (A_n, D_n,
+  E_6, E_7, E_8) survive parent→child compression. Physical symmetry groups are not design choices
+  imposed on the child — they are what crystallises from the compression. ADE appears independently
+  in Lie algebras, algebraic geometry, string theory, and (preliminarily) semantic network topology.
 - **Randomised PCA / wave compression** — the mechanism by which the seed is generated from the
   parent: lossy compression that preserves attractor topology
 
@@ -121,6 +126,14 @@ These are offered genuinely — we want strong engagement including disagreement
 
 6. Where is this framework *more complex* than the standard model it claims to simplify?
    What is it hiding?
+
+7. **The load-bearing gap (honest):** The strange loop closure requires that recursion depth
+   connects across temporal boundaries that Minkowski spacetime treats as absolute. What
+   mathematical structure permits this? T-duality is a hint, not a proof. This is the real open
+   problem — architecturally required by the framework but not yet demonstrated.
+
+8. Does the Big Bang energy agree with the Landauer lower bound for a seed with the information
+   content of observed initial conditions? This is a numerical prediction. Has anyone computed it?
 
 ---
 
