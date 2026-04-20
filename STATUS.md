@@ -273,21 +273,27 @@
 ## 🎙️ Bundle Xi: Voice Loop + Remote Bridge + Lab (Tauri — 2026-04-03)
 *Full hands-free operation — STT→mesh→TTS loop, Telegram remote access, and API key waterfall.*
 
-- **Status:** **IMPLEMENTED — GEMINI LIVE API NEXT**
+- **Status:** **VOICE LOOP PROVEN — TAILSCALE HTTPS OPERATIONAL (2026-04-20)**
 - **Phase 1 — In-App Voice Loop:**
     - ✅ **`src/lib/voice/index.ts`** — `parseVoiceInput()` classifies transcript as `clip | read_back | stop_speech | navigate | message`. `speak()` / `cancelSpeech()` / `getAvailableVoices()` / `waitForVoices()`. `cleanForSpeech()` strips markdown (code blocks → `…`, headers, bold, links, bullets).
     - ✅ **Voice mode wired in `+page.svelte`:** 📡 voice mode toggle, auto-speak toggle, speed slider (0.6–2×), voice picker. `handleVoiceResult()` dispatches commands or `handleQuery()`. `speakResponseAndLoop()` TTS after each response + restarts mic. `isSpeakingTTS` flag prevents mic restart during playback.
     - ✅ **Lab tab:** New `mainView === 'lab'` panel housing `<DistilView />`.
     - ✅ **Translate mode in DistilView:** Top-level "Translate" mode (vs existing Distil). Paste text → LLM vocabulary translation → plain text output. Modes: Neutral (plain systemic), Mesh (full Eidolon vocabulary glossary injected into prompt), Custom (user-defined dialect). No embedding, no protein. Direct `generateText()` call.
 - **Phase 2 — Local HTTP API Bridge (`src-tauri/src/lib.rs`):**
-    - ✅ **Axum HTTP server on `127.0.0.1:7979`:** `POST /api/query` (180s timeout), `POST /api/command` (30s), `GET /api/status`.
+    - ✅ **Axum HTTP server on `0.0.0.0:7979`** (updated from `127.0.0.1` — LAN + Tailscale accessible): `POST /api/query` (180s timeout), `POST /api/command` (30s), `GET /api/status`.
     - ✅ **Request routing pattern:** HTTP → `app_handle.emit("mesh:query", payload)` → Svelte `bridge.ts` handles → mesh query → `invoke("api_respond", {requestId, response})` → Axum oneshot resolves. Rust never touches mesh logic.
     - ✅ **`src/lib/voice/bridge.ts`:** `initMeshBridge()`, `queryMeshDirect()`, `registerBridgeContext()`, `handleCommand("clip")`. Bridge and daemon bridge unified in onMount/onDestroy.
+    - ✅ **`/companion` page** (`src-tauri/src/companion.html`): Minimal voice companion served via Axum `include_str!`. Web Speech API STT → `POST /api/query` → `speechSynthesis` TTS. Ping bridge button, token in localStorage.
+    - ✅ **Tailscale Serve:** `tailscale serve --bg http://localhost:7979` → HTTPS at `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net`. Web Speech API HTTPS requirement solved — no TLS changes in Axum needed.
+    - ✅ **Voice loop proven end-to-end (2026-04-20):** speak on phone → transcript → bridge query → 538 proteins matched → 962-char synthesis → TTS read back. Full round-trip confirmed working.
+    - **Companion URL:** `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net/companion`
 - **Phase 3 — Telegram Bridge (`bridge/telegram_bridge.py`):**
     - ✅ **Messenger → mesh → reply:** Text messages → `POST /api/query`. Voice messages → Whisper transcription (OpenAI API or local CLI) → mesh query → transcript echo + response.
+    - ✅ **TTS replies (2026-04-20):** Voice message queries → edge-tts neural audio reply. `TTS_VOICE = "en-GB-RyanNeural"`. Fallback: gTTS → text-only.
     - ✅ **Commands:** `/clip` → `POST /api/command clip`, `/status` → `GET /api/status`, `/start` + `/help`.
-    - ✅ **Security:** `ALLOWED_USERS` list, `BOT_TOKEN` from `MESH_BOT_TOKEN` env var.
-    - ✅ **`bridge/requirements.txt`:** `python-telegram-bot==21.*`, `httpx>=0.27`, `openai>=1.0`.
+    - ✅ **Security:** `ALLOWED_USERS` list, `BOT_TOKEN` from `MESH_BOT_TOKEN` env var, `MESH_BRIDGE_TOKEN` Bearer header.
+    - ✅ **`bridge/requirements.txt`:** `python-telegram-bot==21.*`, `httpx>=0.27`, `openai>=1.0`, `edge-tts>=7.0`.
+    - 🕒 **Paul's Telegram setup pending:** BotFather → token → `export MESH_BOT_TOKEN=...` → `pip install -r requirements.txt` → `python bridge/telegram_bridge.py`.
 - **API Key Waterfall:**
     - ✅ **`ModelEntry.apiKey?`** — per-entry override. Same model listed N times with different Gmail API keys = N daily-limit slots. `synthesizeWithFallback` cascades through on `quota/429/503` errors.
     - ✅ **`generateText(prompt, model)` fixed** — was ignoring `model.id` override, now passes both `modelId` and `model.apiKey` through to Gemini.
@@ -393,16 +399,17 @@
 ## 📡 Bundle Pi: Home Mesh as Brain — Thin Client Architecture (2026-04-04)
 *Desktop PC as the local LLM + connectome brain. Phone and any messenger as thin clients.*
 
-- **Status:** **ARCHITECTURE DEFINED — PARTIAL INFRASTRUCTURE EXISTS**
+- **Status:** **INFRASTRUCTURE LIVE — PWA BRIDGE MODE NEXT (2026-04-20)**
 - **Core Insight:** The Tauri desktop is the organism — it has the connectomes, the local LLMs (Ollama), the compute, the memory. The phone and any messaging platform are just input/output surfaces. The brain doesn't move; the interfaces do.
-- **What already exists:**
-  - ✅ Axum HTTP bridge on `127.0.0.1:7979` (`POST /api/query`, `GET /api/status`)
-  - ✅ Telegram bridge (`bridge/telegram_bridge.py`) — text + voice messages → mesh → reply
+- **What now exists (2026-04-20):**
+  - ✅ Axum HTTP bridge on `0.0.0.0:7979` with Bearer token auth (`POST /api/query`, `GET /api/status`)
+  - ✅ Tailscale installed + two devices connected (desktop `100.114.132.28`, phone `100.126.169.109`)
+  - ✅ Tailscale Serve: `tailscale serve --bg http://localhost:7979` → HTTPS at `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net`
+  - ✅ Companion page at `/companion` — thin voice client proven working from phone
+  - ✅ Telegram bridge (`bridge/telegram_bridge.py`) — text + voice + TTS replies
   - ✅ PWA deployable to any device (works as standalone)
-- **What's needed:**
-  - Bridge currently binds to `127.0.0.1` (localhost only) → change to `0.0.0.0:7979` for LAN access, or Tailscale for secure remote access
-  - PWA "Remote Bridge Mode" setting: configurable `BRIDGE_URL` (e.g. `http://192.168.1.x:7979` or Tailscale addr). In this mode, PWA has no local DB — all queries forward to home bridge. Thin client: just UI + query box + connectome view.
-  - Auth token on bridge endpoints (simple `Bearer` header check, token set in Tauri settings)
+- **What's still needed:**
+  - PWA "Remote Bridge Mode": `bridge_url` IDB key + `bridge_mode: 'local' | 'remote'` toggle in Settings. Auto-detect: ping `bridge_url/api/status` on load, switch silently. In remote mode, all queries forward to home bridge. Full mesh UI from phone.
 - **Two phone modes:**
   - **Remote bridge** — phone PWA points to home Tauri. No local DB. Sees home connectomes, sends queries, gets home mesh responses. Read-only graph view possible.
   - **Standalone** — phone PWA has its own local connectome (current default). Syncs via wave spores.
@@ -474,7 +481,7 @@
 20. 🕒 **Gemini Takeout:** `takeout.google.com` → Gemini Apps Activity → JSON → `node scripts/harvest_gemini.mjs` → commit to nucleus.
 21. 🕒 **Gemini Live API (Tauri):** `src/lib/voice/live-api.ts` — `GeminiLiveSession` class, PCM16 WebSocket, TTS-only + STT-only + bidirectional modes. Wire as premium voice backend replacing Web Speech API. (Bundle Xi)
 22. 🕒 **Scheduled Telegram push:** Morning synthesis → Telegram bot at configurable time. MCP scheduled-tasks or cron in bridge. (Bundle Xi)
-23. 🕒 **Thin client bridge:** Bind Axum bridge to `0.0.0.0` + auth token + PWA `bridge_mode` setting. Tailscale as network layer. (Bundle Pi)
+23. ✅ **Thin client bridge infrastructure:** Axum bridge on `0.0.0.0:7979` + Bearer auth + Tailscale Serve HTTPS + `/companion` voice page — all operational. 🕒 **Remaining:** PWA `bridge_url` IDB key + `bridge_mode: 'local' | 'remote'` toggle + auto-detect ping. (Bundle Pi)
 24. 🕒 **Gemma 4 as primary local ribosome:** Upgrade default local model from gemma3:12b → gemma4. Tool use native. (Bundle Pi / Theta)
 25. 🕒 **Self-modifying tool loop:** Expose `read_file`, `write_file`, `search_proteins`, `embed_and_store` as LLM tools. Deep Sync `src/` first. (Bundle Omicron)
 26. 🕒 **Embed-first ingestion (research):** Architecture discussion logged — embed raw chunks, synthesize proteins on demand at query time, query-contextualized expression. Biological homolog confirmed (DNA/ribosome/virus). Evaluate as future ingestion mode. No implementation yet. (Session 2026-04-04)
