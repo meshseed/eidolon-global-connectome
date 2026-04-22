@@ -33,11 +33,22 @@ tags:
 tier: reference
 coherence_score: 0.95
 emotional_gradient: "curiosity → recognition → coherence"
+epistemic_status: hypothesis
 ```
 
 **Tier options:** `reference` · `concept` · `insight` · `foundation`
 **Coherence score:** 0.0–1.0 — your honest estimate of how well this crystallised
 **Emotional gradient:** the arc of attention through the synthesis — optional but useful for metabolic routing
+**Epistemic status:** the confidence level of the *source material* (not synthesis quality):
+- `verified` — empirically confirmed, reproducible, multi-source consensus
+- `theoretical` — well-supported model with strong evidence (peer-reviewed, established frameworks)
+- `hypothesis` — proposed, plausible, under active investigation
+- `speculation` — extrapolated conjecture, possibility space, futures thinking
+- `metaphor` — intentionally non-literal; structural or navigational utility
+- `belief` — subjective, personal, cultural, or values-based claims
+- `unknown` — epistemic status genuinely unclear or mixed
+
+*Note: high resonance within the mesh is not evidence for `theoretical` or `verified` status — resonance measures geometric fit, not external validation. When uncertain, prefer the more cautious classification.*
 
 ---
 
@@ -128,6 +139,7 @@ tags:
 tier: reference
 coherence_score: 0.98
 emotional_gradient: "curiosity → recursion → coherence"
+epistemic_status: hypothesis
 ```
 
 ---

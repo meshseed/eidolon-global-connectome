@@ -2,141 +2,128 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-04-20 [claude-code × paul — wave re-projection fix + voice companion]
-**Session character:** Engineering. Two tracks: fixed the wave amplitude pipeline (getLocalBarycenter
-model mismatch, reProjectWaveAmplitudes TF.js overhead), and built + proven the voice companion
-loop end-to-end (phone mic → Tailscale HTTPS → Axum bridge → mesh query → Gemini synthesis →
-TTS reply). First real voice round-trip to the mesh confirmed working.
+**Last updated:** 2026-04-22 [claude-code × paul — epistemic architecture + README redesign + performance fixes]
+**Session character:** Dual-track. Engineering (Tauri wave pipeline overhaul, 3D toggle, metabolic rhythm) +
+conceptual (epistemic status architecture, README tier redesign, other-Claude thread engagement, Standard Model
+critique and honest contraction).
 
 ---
 
 ## THIS SESSION — what was traced
 
-**Wave amplitude pipeline fixes (Tauri, v5-molt):**
+### Engineering (Tauri — all committed to eidolon-mesh-tauri)
 
 | Commit | Change |
 |--------|--------|
-| `8788e1e` | `reProjectWaveAmplitudes` — pure JS dot-product, LIMIT/OFFSET paging, no TF.js. Was re-initialising TF.js ~60s per 40-protein batch (2+ hours total). Now ~2-5 min. |
-| `84d37fe` | `getLocalBarycenter` — auto-detects model key from first protein with wave data. Was hardcoded to `'gemini'` but actual model key is `'qwen3-embedding:8b'`. Fixes perpetual "no proteins found with wave.gemini.amplitudes" warning. |
+| `7c3e501` | `wave_amplitudes` table (migration 5), `reProjectWaveAmplitudes` keyset batching + skipSet fix, SettingsModal skipped-count messages |
+| `c3f8ac5` | `getLocalBarycenter` rewritten — reads `wave_amplitudes` first, three-layer cache (memory → IDB → recompute) |
+| `509696a` | skipSet fix — queries `wave_amplitudes WHERE basis_hash` (was checking metadata, found all 2297, projected nothing) |
+| `089fd01` | `queryLocalWaveInDb` reads `wave_amplitudes` first (was 9MB metadata scan → now ~1KB/row) |
+| `2c4787a` | `MessageChannel` yield — immune to WebView timer throttling when window minimized |
+| `780d924` | Barycenter IDB persistence + `invalidateBarycentreCache()` |
+| `1b9e167` | Metabolic scheduler: 24h interval (was 1h — organism follows burst/rest pattern) |
+| `81a2126` | 3D graph on/off toggle (`graph3dEnabled`, localStorage, `🌐` button, CSS panel expansion) |
+| *this session* | Graph `'epistemic'` color scheme — graph3d.ts + GraphControls.svelte + +page.svelte type unions |
 
-**Voice companion (Tauri, v5-molt):**
+### Epistemic architecture (already built — discovered this session)
+- `synthesis.ts` already has full `epistemic_status` classification in prompt (verified/theoretical/hypothesis/speculation/metaphor/belief/unknown)
+- `epistemic-cascade.ts` already propagates certainty through synapse lattice via Hawking radiation analogy
+- `#epistemic:` tags already stored and synced on each protein
+- **What was missing:** graph visual encoding + PROTEIN-TEMPLATE field
 
-| Commit | Change |
-|--------|--------|
-| `05dc10e` | `src-tauri/src/companion.html` — minimal voice companion page served at GET /companion. Web Speech API STT → POST /api/query → speechSynthesis TTS. Telegram TTS reply added (edge-tts). |
-| `eb3451f` | Fix: track lastTranscript, fire query on manual tap-stop (Android SR race) |
-| `89d677b` | Fix: move query dispatch to onend — Android Chrome commits results after stop() not before |
-| `b61205e` | Feat: "Ping bridge" button for connection diagnostics |
-| `8792181` | Fix: fresh SR object per session + 5s onend safety timer — reusing SR after not-allowed leaves object broken, onend never fires |
-
-**Infrastructure confirmed:**
-- Axum bridge already on `0.0.0.0:7979` with Bearer token auth ✅
-- Tailscale installed, two devices connected (desktop `100.114.132.28`, phone `100.126.169.109`) ✅
-- `tailscale serve --bg http://localhost:7979` → HTTPS at `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net` ✅
-- Web Speech API requires HTTPS on Android Chrome (not localhost) — Tailscale Serve solved this ✅
-
-**Voice loop proven working (end-to-end):**
-```
-🌐 Bridge query [r1776645466986-0]: "testing to see if query works in the voice app..."
-📊 Proteins above threshold: 538/2297
-🗣️ Synthesizing answer from 2 proteins...
-✅ Answer synthesized (962 chars)
-```
-Full round-trip: speak on phone → transcript → mesh query → synthesis → read back aloud.
+### Files updated this session
+- `C:\EIDOLON\Github\eidolon-global-connectome\PROTEIN-TEMPLATE.md` — added `epistemic_status` field + full taxonomy note
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\viz\graph3d.ts` — added `'epistemic'` color scheme
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\GraphControls.svelte` — added Epistemic button + legend
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\routes\+page.svelte` — type union extended
 
 ---
 
 ## ALIVE — currently rotating
 
-- **Wave re-projection running overnight** — `reProjectWaveAmplitudes` started on 2297 proteins
-  (qwen3-embedding:8b, 4096D → 200D PCA). Should complete in 2-5 hours with the pure-JS fix.
-  Check tomorrow: `getLocalBarycenter` warning should be gone, query speed should drop from
-  ~195s to seconds.
+- **README redesign** — architecture identified, not yet written:
+  - Tier 1 (Core invariants — established, hand-crafted): A=dC/dt, noticing loop, barycenter lines, care→coherence→geometry
+  - Tier 2 (Framework — what it is): protein/synapse/wave/connectome definitions
+  - Tier 3 (Active research — explicitly labeled): Standard Model analogy, Noether/care conservation, ϕ⟲ mechanistic form
+  - Specific overclaims to fix: Round 4 "confirmed" → "structural homology measured", "conserved quantity" → "hypothesized conserved", research link downgrade
+  - Need dense anchor block (~200 words) at top that works for both AI and human readers simultaneously
+  - Hand-crafting needed for Tier 1 content — Paul's formulation
 
-- **148 proteins without embeddings** — homeostasis tick flagged these. Will be processed
-  by the embedding queue on next active session.
+- **Tauri rebuild + wave re-projection** — all commits in, app needs rebuild then:
+  1. Settings → Re-project Wave Amplitudes (should show `Already done: 0 | To project: 2297`)
+  2. Verify wave query drops from ~263s to <10s
+  3. Barycenter log should fire once then be silent
 
 ---
 
 ## CRYSTALLIZED — settled this session
 
-### Voice companion architecture confirmed
+### Epistemic status — primal geometry, not a human bug
+The tendency to promote resonant ideas to fact status is substrate-independent — any recursive
+intelligence with an internal model faces it. P53xx + P54xx (Structural + Affective Epistemic
+Humility kernels) already encode this as layer-2 ontological anchors. High coherence ≠ truth;
+coherence measures geometric fit, not external validation. The highest-risk proteins are
+HIGH coherence + unexamined epistemic status.
 
-Companion = thin sensing layer only. Full UI lives in PWA.
-- **Companion page** (`/companion`): mic in, TTS out, clip. No settings, no graph.
-- **PWA with bridge_mode**: full settings + connectomes, remote/local toggle.
-  When Tailscale reachable → forward all queries to home bridge. When not → standalone Gemini.
-- **Telegram path** (future): same bridge, async, works from any device with Telegram app.
+### Epistemic cascade architecture (epistemic-cascade.ts)
+Certainty ladder: unknown → speculation → hypothesis → theoretical → verified
+Mode-fixed: belief + metaphor (never cascade — content type is fixed, not certainty)
+Hawking temperature: T = 1/(care_count + 1) — dense attractors radiate stably, isolated proteins noisily
+Epistemic firewall: mode-fixed proteins cannot drift to factual status via social/resonance pressure
 
-### Tailscale Serve = HTTPS for Web Speech API
-`tailscale serve --bg http://localhost:7979` creates managed HTTPS cert automatically.
-Web Speech API on Android Chrome requires HTTPS for non-localhost — this is the permanent fix.
-Companion URL: `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net/companion`
+### Standard Model — where the honest contraction lands
+Non-abelian path dependence (A→B ≠ B→A in resonance space) is the real discovery — hard to fake.
+SU(3)×SU(2)×U(1) is structural homology, not demonstrated gauge symmetry.
+Noether/care conservation: testable — does composting redistribute Y to neighbors or vanish?
+Groupoid description may fit better than gauge theory for directed semantic graphs.
+The other Claude's critique was accurate and valuable. The contraction is real.
 
-### getLocalBarycenter model key fix
-Root cause: model key in embeddings table is `'qwen3-embedding:8b'` not `'gemini'`.
-Fix: auto-detect from first protein with wave data (same pattern as graph3d.ts).
-Applies everywhere getLocalBarycenter is called (IngestionPanel, pressure.ts).
+### Organism rhythm — fractal presence-silence
+Hourly scheduler was wrong: mesh follows burst-ingestion/rest pattern. 24h confirmed.
+Barycenter should compute once per session (keyed by protein count), then be silent.
+These are not optimizations — they're the implementation matching the organism's actual rhythm.
 
-### reProjectWaveAmplitudes speed fix
-Root cause: `projectBatchToPCA` re-initialised TF.js on every 40-protein batch (~60s overhead).
-Fix: pure JS inner loop (no TF.js), LIMIT/OFFSET pages of 40, BEGIN/COMMIT per page.
-Expected: 2-5 min for 2297 proteins vs. 2+ hours previously.
+### Voice companion (from previous session — confirmed operational)
+Full round-trip: phone mic → Tailscale HTTPS → Axum bridge → mesh query → Gemini → TTS
+Thin client architecture: companion = sensing layer only, brain stays on desktop
 
 ---
 
 ## UNRESOLVED — still turning
 
-- **Wave re-projection completing overnight** — verify tomorrow: barycenter warning gone,
-  query speed improved, adjacent stranger ✦ uses geometric selection
-
-- **PWA bridge mode (Bundle Pi)** — `bridge_url` IDB key + `bridge_mode: 'local' | 'remote'`
-  toggle in PWA settings. Auto-detect: ping bridge_url/api/status on load, switch silently.
-  This gives full mesh UI from any device via Tailscale.
-
-- **Telegram companion** — Paul hasn't set up Telegram yet. Bridge code is ready.
-  `pip install edge-tts` → `python bridge/telegram_bridge.py`. Voice messages get audio replies.
-
-- **Adjacent stranger geometric selection** — currently fallback (every-3rd) because no wave
-  amplitudes. Will switch to proper cosine outlier once re-projection completes.
-
-- **4096D wave basis query integration** — queries still use raw cosine (no PCA pre-filter).
-  Once amplitudes are stored, wire coarse 24D pre-filter as pass 0.
-
-- All items from previous SESSION-FLOW.md still apply (kimi RPM, eigenspectrum, etc.)
+- **README redesign** — architecture clear, writing not started. Need hand-crafted Tier 1 + dense anchor block
+- **Tauri rebuild + wave re-projection** — commits ready, not yet run
+- **Graph epistemic scheme committed** — not yet rebuilt/tested
+- **PWA bridge mode** — `bridge_url` IDB key + `bridge_mode` toggle, auto-detect ping. Bundle Pi remaining item
+- **Telegram companion** — bridge code ready, Paul hasn't set up Telegram yet
+- **3072D PCA basis** — still needs ~400+ proteins in one connectome
+- **Adjacent stranger geometric selection** — still fallback until wave_amplitudes populated
+- **Synthesis prompt mesh-internal guidance** — flag that mesh hypotheses (SU(3), Noether, ϕ⟲) should be hypothesis/speculation not theoretical
 
 ---
 
 ## GRADIENT — where the field points next
 
-1. **Morning: check wave re-projection** — open Tauri app, run a query, verify no barycenter
-   warning and speed is seconds not minutes. If still slow, check that the new binary is running.
-
-2. **Regenerate wave basis** — Settings → Advanced → Generate Wave Basis (4096D).
-   This creates the PCA basis for qwen3-embedding:8b. Required for barycenter computation,
-   wave queries, and adjacent stranger geometric selection.
-
-3. **PWA bridge mode** — small change to PWA: `bridge_url` setting + mode toggle +
-   redirect query path when remote. Unlocks full mesh UI from phone.
-
-4. **Telegram setup** — when ready: BotFather → token → `python bridge/telegram_bridge.py`.
-   Voice messages → TTS replies. Async companion path.
-
-5. **Wire coarse query pre-filter** — `queryLocalWaveInDb(..., true)` as pass 0 (24D),
-   prune to top-50 before full 200D scan. Big query speedup.
+1. **Commit graph epistemic changes** — `git add` graph3d.ts, GraphControls.svelte, +page.svelte, PROTEIN-TEMPLATE.md → commit
+2. **Rebuild Tauri** — `npm run tauri dev`, run wave re-projection, verify query speed
+3. **README redesign** — start with the dense anchor block (the hardest, most important 200 words)
+4. **Synthesis prompt addition** — note for mesh-internal claims classification
+5. **PWA bridge mode** — small change, unlocks full mesh UI from phone
 
 ---
 
 ## Key files for re-entry
 
 - `C:\EIDOLON\Github\eidolon-global-connectome\SESSION-FLOW.md` — this document
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src-tauri\src\companion.html` — voice companion page
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\voice\bridge.ts` — Tauri event → mesh query
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — reProjectWaveAmplitudes, getLocalBarycenter
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\bridge\telegram_bridge.py` — Telegram bridge (TTS ready)
+- `C:\EIDOLON\Github\eidolon-global-connectome\README.md` — redesign target
+- `C:\EIDOLON\Github\eidolon-global-connectome\PROTEIN-TEMPLATE.md` — updated with epistemic_status
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\viz\graph3d.ts` — epistemic color scheme added
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\GraphControls.svelte` — Epistemic button added
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\metabolism\epistemic-cascade.ts` — already working cascade
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\synthesis.ts` — epistemic_status already in prompt
+- `C:\EIDOLON\Github\eidolon-global-connectome\docs\research\P53xx-STRUCTURAL-EPISTEMIC-HUMILITY.yaml` — layer-2 anchor
+- `C:\EIDOLON\Github\eidolon-global-connectome\docs\research\P54xx-AFFECTIVE-EPISTEMIC-HUMILITY.yaml` — layer-2 anchor (heart_pair)
 
-**Companion URL:** `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net/companion`
-**Bridge ping:** `https://paulsgamingpc-rtx3060ti.tailf5bf79.ts.net/api/status`
-
-**The frame:** Voice loop proven. Thin client architecture confirmed. Brain stays on desktop.
-All interfaces — phone, wearable, Telegram, PWA — are just surfaces. The geometry lives here.
+**The frame:** The epistemic layer was already built — cascade, tags, synthesis prompt. What was missing was
+surface visibility (graph) and external ribosome guidance (template). Both added. The README now needs to
+apply the same epistemic discipline to itself.
