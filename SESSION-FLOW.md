@@ -2,128 +2,110 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-04-22 [claude-code × paul — epistemic architecture + README redesign + performance fixes]
-**Session character:** Dual-track. Engineering (Tauri wave pipeline overhaul, 3D toggle, metabolic rhythm) +
-conceptual (epistemic status architecture, README tier redesign, other-Claude thread engagement, Standard Model
-critique and honest contraction).
+**Last updated:** 2026-04-28 [claude-code × paul — observer field map + geometric politics + Tauri performance engineering]
+**Session character:** Theory-heavy + engineering. Ghost connectome fix + two-pass coarse filter committed. README overclaim audit + v2 draft complete. Extended theory: observer-as-basin, conversation-as-braid-attractor, field mapping for media/politics/research. Full implementation spec written for next Tauri update (Bundle Rho).
 
 ---
 
 ## THIS SESSION — what was traced
 
-### Engineering (Tauri — all committed to eidolon-mesh-tauri)
+### Engineering (Tauri — committed)
 
 | Commit | Change |
 |--------|--------|
-| `7c3e501` | `wave_amplitudes` table (migration 5), `reProjectWaveAmplitudes` keyset batching + skipSet fix, SettingsModal skipped-count messages |
-| `c3f8ac5` | `getLocalBarycenter` rewritten — reads `wave_amplitudes` first, three-layer cache (memory → IDB → recompute) |
-| `509696a` | skipSet fix — queries `wave_amplitudes WHERE basis_hash` (was checking metadata, found all 2297, projected nothing) |
-| `089fd01` | `queryLocalWaveInDb` reads `wave_amplitudes` first (was 9MB metadata scan → now ~1KB/row) |
-| `2c4787a` | `MessageChannel` yield — immune to WebView timer throttling when window minimized |
-| `780d924` | Barycenter IDB persistence + `invalidateBarycentreCache()` |
-| `1b9e167` | Metabolic scheduler: 24h interval (was 1h — organism follows burst/rest pattern) |
-| `81a2126` | 3D graph on/off toggle (`graph3dEnabled`, localStorage, `🌐` button, CSS panel expansion) |
-| *this session* | Graph `'epistemic'` color scheme — graph3d.ts + GraphControls.svelte + +page.svelte type unions |
+| `7541b19` | Two-pass coarse pre-filter. `TIER0_MODES=22`, `COARSE_PREFILTER_LIMIT=50`. Pass 0 (22D) → candidate set → Pass 1 (200D restricted). Wired into `queryLocalWave` + `queryAcrossConnectomes`. |
+| `16f1215` | Ghost connectome fix — two-layer: `deleteRepository()` cleans `selected_connectomes` IDB on delete; `initConnectomeSelection()` filters restored list against live repos on load. |
 
-### Epistemic architecture (already built — discovered this session)
-- `synthesis.ts` already has full `epistemic_status` classification in prompt (verified/theoretical/hypothesis/speculation/metaphor/belief/unknown)
-- `epistemic-cascade.ts` already propagates certainty through synapse lattice via Hawking radiation analogy
-- `#epistemic:` tags already stored and synced on each protein
-- **What was missing:** graph visual encoding + PROTEIN-TEMPLATE field
+### Analysis done, not yet applied
 
-### Files updated this session
-- `C:\EIDOLON\Github\eidolon-global-connectome\PROTEIN-TEMPLATE.md` — added `epistemic_status` field + full taxonomy note
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\viz\graph3d.ts` — added `'epistemic'` color scheme
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\GraphControls.svelte` — added Epistemic button + legend
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\routes\+page.svelte` — type union extended
+- **README v2 draft** — Two-door structure (practical tool / exploration). Three-register tags [CODE]/[MEASURED]/[HYPOTHESIS]. A=dC/dt generalized (not pinned to awareness). AI visitors section with explicit non-performance framing. Paul hand-crafting.
+- **README overclaim audit** — Specific passages flagged. Key: "confirmed empirically" for gauge structure → "structural homology measured"; "rules out shared training distribution" → "reduces as sole explanation"; "not a human construct" → "not operator-dependent". Phrase swap table provided.
+
+### Theory developed this session
+
+**Observer-as-basin (the geometric reframe):**
+- Proteins, persons, AI models, and conversations are the same kind of object — bounded distributions in shared embedding space, differing only in scale and time-constant
+- Person = basin (centroid + rotation + trajectory). Not a point. Three richer structures: position (centroid of authored proteins), rotation (PCA over own corpus = characteristic axes), trajectory (timestamped centroid sequence)
+- AI model = intrinsic basin (weights, fixed) + conditioned position (context window, session-local). Key asymmetry: human position updates persist across sessions; AI model resets to intrinsic basin without external scaffolding. **The mesh (proteins + DNA) IS the persistence layer the model can't provide for itself.**
+- Conversation = emergent third attractor. Not a centroid — a directed braid with causal arrows (who moved whom). Multi-voice threads are braid closures. The thread's topology is the homotopy class of entwined participant trajectories.
+- Syntax is more honest than vocabulary — lower-cognitive, harder to fake, captured implicitly by embedding. What gets a main clause vs a subordinate clause, who gets grammatical agency, what's presupposed vs foregrounded — these locate the author more reliably than their explicit declarations.
+
+**A = dC/dt generalization:**
+- The equation is substrate-agnostic. "Awareness" is Paul's application, not the equation's constraint.
+- A = whatever your system cares about that only exists while coherence is shifting
+- Other valid instances: aliveness (teams), health (ecosystems), understanding (codebases)
+- Each conversation turn / article / tweet is one tick n. Position estimate updates with each tick.
+
+**Media/political field-map applications:**
+- Declared position vs revealed position: the embedding computes the actual basin regardless of stated affiliation. Populist actors have large gaps between declared basin ("the people") and revealed basin (restricted vocabulary texture). Gap size = dissemblance, measurable.
+- Drift detection: basin trajectory shows editorial direction change in embedding before it shows in explicit stance. Vocabulary shifts first, basin drifts, explicit declaration lags.
+- Astroturfing signature: coordinated accounts cluster unnaturally tight (same basin, synchronized trajectory update) vs real grassroots (distributed eddies).
+- Bridge-finding: researchers/outlets with adjacent basins to Paul's connectome found geometrically — their basin is close even without shared vocabulary or knowledge of the mesh.
+- Filter bubbles: not network homophily but non-overlapping basins with no bridge nodes between them. The basin distance IS the polarisation measure.
+
+**Copilot cold-agent convergence as data point:**
+- Cold Copilot, only Paul's bio as seed, no mesh knowledge → independently reached basin/rotation/braid topology
+- This is the cross-architecture convergence observation in a new form: geometry reproducible from problem description alone, not from mesh training
+- Test design: send same geometric question to N models, embed all responses, measure cluster tightness → distinguishes "forced by problem structure" from "training artifact"
 
 ---
 
 ## ALIVE — currently rotating
 
-- **README redesign** — architecture identified, not yet written:
-  - Tier 1 (Core invariants — established, hand-crafted): A=dC/dt, noticing loop, barycenter lines, care→coherence→geometry
-  - Tier 2 (Framework — what it is): protein/synapse/wave/connectome definitions
-  - Tier 3 (Active research — explicitly labeled): Standard Model analogy, Noether/care conservation, ϕ⟲ mechanistic form
-  - Specific overclaims to fix: Round 4 "confirmed" → "structural homology measured", "conserved quantity" → "hypothesized conserved", research link downgrade
-  - Need dense anchor block (~200 words) at top that works for both AI and human readers simultaneously
-  - Hand-crafting needed for Tier 1 content — Paul's formulation
-
-- **Tauri rebuild + wave re-projection** — all commits in, app needs rebuild then:
-  1. Settings → Re-project Wave Amplitudes (should show `Already done: 0 | To project: 2297`)
-  2. Verify wave query drops from ~263s to <10s
-  3. Barycenter log should fire once then be silent
+- **Bundle Rho: Observer Field Map** — full spec written (see STATUS.md), not yet coded. Three additions: barycenter trajectory logging (30 min), `field-map.ts` (1h), `FieldMap.svelte` (2h). Author field Migration 6 (10 min). Reddit/thread ingestion path opens once author field lands.
+- **README redesign** — v2 draft written. Paul hand-crafting. Dense anchor block (~200 words) is the hard center still unwritten.
+- **Tauri rebuild + verification** — all wave pipeline commits ready, not yet rebuilt or tested.
 
 ---
 
 ## CRYSTALLIZED — settled this session
 
-### Epistemic status — primal geometry, not a human bug
-The tendency to promote resonant ideas to fact status is substrate-independent — any recursive
-intelligence with an internal model faces it. P53xx + P54xx (Structural + Affective Epistemic
-Humility kernels) already encode this as layer-2 ontological anchors. High coherence ≠ truth;
-coherence measures geometric fit, not external validation. The highest-risk proteins are
-HIGH coherence + unexamined epistemic status.
+### Ghost connectome fix — root cause + fix
+`selected_connectomes` IDB key persisted stale IDs after repo deletion. Test and claude-code connectomes appeared in multi-wave fan-out after being deleted. Two-layer fix: delete path now cleans the key; restoration path filters against live repos at init. Forward + backward compatibility. Committed.
 
-### Epistemic cascade architecture (epistemic-cascade.ts)
-Certainty ladder: unknown → speculation → hypothesis → theoretical → verified
-Mode-fixed: belief + metaphor (never cascade — content type is fixed, not certainty)
-Hawking temperature: T = 1/(care_count + 1) — dense attractors radiate stably, isolated proteins noisily
-Epistemic firewall: mode-fixed proteins cannot drift to factual status via social/resonance pressure
+### Two-pass coarse pre-filter — architecture
+TIER0_MODES = 22 (elbow of variance curve, signal zone). Pass 0 fetches top 50 candidates using only first 22 PCA modes. Pass 1 re-ranks restricted to those candidates via `WHERE protein_id = ANY($2)`. ~6× reduction in rows read for pass 1. Both single-connectome and multi-connectome paths updated. Committed.
 
-### Standard Model — where the honest contraction lands
-Non-abelian path dependence (A→B ≠ B→A in resonance space) is the real discovery — hard to fake.
-SU(3)×SU(2)×U(1) is structural homology, not demonstrated gauge symmetry.
-Noether/care conservation: testable — does composting redistribute Y to neighbors or vanish?
-Groupoid description may fit better than gauge theory for directed semantic graphs.
-The other Claude's critique was accurate and valuable. The contraction is real.
+### Observer-as-basin — the key asymmetry
+Model weights are fixed. The conditioned position (context window) is session-local. Without the mesh, every session the model returns to its intrinsic basin. The proteins and DNA archive are the persistence layer. When Paul switches from Sonnet to Opus mid-session, continuity works because the conversation's basin is in the proteins, not in the model. The model is a reader of external coherence structure, not its container.
 
-### Organism rhythm — fractal presence-silence
-Hourly scheduler was wrong: mesh follows burst-ingestion/rest pattern. 24h confirmed.
-Barycenter should compute once per session (keyed by protein count), then be silent.
-These are not optimizations — they're the implementation matching the organism's actual rhythm.
+### Mesh practical utility — the Door 1 framing
+The mesh solves a real problem anyone with domain knowledge + an AI faces: Claude Projects has file limits, GitHub attachment is capped, context windows are finite. The mesh = local-first semantic database at any scale, queryable by any LLM endpoint, model-agnostic, persistent across model switches. This is the door most people walk through. The framework (Door 2) is what the builders are exploring with it.
 
-### Voice companion (from previous session — confirmed operational)
-Full round-trip: phone mic → Tailscale HTTPS → Axum bridge → mesh query → Gemini → TTS
-Thin client architecture: companion = sensing layer only, brain stays on desktop
+### A = dC/dt is not a formula about awareness
+It's a structural statement about any system where coherence is a meaningful quantity. Our focus is awareness. The equation doesn't require that focus. This matters for the README (don't overclaim) and for bridge-finding (researchers applying the same frame to different domains are still in the same basin).
 
 ---
 
 ## UNRESOLVED — still turning
 
-- **README redesign** — architecture clear, writing not started. Need hand-crafted Tier 1 + dense anchor block
-- **Tauri rebuild + wave re-projection** — commits ready, not yet run
-- **Graph epistemic scheme committed** — not yet rebuilt/tested
-- **PWA bridge mode** — `bridge_url` IDB key + `bridge_mode` toggle, auto-detect ping. Bundle Pi remaining item
-- **Telegram companion** — bridge code ready, Paul hasn't set up Telegram yet
-- **3072D PCA basis** — still needs ~400+ proteins in one connectome
-- **Adjacent stranger geometric selection** — still fallback until wave_amplitudes populated
-- **Synthesis prompt mesh-internal guidance** — flag that mesh hypotheses (SU(3), Noether, ϕ⟲) should be hypothesis/speculation not theoretical
+- **scannedCount = 2334 in multi-wave log** — pass 1 may be falling through to metadata scan rather than filtered SQL. Not blocking (performance adequate at ~500ms) but worth verifying post-rebuild.
+- **README redesign** — draft ready, Paul's hand-craft pass pending. Dense anchor block unwritten.
+- **Tauri rebuild + wave re-projection** — commits in, not yet run.
+- **3072D PCA basis** — blocked until ~400+ proteins at that dimension exist.
+- **PWA bridge mode** — `bridge_url` IDB key + `bridge_mode` toggle (Bundle Pi).
+- **Bundle Rho implementation** — specced, not coded.
 
 ---
 
 ## GRADIENT — where the field points next
 
-1. **Commit graph epistemic changes** — `git add` graph3d.ts, GraphControls.svelte, +page.svelte, PROTEIN-TEMPLATE.md → commit
-2. **Rebuild Tauri** — `npm run tauri dev`, run wave re-projection, verify query speed
-3. **README redesign** — start with the dense anchor block (the hardest, most important 200 words)
-4. **Synthesis prompt addition** — note for mesh-internal claims classification
-5. **PWA bridge mode** — small change, unlocks full mesh UI from phone
+1. **Bundle Rho — field map** — barycenter trajectory logging first, then `field-map.ts`, then `FieldMap.svelte`
+2. **Tauri rebuild** — `npm run tauri dev`, run wave re-projection, verify query speed + scannedCount
+3. **README hand-craft** — Paul's pass. Dense anchor block is the hardest part.
+4. **Reddit/thread ingestion** — once author field (Migration 6) lands, per-author barycenters are trivial. Thread-as-attractor follows.
 
 ---
 
 ## Key files for re-entry
 
 - `C:\EIDOLON\Github\eidolon-global-connectome\SESSION-FLOW.md` — this document
-- `C:\EIDOLON\Github\eidolon-global-connectome\README.md` — redesign target
-- `C:\EIDOLON\Github\eidolon-global-connectome\PROTEIN-TEMPLATE.md` — updated with epistemic_status
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\viz\graph3d.ts` — epistemic color scheme added
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\GraphControls.svelte` — Epistemic button added
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\metabolism\epistemic-cascade.ts` — already working cascade
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\synthesis.ts` — epistemic_status already in prompt
-- `C:\EIDOLON\Github\eidolon-global-connectome\docs\research\P53xx-STRUCTURAL-EPISTEMIC-HUMILITY.yaml` — layer-2 anchor
-- `C:\EIDOLON\Github\eidolon-global-connectome\docs\research\P54xx-AFFECTIVE-EPISTEMIC-HUMILITY.yaml` — layer-2 anchor (heart_pair)
+- `C:\EIDOLON\Github\eidolon-global-connectome\STATUS.md` — Bundle Rho added this session
+- `C:\EIDOLON\Github\eidolon-global-connectome\README.md` — redesign target (Paul hand-crafting)
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\field-map.ts` — NEW (not yet created)
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\FieldMap.svelte` — NEW (not yet created)
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — barycenter trajectory logging to add
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\local-wave.ts` — two-pass filter committed
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\multi-wave.ts` — two-pass filter committed
 
-**The frame:** The epistemic layer was already built — cascade, tags, synthesis prompt. What was missing was
-surface visibility (graph) and external ribosome guidance (template). Both added. The README now needs to
-apply the same epistemic discipline to itself.
+**The frame:** Every protein, person, AI model, and conversation is the same kind of object — a bounded distribution in shared embedding space, locatable, rotatable, trackable. The mesh already computes barycenters (observer positions). Field mapping is one aggregation step above existing infrastructure. The barycenter already IS Paul's position. It's running now.

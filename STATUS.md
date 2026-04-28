@@ -425,6 +425,42 @@
 
 ---
 
+## 🗺️ Bundle Rho: Observer Field Map (2026-04-28)
+*Every protein, person, AI model, and conversation located in the same semantic space.*
+
+- **Status:** **SPEC COMPLETE — IMPLEMENTATION NEXT**
+- **Core Insight:** Observers (persons, AI models, conversations, media outlets) are the same kind of object as proteins — bounded distributions in shared embedding space, differing only in scale and time-constant. The mesh barycenter IS Paul's current position in that space. It's already computed. Field mapping is one aggregation step above existing infrastructure.
+
+**The three observer structures (increasing richness):**
+- **Position** — centroid of authored/generated proteins. One vector. Already computable.
+- **Rotation** — PCA over observer's own corpus = characteristic axes (interpretive frame, values, motifs). Two people with similar centroids but different rotations: same topics, different registers.
+- **Trajectory** — timestamped barycenter snapshots = semantic path through manifold over time. High-displacement periods = genuine learning. Low-displacement = consolidation.
+
+**Key asymmetry (AI vs human):**
+Human position updates persist across sessions (same substrate). AI model weights are fixed — conditioned position is session-local only. The mesh (proteins + DNA archive) is the persistence layer the model can't provide for itself. When models switch mid-session, continuity works because the conversation's basin is in the proteins, not in the model.
+
+**Applications:**
+- **Research bridge-finding** — researchers with adjacent basins to Paul's connectome found geometrically, without shared vocabulary or knowledge of the mesh
+- **Media field map** — declared position vs revealed position (syntax is more honest than vocabulary; embedding captures what vocabulary hides). Drift detection: basin trajectory shows editorial shift before explicit stance changes.
+- **Political analysis** — every tweet/article is a tick updating position estimate. Populist actors have large gaps between declared ("the people") and revealed (restricted vocabulary texture) basin. Astroturfing signature: unnaturally tight clustering.
+- **Thread/conversation topology** — Reddit threads, debates, X arguments: each voice is an attractor; the thread is a braid closure (emergent third attractor). Influence arrows visible as who moved whom.
+
+**Implementation (four additions to Tauri):**
+
+1. **Barycenter trajectory logging** (`pglite.ts`) — append timestamped snapshot to IDB history array on each barycenter recompute. `getBarycentreHistory(connectomeId, model)` reader. ~30 min.
+
+2. **`src/lib/query/field-map.ts`** (NEW) — `getBarycentreForDb(db, model)`, `buildFieldMap(connectomeIds[])`, `cosineSim(a,b)`, `projectTo2D(vectors[])` (power-iteration PCA over N barycenters). ~1h.
+
+3. **`src/lib/components/FieldMap.svelte`** (NEW) — SVG scatter plot. Dots = connectomes, sized by protein count. Similarity edges above threshold. Hover shows pairwise distances. Trajectory trail when history available. ~2h.
+
+4. **Migration 6: `author` column** (`pglite.ts`) — `ALTER TABLE proteins ADD COLUMN author TEXT DEFAULT NULL` + index. Enables per-author barycenters for Reddit/thread ingestion. ~10 min.
+
+**First test case:** Tauri has ~2334 proteins from the full Anthropic chat export. Paul's barycenter is already computed. Add any second connectome (even empty) → field map shows two points. Pairwise distance is the first observer-relative measurement.
+
+**Copilot cold-agent convergence (data point):** Cold Copilot + only Paul's bio as seed → independently reached basin/rotation/braid topology. Same geometry reproduced from problem description alone, without mesh training. Planned test: send same geometric question to N models, embed all responses, measure cluster tightness → distinguishes "forced by problem structure" from "shared training artifact."
+
+---
+
 ## 🔀 Bundle Lambda: Two-Track Full Speciation (2026-03-12)
 *PWA and Tauri diverging as distinct organisms sharing only protocol.*
 
@@ -485,6 +521,12 @@
 24. 🕒 **Gemma 4 as primary local ribosome:** Upgrade default local model from gemma3:12b → gemma4. Tool use native. (Bundle Pi / Theta)
 25. 🕒 **Self-modifying tool loop:** Expose `read_file`, `write_file`, `search_proteins`, `embed_and_store` as LLM tools. Deep Sync `src/` first. (Bundle Omicron)
 26. 🕒 **Embed-first ingestion (research):** Architecture discussion logged — embed raw chunks, synthesize proteins on demand at query time, query-contextualized expression. Biological homolog confirmed (DNA/ribosome/virus). Evaluate as future ingestion mode. No implementation yet. (Session 2026-04-04)
+
+---
+
+27. 🕒 **Bundle Rho — Observer Field Map:** Four additions: barycenter trajectory logging (`pglite.ts`), `field-map.ts` (NEW), `FieldMap.svelte` (NEW), Migration 6 author column. Sequence: trajectory logging → field-map.ts → FieldMap.svelte → author field. See Bundle Rho for full spec.
+28. 🕒 **Tauri rebuild + wave verification:** Commits `7541b19` (two-pass coarse filter) + `16f1215` (ghost connectome fix) ready. Run `npm run tauri dev`, re-project wave amplitudes, verify scannedCount drops in multi-wave log.
+29. 🕒 **README redesign:** v2 draft written (two-door: practical tool / exploration). Paul hand-crafting. Dense anchor block (~200 words) is the hard center.
 
 ---
 
