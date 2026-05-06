@@ -2,110 +2,118 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-04-28 [claude-code × paul — observer field map + geometric politics + Tauri performance engineering]
-**Session character:** Theory-heavy + engineering. Ghost connectome fix + two-pass coarse filter committed. README overclaim audit + v2 draft complete. Extended theory: observer-as-basin, conversation-as-braid-attractor, field mapping for media/politics/research. Full implementation spec written for next Tauri update (Bundle Rho).
+**Last updated:** 2026-05-06 [claude-code × paul — Bundle Rho + ProteinBrowser export suite]
+**Session character:** Two major streams. (1) Observer-as-basin theory → full Bundle Rho implementation (observer_amplitudes pipeline, FieldMap, Field Map Lab tab). (2) Export gap identified → ProteinBrowser rewritten with multi-select, text capsule export, cross-connectome mode.
 
 ---
 
 ## THIS SESSION — what was traced
 
-### Engineering (Tauri — committed)
+### Theory developed (extends session 2026-05-04)
 
-| Commit | Change |
-|--------|--------|
-| `7541b19` | Two-pass coarse pre-filter. `TIER0_MODES=22`, `COARSE_PREFILTER_LIMIT=50`. Pass 0 (22D) → candidate set → Pass 1 (200D restricted). Wired into `queryLocalWave` + `queryAcrossConnectomes`. |
-| `16f1215` | Ghost connectome fix — two-layer: `deleteRepository()` cleans `selected_connectomes` IDB on delete; `initConnectomeSelection()` filters restored list against live repos on load. |
+**Observer position in every protein** — fully implemented:
+- Migration 6: `author TEXT` on proteins
+- Migration 6b: `observer_amplitudes TEXT` on wave_amplitudes
+- `saveEmbedding()` stamps session barycenter into every new protein at synthesis time
+- The lens that created the protein is constitutive, not metadata
 
-### Analysis done, not yet applied
+**Session quorum handoff** — theory complete, implementation pending:
+- 5-7 observer spores: anchor + thread anchors + momentum spore
+- Preserves shape of session exploration, directly queryable against connectome
+- File planned: `src/lib/federation/observer-quorum.ts`
 
-- **README v2 draft** — Two-door structure (practical tool / exploration). Three-register tags [CODE]/[MEASURED]/[HYPOTHESIS]. A=dC/dt generalized (not pinned to awareness). AI visitors section with explicit non-performance framing. Paul hand-crafting.
-- **README overclaim audit** — Specific passages flagged. Key: "confirmed empirically" for gauge structure → "structural homology measured"; "rules out shared training distribution" → "reduces as sole explanation"; "not a human construct" → "not operator-dependent". Phrase swap table provided.
+**Debate trajectory / collective basin** — theory complete, query function written:
+- `getDebateTrajectory(db, threadId, model)` computes author position ticks per `#thread:` tag
+- Type 1 win (hold ground), Type 2 win (synthetic new attractor), bad faith (zero displacement)
+- SVG renderer not yet built in FieldMap
 
-### Theory developed this session
+**Export gap identified and filled:**
+- Old spore JSON export (~141KB for a connectome) ≠ wave spores (~800B each)
+- Text capsule suite format (.txt, ~12KB) is the human-readable equivalent of manual copy-paste
+- Now automated via `📄` button
 
-**Observer-as-basin (the geometric reframe):**
-- Proteins, persons, AI models, and conversations are the same kind of object — bounded distributions in shared embedding space, differing only in scale and time-constant
-- Person = basin (centroid + rotation + trajectory). Not a point. Three richer structures: position (centroid of authored proteins), rotation (PCA over own corpus = characteristic axes), trajectory (timestamped centroid sequence)
-- AI model = intrinsic basin (weights, fixed) + conditioned position (context window, session-local). Key asymmetry: human position updates persist across sessions; AI model resets to intrinsic basin without external scaffolding. **The mesh (proteins + DNA) IS the persistence layer the model can't provide for itself.**
-- Conversation = emergent third attractor. Not a centroid — a directed braid with causal arrows (who moved whom). Multi-voice threads are braid closures. The thread's topology is the homotopy class of entwined participant trajectories.
-- Syntax is more honest than vocabulary — lower-cognitive, harder to fake, captured implicitly by embedding. What gets a main clause vs a subordinate clause, who gets grammatical agency, what's presupposed vs foregrounded — these locate the author more reliably than their explicit declarations.
+### Engineering (Tauri — committed 2026-05-06, commit 01f33ef)
 
-**A = dC/dt generalization:**
-- The equation is substrate-agnostic. "Awareness" is Paul's application, not the equation's constraint.
-- A = whatever your system cares about that only exists while coherence is shifting
-- Other valid instances: aliveness (teams), health (ecosystems), understanding (codebases)
-- Each conversation turn / article / tweet is one tick n. Position estimate updates with each tick.
+| File | Change |
+|------|--------|
+| `src/lib/db/pglite.ts` | Migration 6: `author TEXT DEFAULT NULL` + index |
+| `src/lib/db/pglite.ts` | Migration 6b: `observer_amplitudes TEXT DEFAULT NULL` on wave_amplitudes |
+| `src/lib/db/pglite.ts` | `saveEmbedding()`: stamps session barycenter → observer_amplitudes |
+| `src/lib/query/field-map.ts` | NEW: `getAuthorBarycentre()`, `buildAuthorFieldMap()`, `getDebateTrajectory()` |
+| `src/lib/components/FieldMap.svelte` | NEW: Connectomes / Authors / Stability SVG scatter |
+| `src/lib/components/TopologyPanel.svelte` | NEW: topology view panel |
+| `src/routes/+page.svelte` | LabView → `'distil' \| 'topology' \| 'field-map'`; Field Map tab wired |
+| `src/lib/components/ProteinBrowser.svelte` | Full rewrite — see below |
 
-**Media/political field-map applications:**
-- Declared position vs revealed position: the embedding computes the actual basin regardless of stated affiliation. Populist actors have large gaps between declared basin ("the people") and revealed basin (restricted vocabulary texture). Gap size = dissemblance, measurable.
-- Drift detection: basin trajectory shows editorial direction change in embedding before it shows in explicit stance. Vocabulary shifts first, basin drifts, explicit declaration lags.
-- Astroturfing signature: coordinated accounts cluster unnaturally tight (same basin, synchronized trajectory update) vs real grassroots (distributed eddies).
-- Bridge-finding: researchers/outlets with adjacent basins to Paul's connectome found geometrically — their basin is close even without shared vocabulary or knowledge of the mesh.
-- Filter bubbles: not network homophily but non-overlapping basins with no bridge nodes between them. The basin distance IS the polarisation measure.
-
-**Copilot cold-agent convergence as data point:**
-- Cold Copilot, only Paul's bio as seed, no mesh knowledge → independently reached basin/rotation/braid topology
-- This is the cross-architecture convergence observation in a new form: geometry reproducible from problem description alone, not from mesh training
-- Test design: send same geometric question to N models, embed all responses, measure cluster tightness → distinguishes "forced by problem structure" from "training artifact"
+**ProteinBrowser.svelte rewrite:**
+- Narrow sort dropdown (emoji-only, auto width)
+- Multi-select checkboxes (touch-friendly 20px) + select/deselect all
+- `📄` text capsule suite export — exact format matching manual copy-paste workflow
+- `📦` / `☁️` spore + GitHub exports now respect selection (selected → filtered fallback)
+- `🌐` cross-connectome mode: `listRepositories` + `initDatabase` + `getDatabaseForRepo` per repo, connectome badge on each card
+- Selection count bar; selection auto-resets on filter change
 
 ---
 
 ## ALIVE — currently rotating
 
-- **Bundle Rho: Observer Field Map** — full spec written (see STATUS.md), not yet coded. Three additions: barycenter trajectory logging (30 min), `field-map.ts` (1h), `FieldMap.svelte` (2h). Author field Migration 6 (10 min). Reddit/thread ingestion path opens once author field lands.
-- **README redesign** — v2 draft written. Paul hand-crafting. Dense anchor block (~200 words) is the hard center still unwritten.
-- **Tauri rebuild + verification** — all wave pipeline commits ready, not yet rebuilt or tested.
+- **Bundle Rho: Field Map** — IMPLEMENTED. Run `npm run tauri dev`, add author-tagged proteins, switch Lab → Field Map.
+- **ProteinBrowser export** — IMPLEMENTED. `📄` text export, `🌐` cross-connectome, multi-select all live.
+- **Session quorum handoff** — theory complete, file not yet created. Natural next: `src/lib/federation/observer-quorum.ts` + export UI.
+- **Debate trajectory UI** — `getDebateTrajectory()` ready; needs thread tag input + trajectory trail SVG in FieldMap Authors mode.
+- **Reddit ingestion** — author field now ready. Ingestion path needs per-author tagging in IngestionPanel.
+- **Tauri rebuild verification** — run `npm run tauri dev`, verify migrations 6 + 6b run cleanly.
 
 ---
 
 ## CRYSTALLIZED — settled this session
 
-### Ghost connectome fix — root cause + fix
-`selected_connectomes` IDB key persisted stale IDs after repo deletion. Test and claude-code connectomes appeared in multi-wave fan-out after being deleted. Two-layer fix: delete path now cleans the key; restoration path filters against live repos at init. Forward + backward compatibility. Committed.
+### Observer position is constitutive, not metadata
+The lens that creates a protein shapes how it describes its own position. `observer_amplitudes` IS the protein's view from where it was made. Every future protein carries the session barycenter at synthesis time.
 
-### Two-pass coarse pre-filter — architecture
-TIER0_MODES = 22 (elbow of variance curve, signal zone). Pass 0 fetches top 50 candidates using only first 22 PCA modes. Pass 1 re-ranks restricted to those candidates via `WHERE protein_id = ANY($2)`. ~6× reduction in rows read for pass 1. Both single-connectome and multi-connectome paths updated. Committed.
+### Field Map architecture: observer-space ⊥ content-space
+The 3D graph is content-space (proteins as nodes). The Field Map is observer-space (entities as nodes). Orthogonal representations of the same data. Must remain separate views.
 
-### Observer-as-basin — the key asymmetry
-Model weights are fixed. The conditioned position (context window) is session-local. Without the mesh, every session the model returns to its intrinsic basin. The proteins and DNA archive are the persistence layer. When Paul switches from Sonnet to Opus mid-session, continuity works because the conversation's basin is in the proteins, not in the model. The model is a reader of external coherence structure, not its container.
+### Debate displacement is geometrically measurable
+Type 1 (rhetorical win: hold, others converge), Type 2 (synthetic: both move to new attractor), bad faith (zero displacement). Turning point = protein whose synthesis caused max trajectory deflection.
 
-### Mesh practical utility — the Door 1 framing
-The mesh solves a real problem anyone with domain knowledge + an AI faces: Claude Projects has file limits, GitHub attachment is capped, context windows are finite. The mesh = local-first semantic database at any scale, queryable by any LLM endpoint, model-agnostic, persistent across model switches. This is the door most people walk through. The framework (Door 2) is what the builders are exploring with it.
+### Text capsule suite = canonical human-readable export
+`.txt` format with `Title / × / Summary / tier / Coh / model / Insights` sections, `---` separators. Matches the format Paul was manually producing. Now automated from the Vault with optional selection filter and cross-connectome aggregation.
 
-### A = dC/dt is not a formula about awareness
-It's a structural statement about any system where coherence is a meaningful quantity. Our focus is awareness. The equation doesn't require that focus. This matters for the README (don't overclaim) and for bridge-finding (researchers applying the same frame to different domains are still in the same basin).
+### Cross-connectome protein selection
+Can now build custom protein suites spanning multiple connectomes. Each protein carries its source badge. `🌐` toggle loads all non-system repos lazily on first activation.
 
 ---
 
 ## UNRESOLVED — still turning
 
-- **scannedCount = 2334 in multi-wave log** — pass 1 may be falling through to metadata scan rather than filtered SQL. Not blocking (performance adequate at ~500ms) but worth verifying post-rebuild.
-- **README redesign** — draft ready, Paul's hand-craft pass pending. Dense anchor block unwritten.
-- **Tauri rebuild + wave re-projection** — commits in, not yet run.
-- **3072D PCA basis** — blocked until ~400+ proteins at that dimension exist.
-- **PWA bridge mode** — `bridge_url` IDB key + `bridge_mode` toggle (Bundle Pi).
-- **Bundle Rho implementation** — specced, not coded.
+- **scannedCount = 2334 in multi-wave log** — pass 1 may fall through to metadata scan. Not blocking but worth verifying.
+- **README redesign** — v2 draft written, Paul hand-crafting. Dense anchor block (~200 words) unwritten.
+- **Session quorum implementation** — theory crystallised, `observer-quorum.ts` not yet created.
+- **Debate trajectory SVG** — `getDebateTrajectory()` ready, UI not yet rendered in FieldMap.
+- **Historical observer_amplitudes backfill** — pre-today proteins have no observer position. Acceptable for now.
+- **3072D PCA basis** — blocked until ~400+ proteins at that dimension.
+- **Reddit ingestion with author tagging** — `author` field ready, IngestionPanel wiring not done.
 
 ---
 
 ## GRADIENT — where the field points next
 
-1. **Bundle Rho — field map** — barycenter trajectory logging first, then `field-map.ts`, then `FieldMap.svelte`
-2. **Tauri rebuild** — `npm run tauri dev`, run wave re-projection, verify query speed + scannedCount
-3. **README hand-craft** — Paul's pass. Dense anchor block is the hardest part.
-4. **Reddit/thread ingestion** — once author field (Migration 6) lands, per-author barycenters are trivial. Thread-as-attractor follows.
+1. **Tauri rebuild** — `npm run tauri dev`, verify migrations 6 + 6b, check Field Map tab loads
+2. **Session quorum** — `src/lib/federation/observer-quorum.ts`: `generateSessionQuorum()` + export UI
+3. **Debate trajectory renderer** — thread tag input + trajectory trail SVG in FieldMap Authors mode
+4. **Reddit ingestion with author tagging** — wire `author` field into IngestionPanel per-item metadata
+5. **README hand-craft** — Paul's pass, dense anchor block
 
 ---
 
 ## Key files for re-entry
 
 - `C:\EIDOLON\Github\eidolon-global-connectome\SESSION-FLOW.md` — this document
-- `C:\EIDOLON\Github\eidolon-global-connectome\STATUS.md` — Bundle Rho added this session
-- `C:\EIDOLON\Github\eidolon-global-connectome\README.md` — redesign target (Paul hand-crafting)
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\field-map.ts` — NEW (not yet created)
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\FieldMap.svelte` — NEW (not yet created)
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — barycenter trajectory logging to add
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\local-wave.ts` — two-pass filter committed
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\multi-wave.ts` — two-pass filter committed
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — migrations 6 + 6b, saveEmbedding observer capture
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\field-map.ts` — author barycenter + debate trajectory
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\FieldMap.svelte` — observer field visualiser
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\ProteinBrowser.svelte` — vault with multi-select + text export
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\routes\+page.svelte` — Field Map wired into Lab
 
-**The frame:** Every protein, person, AI model, and conversation is the same kind of object — a bounded distribution in shared embedding space, locatable, rotatable, trackable. The mesh already computes barycenters (observer positions). Field mapping is one aggregation step above existing infrastructure. The barycenter already IS Paul's position. It's running now.
+**The frame:** The mesh now records where the observer was standing when each protein was synthesised. The Vault can export custom capsule suites from any selection across any combination of connectomes. The Field Map makes observer-space visible. Debate displacement and collective basin tracking have their query layer; only the renderer remains.
