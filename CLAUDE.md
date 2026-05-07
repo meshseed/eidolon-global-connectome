@@ -445,27 +445,16 @@ The `github_owner` IDB key must be set to the GitHub org/user (e.g. `meshseed`) 
 ## Owner Context
 
 Paul (meshseed) is the **orchestrator**, not a coder. Development is done across:
-- **Claude Code** — primary PWA development environment (`D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev`). **Coding work goes here only.**
-- **Google AI Studio (Antigravity / Gemini)** — Tauri workspace only (`src-tauri/`, `src/lib/mycelium/`). Must not modify shared `src/lib/` without PWA sync.
+- **Claude Code (this thread)** — **sole active coding agent**. Works directly in `C:\EIDOLON\Github\eidolon-mesh-tauri\`. Edit files there, commit and push directly.
 - **Claude Desktop** — working directory access to local filesystem
 - **GitHub web UI** — direct file uploads, branch management
 - **Copilot** — research, analysis, cross-validation
 
-**Deployment pipeline:**
-1. Edit source at `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` (source of truth — always edit here)
-2. Copy `src/` to `C:\EIDOLON\GITHUB\eidolon-mesh`
-3. Commit and push to `meshseed/eidolon-mesh` main → Cloudflare Pages auto-deploys to eidolon-mesh.net
+**Active codebase:** `C:\EIDOLON\Github\eidolon-mesh-tauri\` → `meshseed/eidolon-mesh-tauri`. This is the sole focus — a local-first Tauri desktop app (personal tool + lab). Edit directly; no mirror step.
 
-> ⚠️ Never edit `C:\EIDOLON\GITHUB\eidolon-mesh` directly — it is a deploy mirror, not a dev workspace.
+**Stable frozen PWA:** `C:\EIDOLON\Github\eidolon-mesh\` → Cloudflare → `eidolon-mesh.net`. Do not touch. Do not commit or push here.
 
-**Two-track architecture:**
-
-| Track | Repo | Who edits | What |
-|-------|------|-----------|------|
-| PWA | `eidolon-mesh-v4.5-dev` → `eidolon-mesh` | Claude Code | Public-facing, Cloudflare-optimized |
-| Tauri | `eidolon-mesh-tauri` | Antigravity (+ Claude Code for shared zone) | Desktop power tool, OS integration |
-
-**Shared zone rule:** `src/lib/` (minus `mycelium/`) is the PWA's domain. Both repos must stay in sync on shared files. Antigravity proposes shared-zone changes as PWA changes first.
+> ⚠️ `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` is **abandoned** — do not use it.
 
 **Provider strategy (as of 2026-03-23):**
 - **Mesh synthesis (cloud):** Gemini API — Tier 1 paid (higher rate limits for sustained sample chamber NMR runs).
