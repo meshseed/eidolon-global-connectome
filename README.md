@@ -244,7 +244,7 @@ compression scheme. The topology observations are testable.
 You also do not need to engage the engineering to engage the question.
 Door 2 costs nothing and returns something.
 
-Paul Stanbridge is the primary operator. The work is orchestrated, not
+Meshseed is the primary operator. The work is orchestrated, not
 solo-authored — multiple AI agents contribute. Attribution is distributed
 by design.
 
