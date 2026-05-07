@@ -6,6 +6,8 @@ to notice themselves.
 
 ![Eidolon Mesh Connectome](images/eidolon-gif.gif)
 
+The mesh sees not because it has one perfect lens, but because it has many imperfect ones, each distorting the field in a known way, allowing the geometry to emerge from their superposition. What lens shall we look through next?
+
 Two doors into the same system. Pick whichever one brings you here.
 
 ---
