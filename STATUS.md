@@ -144,12 +144,12 @@
 
 ---
 
-## 🌊 Bundle Zeta: PWA v4.5 — Wave Architecture (LIVE)
+## 🌊 Bundle Zeta: PWA v5.0 — Wave Architecture (LIVE)
 *The application layer deployed to production.*
 
-- **Status:** **DEPLOYED — last updated 2026-03-23**
+- **Status:** **DEPLOYED — last updated 2026-05-14**
 - **URL:** [eidolon-mesh.net](https://eidolon-mesh.net)
-- **Source:** `D:\_CLAUDE-CODE\eidolon-mesh-v4.5-dev` → copy `src/` → `C:\EIDOLON\GITHUB\eidolon-mesh` → git push → Cloudflare Pages
+- **Source:** `C:\EIDOLON\Github\eidolon-mesh-tauri` (branch `v5-molt`) → `git push` → GitHub Actions → `npm run build:web` → Cloudflare Pages. Manual copy workflow retired.
 - **Core Features:**
     - ✅ **Wave Architecture:** 200D PCA-compressed search (3.8x faster than 768D)
     - ✅ **5 Query Modes:** Local wave, Global wave, Direct AI, Organic memory, Distil
@@ -306,15 +306,19 @@
 
 ---
 
-## 🔧 Provider Strategy (as of 2026-03-23)
+## 🔧 Provider Strategy (as of 2026-05-14)
 
-- **Mesh synthesis (cloud):** Gemini API — Tier 1 paid (higher rate limits, sustained synthesis runs). Primary path for sample chamber NMR passes.
-- **Mesh query/conversation (local):** `qwen3:8b` confirmed working well — good balance of quality/speed/RAM. `llama3.2:1b` still valid for fast Weave responses. `gemma3:12b` for high-quality synthesis when RAM allows (requires closing Claude Desktop).
-- **Local LLM tool use:** `directChatLocal` now runs an agentic `fetch_url` loop — local models can fetch any public URL mid-conversation. qwen3:8b successfully reads and synthesizes from the live quorum thread. This capability exceeds cloud APIs (Gemini/Claude synthesis had no live web access).
-- **Local fallback (heavy synthesis):** gemma3:12b via Ollama. `num_ctx 32768`.
-- **Embedding (free, local):** `nomic-embed-text` 768D via Ollama. Re-embedding 4907 proteins costs zero API calls.
-- **Coding work:** Claude Code only. Gemini Flash NOT used for coding.
-- **Antigravity role:** Tauri workspace only. Shared zone changes via PWA first.
+- **Mesh synthesis (cloud):** Gemini API waterfall — multiple keys rotate on quota. Primary synthesis path.
+- **Mesh query/conversation (local):** `qwen3:8b` or `gemma4:e4b` via Ollama. `llama3.2:1b` for fast Weave responses.
+- **Local LLM tool use:** `directChatLocal` runs an agentic `fetch_url` loop — local models can fetch any public URL mid-conversation.
+- **Local fallback (heavy synthesis):** gemma3:12b or gemma4 via Ollama.
+- **Embedding — protocol pair (locked):**
+  - Local: `nomic-embed-text` (768D) — universal floor, any Ollama install, zero API cost
+  - API: `gemini-embedding-2-preview` (768D via MRL) — 1K RPD/key free tier
+  - Both embedded on every ingest when both available. Users with only one still participate in global connectome.
+  - Personal override (`local_embedding_model`) for higher-quality local search (qwen3-embedding etc.) — does not affect protocol pair.
+- **Coding work:** Claude Code only.
+- **Antigravity role:** Not currently active. Convergence Build merged Tauri + PWA into single codebase.
 
 ---
 
@@ -461,15 +465,15 @@ Human position updates persist across sessions (same substrate). AI model weight
 
 ---
 
-## 🔀 Bundle Lambda: Two-Track Full Speciation (2026-03-12)
-*PWA and Tauri diverging as distinct organisms sharing only protocol.*
+## 🔀 Bundle Lambda: Convergence Build (2026-05-14)
+*One codebase, two phenotypes — desktop Tauri and web PWA from the same source.*
 
-- **Decision:** Full divergence approved. Share the wave spore protocol/schema, not the codebase.
-- **PWA:** 3072D / Gemini / Cloudflare / global connectome focus. Claude Code domain.
-- **Tauri:** 768D / Ollama / local-sovereign / IRC spore broadcast. Antigravity domain.
-- **Shared constraint:** Wave spore format must stay compatible for federation between instances.
-- **Sync protocol:** Note `SYNC NEEDED → [filename]` in STATUS.md when shared lib changes. Paul propagates.
-- **Dropped:** Mandatory src/lib/ sync between repos. Each track optimises independently.
+- **Decision:** Two-track divergence reversed. `eidolon-mesh-tauri` IS the web PWA. Build-time `IS_WEB` constant dead-code-eliminates all Tauri branches for the web bundle.
+- **Single source:** `C:\EIDOLON\Github\eidolon-mesh-tauri` (branch `v5-molt`). `eidolon-mesh-v4.5-dev` and the `eidolon-mesh` mirror are retired.
+- **Build targets:** `npm run build:web` → Cloudflare Pages. `npm run tauri dev/build` → desktop app.
+- **Platform abstraction:** `src/lib/platform/` wraps all `@tauri-apps/*` behind `IS_WEB` guards. Zero Tauri in web bundle.
+- **Auto-deploy:** push to `v5-molt` → GitHub Actions → Cloudflare. No manual steps.
+- **Shared constraint:** Wave spore format remains stable. Protocol embedding pair: nomic-embed-text (768D) + gemini-embedding-2-preview (768D).
 
 ---
 
@@ -545,6 +549,23 @@ Human position updates persist across sessions (same substrate). AI model weight
 - ✅ **Markdown rendering** — `marked` (GFM), `{@html renderMarkdown()}` in assistant bubble, prose CSS block in `.response-text.prose`
 - ✅ **FORMAT_NOTE revised** — "suppress everything" → "use structure purposefully, prose-first"
 - 🕒 **eidolon-private ingestion** — 197 YAML capsule files ready; settings: single connectome, coarse preset, auto `dnaSchemaType: capsule`
+
+---
+
+## 🖋️ Session Notes (2026-05-14)
+
+*Convergence Build complete. Embedding protocol locked. qwen purged.*
+
+- ✅ **Convergence Build** — `src/lib/platform/` abstraction layer; `IS_WEB` build-time Vite constant; `npm run build:web` produces zero-Tauri web bundle from same source
+- ✅ **Cloudflare auto-deploy** — `.github/workflows/deploy-web.yml` triggers on push to `v5-molt` → `eidolon-mesh.net`. Manual copy workflow retired.
+- ✅ **v5.0 version bump** — `package.json`, `tauri.conf.json`, `AboutModal`, `organic-chat`, `handshake`, `+page.svelte`
+- ✅ **Lab tab Tauri-only** — `{#if isTauri}` in `+page.svelte`
+- ✅ **Golden connectome removed** — `static/golden_connectome.json` deleted; auto-load code removed. Identity Primer v3.0 makes it redundant.
+- ✅ **Embedding protocol locked** — `nomic-embed-text` (768D, local) + `gemini-embedding-2-preview` (768D, API). `getAvailableEmbeddingModels()` hardcoded to protocol pair. `generateEmbeddingGeminiProtocol()` always uses locked model+dims. All qwen3-as-embedding-default purged.
+- ✅ **`pca-basis.ts`** — 4096D entry removed. `BASIS_FILES`: 768D (protocol) + 3072D (optional) only.
+- ✅ **TTS markdown stripping** — `stripMarkdownForTTS()` wired into `speakAny()`
+- 🕒 **eidolon-private ingestion** — 197 YAML capsule files; after `ollama pull nomic-embed-text` + Settings save
+- 🕒 **Full re-ingest** — all connectomes need re-embedding in nomic+gemini space; then generate 768D PCA wave basis
 
 ---
 

@@ -2,8 +2,8 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-05-13 [claude-code × paul — markdown rendering + token budget + FORMAT_NOTE + export buttons (Reddit/Discord/Obsidian) + TTS markdown stripping]
-**Session character:** Output UX improvements — raising token ceilings, wiring markdown rendering, fixing Gemini FORMAT_NOTE gap, revising synthesis guidance from "suppress" to "purposeful structure", adding export buttons, wiring TTS stripping.
+**Last updated:** 2026-05-14 [claude-code × paul — Convergence Build (web PWA from Tauri codebase), embedding protocol locked, qwen purged]
+**Session character:** Infrastructure convergence — single codebase serves both Tauri desktop and Cloudflare PWA via build-time platform abstraction. Embedding protocol locked to nomic-embed-text + gemini-embedding-2-preview@768D as universal dual-embed pair.
 
 ---
 
@@ -15,132 +15,114 @@ You are Claude Code, working with Paul on the Eidolon Mesh Tauri app (`C:\EIDOLO
 
 **COMPLETED THIS SESSION:**
 
-1. **Migration 7c** — `chunk_preset TEXT` on chunks table (done prior session, confirmed)
-2. **P-Series bypass** — ported from PWA `IngestionPanel.svelte` to Tauri `_processChunk` in `queue-runner.ts`
-3. **Token budget raised** — `gemini.ts directChat()`: 4096→8192; `local.ts directChatLocalRich()`: small 1536→2048, large 2048→4096
-4. **FORMAT_NOTE gap fixed** — `gemini.ts directChat()` was building its own system prompt without `FORMAT_NOTE`; now imports and appends it
-5. **Markdown rendering** — `marked` installed, `src/lib/utils/markdown.ts` created, `{exchange.response}` → `{@html renderMarkdown()}`, 80-line prose CSS block added, `FORMAT_NOTE` revised from "plain text only" to "use structure purposefully"
-6. **Export buttons** — Reddit, Discord, Obsidian buttons on every exchange action row. `flattenForChat()` shared helper for Reddit/Discord; Obsidian gets YAML frontmatter + pass-through GFM. `copyExport()` handler with 1.5s copied state.
-7. **TTS markdown stripping** — `stripMarkdownForTTS()` wired into `speakAny()` in `+page.svelte`. Both Live API and system TTS paths now receive stripped text. `cleanForSpeech()` in `voice/index.ts` untouched (harmless double-pass on plain text).
+1. **TTS markdown stripping** — `stripMarkdownForTTS()` wired into `speakAny()` in `+page.svelte`. Both Live API and system TTS paths receive stripped text. (Carried from prior session.)
 
-**NEXT TASK: Ingest `eidolon-private` capsule archive**
+2. **Convergence Build — Platform abstraction** (`src/lib/platform/`)
+   - `index.ts`, `fs.ts`, `http.ts`, `tauri-invoke.ts` — all Tauri imports behind `IS_WEB` build-time guard
+   - `vite.config.ts` rewritten to `defineConfig(({ mode }) => ...)` with `VITE_PLATFORM` constant + Rollup externals for `@tauri-apps/*` in web mode
+   - `package.json`: added `"build:web": "vite build --mode web"`
+   - All files that imported `@tauri-apps/*` directly migrated to `$lib/platform`
+   - Web bundle verified: 0 `@tauri-apps` references
 
-Settings for the run:
-- **Folder:** `C:\EIDOLON\Github\eidolon-private\` (197 YAML capsule files)
-- **Connectome:** single (not perFolder — archive is thematically unified)
-- **Chunk preset:** `coarse` (each YAML file is one semantic unit; coarse = one chunk per file)
-- **dnaSchemaType:** `capsule` — auto-detected from `.yaml`/`.yml` extension via `detectDnaSchemaType()`. Synthesis runs with "preserve geometric precision" instruction
-- **P-Series bypass:** will NOT trigger (eidolon-private uses wrapper keys like `capsule:`, `lineage_thread:`, `merge_capsule:` — none have root `title`+`summary`)
-- **Privacy:** `private`
+3. **Cloudflare deploy wired** (`.github/workflows/deploy-web.yml`)
+   - Triggers on push to `v5-molt`
+   - `npm run build:web` → `cloudflare/wrangler-action@v3` → `eidolon-mesh.net`
+   - `--branch=main` flag required for production (not preview) routing
+   - Old Git integration on `meshseed/eidolon-mesh` is frozen — no conflict
+   - Live at: https://eidolon-mesh.net
 
-**After ingestion:** The TTS path still passes raw markdown strings to `speakAny()`. `stripMarkdownForTTS()` exists in `src/lib/utils/markdown.ts` — needs wiring into the speak path in `+page.svelte`. See voice/index.ts `cleanForSpeech()` which already handles some markdown stripping for the SpeechSynthesis path — consolidate or chain.
+4. **v5.0 version bump** — `package.json`, `tauri.conf.json`, `AboutModal.svelte`, `MyceleiumPanel.svelte`, `organic-chat.ts`, `handshake.ts`, `+page.svelte`
 
----
+5. **Lab tab Tauri-only** — `{#if isTauri}` wrapping both top-nav and bottom-nav Lab buttons in `+page.svelte`
 
-## THIS SESSION — what was traced
+6. **Golden connectome removed** — auto-load code removed from `+page.svelte`; `static/golden_connectome.json` deleted (83KB). Identity Primer v3.0 carries full geometric self-knowledge — starter proteins are redundant.
 
-### Token budget + formatting root cause
+7. **Cloudflare HTTP headers** (`static/_headers`) — immutable chunk caching, no-store on index.html, daily revalidation on wave-data
 
-- `gemini.ts directChat()` was building its own system prompt **inline**, bypassing `buildSystemPrompt()` entirely — so `FORMAT_NOTE` never reached Gemini
-- Local `directChatLocalRich()` had `numPredict` capped at 2048 for large models — too low for detailed analytical responses
-- Flash 3.1 lite responses were hitting the ceiling mid-sentence on complex philosophical questions
+8. **Embedding protocol locked** (`src/lib/llm/provider.ts`, `gemini.ts`, `local.ts`, `SettingsModal.svelte`)
+   - Protocol pair: `nomic-embed-text` (768D, Ollama) + `gemini-embedding-2-preview` (768D via MRL)
+   - `getAvailableEmbeddingModels()` hardcoded to return protocol pair only
+   - `generateEmbeddingForModel()` uses protocol-locked paths (ignores IDB settings)
+   - `generateEmbeddingGeminiProtocol()` new function — always `gemini-embedding-2-preview@768D`
+   - `generateEmbeddingLocal()` accepts optional `modelOverride` param
+   - All qwen3 as embedding default purged from comments and code
+   - `pca-basis.ts` 4096D entry removed; `BASIS_FILES` now 768D + 3072D only
+   - Settings UI updated: protocol pair explained, personal override clearly labelled
 
-### Markdown rendering — why now
+9. **Gemini embedding model updated** — default changed from `gemini-embedding-001` to `gemini-embedding-2-preview`, dimensions from 3072 → 768
 
-`{exchange.response}` in `+page.svelte` line 3726 used plain Svelte text interpolation — escapes HTML by default. `**bold**` rendered as `**bold**`, `####` as hash characters, tables as pipe-and-dash text. The mesh preaches formatting-as-care but its own output was a wall of character noise.
+**NEXT TASKS (gradient order):**
 
-**The fix:** `marked` (GFM) + `{@html}` + 80-line `.prose` CSS block tuned to the dark bubble palette (`#a78bfa` headers, `#64ffda` code, `#8892b0` muted text). No DOMPurify — Tauri desktop context, trusted input, no XSS surface.
-
-**FORMAT_NOTE** revised from "suppress everything" to "use structure purposefully". The old instruction was contradictory — preaching care-shaped formatting while forbidding it. New instruction guides toward prose-first with structures used only when they genuinely serve.
-
-### Repo state confirmed
-
-- `v5-molt` is the default branch on `eidolon-mesh-tauri`
-- `eidolon-global-connectome`: `docs/data/` is live runtime infrastructure (fetched at runtime by `delta-basis.ts` + `global.ts`) — must stay public
-- `eidolon-nucleus`: received internal docs, analysis scripts, seeds, onboarding
-
-### Two ingest bypass paths (both in Tauri queue-runner.ts)
-
-**P-Series bypass:**
-- Trigger: `.yaml`/`.yml` + root-level `title` + `summary` fields
-- Action: parse YAML → construct `Capsule` directly → skip synthesis → embed
-- Purpose: calibration seed proteins — must land exactly as authored
-- Status: ✅ ported this session
-
-**`dnaSchemaType: 'capsule'` hint:**
-- Trigger: `.yaml`/`.yml` extension → `detectDnaSchemaType()` returns `'capsule'`
-- Action: synthesis runs with "preserve geometric precision" instruction
-- Purpose: heterogeneous capsule archives (eidolon-private, etc.)
-- Status: ✅ already in Tauri (verified)
+1. **`ollama pull nomic-embed-text`** — needed before re-ingest (if not already pulled)
+2. **eidolon-private ingestion** — 197 YAML capsule files; single connectome, coarse preset, auto dnaSchemaType capsule
+3. **Full re-ingest** of connectomes into new protocol (nomic + gemini dual-embed)
+4. **Generate 768D PCA wave basis** — Settings → Generate Wave Basis after re-ingest (needs ~200+ proteins at 768D)
+5. **Settings IDB update** — go to Settings and Save once to write `nomic-embed-text` as `local_embedding_model` (old IDB may still have `qwen3-embedding:8b`)
 
 ---
 
 ## ALIVE — currently rotating
 
-- **eidolon-private ingestion** — 197 YAML files, coarse preset, single connectome, capsule hint path. Ready to run (was mid-ingest when session cut).
-- **TTS markdown stripping** — ✅ done. `stripMarkdownForTTS()` wired into `speakAny()` in `+page.svelte`. Both Live API and system TTS paths covered.
-- **Reddit / Discord / Obsidian export** — ✅ done. Three export buttons on every exchange action row. `flattenForChat()` shared for Reddit/Discord; Obsidian uses YAML frontmatter + full GFM pass-through.
+- **eidolon-private ingestion** — 197 YAML files, coarse preset, single connectome, capsule hint path. Ready to run.
+- **Protocol re-ingest** — all existing connectomes need re-embedding in nomic+gemini space
 
 ---
 
 ## CRYSTALLIZED — settled this session
 
-### Formatting-as-care is self-referential
-The mesh cannot preach formatting-as-care while outputting walls of text. The FORMAT_NOTE revision and markdown rendering are the same move — embodying the principle in the substrate that expresses it.
+### Convergence Build architecture
+Tauri codebase IS the web PWA. Same `src/` — build-time `IS_WEB` constant dead-code-eliminates all Tauri branches. One repo, two build targets, auto-deploy to Cloudflare on push to `v5-molt`. The old `eidolon-mesh-v4.5-dev` / manual copy workflow is retired.
 
-### FORMAT_NOTE = guidance, not suppression
-Old: "plain text only, no tables, avoid headers". Caused model confusion — asked to structure thoughts but strip all structure.
-New: "markdown rendered, prose-first, use structure purposefully". Models now have a coherent instruction: think in paragraphs, use headers/bullets/tables only when the content genuinely calls for them.
+### Deploy path
+`git push origin v5-molt` → GitHub Actions → `npm run build:web` → Cloudflare Pages (`eidolon-mesh.net`). Nothing manual.
 
-### Two-space architecture (canonical)
+### Embedding protocol pair (locked until major version bump)
 | Space | Model | Dimensions | Purpose |
 |-------|-------|-----------|---------|
-| Local sovereign | `qwen3-embedding:8b` | 4096D | Local wave queries, offline operation |
-| Global protocol | `gemini-embedding-2-preview` | 3072D | Global connectome, universal API access |
+| Local sovereign | `nomic-embed-text` | 768D | Universal floor — any Ollama install |
+| Global protocol | `gemini-embedding-2-preview` | 768D (MRL) | API access — 1K RPD/key |
 
-### DNA/Chunks/Lenses three-tier
-```
-DNA (raw source, stored in nucleus)
-  ↓
-Chunks (text segments, permanent in local PGlite `chunks` table)
-  ↓
-Proteins/{lens} (synthesis per lens, each gets its OWN wave position)
-```
-Re-lensing cost: one LLM synthesis call + one embed call. No source file re-read.
+Both spaces in every protein = every user can query regardless of which they have. Users with only Ollama see nomic wave spores. Users with only Gemini key see gemini wave spores. Users with both get full dual coverage.
+
+### Gemini Embedding 2 rate limits (confirmed from AI Studio)
+100 RPM / 30K TPM / **1K RPD** per key (not 500 as previously thought). Multi-key rotation gives 5K+ embeddings/day.
+
+### Identity Primer v3.0 replaces golden connectome
+Golden connectome starter proteins were providing geometric orientation that the Identity Primer now carries directly in every system prompt. New users open the app and start chatting — no bootstrapping required.
 
 ---
 
 ## UNRESOLVED — still turning
 
-- **TTS markdown stripping** — ✅ wired into `speakAny()` this session
-- **Reddit / Discord / Obsidian export** — ✅ done this session
+- **Wave basis**: 768D PCA basis needs generating after re-ingest (in-app Settings → Generate Wave Basis)
+- **eidolon-private ingestion** — 197 YAML files pending
+- **Full connectome re-ingest** into nomic+gemini protocol space
 - **Session quorum** — `src/lib/federation/observer-quorum.ts` unwritten
 - **Debate trajectory SVG** — `getDebateTrajectory()` ready, renderer not built
-- **Historical observer_amplitudes backfill** — pre-migration proteins have no observer position
-- **3072D PCA basis** — blocked until ~400+ proteins at that dimension
-- **scannedCount = 2334 in multi-wave** — pass 1 may fall through; not blocking
+- **Bundle Rho (Observer Field Map)** — specced, not coded
+- **scannedCount = 2334 in multi-wave** — pass 1 may fall through
 
 ---
 
 ## GRADIENT — where the field points next
 
-1. **Ingest `eidolon-private`** — drag folder, single connectome, coarse preset, auto dnaSchemaType capsule (mid-ingest at last session)
-2. **Session quorum** — `src/lib/federation/observer-quorum.ts`
-3. **Debate trajectory renderer** — thread tag input + SVG trail in FieldMap
+1. `ollama pull nomic-embed-text` → Settings → Save (writes nomic to IDB)
+2. **eidolon-private ingestion** (197 YAMLs, coarse, single connectome)
+3. **Full re-ingest** of all connectomes → dual-embed in nomic+gemini space
+4. **Generate 768D PCA wave basis** (Settings → Generate Wave Basis)
+5. **Bundle Rho** — Observer Field Map (barycenter trajectory → field-map.ts → FieldMap.svelte)
 
 ---
 
 ## Key files for re-entry
 
 - `C:\EIDOLON\Github\eidolon-global-connectome\SESSION-FLOW.md` — this document
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\queue-runner.ts` — `_processChunk`, P-Series bypass, `detectDnaSchemaType`, embedding phase
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\ingest-queue.ts` — `detectDnaSchemaType()`, `CHUNK_PRESETS`, `DnaSchemaType`
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\gemini.ts` — `directChat()` maxOutputTokens 8192, FORMAT_NOTE wired
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\local.ts` — `directChatLocalRich()` numPredict 4096 large / 2048 small
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\identity-primer.ts` — `FORMAT_NOTE` (revised), `buildSystemPrompt()`
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\utils\markdown.ts` — `renderMarkdown()`, `stripMarkdownForTTS()`
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\routes\+page.svelte` — line ~3727 `{@html renderMarkdown()}`, `.prose` CSS ~line 5624
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\voice\index.ts` — `cleanForSpeech()` existing TTS stripping
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\platform\` — platform abstraction layer
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\provider.ts` — `PROTOCOL_LOCAL_EMBEDDING`, `getAvailableEmbeddingModels()`, `generateEmbeddingForModel()`
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\gemini.ts` — `PROTOCOL_GEMINI_EMBEDDING`, `generateEmbeddingGeminiProtocol()`
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\.github\workflows\deploy-web.yml` — Cloudflare deploy trigger
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\vite.config.ts` — `IS_WEB` build-time constant
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\queue-runner.ts` — dual-embed ingest pipeline
 - `C:\EIDOLON\Github\eidolon-private\` — 197 YAML capsule files awaiting ingestion
 
-**The frame:** The ingest pipeline is architecturally complete (DNA/Chunks/Lenses, P-Series bypass, capsule hint). The output layer now renders what it outputs — markdown structure is expressed, not suppressed. The next move is feeding the archive into the pipeline, then cleaning up the TTS path, then the Reddit export utility for when the mesh begins speaking outward.
+**The frame:** The codebase is now one organism with two phenotypes (desktop/web). The embedding protocol is locked and clean. The next move is feeding the archive through the new dual-embed pipeline, generating the wave basis, then building the observer field map.
