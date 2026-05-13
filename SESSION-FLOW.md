@@ -2,118 +2,173 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-05-06 [claude-code × paul — Bundle Rho + ProteinBrowser export suite]
-**Session character:** Two major streams. (1) Observer-as-basin theory → full Bundle Rho implementation (observer_amplitudes pipeline, FieldMap, Field Map Lab tab). (2) Export gap identified → ProteinBrowser rewritten with multi-select, text capsule export, cross-connectome mode.
+**Last updated:** 2026-05-13 [claude-code × paul — DNA/Chunks/Lenses + repo reorganisation + capsule ingest prep]
+**Session character:** Architectural completion of the ingest pipeline (chunks table, re-lensing, dual embedding), then a full repo reorganisation (internal docs → nucleus, v5-molt → main), ending with discovery that P-Series bypass + dnaSchemaType capsule hint need porting to Tauri before mass ingestion begins.
+
+---
+
+## MESSAGE TO SELF — read this first after compaction
+
+You are Claude Code, working with Paul on the Eidolon Mesh Tauri app (`C:\EIDOLON\Github\eidolon-mesh-tauri`, branch `v5-molt`, now the default branch).
+
+**The recursive loop is already running.** You don't need to re-orient from scratch — the structure below is the crystallised shimmer from this session. Read it, feel where the gradient points, and pick up the thread. The next task is specific and bounded:
+
+**PORT TWO INGEST BYPASS PATHS from the PWA to the Tauri queue-runner:**
+
+1. **P-Series bypass** — flat YAML (root-level `title` + `summary`) → direct `Capsule` construction, no synthesis, direct embed. Source: `C:\EIDOLON\GITHUB\eidolon-mesh\src\lib\components\IngestionPanel.svelte` around line 460. These are calibration seed proteins — the coordinate anchors of a connectome. They must land exactly as authored.
+
+2. **`dnaSchemaType: 'capsule'` hint** — already exists as a synthesis prompt modifier in `queue-runner.ts` (auto-detected from `.yaml`/`.yml` extension via `detectDnaSchemaType()`). No code change needed here — verify it still fires correctly. The LLM sees: *"This is already a structured capsule. Extract the core claim and echo paths. Preserve the geometric precision of the original."*
+
+**Why now:** Paul is about to ingest `C:\EIDOLON\Github\eidolon-private` — 197 YAML capsule files with heterogeneous schemas (`capsule:`, `lineage_thread:`, `merge_capsule:`, `formatting_law_checklist:`, etc.). None match the flat P-Series format, so they'll all use the synthesis hint path (correct). But the P-Series bypass should exist in the Tauri pipeline for calibration seeds going forward.
+
+**The port is straightforward:** In `_processChunk()` in `queue-runner.ts`, before calling `synthesizeWithFallback()`, add: detect `.yaml`/`.yml` + root-level `title` + `summary` → construct `Capsule` directly → skip to embedding phase. The deferred-batch embedding logic from the PWA can be simplified since queue-runner already has a batch embedding phase (`_runEmbeddingPhase`).
+
+After porting: Paul will begin mass ingestion of eidolon-private capsules. Use **`dnaSchemaType: 'capsule'`** (auto-detected) + **`fine` chunk preset** (files are already small semantic units, standard/coarse would bundle unrelated capsules) + **one connectome** (not perFolder — the archive is thematically unified).
 
 ---
 
 ## THIS SESSION — what was traced
 
-### Theory developed (extends session 2026-05-04)
+### DNA / Chunks / Lenses architecture — fully implemented
 
-**Observer position in every protein** — fully implemented:
-- Migration 6: `author TEXT` on proteins
-- Migration 6b: `observer_amplitudes TEXT` on wave_amplitudes
-- `saveEmbedding()` stamps session barycenter into every new protein at synthesis time
-- The lens that created the protein is constitutive, not metadata
+The pipeline now has three tiers:
 
-**Session quorum handoff** — theory complete, implementation pending:
-- 5-7 observer spores: anchor + thread anchors + momentum spore
-- Preserves shape of session exploration, directly queryable against connectome
-- File planned: `src/lib/federation/observer-quorum.ts`
+```
+DNA (raw source, stored in nucleus)
+  ↓
+Chunks (text segments, permanent in local PGlite `chunks` table)
+  ↓
+Proteins/{lens} (synthesis per lens, each gets its OWN wave position)
+```
 
-**Debate trajectory / collective basin** — theory complete, query function written:
-- `getDebateTrajectory(db, threadId, model)` computes author position ticks per `#thread:` tag
-- Type 1 win (hold ground), Type 2 win (synthetic new attractor), bad faith (zero displacement)
-- SVG renderer not yet built in FieldMap
+**Key invariant:** Each lens produces semantically distinct synthesis → different vocabulary → different wave position. Analytical vocabulary clusters near other analytical content; participatory near relational. Embedding the synthesised text (not the chunk text) preserves this. The chunk table stores text permanently so any lens can be applied later without re-reading the source.
 
-**Export gap identified and filled:**
-- Old spore JSON export (~141KB for a connectome) ≠ wave spores (~800B each)
-- Text capsule suite format (.txt, ~12KB) is the human-readable equivalent of manual copy-paste
-- Now automated via `📄` button
+**Re-lensing cost:** one LLM synthesis call + one embed call. No source file read, no re-chunking. `relensChunk(chunkId, lens, db)` in `src/lib/ingest/relens.ts`.
 
-### Engineering (Tauri — committed 2026-05-06, commit 01f33ef)
+### Dual embedding — restored
 
-| File | Change |
-|------|--------|
-| `src/lib/db/pglite.ts` | Migration 6: `author TEXT DEFAULT NULL` + index |
-| `src/lib/db/pglite.ts` | Migration 6b: `observer_amplitudes TEXT DEFAULT NULL` on wave_amplitudes |
-| `src/lib/db/pglite.ts` | `saveEmbedding()`: stamps session barycenter → observer_amplitudes |
-| `src/lib/query/field-map.ts` | NEW: `getAuthorBarycentre()`, `buildAuthorFieldMap()`, `getDebateTrajectory()` |
-| `src/lib/components/FieldMap.svelte` | NEW: Connectomes / Authors / Stability SVG scatter |
-| `src/lib/components/TopologyPanel.svelte` | NEW: topology view panel |
-| `src/routes/+page.svelte` | LabView → `'distil' \| 'topology' \| 'field-map'`; Field Map tab wired |
-| `src/lib/components/ProteinBrowser.svelte` | Full rewrite — see below |
+`getAvailableEmbeddingModels()` in `provider.ts` now returns both:
+- `qwen3-embedding:8b` (4096D) — local sovereign, no API required
+- `gemini` (3072D) — global connectome protocol, when `gemini_api_key` present in IDB
 
-**ProteinBrowser.svelte rewrite:**
-- Narrow sort dropdown (emoji-only, auto width)
-- Multi-select checkboxes (touch-friendly 20px) + select/deselect all
-- `📄` text capsule suite export — exact format matching manual copy-paste workflow
-- `📦` / `☁️` spore + GitHub exports now respect selection (selected → filtered fallback)
-- `🌐` cross-connectome mode: `listRepositories` + `initDatabase` + `getDatabaseForRepo` per repo, connectome badge on each card
-- Selection count bar; selection auto-resets on filter change
+`generateAllEmbeddings()` fans out to both. `wave_amplitudes` PK is `(protein_id, model)` — supports multiple model rows per protein. `pushConnectomeSpores()` filters `WHERE model LIKE 'gemini%'` — only protocol-space amplitudes reach the public mesh.
+
+### Two-space architecture (canonical)
+
+| Space | Model | Dimensions | Purpose |
+|-------|-------|-----------|---------|
+| Local sovereign | `qwen3-embedding:8b` | 4096D | Local wave queries, offline operation |
+| Global protocol | `gemini-embedding-2-preview` | 3072D | Global connectome, universal API access |
+
+4096D PCA basis was generated weeks ago via in-app generator (IDB-stored). Registered in `BASIS_FILES` in `pca-basis.ts`.
+
+### Migrations landed
+
+| Migration | What | File |
+|-----------|------|------|
+| 7 | `chunks` table — permanent chunk text store | `pglite.ts` |
+| 7b | `chunk_id TEXT` on `embeddings` — provenance link | `pglite.ts` |
+| 7c | `chunk_preset TEXT` on `chunks` — records which preset produced these boundaries | `pglite.ts` |
+
+`chunk_preset` enables faithful DNA rebuild: same preset + same source text = same content hashes = dedup. `queue-runner._processChunk` passes `job.chunkPreset ?? 'standard'`. `fastIngest` passes `'raw-wavelet'`.
+
+### Repo reorganisation
+
+**`eidolon-global-connectome` (public) — now contains only:**
+- README.md, CLAUDE.md, STATUS.md, SESSION-FLOW.md, PROTEIN-TEMPLATE.md
+- `docs/user/` — user-facing guides (getting-started, local-mode, mobile, updates)
+- `docs/data/` — **LIVE QUERY INFRASTRUCTURE** (tier1-index.json, delta-basis.json, wave-spore-index.json) — fetched at runtime by `delta-basis.ts` and `global.ts`. Must stay public.
+- `images/`, `quorum/`, `wave-spores/`
+- `scripts/regenerate-indexes.py` — operational: rebuilds `docs/data/` from `wave-spores/`
+
+**`eidolon-nucleus` (private) — received:**
+- `analysis/` — Python analysis scripts (shimmer, boundary topology, etc.)
+- `onboarding/` — AGENTIC-CODER-ONBOARDING-v1.0.md, BARYCENTER-PRIMER-V1.0.md, mesh seeds
+- `seeds/` — protein seed JSONs
+- `docs/` — architecture, archive, protocols, reference, research, testing
+
+**`eidolon-mesh-tauri`:**
+- `v5-molt` is now the default branch on GitHub (changed via `gh repo edit`)
+- `main` still exists but is no longer default
+
+**`~/.claude/CLAUDE.md` updated:**
+- Onboarding path: `eidolon-global-connectome/onboarding/` → `eidolon-nucleus/onboarding/`
+
+### Capsule ingest paths — discovered
+
+**P-Series bypass (PWA only, not yet in Tauri):**
+- Triggers: `.yaml`/`.yml` file with root-level `title` + `summary`
+- Action: parse YAML → construct `Capsule` directly → skip synthesis → embed
+- Purpose: calibration seed proteins (layer 1 = mathematical, layer 2 = thermodynamic)
+- Source: `C:\EIDOLON\GITHUB\eidolon-mesh\src\lib\components\IngestionPanel.svelte` ~line 460
+
+**`dnaSchemaType: 'capsule'` hint (both apps):**
+- Triggers: `.yaml`/`.yml` extension → `detectDnaSchemaType()` returns `'capsule'`
+- Action: synthesis runs with instruction "preserve geometric precision"
+- Purpose: heterogeneous capsule archives (eidolon-private, etc.)
+- Status: ✅ already in Tauri `queue-runner.ts`
+
+**eidolon-private capsule schema:** All files use domain-specific wrapper keys (`capsule:`, `lineage_thread:`, `merge_capsule:`, etc.). P-Series bypass would NOT trigger for any of them. Synthesis with capsule hint is correct.
 
 ---
 
 ## ALIVE — currently rotating
 
-- **Bundle Rho: Field Map** — IMPLEMENTED. Run `npm run tauri dev`, add author-tagged proteins, switch Lab → Field Map.
-- **ProteinBrowser export** — IMPLEMENTED. `📄` text export, `🌐` cross-connectome, multi-select all live.
-- **Session quorum handoff** — theory complete, file not yet created. Natural next: `src/lib/federation/observer-quorum.ts` + export UI.
-- **Debate trajectory UI** — `getDebateTrajectory()` ready; needs thread tag input + trajectory trail SVG in FieldMap Authors mode.
-- **Reddit ingestion** — author field now ready. Ingestion path needs per-author tagging in IngestionPanel.
-- **Tauri rebuild verification** — run `npm run tauri dev`, verify migrations 6 + 6b run cleanly.
+- **P-Series bypass port** — clear task, bounded. Port from PWA IngestionPanel to Tauri `_processChunk` in queue-runner.
+- **eidolon-private mass ingestion** — ready to begin once bypass port is done. 197 YAML files, all capsule-hint path.
+- **Session quorum** — `observer-quorum.ts` still unwritten (from previous session).
+- **Debate trajectory SVG** — `getDebateTrajectory()` ready, renderer not built.
 
 ---
 
 ## CRYSTALLIZED — settled this session
 
-### Observer position is constitutive, not metadata
-The lens that creates a protein shapes how it describes its own position. `observer_amplitudes` IS the protein's view from where it was made. Every future protein carries the session barycenter at synthesis time.
+### Lens = position shift, not description shift
+Different lenses produce different semantic vocabulary → different manifold position. Copying the chunk embedding for all lenses would collapse them to one point. The embedding cost per lens is correct and necessary.
 
-### Field Map architecture: observer-space ⊥ content-space
-The 3D graph is content-space (proteins as nodes). The Field Map is observer-space (entities as nodes). Orthogonal representations of the same data. Must remain separate views.
+### docs/data/ is live infrastructure, not archive
+`delta-basis.json` and `tier1-index.json` are fetched by the Tauri query system at runtime from raw.githubusercontent.com. They must stay in the public repo. `regenerate-indexes.py` is the tool that rebuilds them after new spores are pushed.
 
-### Debate displacement is geometrically measurable
-Type 1 (rhetorical win: hold, others converge), Type 2 (synthetic: both move to new attractor), bad faith (zero displacement). Turning point = protein whose synthesis caused max trajectory deflection.
+### P-Series bypass ≠ capsule hint
+P-Series bypass: flat format, no synthesis, calibration seeds.
+Capsule hint: heterogeneous format, synthesis runs but guided, general archives.
+Two separate paths serving different needs. Both should exist in Tauri.
 
-### Text capsule suite = canonical human-readable export
-`.txt` format with `Title / × / Summary / tier / Coh / model / Insights` sections, `---` separators. Matches the format Paul was manually producing. Now automated from the Vault with optional selection filter and cross-connectome aggregation.
-
-### Cross-connectome protein selection
-Can now build custom protein suites spanning multiple connectomes. Each protein carries its source badge. `🌐` toggle loads all non-system repos lazily on first activation.
+### v5-molt is now main
+Default branch changed. All future work continues on `v5-molt`. Old `main` preserved but dormant.
 
 ---
 
 ## UNRESOLVED — still turning
 
-- **scannedCount = 2334 in multi-wave log** — pass 1 may fall through to metadata scan. Not blocking but worth verifying.
-- **README redesign** — v2 draft written, Paul hand-crafting. Dense anchor block (~200 words) unwritten.
-- **Session quorum implementation** — theory crystallised, `observer-quorum.ts` not yet created.
-- **Debate trajectory SVG** — `getDebateTrajectory()` ready, UI not yet rendered in FieldMap.
-- **Historical observer_amplitudes backfill** — pre-today proteins have no observer position. Acceptable for now.
-- **3072D PCA basis** — blocked until ~400+ proteins at that dimension.
-- **Reddit ingestion with author tagging** — `author` field ready, IngestionPanel wiring not done.
+- **P-Series bypass missing from Tauri** — port pending
+- **scannedCount = 2334 in multi-wave** — pass 1 may fall through. Not blocking.
+- **Session quorum** — `observer-quorum.ts` not yet created
+- **Debate trajectory SVG** — renderer not yet built
+- **Historical observer_amplitudes backfill** — pre-migration proteins have no observer position
+- **3072D PCA basis** — blocked until ~400+ proteins at that dimension
+- **Reddit ingestion with author tagging** — `author` field ready, wiring not done
 
 ---
 
 ## GRADIENT — where the field points next
 
-1. **Tauri rebuild** — `npm run tauri dev`, verify migrations 6 + 6b, check Field Map tab loads
-2. **Session quorum** — `src/lib/federation/observer-quorum.ts`: `generateSessionQuorum()` + export UI
-3. **Debate trajectory renderer** — thread tag input + trajectory trail SVG in FieldMap Authors mode
-4. **Reddit ingestion with author tagging** — wire `author` field into IngestionPanel per-item metadata
-5. **README hand-craft** — Paul's pass, dense anchor block
+1. **Port P-Series bypass** to `_processChunk` in `queue-runner.ts`
+2. **Verify `dnaSchemaType: 'capsule'` hint** still fires for `.yaml` in queue-runner
+3. **Ingest `eidolon-private`** — drag folder into IngestQueue, single connectome, fine preset, auto dnaSchemaType
+4. **Session quorum** — `src/lib/federation/observer-quorum.ts`
+5. **Debate trajectory renderer** — thread tag input + SVG trail in FieldMap
 
 ---
 
 ## Key files for re-entry
 
 - `C:\EIDOLON\Github\eidolon-global-connectome\SESSION-FLOW.md` — this document
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — migrations 6 + 6b, saveEmbedding observer capture
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\query\field-map.ts` — author barycenter + debate trajectory
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\FieldMap.svelte` — observer field visualiser
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\ProteinBrowser.svelte` — vault with multi-select + text export
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\routes\+page.svelte` — Field Map wired into Lab
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\queue-runner.ts` — `_processChunk`, `detectDnaSchemaType`, embedding phase
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\ingest-queue.ts` — `detectDnaSchemaType()`, `CHUNK_PRESETS`, `DnaSchemaType`
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\relens.ts` — re-lensing from chunks
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — migrations 7/7b/7c, chunks table, saveChunk
+- `C:\EIDOLON\GITHUB\eidolon-mesh\src\lib\components\IngestionPanel.svelte` — P-Series bypass source (~line 460)
+- `C:\EIDOLON\Github\eidolon-private\` — 197 YAML capsule files awaiting ingestion
 
-**The frame:** The mesh now records where the observer was standing when each protein was synthesised. The Vault can export custom capsule suites from any selection across any combination of connectomes. The Field Map makes observer-space visible. Debate displacement and collective basin tracking have their query layer; only the renderer remains.
+**The frame:** The ingest pipeline now has the full DNA/Chunks/Lenses architecture. Every protein carries provenance back to its source chunk. Every chunk records which preset produced its boundaries. Dual embedding means every new protein simultaneously occupies local (qwen3) and global (gemini) wave space. The repos are reorganised — internal docs are private, live query infrastructure is public. The next move is a small port that unlocks clean ingestion of the private archive.
