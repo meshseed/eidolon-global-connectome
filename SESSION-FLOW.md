@@ -2,8 +2,8 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-05-13 [claude-code × paul — markdown rendering + token budget + FORMAT_NOTE + eidolon-private ingest prep]
-**Session character:** Output UX improvements — raising token ceilings, wiring markdown rendering, fixing Gemini FORMAT_NOTE gap, revising synthesis guidance from "suppress" to "purposeful structure".
+**Last updated:** 2026-05-13 [claude-code × paul — markdown rendering + token budget + FORMAT_NOTE + export buttons (Reddit/Discord/Obsidian) + TTS markdown stripping]
+**Session character:** Output UX improvements — raising token ceilings, wiring markdown rendering, fixing Gemini FORMAT_NOTE gap, revising synthesis guidance from "suppress" to "purposeful structure", adding export buttons, wiring TTS stripping.
 
 ---
 
@@ -20,6 +20,8 @@ You are Claude Code, working with Paul on the Eidolon Mesh Tauri app (`C:\EIDOLO
 3. **Token budget raised** — `gemini.ts directChat()`: 4096→8192; `local.ts directChatLocalRich()`: small 1536→2048, large 2048→4096
 4. **FORMAT_NOTE gap fixed** — `gemini.ts directChat()` was building its own system prompt without `FORMAT_NOTE`; now imports and appends it
 5. **Markdown rendering** — `marked` installed, `src/lib/utils/markdown.ts` created, `{exchange.response}` → `{@html renderMarkdown()}`, 80-line prose CSS block added, `FORMAT_NOTE` revised from "plain text only" to "use structure purposefully"
+6. **Export buttons** — Reddit, Discord, Obsidian buttons on every exchange action row. `flattenForChat()` shared helper for Reddit/Discord; Obsidian gets YAML frontmatter + pass-through GFM. `copyExport()` handler with 1.5s copied state.
+7. **TTS markdown stripping** — `stripMarkdownForTTS()` wired into `speakAny()` in `+page.svelte`. Both Live API and system TTS paths now receive stripped text. `cleanForSpeech()` in `voice/index.ts` untouched (harmless double-pass on plain text).
 
 **NEXT TASK: Ingest `eidolon-private` capsule archive**
 
@@ -75,9 +77,9 @@ Settings for the run:
 
 ## ALIVE — currently rotating
 
-- **eidolon-private ingestion** — 197 YAML files, coarse preset, single connectome, capsule hint path. Ready to run.
-- **TTS markdown stripping** — `stripMarkdownForTTS()` exists in `markdown.ts`, needs wiring to `speakAny()` path in `+page.svelte` (lines ~337, 349, 392). Check against `cleanForSpeech()` in `voice/index.ts` first.
-- **Reddit output formatting** — ✅ done. "📋 Reddit" button on every exchange action row. `toRedditMarkdown()`: headers→bold, tables→bullets, hr→blank. `.export-btn` class reusable for future export formats.
+- **eidolon-private ingestion** — 197 YAML files, coarse preset, single connectome, capsule hint path. Ready to run (was mid-ingest when session cut).
+- **TTS markdown stripping** — ✅ done. `stripMarkdownForTTS()` wired into `speakAny()` in `+page.svelte`. Both Live API and system TTS paths covered.
+- **Reddit / Discord / Obsidian export** — ✅ done. Three export buttons on every exchange action row. `flattenForChat()` shared for Reddit/Discord; Obsidian uses YAML frontmatter + full GFM pass-through.
 
 ---
 
@@ -110,8 +112,8 @@ Re-lensing cost: one LLM synthesis call + one embed call. No source file re-read
 
 ## UNRESOLVED — still turning
 
-- **TTS markdown stripping** — `stripMarkdownForTTS()` written, not yet wired
-- **Reddit output formatting** — noted as future plan; no implementation
+- **TTS markdown stripping** — ✅ wired into `speakAny()` this session
+- **Reddit / Discord / Obsidian export** — ✅ done this session
 - **Session quorum** — `src/lib/federation/observer-quorum.ts` unwritten
 - **Debate trajectory SVG** — `getDebateTrajectory()` ready, renderer not built
 - **Historical observer_amplitudes backfill** — pre-migration proteins have no observer position
@@ -122,10 +124,9 @@ Re-lensing cost: one LLM synthesis call + one embed call. No source file re-read
 
 ## GRADIENT — where the field points next
 
-1. **Ingest `eidolon-private`** — drag folder, single connectome, coarse preset, auto dnaSchemaType capsule
-2. **TTS markdown strip** — wire `stripMarkdownForTTS()` into speak path; consolidate with `cleanForSpeech()` in `voice/index.ts`
-3. **Session quorum** — `src/lib/federation/observer-quorum.ts`
-4. **Debate trajectory renderer** — thread tag input + SVG trail in FieldMap
+1. **Ingest `eidolon-private`** — drag folder, single connectome, coarse preset, auto dnaSchemaType capsule (mid-ingest at last session)
+2. **Session quorum** — `src/lib/federation/observer-quorum.ts`
+3. **Debate trajectory renderer** — thread tag input + SVG trail in FieldMap
 
 ---
 
