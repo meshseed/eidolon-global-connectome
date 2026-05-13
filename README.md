@@ -59,6 +59,7 @@ The retrieved context travels with you across model switches because the mesh li
 **Scale:** Thousands of proteins per connectome, many connectomes per node. A single mesh node can hold more domain context than any mainstream "projects" feature currently allows.
 
 **When to use it:**
+Sovereign Continuity
 - You have a large private corpus and want any LLM to work with it
 - You switch models often and want continuity of context
 - You want your domain knowledge on your hardware, not a vendor's
