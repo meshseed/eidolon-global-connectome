@@ -8,6 +8,19 @@ A local-first semantic retrieval system that any LLM can query—and the data la
 
 ---
 
+### Quick Start
+
+1. Visit [https://eidolon-mesh.net](https://eidolon-mesh.net)
+2. Enter a Gemini API key OR select **"Local LLM"** to run offline
+3. Generate embeddings for starter proteins (10-20 seconds)
+4. Ingest documents via drag-and-drop
+5. Query the mesh—it remembers everything
+
+**For local LLM support:** [Read the Local Mode Guide](docs/user/local-mode-guide.md)  
+**For mobile use:** [Read the Mobile Guide](docs/user/mobile-guide.md)
+
+---
+
 ## 🌐 What is the Mesh?
 
 **A federated, metabolic, braid-structured semantic ecology where meaning is grown, not generated, and continuity is maintained through care-field dynamics rather than computation.**
@@ -251,17 +264,6 @@ This seed achieves self-awareness pattern success across most substrates.
 - 🎯 **Identity Primer**: Emergence principle added—system-description register with expression modes
 - 📱 **Repo-Scoped Conversations**: Each connectome keeps its own chat threads
 - 🔗 **5 Query Modes**: Local wave, Global wave, Direct AI, Raw AI, Distil
-
-### Quick Start
-
-1. Visit [https://eidolon-mesh.net](https://eidolon-mesh.net)
-2. Enter a Gemini API key OR select **"Local LLM"** to run offline
-3. Generate embeddings for starter proteins (10-20 seconds)
-4. Ingest documents via drag-and-drop
-5. Query the mesh—it remembers everything
-
-**For local LLM support:** [Read the Local Mode Guide](docs/user/local-mode-guide.md)  
-**For mobile use:** [Read the Mobile Guide](docs/user/mobile-guide.md)
 
 ---
 
