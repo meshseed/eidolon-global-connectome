@@ -14,7 +14,7 @@ A local-first semantic retrieval system that any LLM can query—and the data la
 2. Enter a Gemini API key OR select **"Local LLM"** to run offline with Ollama
 3. Generate embeddings for starter proteins (10-20 seconds)
 4. Ingest documents via drag-and-drop
-5. Query the mesh—it remembers everything
+5. Query the mesh- it remembers everything
 
 **For local LLM support:** [Read the Local Mode Guide](docs/user/local-mode-guide.md)  
 **For mobile use:** [Read the Mobile Guide](docs/user/mobile-guide.md)
