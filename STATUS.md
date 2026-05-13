@@ -528,7 +528,7 @@ Human position updates persist across sessions (same substrate). AI model weight
 28. 🕒 **Tauri rebuild + wave verification:** Commits `7541b19` (two-pass coarse filter) + `16f1215` (ghost connectome fix) ready. Run `npm run tauri dev`, re-project wave amplitudes, verify scannedCount drops in multi-wave log.
 29. 🕒 **README redesign:** v2 draft written (two-door: practical tool / exploration). Paul hand-crafting. Dense anchor block (~200 words) is the hard center.
 30. 🕒 **TTS markdown strip:** `stripMarkdownForTTS()` in `src/lib/utils/markdown.ts` — wire into `speakAny()` call sites in `+page.svelte` (lines ~337, 349, 392). Consolidate with existing `cleanForSpeech()` in `src/lib/voice/index.ts`.
-31. 🕒 **Reddit output formatting:** When posting mesh outputs to Reddit, responses need Reddit-compatible markdown. Plan: "Copy for Reddit" button on exchange cards (strips tables → bullet lists, converts `##` headers → **bold** titles, keeps code blocks + bullets). Alt: new `reddit` preset in DistilView translate mode. Old Reddit vs New Reddit/Fancy Pants distinction matters — target Old Reddit for broadest compatibility.
+31. ✅ **Reddit output formatting:** "📋 Reddit" button on every exchange action row. `toRedditMarkdown()` in `markdown.ts`: `##` headers → `**bold**`, tables → `- **Header:** value` bullet rows, `---` rules → blank lines. Old Reddit-compatible; New Reddit/Fancy Pants also renders it cleanly. `.export-btn` CSS class reusable for future formats (Discord, Obsidian, plain text).
 
 ---
 

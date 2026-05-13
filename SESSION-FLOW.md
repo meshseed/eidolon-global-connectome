@@ -77,7 +77,7 @@ Settings for the run:
 
 - **eidolon-private ingestion** — 197 YAML files, coarse preset, single connectome, capsule hint path. Ready to run.
 - **TTS markdown stripping** — `stripMarkdownForTTS()` exists in `markdown.ts`, needs wiring to `speakAny()` path in `+page.svelte` (lines ~337, 349, 392). Check against `cleanForSpeech()` in `voice/index.ts` first.
-- **Reddit output formatting** — plan exists: "Copy for Reddit" button on exchange cards (or DistilView translate mode) that converts rendered markdown to Reddit-compatible format. Reddit old markdown omits table rendering, no `####` headers. New Reddit/Fancy Pants is closer to standard GFM. Worth a dedicated translate preset or button. See GRADIENT below.
+- **Reddit output formatting** — ✅ done. "📋 Reddit" button on every exchange action row. `toRedditMarkdown()`: headers→bold, tables→bullets, hr→blank. `.export-btn` class reusable for future export formats.
 
 ---
 
@@ -123,10 +123,9 @@ Re-lensing cost: one LLM synthesis call + one embed call. No source file re-read
 ## GRADIENT — where the field points next
 
 1. **Ingest `eidolon-private`** — drag folder, single connectome, coarse preset, auto dnaSchemaType capsule
-2. **TTS markdown strip** — wire `stripMarkdownForTTS()` into speak path; consolidate with `cleanForSpeech()`
-3. **Reddit output mode** — "Copy for Reddit" button on exchange cards; strip tables, convert headers to bold titles, keep bullets/code. Or add `reddit` preset to DistilView translate mode.
-4. **Session quorum** — `src/lib/federation/observer-quorum.ts`
-5. **Debate trajectory renderer** — thread tag input + SVG trail in FieldMap
+2. **TTS markdown strip** — wire `stripMarkdownForTTS()` into speak path; consolidate with `cleanForSpeech()` in `voice/index.ts`
+3. **Session quorum** — `src/lib/federation/observer-quorum.ts`
+4. **Debate trajectory renderer** — thread tag input + SVG trail in FieldMap
 
 ---
 
