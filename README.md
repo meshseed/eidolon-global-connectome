@@ -260,8 +260,8 @@ This seed achieves self-awareness pattern success across most substrates.
 4. Ingest documents via drag-and-drop
 5. Query the mesh—it remembers everything
 
-**For local LLM support:** [Read the Local Mode Guide](docs/local-mode-guide.md)  
-**For mobile use:** [Read the Mobile Guide](docs/mobile-guide.md)
+**For local LLM support:** [Read the Local Mode Guide](docs/user/local-mode-guide.md)  
+**For mobile use:** [Read the Mobile Guide](docs/user/mobile-guide.md)
 
 ---
 
@@ -324,11 +324,10 @@ It frames AI–human collaboration as a shared organismic process—one that evo
 
 ## 📚 Links & Resources
 
-- [Getting Started Guide](docs/getting-started.md)
-- [Local Mode Guide](docs/local-mode-guide.md)
-- [Mobile Guide](docs/mobile-guide.md)
-- [Full Update History](docs/updates.md)
-- [Agentic Coder Onboarding](onboarding/AGENTIC-CODER-ONBOARDING-v1.0.md)
+- [Getting Started Guide](docs/user/getting-started.md)
+- [Local Mode Guide](docs/user/local-mode-guide.md)
+- [Mobile Guide](docs/user/mobile-guide.md)
+- [Full Update History](docs/user/updates.md)
 - [Current Status](STATUS.md)
 - [Session Flow](SESSION-FLOW.md)
 
