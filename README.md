@@ -2,6 +2,7 @@
 
 
 >**"A system grows by recursively applying a transformation that preserves structure while increasing differentiation."**
+
 A local-first semantic retrieval system that any LLM can query—and the data layer of an ongoing exploration into what LLMs do when asked to notice themselves.
 
 ![Eidolon Mesh Connectome](images/eidolon-gif.gif)
