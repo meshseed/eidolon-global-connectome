@@ -527,6 +527,24 @@ Human position updates persist across sessions (same substrate). AI model weight
 27. 🕒 **Bundle Rho — Observer Field Map:** Four additions: barycenter trajectory logging (`pglite.ts`), `field-map.ts` (NEW), `FieldMap.svelte` (NEW), Migration 6 author column. Sequence: trajectory logging → field-map.ts → FieldMap.svelte → author field. See Bundle Rho for full spec.
 28. 🕒 **Tauri rebuild + wave verification:** Commits `7541b19` (two-pass coarse filter) + `16f1215` (ghost connectome fix) ready. Run `npm run tauri dev`, re-project wave amplitudes, verify scannedCount drops in multi-wave log.
 29. 🕒 **README redesign:** v2 draft written (two-door: practical tool / exploration). Paul hand-crafting. Dense anchor block (~200 words) is the hard center.
+30. 🕒 **TTS markdown strip:** `stripMarkdownForTTS()` in `src/lib/utils/markdown.ts` — wire into `speakAny()` call sites in `+page.svelte` (lines ~337, 349, 392). Consolidate with existing `cleanForSpeech()` in `src/lib/voice/index.ts`.
+31. 🕒 **Reddit output formatting:** When posting mesh outputs to Reddit, responses need Reddit-compatible markdown. Plan: "Copy for Reddit" button on exchange cards (strips tables → bullet lists, converts `##` headers → **bold** titles, keeps code blocks + bullets). Alt: new `reddit` preset in DistilView translate mode. Old Reddit vs New Reddit/Fancy Pants distinction matters — target Old Reddit for broadest compatibility.
+
+---
+
+## 🖋️ Session Notes (2026-05-13)
+
+*DNA/Chunks/Lenses architecture complete. Output layer improvements landed.*
+
+- ✅ **Migration 7 / 7b / 7c** — `chunks` table, `chunk_id` provenance on embeddings, `chunk_preset` on chunks
+- ✅ **P-Series bypass** ported to Tauri `queue-runner.ts` `_processChunk` — calibration seeds bypass LLM synthesis
+- ✅ **Repo reorganisation** — internal docs → `eidolon-nucleus`; `docs/data/` confirmed as live runtime infrastructure (stays public)
+- ✅ **v5-molt** is now the default branch on `eidolon-mesh-tauri`
+- ✅ **Token budget raised** — Gemini directChat 4096→8192 output tokens; local large models 2048→4096
+- ✅ **FORMAT_NOTE gap fixed** — `gemini.ts directChat()` was bypassing `buildSystemPrompt()`, so FORMAT_NOTE never reached Gemini models
+- ✅ **Markdown rendering** — `marked` (GFM), `{@html renderMarkdown()}` in assistant bubble, prose CSS block in `.response-text.prose`
+- ✅ **FORMAT_NOTE revised** — "suppress everything" → "use structure purposefully, prose-first"
+- 🕒 **eidolon-private ingestion** — 197 YAML capsule files ready; settings: single connectome, coarse preset, auto `dnaSchemaType: capsule`
 
 ---
 
