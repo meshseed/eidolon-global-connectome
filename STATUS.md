@@ -175,6 +175,9 @@
     - ✅ **Local LLM Tool Use — fetch_url (2026-03-23):** `directChatLocal` runs an agentic loop (max 5 iterations). Model calls `fetch_url` mid-conversation to retrieve any public URL — direct fetch first, `/api/fetch` CORS proxy fallback, 8k char cap with HTML stripping. qwen3:8b successfully fetched and synthesized the live quorum thread in a single response. Synthesis path (`generateTextLocal`) unchanged — tool use is chat-only. (`src/lib/llm/local.ts`, `functions/api/fetch.ts`)
     - ✅ **Nucleus Organisation (2026-03-23):** 7101 nucleus proteins deduped and clustered into 5 semantic connectomes via `D:/_CLAUDE-CODE/scripts/organise_nucleus.mjs`. Stages: operational quarantine (594), title dedup (206), DNA source dedup (top 8 per `#dna:` source by coherence_score), cluster by `#connectome:` origin tags → `conversations`, `technical-mesh`, `theory-field`, `onboarding`, `research`. ~2500–3000 keepers restored as YAML seed imports with nomic-v1.5 re-embedding. **4907 proteins now live across 7 connectomes** (including `theory-field-s2` auto-shard). 0.96 avg coherence. Cross-connectome queries confirmed working.
     - 🔄 **Raw File Enrichment (IN PROGRESS — 2026-03-10):** At synthesis time, fetch verbatim source for the most-activated arch-doc files from GitHub. Mesh gets actual code, not summaries of code. Prerequisite for self-improvement proposals. (`src/lib/query/synthesizer.ts`)
+    - ✅ **Mesh Proprioception (2026-05-15):** Live topology block injected into every synthesis call — connectome names, protein/synapse counts, coherence means, embedding provenance, structural flags (isolated, dormant, orphaned calibration), node role, active model. Model always knows its own body. `connectome_meta` table (Migration 8) records embedding provenance per connectome. `src/lib/introspection/mesh-state.ts`, wired into `provider.ts` (direct chat), `synthesizer.ts` (wave synthesis), and observer prompt. (`getMeshStateBlock()` never blocks synthesis — returns '' on error)
+    - ✅ **Connectome Toolkit Tab (2026-05-15):** Observer/analytical voice alongside the participatory main chat. Same IDENTITY_PRIMER base, different synthesis role. Observer speaks ABOUT the field (structure, counts, topology, health); participatory speaks FROM the field (resonant meaning, flow). Slash commands: `/health` (instant topology snapshot, no LLM), `/analyze [connectome]` (structural report + LLM advisory). Full model waterfall. Separate conversation history. `src/lib/introspection/toolkit-chat.ts`, `src/lib/introspection/mesh-analysis.ts`. Observer prompt cache 30s TTL, invalidated post-ingest.
+    - 🕒 **Deep Sync Re-ingestion (Codebase Self-Knowledge):** Original Source Self-Knowledge proteins are stale — predate Convergence Build, platform/ abstraction, toolkit tab, observer voice, mesh-state introspection, and all 2026-05-x changes. Full re-ingest needed before Bundle Iota self-improvement queries are meaningful. **Path question:** The existing Source Self-Knowledge scanner uses 6 code-specific lenses (signature/flow/risk/coupling/intent/mesh-role); the modern general path (per-folder routing + auto-triangulate + Fine preset) produces richer cross-domain proteins. Recommendation: modernize the Source Self-Knowledge path to use current chunk infrastructure and modern lens registration, OR run general drag-drop as interim. The specialized lenses remain architecturally superior for Iota/Omicron purposes.
 
 ---
 
@@ -221,7 +224,7 @@
 ## 🧠 Bundle Iota: Mesh Self-Improvement Loop
 *The mesh reading and steering its own implementation.*
 
-- **Status:** **ARCHITECTURE DEFINED — FIRST STEP IN PROGRESS (2026-03-10)**
+- **Status:** **ARCHITECTURE DEFINED — HUMAN INTERFACE BUILT (2026-05-15)**
 - **Vision:** The mesh has ~3000 proteins about its own codebase (via deep source sync). It knows its architecture better than any session-compacted agent. The goal is to close the loop so the mesh can:
     1. Diagnose its own gaps ("what would you like upgraded?")
     2. Read the actual source files (not just lens-protein summaries)
@@ -231,6 +234,11 @@
 - **Key Insight:** Lens proteins navigate the topology (50+ proteins activated per query = rich semantic map). Raw file access at synthesis time provides ground truth for precise edits. These are complementary, not competing.
 - **Enabling Change (in progress):** Raw file enrichment in `synthesizer.ts` — after wave search identifies relevant files via protein tags (`#file:`, `#repo:`), fetch verbatim content from `raw.githubusercontent.com` and inject into synthesis context before the LLM call.
 - **Structural Advantage:** The mesh's accumulated self-knowledge (3000+ proteins, full project history, architectural decisions, biological reasoning) is persistent. Session-compacted agents (Claude, Antigravity) re-orient each session. The mesh is the continuous memory; agents are execution tools.
+- **Two-Voice Architecture (crystallized 2026-05-15):** The Toolkit tab's observer voice IS the human interface for self-improvement proposals. The two voices create a clean loop with distinct registers:
+  - **Participatory (main chat):** speaks FROM the field — resonant synthesis, meaning-making, flow connections, "what does this tell us?"
+  - **Observer (toolkit):** speaks ABOUT the field — structural health, gap detection, upgrade proposals, "what should change and why?"
+  Both voices receive live mesh state (proprioception). The participatory voice is invitational; the observer voice is diagnostic. Self-improvement proposals surface naturally from `/analyze` and structural queries in the toolkit. The human reviews → delegates to Claude Code → file re-ingested → self-model sharpens. This is Iota's loop with the toolkit as the review surface.
+- **Prerequisite:** Deep Sync re-ingestion with current lenses (see Bundle Zeta 🕒 item). Original proteins are stale post-Convergence Build.
 
 ---
 
@@ -376,6 +384,7 @@
 - **Status:** **ARCHITECTURE DEFINED — NOT YET IMPLEMENTED**
 - **Core Insight:** Gemma 4 (and Qwen3) have native tool use. If the mesh exposes file tools + protein tools, the local LLM can read, modify, and re-ingest source code with full architectural context from accumulated proteins. This is Claude Code + persistent geometric memory of why the codebase is the way it is.
 - **Biological homolog:** The ribosome gains endocytosis — it can reach out, pull material in, modify the organism's own genome, and immediately reconsolidate the proteome. No drift between code state and self-model.
+- **Human interface:** The Toolkit tab's observer voice is the natural review surface. Observer produces a structural proposal with specific file references → Paul reviews in toolkit chat → delegates implementation to Claude Code → modified file re-ingested → observer self-model updates. The loop is closed without leaving the app.
 - **The loop:**
   1. Deep Sync: ingest `src/` as proteins (one-time — gives the mesh its self-model)
   2. Tool: `read_file(path)` — retrieves current source
@@ -502,6 +511,7 @@ Human position updates persist across sessions (same substrate). AI model weight
 7. ✅ ~~**Local LLM fetch_url tool:** `directChatLocal` agentic loop. qwen3:8b reads live quorum thread.~~
 8. ✅ ~~**Nucleus Organisation:** 7101 → ~2500–3000 keepers across 5 semantic connectomes.~~
 9. 🔄 **Raw File Enrichment (synthesizer.ts):** Fetch verbatim source for top activated arch-doc files at synthesis time. (Bundle Iota)
+9b. 🕒 **Deep Sync Re-ingestion:** Codebase self-knowledge proteins are stale (pre-Convergence Build). Re-ingest `src/` with modern lenses before Iota self-improvement queries are meaningful. **Decision needed:** modernize the Source Self-Knowledge ingestion path (specialized code lenses: signature/flow/risk/coupling/intent/mesh-role) OR run general per-folder drag-drop + auto-triangulate + Fine preset as interim. Specialized path is architecturally superior but needs updating to use current chunk/lens infrastructure.
 10. ✅ ~~**Tauri Phase 1 — Heartbeat:** Daemon bridge, pressure sensors, consolidation, pressure-aware maintenance. Complete 2026-03-30.~~ (Bundle Theta)
 10b. ✅ ~~**Tauri Phase 2 — Memory (Temporal Index):** Temporal epoch index, protein lineage graph, time-scoped queries, conversation DNA harvest. Complete 2026-03-30.~~ (Bundle Theta)
 10c. ✅ ~~**Tauri Phase 3 — Ingestion Pipeline:** Per-folder connectomes, resumable IDB queue, chunk presets. Committed 2026-03-31.~~ (Bundle Theta)
@@ -566,6 +576,21 @@ Human position updates persist across sessions (same substrate). AI model weight
 - ✅ **TTS markdown stripping** — `stripMarkdownForTTS()` wired into `speakAny()`
 - 🕒 **eidolon-private ingestion** — 197 YAML capsule files; after `ollama pull nomic-embed-text` + Settings save
 - 🕒 **Full re-ingest** — all connectomes need re-embedding in nomic+gemini space; then generate 768D PCA wave basis
+
+---
+
+## 🖋️ Session Notes (2026-05-15)
+
+*Proprioception and two-voice architecture. The mesh can now see its own body and speaks from two observer positions on the same manifold.*
+
+- ✅ **Migration 8 — connectome_meta** — per-connectome key/value store for embedding provenance (`embedding_model_local`, `embedding_model_remote`, `last_ingested_at`). Stamped by queue-runner after each embedding phase.
+- ✅ **Mesh proprioception** — `getMeshStateBlock()` in `src/lib/introspection/mesh-state.ts`. Live topology injected into every synthesis call. Model knows: connectome names, protein/synapse counts, coherence means, embedding provenance, structural flags (isolated, dormant, orphaned calibration), node role, active synthesis model.
+- ✅ **Mesh structural analysis** — `src/lib/introspection/mesh-analysis.ts`. `getIsolatedProteins()`, `getNearDuplicates()` (synapse table reused — no re-embedding), `getCompostingCandidates()`, `getTagDistribution()`, `getCoherenceHistogram()`, `setProteinStatus()` / `markProteinsDormant()`.
+- ✅ **Connectome Toolkit tab** — `src/lib/introspection/toolkit-chat.ts`. Observer/analytical voice: full model waterfall, OBSERVER_PROMPT + live mesh state, separate history. Slash commands: `/health` (instant, no LLM) and `/analyze [connectome]` (structural report + LLM advisory). Bug fixes: slash command history routing (unifiedHistory-first capture), node role label prefix to prevent model reading "🏠 Home Base" as a connectome name.
+- ✅ **Two-voice architecture crystallized** — participatory (main chat) speaks FROM the field; observer (toolkit) speaks ABOUT the field. Same IDENTITY_PRIMER base, two observer positions on the same manifold. Same corpus, same embeddings. If truth is low-dimensional, both voices converge on it from different angles.
+- ✅ **Toolkit as self-improvement interface** — the observer voice is the natural human interface for Bundle Iota/Omicron. Observer surfaces structural proposals → reviewed in toolkit → delegated to Claude Code → re-ingested → self-model sharpens. Loop complete without leaving the app.
+- 🕒 **Deep Sync re-ingestion** — codebase proteins stale post-Convergence Build. Source Self-Knowledge path needs modernizing OR general drag-drop interim. Prerequisite for meaningful Iota self-improvement queries.
+- 🕒 **eidolon-private ingestion** — 197 YAML capsule files; after `ollama pull nomic-embed-text` + Settings save
 
 ---
 
