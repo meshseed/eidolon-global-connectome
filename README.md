@@ -17,6 +17,7 @@ A local-first semantic retrieval system that any LLM can query—and the data la
 4. Ingest documents via drag-and-drop
 5. Query the mesh- it remembers everything
 
+**→ [Getting Started Guide](docs/user/getting-started.md)** — full setup, features, and tips  
 **For local LLM support:** [Read the Local Mode Guide](docs/user/local-mode-guide.md)  
 **For mobile use:** [Read the Mobile Guide](docs/user/mobile-guide.md)
 
