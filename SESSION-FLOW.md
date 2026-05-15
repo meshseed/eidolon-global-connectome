@@ -2,8 +2,8 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-05-14 [claude-code × paul — UI stability pass + unified theme system]
-**Session character:** Bug-fixing and polish — six stale-DB / missing-refresh issues resolved, Sync button replaced with Node Role architecture, theme system unified into one canonical file with legacy variable bridge.
+**Last updated:** 2026-05-15 [claude-code × paul — Vault polish, dual-embed fixes, embedding gap detection]
+**Session character:** Dense functional pass — Vault bulk delete + cross-connectome copy/move, dual-model embedding backfill infrastructure, architecture clarity on 768D unification.
 
 ---
 
@@ -13,61 +13,58 @@ You are Claude Code, working with Paul on the Eidolon Mesh Tauri app (`C:\EIDOLO
 
 **The recursive loop is already running.** Read this, feel where the gradient points, pick up the thread.
 
-**COMPLETED THIS SESSION:**
+**COMPLETED THIS SESSION (commits ad2a3f9 → 0a5e9f4):**
 
-1. **Connectome switch stale-DB fix** — `handleRepoSwitch()` was missing `await initDatabase(event.detail.id)`, so `getDatabase()` returned the old connectome's PGlite after switching via the dropdown. `switchToSession()` had it right; the direct-switch path didn't. One line fix.
+1. **DensityField rewrite** — topology mode (direct PC1×PC2 scatter, deterministic, instant) + mulberry32 seeded RNG for clusters mode. `wavePoints` prop pre-fetched from `wave_amplitudes` table.
 
-2. **Graph not refreshing after ingestion** — `runnerStore` was never subscribed to in `+page.svelte`. Added `$: { ... }` block tracking `running` true→false transition → calls `loadAndRenderGraph()`. Guard prevents spurious refresh on initial load.
+2. **Dual-model embedding fixes** — Three paths were using `generateEmbedding()` (nomic-only) instead of `generateAllEmbeddings()` (nomic+gemini): fast-ingest, SettingsModal regenerate, SettingsModal JSON backup import. All fixed.
 
-3. **Graph not refreshing after synapse crystallization** — `SynapseOptimizer` dispatches `on:complete` but the parent had no handler. Added `on:complete={() => loadAndRenderGraph()}`.
+3. **RepositoryManager inline embedding phase** — connectome import (thread selector) now embeds proteins immediately after metadata import, not requiring a separate Settings step.
 
-4. **Color scheme changes not applying** — `nodeColor(nodeColor())` is a no-op when `nodeThreeObject` is active (Three.js materials are baked at creation time). Replaced all four call-sites with `_refreshNodeColors()` — walks nodes, reads `__threeGroup.children[0]`, mutates `material.color` directly. Also fixes theme toggle and activated-node highlight.
+4. **P-Series YAML seed gate** — moved to `IngestQueue.svelte` (was in queue-runner where it was unreachable — IngestQueue pre-populates `job.chunks` before queue-runner sees the job).
 
-5. **Sync button removed → NodeRole indicator** — Sync (phone↔PC via GitHub) was broken and the architecture has moved on. Replaced with `NodeRole.svelte`: 🏠 Home Base / 📡 Satellite pill in the header. Role persists to IDB as `node_role`. Dropdown explains the model. Bridge URL pairing deferred to Settings.
+5. **Vault bulk delete** — "delete selected" (red) in sel-bar, confirm dialog, `handleBulkDelete()`. Individual bin icon confirm removed (single-item action, no need for friction).
 
-6. **Theme system** — Four themes: Default 🌙 / Light ☀️ / Amber 🟡 / DOS 📟. Button cycles through them. All tokens in `src/lib/styles/themes.css` — adding a new theme is one CSS block + two lines in `+page.svelte`.
-   - Legacy variable bridge in `themes.css`: `--surface-*`, `--panel-bg`, `--border-color`, `--text-color`, `--accent-color` all aliased to `--c-*` tokens. Old components (IngestQueue, SynapseOptimizer) theme automatically.
-   - Structural elements in `+page.svelte` migrated to `var(--c-*)`: body, header, panels, input area, nav tabs, chat bubbles.
-   - `GraphControls.svelte` kept hardcoded dark — matches the always-black WebGL canvas.
-   - `themes.css` imported via `<script>` tag in `+layout.svelte` (not `@import` in style block — Svelte doesn't expand `$lib` aliases in style blocks).
-   - Scanlines removed from DOS and Amber.
+6. **Cross-connectome copy/move** — in cross-connectome mode with selection: dropdown + copy/move buttons appear. Copies protein + all embedding rows + wave_amplitudes verbatim (deterministic — no re-embed needed). `formSynapses(id, emb, model, targetDb)` integrates into target field. Move = copy + delete source. `formSynapses` exported from pglite.
+
+7. **Regenerate Missing — model-aware** — was `getProteinsWithoutEmbeddings()` (zero-row check only, missed nomic-only proteins). Now `getProteinsWithMissingModelEmbeddings(models)` — UNION sub-query per model, returns (protein, missingModels[]). Per protein only generates absent model embeddings. Confirm shows "45× gemini, 3× nomic-embed-text" gap breakdown.
+
+8. **Architecture clarity: 768D unification** — BOTH nomic and gemini-embedding-2-preview run at 768D. Same PCA basis works for both. Global connectome gate = GitHub token (not gemini). PWA API-only users can use existing 768D basis. No alignment matrix needed. One manifold.
 
 **NEXT TASKS (gradient order):**
 
-1. **`ollama pull nomic-embed-text`** — needed before re-ingest (if not already pulled)
-2. **Settings → Save once** — writes `nomic-embed-text` as `local_embedding_model` (old IDB may still have `qwen3-embedding:8b`)
-3. **eidolon-private ingestion** — 197 YAML capsule files; single connectome, coarse preset, auto dnaSchemaType capsule
-4. **Full re-ingest** of connectomes into new protocol (nomic + gemini dual-embed)
-5. **Generate 768D PCA wave basis** — Settings → Generate Wave Basis after re-ingest (needs ~200+ proteins at 768D)
+1. **Regenerate Missing on "claude conversations"** — switch connectome → Settings → Regenerate Missing → fills gemini gap
+2. **Regenerate Missing on "nucleus proteins"** — same
+3. **Delete and reingest default seeds** — fresh dual-embed
+4. **Regenerate PCA wave basis** — from mixed nomic+gemini corpus after backfill
+5. **Test topology mode** — DensityField needs wave_amplitudes populated first (wave basis required)
 
 ---
 
 ## ALIVE — currently rotating
 
-- **eidolon-private ingestion** — 197 YAML files, coarse preset, single connectome, capsule hint path. Ready to run.
-- **Protocol re-ingest** — all existing connectomes need re-embedding in nomic+gemini space
-- **Node Role architecture** — declaration layer in place (`node_role` IDB key). Satellite→Home bridge wiring deferred.
+- **"claude conversations" + "nucleus proteins" connectomes** — only have nomic embeddings; gemini gap needs filling via Regenerate Missing
+- **Default seeds** — need delete + reingest for clean dual-embed
+- **Wave basis regeneration** — current basis is nomic-only; after gemini backfill, regenerate from mixed corpus for better coverage
+- **Node Role bridge** — satellite→home base URL wiring deferred
 
 ---
 
 ## CRYSTALLIZED — settled this session
 
-### Theme system architecture
-Single source of truth: `src/lib/styles/themes.css`. All themes defined as `[data-theme="x"]` blocks with `--c-*` tokens. Legacy variable bridge maps `--surface-*` / `--panel-bg` / `--accent` etc. onto canonical tokens so old components theme automatically. Adding a new theme (pink/purple, Winamp-style) = one CSS block + two lines in `+page.svelte` THEMES array.
+### 768D unification (KEY ARCHITECTURE DECISION)
+Both `nomic-embed-text` and `gemini-embedding-2-preview` output 768D vectors (gemini at 768D per Google MRL recommendation). One PCA basis (`pca_basis_200.json`) handles both. No alignment matrix, no dual manifolds, no cross-model translation layer needed. Global connectome = GitHub token gate only. Local-only users and API-only users both reach the same semantic space via the same 768D PCA basis.
 
-### Node Role model
-Home Base (🏠) holds the nucleus, runs local LLM, does heavy processing. Satellite (📡) is a thin interface — phone, wearable, peripheral — that forwards to the home base. One home base, many satellites. Users with no PC can set their phone as home base. Architecture is declared; federation wiring is deferred.
+### Embedding gap detection pattern
+`getProteinsWithMissingModelEmbeddings(models[])` in pglite.ts — the correct primitive for any "fill missing" operation. Zero-row check (`getProteinsWithoutEmbeddings`) is insufficient in a dual-model world; per-model sub-query is the right level of granularity.
 
-### Refresh pattern (crystallised)
-Three distinct failure modes resolved:
-- **DB staleness**: always call `initDatabase(id)` before using `getDatabase()` after any connectome switch
-- **Store subscription**: `$: { prev→current }` pattern for detecting store transitions (not just current value)
-- **Three.js material mutation**: `node.__threeGroup.children[0].material.color.set(...)` — not `nodeColor(nodeColor())`
+### saveEmbeddingBatch conflict behaviour
+`ON CONFLICT (protein_id, model) DO UPDATE SET embedding = EXCLUDED.embedding` — Force Regenerate ALL genuinely overwrites. Regenerate Missing is safe to run on any connectome without fear of corrupting existing vectors.
 
-### Convergence Build architecture (carried forward)
-Tauri codebase IS the web PWA. `git push origin v5-molt` → GitHub Actions → `npm run build:web` → Cloudflare Pages (`eidolon-mesh.net`). Nothing manual.
+### Cross-connectome copy/move architecture
+Copy path: source protein record → target DB INSERT → source embedding rows → target DB INSERT → source wave_amplitudes → target DB INSERT → formSynapses(newId, emb, model, targetDb). All deterministic, no LLM calls. Move adds deleteProtein(id, srcDb). formSynapses now exported.
 
-### Embedding protocol pair (locked until major version bump)
+### Embedding protocol pair (carried forward, locked)
 | Space | Model | Dimensions | Purpose |
 |-------|-------|-----------|---------|
 | Local sovereign | `nomic-embed-text` | 768D | Universal floor — any Ollama install |
@@ -77,24 +74,23 @@ Tauri codebase IS the web PWA. `git push origin v5-molt` → GitHub Actions → 
 
 ## UNRESOLVED — still turning
 
-- **Wave basis**: 768D PCA basis needs generating after re-ingest (in-app Settings → Generate Wave Basis)
-- **eidolon-private ingestion** — 197 YAML files pending
-- **Full connectome re-ingest** into nomic+gemini protocol space
-- **Node Role bridge** — satellite→home base URL, query forwarding (deferred)
-- **Session quorum** — `src/lib/federation/observer-quorum.ts` unwritten
+- **Gemini embedding backfill** — "claude conversations" + "nucleus proteins" need Regenerate Missing run
+- **Mixed-corpus PCA basis** — current basis nomic-only; rebuild after backfill for balanced 768D coverage
+- **Wave basis needed for topology mode** — DensityField topology mode works but needs wave_amplitudes populated
+- **Default seeds** — delete + reingest pending
 - **Bundle Rho (Observer Field Map)** — specced, not coded
-- **Debate trajectory SVG** — `getDebateTrajectory()` ready, renderer not built
+- **Node Role bridge** — satellite→home base URL, query forwarding deferred
 - **scannedCount = 2334 in multi-wave** — pass 1 may fall through
-- **Light theme component coverage** — remaining components (ProteinBrowser, NucleusSources, etc.) still have hardcoded dark colors; fix piecemeal as encountered
+- **connectome_meta backfill** — "embed not recorded" for imported connectomes
 
 ---
 
 ## GRADIENT — where the field points next
 
-1. `ollama pull nomic-embed-text` → Settings → Save (writes nomic to IDB)
-2. **eidolon-private ingestion** (197 YAMLs, coarse, single connectome)
-3. **Full re-ingest** of all connectomes → dual-embed in nomic+gemini space
-4. **Generate 768D PCA wave basis** (Settings → Generate Wave Basis)
+1. **Regenerate Missing** on "claude conversations" then "nucleus proteins" (gemini gap fill)
+2. **Delete + reingest** default seeds
+3. **Regenerate Wave Basis** (Settings → Generate Wave Basis) from mixed corpus
+4. **Topology mode test** — switch DensityField to topology, verify PC1×PC2 scatter renders
 5. **Bundle Rho** — Observer Field Map (barycenter trajectory → field-map.ts → FieldMap.svelte)
 
 ---
@@ -102,13 +98,12 @@ Tauri codebase IS the web PWA. `git push origin v5-molt` → GitHub Actions → 
 ## Key files for re-entry
 
 - `C:\EIDOLON\Github\eidolon-global-connectome\SESSION-FLOW.md` — this document
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\styles\themes.css` — **all theme tokens live here**
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\NodeRole.svelte` — node role indicator
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\platform\` — platform abstraction layer
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\provider.ts` — `PROTOCOL_LOCAL_EMBEDDING`, `getAvailableEmbeddingModels()`
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\gemini.ts` — `PROTOCOL_GEMINI_EMBEDDING`, `generateEmbeddingGeminiProtocol()`
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\viz\graph3d.ts` — `_refreshNodeColors()` (Three.js material mutation)
-- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\queue-runner.ts` — dual-embed ingest pipeline
-- `C:\EIDOLON\Github\eidolon-private\` — 197 YAML capsule files awaiting ingestion
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\ProteinBrowser.svelte` — bulk delete + copy/move
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\db\pglite.ts` — `getProteinsWithMissingModelEmbeddings()`, `formSynapses()` (now exported)
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\SettingsModal.svelte` — regenerateEmbeddings() rewritten
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\IngestQueue.svelte` — P-Series YAML seed gate
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\ingest\fast-ingest.ts` — dual-embed fixed
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\components\DensityField.svelte` — topology mode + seeded RNG
+- `C:\EIDOLON\Github\eidolon-mesh-tauri\src\lib\llm\provider.ts` — `getAvailableEmbeddingModels()`
 
-**The frame:** The shell is stable and themeable. The embedding protocol is locked. The next move is the ingestion run — feeding the archive through dual-embed, generating the wave basis, then building the observer field map. The Node Role architecture is declared and waiting for its bridge wiring.
+**The frame:** The embedding infrastructure is now correct end-to-end. Both models are 768D, one manifold, all paths dual-embed. The two imported connectomes need their gemini gap filled (Regenerate Missing), then wave basis regeneration from the mixed corpus, then topology mode becomes live. The vault is fully functional with bulk operations and cross-connectome mobility.
