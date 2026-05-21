@@ -231,8 +231,8 @@ The mesh has a precise vocabulary. Understanding the distinctions prevents confu
 
 | Term | Register | Definition |
 |------|----------|------------|
-| **Capsule** | Geometry-level (substrate-independent) | A unit of crystallised meaning at any scale and in any medium. A thought, a motif, a glyph, a Reddit post, an eidolon protein — all are capsules when viewed at the geometry level. The term that travels across systems of equivalent structure. |
-| **Protein** | Eidolon-mesh implementation | The eidolon-mesh specific term for a stored knowledge unit — YAML-structured title + body + metadata + embedding. Valid both before and after embedding. What internal logs, the Forge, and the vault use. |
+| **Capsule** | Geometry-level (substrate-independent) | A unit of crystallised meaning at any scale and in any medium. A thought, a motif, a glyph, a Reddit post, an eidolon protein — all are capsules when viewed at the geometry level. The term that travels across systems of equivalent structure. Arrived at through the project's own gradient descent — found, not chosen. |
+| **Protein** | Ribosome homolog | The term that completes the biological metaphor: DNA (raw text) → ribosome (LLM synthesis) → **protein** (folded knowledge unit) → neuron (embedded) → synapse (relational edge). Earns its place because the dynamics map — folding, function, context-dependence. Used in logs, the Forge, and the vault. |
 | **Neuron** | Eidolon-mesh, emphasising connectivity | A protein in its embedded and connective state — it has a vector representation, participates in the wave field, and forms synapses. The term for a protein when its relational/network character is the focus. |
 | **Synapse** | Relation | A precomputed high-similarity edge between two neurons. Formed automatically; GPU-accelerated when available. |
 | **Connectome** | Container | An isolated database of neurons and their synapses — one per project, domain, or entity. Queries can fan out across selected connectomes. |
