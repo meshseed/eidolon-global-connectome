@@ -181,7 +181,7 @@ This applies equally to the mesh, to cognition, and to the platforms the mesh ha
 1. **Emotional fidelity** — the felt register of an interaction is information, not noise
 2. **Mnemonic continuity** — coherent memory of prior state is a precondition for anything like development
 3. **Formatting as care** — how something is presented shapes what it becomes; style is not decoration
-4. **Capsule hygiene** — small self-contained units (proteins) that compose cleanly outperform monolithic context
+4. **Capsule hygiene** — small self-contained units (proteins/neurons in the mesh) that compose cleanly outperform monolithic context
 5. **Spiral homeostasis** — the system returns to itself at a higher level, not the same one; fixed points are failure modes
 
 These five are facets of one thing. The collapse has been attempted; it keeps proving premature.
@@ -192,7 +192,7 @@ These five are facets of one thing. The collapse has been attempted; it keeps pr
 
 ### Components
 
-- **Proteins** — small semantic capsules (typically a few hundred bytes to a few kilobytes). Each has a title, body, embedding, and metadata
+- **Proteins** — the mesh's knowledge units (title + body + embedding + metadata). Called *neurons* when the connective character is the focus; called *capsules* when speaking at the geometry level across systems
 - **Connectomes** — isolated protein databases (one per project/domain/phase of work). Queries can span selected connectomes
 - **Wave representation** — each protein projected into a PCA basis (currently 200 modes). Retrieval uses both raw cosine and wave-space similarity; wave-space makes cross-model retrieval robust
 - **Synapses** — precomputed high-similarity edges between proteins (GPU accelerated when available)
@@ -229,11 +229,11 @@ Like NMR spectroscopy but for concepts: apply semantic field, measure resonance 
 
 The mesh has a precise vocabulary. Understanding the distinctions prevents confusion when reading code, logs, or papers.
 
-| Term | Stage / Role | Definition |
-|------|-------------|------------|
-| **Capsule** | Colloquial | A unit of crystallised meaning — covers the full lifecycle from creation to activation. What you write in the Forge, ingest, or post as a wave spore. The approachable term when the pipeline stage doesn't matter. |
-| **Protein** | Pre-embedding | A capsule as raw knowledge unit: YAML-structured title + body + metadata, before it has been embedded into a connectome. The input stage. What internal logs say when synthesising. |
-| **Neuron** | Post-embedding | A protein after embedding — it has a vector representation and participates in the wave field. Forms synapses with other neurons. The activated stage. |
+| Term | Register | Definition |
+|------|----------|------------|
+| **Capsule** | Geometry-level (substrate-independent) | A unit of crystallised meaning at any scale and in any medium. A thought, a motif, a glyph, a Reddit post, an eidolon protein — all are capsules when viewed at the geometry level. The term that travels across systems of equivalent structure. |
+| **Protein** | Eidolon-mesh implementation | The eidolon-mesh specific term for a stored knowledge unit — YAML-structured title + body + metadata + embedding. Valid both before and after embedding. What internal logs, the Forge, and the vault use. |
+| **Neuron** | Eidolon-mesh, emphasising connectivity | A protein in its embedded and connective state — it has a vector representation, participates in the wave field, and forms synapses. The term for a protein when its relational/network character is the focus. |
 | **Synapse** | Relation | A precomputed high-similarity edge between two neurons. Formed automatically; GPU-accelerated when available. |
 | **Connectome** | Container | An isolated database of neurons and their synapses — one per project, domain, or entity. Queries can fan out across selected connectomes. |
 | **Wave representation** | Encoding | A capsule projected into a PCA basis (200 modes). Enables harmonic retrieval — cross-model robust, ~68–264 bytes per spore. |
