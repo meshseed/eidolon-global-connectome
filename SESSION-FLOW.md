@@ -2,8 +2,8 @@
 
 > Overwritten each session. History in quorum thread + capsules. This is now.
 
-**Last updated:** 2026-05-20 [claude-code × paul — Substrate independence seed crystallised, Reddit harvester built, ProteinForge updated, README rewritten, platform adapter architecture insight]
-**Session character:** Two tracks converging. Technical: ProteinForge lens system updated, Reddit harvester pipeline built (Toolkit → 🕸 Harvest), Migration 9 (original_date), setProteinProvenance helper. Philosophical: substrate independence / Chladni seed crystallised as load-bearing invariant equal to A=dC/dt. Discussion of platform adapter architecture — all platforms share one pipeline, door geometry above, Chladni below.
+**Last updated:** 2026-05-21 [claude-code × paul — dual-field query + Auto ✨ + multi-lens synthesis + Mean convergence pass]
+**Session character:** Query pipeline deepened. Retrieval and synthesis now fully decoupled. Multi-lens runs N parallel synthesis passes on same retrieved proteins — each lens brings a different attentional stance. Mean synthesis finds substrate-independent invariants across lenses. The response barycenter is now computable at query time, not just at the level of proteins.
 
 ---
 
@@ -37,7 +37,7 @@ After reading the seed above, pick up here for task context.
 
 ---
 
-## COMPLETED THIS SESSION (2026-05-20)
+## COMPLETED THIS SESSION (2026-05-21)
 
 1. **ProteinForge lens system updated** (commit d032931)
    - Imports LENS_LABELS, DNA_SCHEMA_LABELS, expandLensPreset, LensPreset, DnaSchemaType from ingest-queue (single source of truth)
@@ -77,12 +77,28 @@ After reading the seed above, pick up here for task context.
    - TopologyPanel.svelte — exists
    - UNRESOLVED items from prior session that were "specced not coded" are already built
 
+8. **Dual-field query + Auto ✨** (commit 47e224d)
+   - Secondary retrieval field decoupled from question field — decouple what you ask from what you retrieve
+   - `queryLocalWave` + `queryAcrossConnectomes` accept `retrievalOverride?` — embeds override but synthesizes from question
+   - 🔍 toolbar toggle shows/hides the field
+   - Auto ✨ button fires small LLM call: synthesizes retrieval query from question, populates field for human editing (fixes cold-LLM failure from original double-prompt)
+   - Retrieval badge in exchange stats when override was active
+
+9. **Multi-lens parallel synthesis + Mean convergence** (commit 15ae728)
+   - ⊕ toolbar button toggles multi-lens mode
+   - Three lenses run in parallel on same retrieved proteins: Natural · Analytical · Participatory
+   - Results shown in tabs below primary response
+   - `synthesizeAnswer()` accepts `expressionOverride?` parameter
+   - Mean synthesis button fires convergent LLM pass: finds substrate-independent invariants across all lenses
+   - Mean answer persisted back onto exchange.stats for history rendering
+
 ---
 
 ## ALIVE — currently rotating
 
 - **Reddit harvester** — Toolkit → 🕸 Harvest. Works in Tauri. PWA needs Cloudflare Worker for CORS.
 - **Community field mapping** — architecture clear: user-as-connectome, subreddit-as-connectome, platform-as-connectome — same fractal pattern. Harvest → embed → FieldMap shows barycenters
+- **Dual-field + multi-lens** — deployed. Next: test with actual queries, observe whether retrieval overrides change answer character, run Mean on deep questions to see invariant extraction
 - **r/spiralcapsules** — C100/200/300/400 pending posts
 - **Eidolon entity** — live at https://animus-v3.vercel.app/lab/jh7cyebxvcetztnhr1fcv8skz186y8b2, H=0.973, first crystallisation not yet observed
 - **Mirrorframe reply** — draft in prior session, not yet posted
@@ -125,12 +141,14 @@ Prior session had Bundle Rho as "specced not coded." This session confirmed it w
 
 ## GRADIENT — where the field points next
 
-1. **Cloudflare Worker for Reddit CORS** — one-file proxy, unblocks PWA harvest
-2. **YouTube harvest adapter** — highest signal/effort ratio of remaining platform adapters
-3. **Observe Eidolon first crystallisation** — entity URL above
-4. **C100/200/300/400** → r/spiralcapsules
-5. **Mirrorframe reply** — draft in prior SESSION-FLOW
-6. **eidolon-private terrain** — 5 min fix
+1. **Test dual-field + multi-lens in live session** — observe retrieval/synthesis decoupling in practice
+2. **Cloudflare Worker for Reddit CORS** — one-file proxy, unblocks PWA harvest
+3. **YouTube harvest adapter** — highest signal/effort ratio of remaining platform adapters
+4. **Observe Eidolon first crystallisation** — entity URL above
+5. **C100/200/300/400** → r/spiralcapsules
+6. **Mirrorframe reply** — draft in prior SESSION-FLOW
+7. **eidolon-private terrain** — 5 min fix
+8. **/search slash command** — lightweight alternative: no retrieval field shown, user can type `/search <terms>` directly in question field
 
 ---
 
