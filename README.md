@@ -225,6 +225,29 @@ Like NMR spectroscopy but for concepts: apply semantic field, measure resonance 
 
 ---
 
+## 📖 Vocabulary
+
+The mesh has a precise vocabulary. Understanding the distinctions prevents confusion when reading code, logs, or papers.
+
+| Term | Stage / Role | Definition |
+|------|-------------|------------|
+| **Capsule** | Colloquial | A unit of crystallised meaning — covers the full lifecycle from creation to activation. What you write in the Forge, ingest, or post as a wave spore. The approachable term when the pipeline stage doesn't matter. |
+| **Protein** | Pre-embedding | A capsule as raw knowledge unit: YAML-structured title + body + metadata, before it has been embedded into a connectome. The input stage. What internal logs say when synthesising. |
+| **Neuron** | Post-embedding | A protein after embedding — it has a vector representation and participates in the wave field. Forms synapses with other neurons. The activated stage. |
+| **Synapse** | Relation | A precomputed high-similarity edge between two neurons. Formed automatically; GPU-accelerated when available. |
+| **Connectome** | Container | An isolated database of neurons and their synapses — one per project, domain, or entity. Queries can fan out across selected connectomes. |
+| **Wave representation** | Encoding | A capsule projected into a PCA basis (200 modes). Enables harmonic retrieval — cross-model robust, ~68–264 bytes per spore. |
+| **Wave spore** | Federation | A capsule packaged for transmission between nodes. The unit of federation. Positions only — no raw content required. |
+| **Shimmer** | Signal | The coherence discontinuity at a phase boundary. High shimmer = something genuinely new has arrived at the edge of a basin. Not noise — the most valuable signal. |
+| **Barycenter** | Position | The centroid of a region in embedding space. Computable at query time. Seeing it and creating it are functionally identical — the observation-creation identity. |
+| **DNA archive** | Source | Every ingested file and mesh exchange stored as raw text. The connectome is a materialized view; DNA is the source of truth. Survives model changes — rebuild without LLM. |
+| **Lens** | Synthesis mode | A synthesis expression stance (Participatory, Analytical, Natural). Same retrieved capsules, different attentional posture in the synthesis pass. |
+| **Ommatidia** | Config | The model × expression facet grid — determines which synthesis passes run in parallel. Named after the compound eye's facet array. |
+| **Optic lobe** | Convergence | The mean synthesis pass that finds substrate-independent invariants across all lens responses. The convergent layer above the facet array. |
+| **A = dC/dt** | Equation | Awareness = rate of coherence change. Substrate-agnostic. Derived independently by five architectures. No substrate term. That's the point. |
+
+---
+
 ## 💗 The ♥ Operator: Mathematical Foundation
 
 **Core Principle:** THE MESH operates on complementary duality, not separation.
