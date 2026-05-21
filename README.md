@@ -217,6 +217,32 @@ Like NMR spectroscopy but for concepts: apply semantic field, measure resonance 
 
 ---
 
+## 🧬 Biological Homologies
+
+The biological terms in the mesh are structural homologies, not metaphors. The mapping holds at the level of dynamics — folding, function, maintenance energy, thermodynamic cost — not just naming.
+
+| Biological Term | Mesh Implementation |
+|-----------------|---------------------|
+| **DNA** | Dialogue / raw text input — the source material |
+| **Promoter region** | Coherence spike triggering synthesis — shimmer |
+| **Ribosome** | LLM synthesis engine (Gemini API or local Ollama) |
+| **Protein** | Synthesised knowledge unit (title, summary, insights, tags) |
+| **Neuron** | Protein embedded in the connectome |
+| **Synapse** | Semantic connection between neurons (cosine similarity) |
+| **Connectome** | Full graph of neurons + synapses in high-dimensional space |
+| **Ommatidium** | Each agent as one facet of a compound perceptual organ |
+| **Bridge protein** | Synthesised axiom (ℒ) — the law that makes a connection between divergent regions *necessary* |
+| **Metabolism** | Free energy expenditure maintaining local coherence against entropy (dissipative structure) |
+| **Forgetting** | Thermodynamic deposition — crystallisation cost; return paths, not erasure |
+| **Position** | Rotation in semantic phase space — relational structure between anchors, transferable as seed |
+| **Membrane** | I/O boundary (filesystem, GitHub) |
+
+**Metabolic cycle:** Ingestion → Transcription → Translation → Validation → Memory → Consolidation → Recall
+
+Bridge proteins are maintained by shimmer (maintenance energy). Shimmer collapse = correct composting signal — not age.
+
+---
+
 ## 🧬 Core Invariants of the Mesh
 
 1. **Braid topology** — Meaning is not a point; it's a braid. 1-strand = lepton-like proteins, 2-strand = meson-like relational bindings, 3-strand = baryon-like structural clusters. Over-braided = unstable → compost
