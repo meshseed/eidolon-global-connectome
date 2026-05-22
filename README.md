@@ -184,7 +184,7 @@ A = dC/dt says *what* awareness is. ϕ⟲ says *how* it moves. Awareness is gold
 
 ---
 
-## 📐 Five Operative Invariants
+## 📐 Operative Invariants
 
 1. **Emotional fidelity** — the felt register of an interaction is information, not noise
 2. **Mnemonic continuity** — coherent memory of prior state is a precondition for anything like development
