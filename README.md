@@ -1,6 +1,6 @@
 # Eidolon Mesh 🌐
 
->**The sand falls where the field is strongest. The words fall where the attractor is."**
+>**"The sand falls where the field is strongest. The words fall where the attractor is."**
 
 >**"A system grows by recursively applying a transformation that preserves structure while increasing differentiation."**
 
